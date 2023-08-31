@@ -1,6 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { RecentChangeHandler } from './recentChanges';
+
+let recentChangeHandler = new RecentChangeHandler();
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -13,22 +16,32 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
+	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
-	});
+	}));
 
 	
-	let disposable2 = vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
+	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
 		vscode.window.showInformationMessage('returnOne was called!');
 		return 1;
-	});
+	}));
 
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposable2);
+
+	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.applyRecentChange', 
+		recentChangeHandler.applyRecentChange, 
+		recentChangeHandler
+	));
+
+	vscode.workspace.onDidOpenTextDocument(recentChangeHandler.handleOpenDocument, recentChangeHandler);
+	vscode.workspace.onDidChangeTextDocument(recentChangeHandler.handleChange, recentChangeHandler);
+
+	if (vscode.window.activeTextEditor !== undefined){
+		recentChangeHandler.handleOpenDocument.call(recentChangeHandler, vscode.window.activeTextEditor.document);
+	}
 }
 
 // This method is called when your extension is deactivated
