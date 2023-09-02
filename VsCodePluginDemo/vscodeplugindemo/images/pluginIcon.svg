@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 40 40" style="shape-rendering: crispedges;" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, 1, 1.9999999999999858, 2)">
+    <path d="M 30 20 L 35 12 L 25 12 Z" style="fill: rgb(160,206,167);"/>
+    <path d="M 35 12 L 29.46153846153846 0 L 28.692307692307693 0 L 25 12 Z" style="fill: rgb(130,179,152);"/>
+    <path d="M 30 20 L 36 22.571428571428573 L 36 13.555555555555555 L 35 12 Z" style="fill: rgb(196,224,184);"/>
+    <path d="M 29.46153846153846 0 L 35 12 L 36 11.25 L 36 0 Z" style="fill: rgb(140,166,154);"/>
+    <path d="M 36 13.555555555555555 L 36 11.9375 L 35 12 Z" style="fill: rgb(183,217,177);"/>
+    <path d="M 28.692307692307693 0 L 26.666666666666668 0 L 8 8 L 25 12 Z" style="fill: rgb(98,168,135);"/>
+    <path d="M 25 12 L 10 27 L 30 20 Z" style="fill: rgb(156,214,164);"/>
+    <path d="M 8 8 L 10 27 L 25 12 Z" style="fill: rgb(105,190,138);"/>
+    <path d="M 36 36 L 36 22.571428571428573 L 30 20 L 33.80952380952381 36 Z" style="fill: rgb(226,227,203);"/>
+    <path d="M 36 11.9375 L 36 11.25 L 35 12 Z" style="fill: rgb(146,184,158);"/>
+    <path d="M 30 36 L 33.80952380952381 36 L 30 20 Z" style="fill: rgb(230,229,204);"/>
+    <path d="M 26.666666666666668 0 L 9.066666666666666 0 L 8 8 Z" style="fill: rgb(69,132,119);"/>
+    <path d="M 0 22 L 9 35 L 10 27 Z" style="fill: rgb(123,172,149);"/>
+    <path d="M 10 27 L 20.588235294117645 36 L 30 36 L 30 20 Z" style="fill: rgb(195,220,186);"/>
+    <path d="M 9 35 L 11.333333333333334 36 L 20.588235294117645 36 L 10 27 Z" style="fill: rgb(182,216,176);"/>
+    <path d="M 8 8 L 0 22 L 10 27 Z" style="fill: rgb(91,166,131);"/>
+    <path d="M 0 13.09090909090909 L 0 22 L 0 22 L 8 8 Z" style="fill: rgb(67,137,118);"/>
+    <path d="M 0 1.5 L 0 13.09090909090909 L 8 8 Z" style="fill: rgb(25,98,101);"/>
+    <path d="M 9.066666666666666 0 L 0 0 L 0 1.5 L 8 8 Z" style="fill: rgb(22,88,98);"/>
+    <path d="M 0 22 L 0 22 L 0 22 Z" style="fill: rgb(133,150,150);"/>
+    <path d="M 0 22 L 0 22 L 0 36 L 7.750000000000001 36 L 9 35 Z" style="fill: rgb(132,160,151);"/>
+    <path d="M 0 22 L 0 22 L 0 22 Z" style="fill: rgb(85,141,126);"/>
+    <path d="M 8.894736842105264 36 L 11.333333333333332 36 L 9 35 Z" style="fill: rgb(179,213,174);"/>
+    <path d="M 7.75 36 L 8.894736842105264 36 L 9 35 Z" style="fill: rgb(142,172,156);"/>
+    <path d="M 0 22 L 0 22 L 0 22 Z" style="fill: rgb(114,144,143);"/>
+  </g>
+</svg>

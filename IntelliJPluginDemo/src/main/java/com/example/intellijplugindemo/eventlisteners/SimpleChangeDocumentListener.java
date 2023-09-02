@@ -1,6 +1,7 @@
 package com.example.intellijplugindemo.eventlisteners;
 
 import com.example.intellijplugindemo.services.RecentChangesService;
+import com.example.intellijplugindemo.util.DiffWordModeExtender;
 import com.example.intellijplugindemo.util.diff_match_patch;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
@@ -65,9 +66,13 @@ public class SimpleChangeDocumentListener implements DocumentListener {
                 timerActive = false;
                 System.out.println("done typing");
 
-                var diffs = dmp.diff_main(textBeforeChange, getOriginalTextFromDocument(event.getDocument()));
+//                //  calculate fully accurate diff
+//                //  sadly the cleanupSemantic feature does not work properly
+//                var diffs = dmp.diff_main(textBeforeChange, getOriginalTextFromDocument(event.getDocument()));
+//                dmp.diff_cleanupSemantic(diffs);
 
-                dmp.diff_cleanupSemantic(diffs);
+                // use custom word mode instead
+                var diffs = DiffWordModeExtender.diff_wordMode(dmp, textBeforeChange, getOriginalTextFromDocument(event.getDocument()));
 
                 var changes = diffs.stream()
                         .filter(x -> x.operation != diff_match_patch.Operation.EQUAL)
@@ -88,7 +93,7 @@ public class SimpleChangeDocumentListener implements DocumentListener {
                     recentChanges.addChange(simpleDiff);
                 }
 
-                //recentChanges.printChanges();
+                recentChanges.printChanges();
             }
         };
     }

@@ -1,47 +1,52 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { RecentChangeHandler } from './recentChanges';
 
-let recentChangeHandler = new RecentChangeHandler();
+import { SimpleChangeHandler } from './recentChangeHandling/simpleChangeHandler';
+import { RecentChangeStorage } from './recentChangeHandling/recentChangeStorage';
+import { ApplyRecentChangeCommand } from './recentChangeHandling/applyRecentChangeCommand';
+import { RecentChangeTreeViewProvider } from './recentChangeViews/recentChangeTreeViewProvider';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+let changeStorage = new RecentChangeStorage();
+let simpleChangeHandler = new SimpleChangeHandler(changeStorage);
+let applyRecentChangeCommand = new ApplyRecentChangeCommand(changeStorage);
+let recentChangeTreeViewProvider = new RecentChangeTreeViewProvider(changeStorage);
+
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "vscodeplugindemo" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
+	// register some simple commands
 	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 		vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
 	}));
-
-	
 	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
 		vscode.window.showInformationMessage('returnOne was called!');
 		return 1;
 	}));
 
-
-	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.applyRecentChange', 
-		recentChangeHandler.applyRecentChange, 
-		recentChangeHandler
-	));
-
-	vscode.workspace.onDidOpenTextDocument(recentChangeHandler.handleOpenDocument, recentChangeHandler);
-	vscode.workspace.onDidChangeTextDocument(recentChangeHandler.handleChange, recentChangeHandler);
+	// register SimpleChangeHandler for recognizing changes
+	vscode.workspace.onDidOpenTextDocument(simpleChangeHandler.handleOpenDocument, simpleChangeHandler);
+	vscode.workspace.onDidChangeTextDocument(simpleChangeHandler.handleChange, simpleChangeHandler);
 
 	if (vscode.window.activeTextEditor !== undefined){
-		recentChangeHandler.handleOpenDocument.call(recentChangeHandler, vscode.window.activeTextEditor.document);
+		simpleChangeHandler.handleOpenDocument.call(simpleChangeHandler, vscode.window.activeTextEditor.document);
 	}
+
+	// register ApplyRecentChangeCommand for applying previously found changes
+	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.applyRecentChange', 
+		applyRecentChangeCommand.applyRecentChange, 
+		applyRecentChangeCommand
+	));
+
+	// register tree view
+	vscode.window.createTreeView(
+		'recentChangeView',
+		{
+			treeDataProvider: recentChangeTreeViewProvider
+		}
+	);
+	vscode.commands.registerCommand('recentChangeView.refreshEntry', () =>
+		recentChangeTreeViewProvider.refresh()
+	);
 }
 
 // This method is called when your extension is deactivated

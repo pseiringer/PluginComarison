@@ -26,6 +26,8 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="com.example.intellijplugindemo.Startup" />
+        <toolWindow id="Recent Changes" secondary="true" icon="AllIcons.Actions.Diff" anchor="right"
+                    factoryClass="com.example.intellijplugindemo.toolwindows.RecentChangesToolWindowFactory"/>
     </extensions>
 
 <!--    <applicationListeners>-->

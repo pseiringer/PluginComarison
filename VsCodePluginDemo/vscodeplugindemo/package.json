@@ -26,8 +26,30 @@
       {
         "command": "vscodeplugindemo.applyRecentChange",
         "title": "Apply recent Change"
+      },
+      {
+          "command": "recentChangeView.refreshEntry",
+          "title": "Refresh",
+          "icon": "$(refresh)"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "changes-explorer",
+          "title": "Changes Explorer",
+          "icon": "$(arrow-swap)"
+        }
+      ]
+    },
+    "views": {
+      "changes-explorer": [
+        {
+          "id": "recentChangeView",
+          "name": "Recent Changes"
+        }
+      ]
+    },
     "menus": {
       "editor/title": [
         {
@@ -35,6 +57,13 @@
           "alt": "vscodeplugindemo.returnOne",
           "group": "navigation"
         }
+      ],
+      "view/title": [
+          {
+              "command": "recentChangeView.refreshEntry",
+              "when": "view == recentChangeView",
+              "group": "navigation"
+          }
       ]
     },
     "keybindings": [
