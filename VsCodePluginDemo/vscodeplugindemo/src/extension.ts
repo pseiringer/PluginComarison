@@ -44,9 +44,13 @@ export function activate(context: vscode.ExtensionContext) {
 			treeDataProvider: recentChangeTreeViewProvider
 		}
 	);
+	// add ways to refresh tree
 	vscode.commands.registerCommand('recentChangeView.refreshEntry', () =>
 		recentChangeTreeViewProvider.refresh()
 	);
+	changeStorage.addEventListener(changeStorage.storageChangedEventName, () => {		
+		recentChangeTreeViewProvider.refresh();
+	});
 }
 
 // This method is called when your extension is deactivated

@@ -1,19 +1,28 @@
 package com.example.intellijplugindemo.toolwindows;
 
+import com.example.intellijplugindemo.services.RecentChangesService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
-import com.intellij.ui.components.JBList;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import com.intellij.ui.treeStructure.Tree;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.NotImplementedException;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.event.TreeModelEvent;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 import java.awt.*;
-import java.util.Calendar;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.EventListener;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 
 public class RecentChangesToolWindowFactory implements ToolWindowFactory {
     @Override
@@ -24,47 +33,70 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
     }
 
     private static class RecentChangesToolWindowContent {
-
-        private static class RecentChangesListEntry{}
         private final JPanel contentPanel = new JPanel();
-        private final Tree changesTree = new Tree();
-        //private final changesservice ...
-//        private final JLabel currentDate = new JLabel();
+        private DefaultTreeModel model;
+        private Tree changesTree = new Tree();
+        private final RecentChangesService recentChangesService = RecentChangesService.getInstance();
 
         public RecentChangesToolWindowContent(ToolWindow toolWindow) {
+            // set up the overall layout of the toolwindow
             contentPanel.setLayout(new BorderLayout(0, 20));
-            contentPanel.setBorder(BorderFactory.createEmptyBorder(40, 0, 0, 0));
-//            contentPanel.add(createCalendarPanel(), BorderLayout.PAGE_START);
-            contentPanel.add(createControlsPanel(toolWindow), BorderLayout.CENTER);
-//            updateCurrentDateTime();
+            contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+            contentPanel.add(createChangesTreePanel(), BorderLayout.CENTER);
+            // update the content
+            updateRecentChangesTree();
+            // subscribe to changes service
+            recentChangesService.addChangeListener(() -> {
+                updateRecentChangesTree();
+            });
         }
-
-//        @NotNull
-//        private JPanel createCalendarPanel() {
-//            JPanel calendarPanel = new JPanel();
-//            calendarPanel.add(currentDate);
-//            return calendarPanel;
-//        }
-
 
         @NotNull
-        private JPanel createControlsPanel(ToolWindow toolWindow) {
-            JPanel controlsPanel = new JPanel();
-            JButton refreshDateAndTimeButton = new JButton("Refresh");
-//            refreshDateAndTimeButton.addActionListener(e -> updateCurrentDateTime());
-            controlsPanel.add(refreshDateAndTimeButton);
-            return controlsPanel;
+        private JPanel createChangesTreePanel() {
+            // create the root node and model of the tree
+            var root = new DefaultMutableTreeNode("Root Node");
+            model = new DefaultTreeModel(root);
+
+            changesTree = new Tree(model);
+
+            // create the panel to display the tree
+            JPanel treePanel = new JPanel();
+            treePanel.add(changesTree);
+            return treePanel;
+        }
+        
+        private void updateRecentChangesTree() {
+            var root = (DefaultMutableTreeNode) model.getRoot();
+
+            // clear the tree
+            root.removeAllChildren();
+            model.reload(root);
+
+            // add children for all recent changes
+            recentChangesService.getRecentChanges().forEach(diff -> {
+                // add diff node
+                DefaultMutableTreeNode diffNode = new DefaultMutableTreeNode(
+                        String.format("'%s' -> '%s'", diff.getRemovedText(), diff.getReplacementText()),
+                        true);
+                model.insertNodeInto(diffNode, root, root.getChildCount());
+
+                // add children of diff node
+                DefaultMutableTreeNode removalNode = new DefaultMutableTreeNode(
+                        String.format("Removes '%s'", diff.getRemovedText()),
+                        false);
+                model.insertNodeInto(removalNode, diffNode, diffNode.getChildCount());
+                DefaultMutableTreeNode replacementNode = new DefaultMutableTreeNode(
+                        String.format("Adds '%s'", diff.getReplacementText()),
+                        false);
+                model.insertNodeInto(replacementNode, diffNode, diffNode.getChildCount());
+            });
+
+            // hide the root so only the changes are visible
+            changesTree.setRootVisible(false);
+            changesTree.setShowsRootHandles(true);
+            changesTree.expandPath(new TreePath(root.getPath()));
         }
 
-//        private void updateCurrentDateTime() {
-//            currentDate.setText(getCurrentDate(calendar));
-//        }
-
-//        private String getCurrentDate(Calendar calendar) {
-//            return calendar.get(Calendar.DAY_OF_MONTH) + "/"
-//                    + (calendar.get(Calendar.MONTH) + 1) + "/"
-//                    + calendar.get(Calendar.YEAR);
-//        }
 
         public JPanel getContentPanel() {
             return contentPanel;

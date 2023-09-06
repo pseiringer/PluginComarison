@@ -5,9 +5,8 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;
 
-import java.util.Objects;
-import java.util.Queue;
-import java.util.ArrayDeque;
+import javax.swing.*;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service(Service.Level.PROJECT)
@@ -15,8 +14,11 @@ public final class RecentChangesService implements Disposable {
 
     // list of recent changes
     private Queue<SimpleDiff> recentChanges = EvictingQueue.create(10);
+    private List<RecentDiffsChangedListener> changeListeners = new ArrayList<>();
+
     public void addChange(SimpleDiff change) {
         recentChanges.add(change);
+        notifyListeners();
     }
 
     public void printChanges(){
@@ -45,14 +47,28 @@ public final class RecentChangesService implements Disposable {
         return null;
     }
 
+    public void addChangeListener(RecentDiffsChangedListener l){
+        changeListeners.add(l);
+    }
+    public void removeChangeListener(RecentDiffsChangedListener l){
+        changeListeners.remove(l);
+    }
+    private void notifyListeners() {
+        changeListeners.forEach(l -> {
+            l.notifyChanged();
+        });
+    }
+
     public static RecentChangesService getInstance(){
         return ApplicationManager.getApplication().getService(RecentChangesService.class);
     }
 
     @Override
     public void dispose() {
-        /* nothing to do here */
+        recentChanges.clear();
+        notifyListeners();
     }
+
 
 
     public static class SimpleDiff{
@@ -89,4 +105,7 @@ public final class RecentChangesService implements Disposable {
         }
     }
 
+    public interface RecentDiffsChangedListener{
+        void notifyChanged();
+    }
 }

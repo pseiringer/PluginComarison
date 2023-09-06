@@ -1,11 +1,15 @@
 import { EvictingQueue } from '../util/evictingQueue';
 
-export class RecentChangeStorage {
+export class RecentChangeStorage extends EventTarget{
+
+    public readonly storageChangedEventName: string = "storageChanged";
 
     private recentChanges: EvictingQueue<SimpleDiff> = new EvictingQueue(10);
+    private storageChangedEvent: Event = new Event(this.storageChangedEventName);
 
     public addRecentChange(change: SimpleDiff): void {
         this.recentChanges.enqueue(change);
+        this.dispatchEvent(this.storageChangedEvent);
     }
     
     public findMatchingChange(text: string): SimpleDiff | undefined {
