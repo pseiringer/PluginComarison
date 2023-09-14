@@ -72,6 +72,28 @@
         "key": "shift+r",
         "when": "editorTextFocus"
       }
+    ],
+    "configuration":[
+      {        
+        "title": "Recent Changes Settings",
+        "properties": {
+          "someSetting": {
+            "type": "string",
+            "default": "abc",
+            "description": "some description"
+          },
+          "server.name": {
+            "type": "string",
+            "default": "def",
+            "description": "some description"
+          },
+          "server.password": {
+            "type": "null",
+            "scope": "application",
+            "markdownDescription": "[Set Password](mynotebook.setPassword)"
+          }
+        }
+      }
     ]
   },
   "scripts": {
