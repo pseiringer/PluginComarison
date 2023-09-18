@@ -23,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
 		return 1;
 	}));
 
+
 	// register SimpleChangeHandler for recognizing changes
 	vscode.workspace.onDidOpenTextDocument(simpleChangeHandler.handleOpenDocument, simpleChangeHandler);
 	vscode.workspace.onDidChangeTextDocument(simpleChangeHandler.handleChange, simpleChangeHandler);
@@ -32,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	// register ApplyRecentChangeCommand for applying previously found changes
+	//TODO use registertexteditorcommand
 	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.applyRecentChange', 
 		applyRecentChangeCommand.applyRecentChange, 
 		applyRecentChangeCommand
