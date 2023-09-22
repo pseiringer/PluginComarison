@@ -17,11 +17,13 @@
     "commands": [
       {
         "command": "vscodeplugindemo.helloWorld",
-        "title": "Hello World"
+        "title": "Hello World",
+        "icon": "$(heart)"
       },
       {
         "command": "vscodeplugindemo.returnOne",
-        "title": "returnOne"
+        "title": "returnOne",
+        "icon": "$(pass-filled)"
       },
       {
         "command": "vscodeplugindemo.applyRecentChange",
