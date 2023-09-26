@@ -30,9 +30,9 @@
         "title": "Apply recent Change"
       },
       {
-          "command": "recentChangeView.refreshEntry",
-          "title": "Refresh",
-          "icon": "$(refresh)"
+        "command": "recentChangeView.refreshEntry",
+        "title": "Refresh",
+        "icon": "$(refresh)"
       }
     ],
     "viewsContainers": {
@@ -61,11 +61,11 @@
         }
       ],
       "view/title": [
-          {
-              "command": "recentChangeView.refreshEntry",
-              "when": "view == recentChangeView",
-              "group": "navigation"
-          }
+        {
+          "command": "recentChangeView.refreshEntry",
+          "when": "view == recentChangeView",
+          "group": "navigation"
+        }
       ]
     },
     "keybindings": [
@@ -75,8 +75,8 @@
         "when": "editorTextFocus"
       }
     ],
-    "configuration":[
-      {        
+    "configuration": [
+      {
         "title": "Recent Changes Settings",
         "properties": {
           "someSetting": {
@@ -108,6 +108,7 @@
   },
   "devDependencies": {
     "@types/diff-match-patch": "^1.0.32",
+    "@types/expect.js": "^0.3.29",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "20.2.5",
@@ -116,11 +117,13 @@
     "@typescript-eslint/parser": "^5.59.8",
     "@vscode/test-electron": "^2.3.2",
     "eslint": "^8.41.0",
+    "expect.js": "^0.3.1",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "typescript": "^5.1.3"
   },
   "dependencies": {
-    "diff-match-patch": "^1.0.5"
+    "diff-match-patch": "^1.0.5",
+    "expect.js": "^0.3.1"
   }
 }

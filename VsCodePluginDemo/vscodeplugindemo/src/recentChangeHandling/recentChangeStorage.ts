@@ -3,9 +3,14 @@ import { EvictingQueue } from '../util/evictingQueue';
 export class RecentChangeStorage extends EventTarget{
 
     public readonly storageChangedEventName: string = "storageChanged";
-
-    private recentChanges: EvictingQueue<SimpleDiff> = new EvictingQueue(10);
     private storageChangedEvent: Event = new Event(this.storageChangedEventName);
+
+    private recentChanges: EvictingQueue<SimpleDiff>;
+
+    constructor(queueSize: number = 10) {
+        super();
+        this.recentChanges = new EvictingQueue(queueSize);
+    }
 
     public addRecentChange(change: SimpleDiff): void {
         this.recentChanges.enqueue(change);

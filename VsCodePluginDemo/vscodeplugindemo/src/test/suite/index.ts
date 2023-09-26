@@ -10,10 +10,10 @@ export function run(): Promise<void> {
 		color: true,
 		rootHooks: {					
 			beforeAll: () => {
-				vscode.window.showInformationMessage('Starting tests.');
+				console.log('=== Starting tests. ===');
 			},
 			afterAll: () => {
-				vscode.window.showInformationMessage('All done.');
+				console.log('=== All done. ===');
 			}
 		}
 	});
