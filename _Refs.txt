@@ -1,59 +1,67 @@
-
+1
   Arnold, Ken, and James Gosling. The Java Programming Language. 1. print.., 1996.
 https://permalink.obvsg.at/fho/AC01521939
 
+2
   Hagos, Ted. Beginning IntelliJ IDEA:: Integrated Development Environment for Java Programming. 2022.
 https://search-fho.obvsg.at/permalink/f/1h6fu6o/FHO_alma5132965000004527
 
-
+3
   Kurbatova, Zarina, et al. The IntelliJ Platform: a Framework for Building Plugins and Mining Software Data. 2021, https://doi.org/10.48550/arxiv.2110.00141.
 https://search-fho.obvsg.at/permalink/f/1i016kr/TN_cdi_arxiv_primary_2110_00141
 
-
+4
   Del Sole, Alessandro. Visual Studio Code Distilled. 3rd ed., Apress L. P, 2023, https://doi.org/10.1007/978-1-4842-9484-0.
 https://search-fho.obvsg.at/permalink/f/1i016kr/TN_cdi_askewsholts_vlebooks_9781484294840
 
-
+5
   Sharan, Kishori, and Adam L. Davis. Beginning Java 17 Fundamentals:: Object-Oriented Programming in Java 17. Third edition.., 2022.
 https://search-fho.obvsg.at/permalink/f/1h6fu6o/FHO_alma5133106990004527
 
-
+6
   Rozentals, Nathan. Mastering TypeScript. Packt Publishing, 2017.
 https://www.uplooder.net/ofiles/0e4fe0f0cd2c56f2f4898c3e42815521/Mastering-TypeScript.pdf
 
-
+7
 https://survey.stackoverflow.co/2023/
 
-
+8
 https://insights.stackoverflow.com/survey
 
-
+9
 https://code.visualstudio.com/api
 
-
+10
 https://github.com/microsoft/vscode-extension-samples
 
-
+11
 https://github.com/microsoft/vscode
 
-
+12
 https://plugins.jetbrains.com/docs/intellij/welcome.html
 
-
+13
 https://github.com/JetBrains/intellij-sdk-code-samples/
 
-
+14
 https://github.com/JetBrains/intellij-community/tree/master
 
-
+15
 https://github.com/google/diff-match-patch
 
+16
+https://plugins.jetbrains.com/plugin/17669-flora-beta-
 
+17
+"TypeScript". CodePlex. Archived from the original on 3 April 2015. Retrieved 26 April 2015. 
+https://web.archive.org/web/20150403224440/https://typescript.codeplex.com/releases/view/95554
+
+18
 https://medium.com/cacher-app/building-code-editor-plugins-a-comparison-83b5c21657fe
 
-
+19
 https://www.beyondjava.net/comparing-typescript-java
 
-
+20
 https://www.infoworld.com/article/3114167/choosing-your-java-ide.html?page=2
 
