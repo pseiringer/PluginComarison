@@ -1,0 +1,324 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{BachBWV988}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c3ffd264679dfe7c3244318c68fe6457}{%
+           family={Bach},
+           familyi={B\bibinitperiod},
+           given={Johann\bibnamedelima Sebastian},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=2dabe2a4f0dd78ad560626fe6ac84f9a}{%
+           family={Anka},
+           familyi={A\bibinitperiod},
+           given={Dana},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Hamburg}%
+      }
+      \list{publisher}{1}{%
+        {Musikverlag Hans Sikorski}%
+      }
+      \strng{namehash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{fullhash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{bibnamehash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{authorbibnamehash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{authornamehash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{authorfullhash}{c3ffd264679dfe7c3244318c68fe6457}
+      \strng{editorbibnamehash}{2dabe2a4f0dd78ad560626fe6ac84f9a}
+      \strng{editornamehash}{2dabe2a4f0dd78ad560626fe6ac84f9a}
+      \strng{editorfullhash}{2dabe2a4f0dd78ad560626fe6ac84f9a}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{ngerman}
+      \field{title}{Goldberg-Variationen für Streichquartett, BWV 988}
+      \field{year}{2017}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Bacher2004}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=6264ea2c3cf098217060b2a9d4afac23}{%
+           family={Bacher},
+           familyi={B\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Applied Sciences Upper Austria, Medientechnik und {-design}}%
+      }
+      \list{location}{1}{%
+        {Hagenberg, Austria}%
+      }
+      \strng{namehash}{6264ea2c3cf098217060b2a9d4afac23}
+      \strng{fullhash}{6264ea2c3cf098217060b2a9d4afac23}
+      \strng{bibnamehash}{6264ea2c3cf098217060b2a9d4afac23}
+      \strng{authorbibnamehash}{6264ea2c3cf098217060b2a9d4afac23}
+      \strng{authornamehash}{6264ea2c3cf098217060b2a9d4afac23}
+      \strng{authorfullhash}{6264ea2c3cf098217060b2a9d4afac23}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{ngerman}
+      \field{month}{6}
+      \field{title}{Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen}
+      \field{type}{bathesis}
+      \field{year}{2004}
+      \field{dateera}{ce}
+    \endentry
+    \entry{Bezos2023}{manual}{}
+      \name{author}{2}{}{%
+        {{hash=a09bd44790d5e829e246beb8a2350305}{%
+           family={Bezos},
+           familyi={B\bibinitperiod},
+           given={Javier},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9f70a9d405f6e001fce26668d3a7b699}{%
+           family={Braams},
+           familyi={B\bibinitperiod},
+           given={Johannes\bibnamedelima L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{42db58afe25363c5730be89ee2803481}
+      \strng{fullhash}{42db58afe25363c5730be89ee2803481}
+      \strng{bibnamehash}{42db58afe25363c5730be89ee2803481}
+      \strng{authorbibnamehash}{42db58afe25363c5730be89ee2803481}
+      \strng{authornamehash}{42db58afe25363c5730be89ee2803481}
+      \strng{authorfullhash}{42db58afe25363c5730be89ee2803481}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{23}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{subtitle}{Localization and internationalization}
+      \field{title}{Babel}
+      \field{version}{3.85}
+      \field{year}{2023}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb http://mirrors.ctan.org/macros/latex/required/babel/base/babel.pdf
+      \endverb
+      \verb{url}
+      \verb http://mirrors.ctan.org/macros/latex/required/babel/base/babel.pdf
+      \endverb
+    \endentry
+    \entry{BurgeBurger1999}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=e7e8945dcd98bec43ca6d811e95c674f}{%
+           family={Burge},
+           familyi={B\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9ad59080ba03ad1d0e62ab1765d41109}{%
+           family={Burger},
+           familyi={B\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+      }
+      \name{editor}{3}{}{%
+        {{hash=cd01587a47d1084d2adebe55a57d1c5c}{%
+           family={Jain},
+           familyi={J\bibinitperiod},
+           given={Anil\bibnamedelima K.},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=fe687521f8eb37ef2e4f1a27d94c42b2}{%
+           family={Bolle},
+           familyi={B\bibinitperiod},
+           given={Ruud},
+           giveni={R\bibinitperiod}}}%
+        {{hash=291b7274a4dd2bf7d6927a22f3871724}{%
+           family={Pankanti},
+           familyi={P\bibinitperiod},
+           given={Sharath},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers}%
+      }
+      \strng{namehash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{fullhash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{bibnamehash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{authorbibnamehash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{authornamehash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{authorfullhash}{5d41e08eff66e1ea19ad26c92892fa9c}
+      \strng{editorbibnamehash}{320125d2031193f25e1e682a959c7ae6}
+      \strng{editornamehash}{320125d2031193f25e1e682a959c7ae6}
+      \strng{editorfullhash}{320125d2031193f25e1e682a959c7ae6}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booksubtitle}{Personal Identification in Networked Society}
+      \field{booktitle}{Biometrics}
+      \field{chapter}{13}
+      \field{langid}{english}
+      \field{title}{Ear Biometrics}
+      \field{year}{1999}
+      \field{dateera}{ce}
+      \field{pages}{273\bibrangedash 285}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/0-306-47044-6_13
+      \endverb
+    \endentry
+    \entry{Burger1987}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9ad59080ba03ad1d0e62ab1765d41109}{%
+           family={Burger},
+           familyi={B\bibinitperiod},
+           given={Wilhelm},
+           giveni={W\bibinitperiod}}}%
+        {{hash=9b3f20f4d72e6b9e8f04c9fbd69f6482}{%
+           family={Bhanu},
+           familyi={B\bibinitperiod},
+           given={Bir},
+           giveni={B\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=5e111948272234331d0804b72536a709}{%
+           family={McDermott},
+           familyi={M\bibinitperiod},
+           given={John\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Francisco}%
+      }
+      \list{publisher}{1}{%
+        {Morgan Kaufmann Publishers}%
+      }
+      \strng{namehash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{fullhash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{bibnamehash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{authorbibnamehash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{authornamehash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{authorfullhash}{00f94573f111a06b3600b5e2aa721f8e}
+      \strng{editorbibnamehash}{5e111948272234331d0804b72536a709}
+      \strng{editornamehash}{5e111948272234331d0804b72536a709}
+      \strng{editorfullhash}{5e111948272234331d0804b72536a709}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Tenth International Joint Conference on Artificial Intelligence}
+      \field{eventday}{23}
+      \field{eventendday}{28}
+      \field{eventendmonth}{8}
+      \field{eventendyear}{1987}
+      \field{eventmonth}{8}
+      \field{eventyear}{1987}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{Qualitative Motion Understanding}
+      \field{venue}{Milano}
+      \field{year}{1987}
+      \field{dateera}{ce}
+      \field{eventenddateera}{ce}
+      \field{eventdateera}{ce}
+      \field{pages}{819\bibrangedash 821}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1007/978-1-4615-3566-9
+      \endverb
+    \endentry
+    \entry{Drake1948}{report}{}
+      \name{author}{3}{}{%
+        {{hash=93ce160ce3d24db8818d0342c69548c6}{%
+           family={Drake},
+           familyi={D\bibinitperiod},
+           given={Hubert\bibnamedelima M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b63992e3cb41a27785e1ff367ffab101}{%
+           family={McLaughlin},
+           familyi={M\bibinitperiod},
+           given={Milton\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=c30db2af3e1bcdedffd46c5765cd8101}{%
+           family={Goodman},
+           familyi={G\bibinitperiod},
+           given={Harold\bibnamedelima R.},
+           giveni={H\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NASA Dryden Flight Research Center}%
+      }
+      \list{location}{1}{%
+        {Edwards, CA}%
+      }
+      \strng{namehash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \strng{fullhash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \strng{bibnamehash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \strng{authorbibnamehash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \strng{authornamehash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \strng{authorfullhash}{b8605694848ec71ccfdbd29953a1dbdf}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{number}{NACA-RM-L8A05A}
+      \field{title}{Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92}
+      \field{type}{techreport}
+      \field{year}{1948}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf
+      \endverb
+    \endentry
+    \entry{WikiReliquienschrein2022}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeltitlesource}{title}
+      \field{day}{29}
+      \field{langid}{ngerman}
+      \field{month}{8}
+      \field{title}{Reliquienschrein}
+      \field{urlday}{11}
+      \field{urlmonth}{2}
+      \field{urlyear}{2023}
+      \field{year}{2022}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://de.wikipedia.org/wiki/Reliquienschrein
+      \endverb
+      \verb{url}
+      \verb https://de.wikipedia.org/wiki/Reliquienschrein
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
