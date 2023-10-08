@@ -16,5 +16,482 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{ArnoldKen1996TJpl}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5d710b72d32b34d9666ff39756bff23b}{%
+           family={Arnold},
+           familyi={A\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{fullhash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{bibnamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authorbibnamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authornamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authorfullhash}{5d710b72d32b34d9666ff39756bff23b}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1. print..}
+      \field{isbn}{0201634554}
+      \field{series}{The Java series}
+      \field{title}{The Java programming language}
+      \field{year}{1996}
+      \keyw{Java (Computer program language)}
+    \endentry
+    \entry{HagosTed2022BII:}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5975b9a73c19e769b6c357bb29240336}{%
+           family={Hagos},
+           familyi={H\bibinitperiod},
+           given={Ted},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{5975b9a73c19e769b6c357bb29240336}
+      \strng{fullhash}{5975b9a73c19e769b6c357bb29240336}
+      \strng{bibnamehash}{5975b9a73c19e769b6c357bb29240336}
+      \strng{authorbibnamehash}{5975b9a73c19e769b6c357bb29240336}
+      \strng{authornamehash}{5975b9a73c19e769b6c357bb29240336}
+      \strng{authorfullhash}{5975b9a73c19e769b6c357bb29240336}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st ed. 2022..}
+      \field{isbn}{1-4842-7446-6}
+      \field{title}{Beginning IntelliJ IDEA : Integrated Development Environment for Java Programming}
+      \field{year}{2022}
+      \keyw{Programming languages (Electronic computers)}
+    \endentry
+    \entry{KurbatovaZarina2021TIPa}{article}{}
+      \name{author}{4}{}{%
+        {{hash=ccf1b4b7c03647bd5fecb48120001004}{%
+           family={Kurbatova},
+           familyi={K\bibinitperiod},
+           given={Zarina},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=a696abd7057cadee04c65dd79f2d0bbf}{%
+           family={Golubev},
+           familyi={G\bibinitperiod},
+           given={Yaroslav},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d054ef7b303e88ea8482efcf61c79688}{%
+           family={Kovalenko},
+           familyi={K\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+        {{hash=84de0a0da97e0b74d006aa091c46e0c6}{%
+           family={Bryksin},
+           familyi={B\bibinitperiod},
+           given={Timofey},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{c8fcfb1fad3a5409987025e5cad08234}
+      \strng{fullhash}{453014c21d98647da473e2075e340ea5}
+      \strng{bibnamehash}{c8fcfb1fad3a5409987025e5cad08234}
+      \strng{authorbibnamehash}{c8fcfb1fad3a5409987025e5cad08234}
+      \strng{authornamehash}{c8fcfb1fad3a5409987025e5cad08234}
+      \strng{authorfullhash}{453014c21d98647da473e2075e340ea5}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The IntelliJ Platform: a Framework for Building Plugins and Mining Software Data}
+      \field{year}{2021}
+      \keyw{Computer Science - Software Engineering}
+    \endentry
+    \entry{MaharryDanTR}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a20ff6def9eccf8ef939b56a226345d6}{%
+           family={Maharry},
+           familyi={M\bibinitperiod},
+           given={Dan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Berkeley, CA}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
+      \strng{namehash}{a20ff6def9eccf8ef939b56a226345d6}
+      \strng{fullhash}{a20ff6def9eccf8ef939b56a226345d6}
+      \strng{bibnamehash}{a20ff6def9eccf8ef939b56a226345d6}
+      \strng{authorbibnamehash}{a20ff6def9eccf8ef939b56a226345d6}
+      \strng{authornamehash}{a20ff6def9eccf8ef939b56a226345d6}
+      \strng{authorfullhash}{a20ff6def9eccf8ef939b56a226345d6}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781430257257}
+      \field{title}{TypeScript Revealed}
+      \keyw{Computer Science ; Professional and Applied Computing ; Software Engineering/Programming and Operating Systems ; Web Development}
+    \endentry
+    \entry{SharanKishori2022BJ1f}{book}{}
+      \name{author}{1}{}{%
+        {{hash=88e882623a1e03f8b57eca6a56d4a658}{%
+           family={Sharan},
+           familyi={S\bibinitperiod},
+           given={Kishori},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{88e882623a1e03f8b57eca6a56d4a658}
+      \strng{fullhash}{88e882623a1e03f8b57eca6a56d4a658}
+      \strng{bibnamehash}{88e882623a1e03f8b57eca6a56d4a658}
+      \strng{authorbibnamehash}{88e882623a1e03f8b57eca6a56d4a658}
+      \strng{authornamehash}{88e882623a1e03f8b57eca6a56d4a658}
+      \strng{authorfullhash}{88e882623a1e03f8b57eca6a56d4a658}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Third edition..}
+      \field{isbn}{1-4842-7307-9}
+      \field{title}{Beginning Java 17 fundamentals : : object-oriented programming in Java 17}
+      \field{year}{2022}
+      \keyw{Java (Computer program language)}
+    \endentry
+    \entry{WinnieDoug2021EJfA}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d560689cbaf9bd7f63bac050e7214b3e}{%
+           family={Winnie},
+           familyi={W\bibinitperiod},
+           given={Doug},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Berkeley, CA}%
+      }
+      \list{publisher}{1}{%
+        {Apress L. P}%
+      }
+      \strng{namehash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \strng{fullhash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \strng{bibnamehash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \strng{authorbibnamehash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \strng{authornamehash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \strng{authorfullhash}{d560689cbaf9bd7f63bac050e7214b3e}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Gain the essential skills for computer science using one of today's most popular programming languages, Java. This book will prepare you for AP CompSci Complete, but you don’t need to be sitting that class to benefit. Computer science has become a basic life skill that everyone is going to need to learn. Whether you are going into a career or side hustle in business, technology, creativity, architecture, or almost any other field, you will find coding and computer science play a role. So when we learn programming we are going to focus on three things: what is the process; what is the syntax; and what is the flow. The process is represented as a flowchart. We will learn how to make these to help you plan out what you are going to do before you write a line of code. At first, the flowcharts will be pretty simple, but then they will get more complex. The syntax is the code: this is what you write that translates the process you create in a flowchart to the instructions that the computer can understand. Finally, there is the flow. This is where you trace through the code and see how the data and information it stores along the way changes. You can see how the operation of the program cascades from line to line. You will be building charts that will capture the programming flow so you can better understand how the computer processes code to make your next program easier to conceive and code.Along the way to aid in the learning of the essential Java skills, there will be three kinds of project types throughout this book: business software projects for applications where you work for a company and need to complete an internal project for a team such as the sales, marketing, or data science teams; social good projects where you are working for non-profits or for agencies that are trying to research and provide solutions to economic, environmental, medical, or humanitarian projects; and game development projects for games based on player input, random chance, or other mechanics for the use of entertainment.What is unique about computer science is how it has become a skill, and not just a career. While there are jobs and titles of “computer scientist”, the skill of computer science, and specifically programming, are almost everywhere. After reading and using this book, you'll have the essential skills to think like a computer scientist, even if you are not. As a result you’ll be of greater value to your clients, your company, and yourself.  What You Will Learn Discover the primary building blocks of programming using the Java programming language See terminology and best practices of software development Work with object-oriented programming concepts Use common-language definitions and examples to help drive understanding and comprehension of computer science fundamentals Who This Book Is For Those who want to learn programming and want to think like a computer scientist. Ideal for anyone taking AP CompSci Complete.}
+      \field{booktitle}{Essential Java for AP CompSci}
+      \field{isbn}{9781484261828}
+      \field{title}{Essential Java for AP CompSci: From Programming to Computer Science}
+      \field{year}{2021}
+      \keyw{Academic ; Code ; CompSci ; Computer Science ; Computer Science general ; Java ; Java (Computer program language) ; Placement ; Problem Solving ; Professional and Applied Computing ; Professional Computing ; Programming ; Software development ; Source ; Tech ; Web Development}
+    \endentry
+    \entry{TypeScriptCodePlexArchived}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{"TypeScript" on CodePlex. Archived from the original on 3 April 2015}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://web.archive.org/web/20150403224440/https://typescript.codeplex.com/releases/view/95554
+      \endverb
+      \verb{url}
+      \verb https://web.archive.org/web/20150403224440/https://typescript.codeplex.com/releases/view/95554
+      \endverb
+    \endentry
+    \entry{VSCodeArchitecture}{online}{}
+      \name{author}{4}{}{%
+        {{hash=b1b2896c1306dc1f9ee2287b7bd0d1e1}{%
+           family={Hijdra},
+           familyi={H\bibinitperiod},
+           given={Rens},
+           giveni={R\bibinitperiod}}}%
+        {{hash=c04dd418c69915244f26812b3813712a}{%
+           family={Geffen},
+           familyi={G\bibinitperiod},
+           given={Hunter},
+           giveni={H\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=0b3a45645894886e463078a779543799}{%
+           family={Petrescu},
+           familyi={P\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0ca4532e99c10024cd8a60c6fe05c82f}{%
+           family={Yarally},
+           familyi={Y\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{fullhash}{0b981daa0336df0177bdf1eb6999e295}
+      \strng{bibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{authorbibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{authornamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{authorfullhash}{0b981daa0336df0177bdf1eb6999e295}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{VSCode - From Vision to Architecture}
+      \field{urlday}{7}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://2021.desosa.nl/projects/vscode/posts/essay2/
+      \endverb
+      \verb{url}
+      \verb https://2021.desosa.nl/projects/vscode/posts/essay2/
+      \endverb
+    \endentry
+    \entry{IntelliJIDEAWikipedia}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ IDEA Wikipedia}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/IntelliJ_IDEA
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/IntelliJ_IDEA
+      \endverb
+    \endentry
+    \entry{IntelliJReleasePage}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ IDEA. Archived from the original on 28 January 2001}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb http://web.archive.org/web/20010128152900/http://www.intellij.com:80/idea/features.jsp
+      \endverb
+      \verb{url}
+      \verb http://web.archive.org/web/20010128152900/http://www.intellij.com:80/idea/features.jsp
+      \endverb
+    \endentry
+    \entry{IntelliJMarketplace}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Marketplace}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/
+      \endverb
+    \endentry
+    \entry{IntelliJSDKDocumentation}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK Documentation}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/welcome.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/welcome.html
+      \endverb
+    \endentry
+    \entry{VSCodeApproachToExtensibility}{online}{}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labeltitlesource}{title}
+      \field{title}{Our Approach to Extensibility}
+      \field{urlday}{8}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://vscode-docs.readthedocs.io/en/stable/extensions/our-approach/
+      \endverb
+      \verb{url}
+      \verb https://vscode-docs.readthedocs.io/en/stable/extensions/our-approach/
+      \endverb
+    \endentry
+    \entry{PYPL}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{PYPL PopularitY of Programming Language index}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://pypl.github.io/PYPL.html
+      \endverb
+      \verb{url}
+      \verb https://pypl.github.io/PYPL.html
+      \endverb
+    \endentry
+    \entry{FloraPluginMarketplace}{online}{}
+      \name{author}{1}{}{%
+        {{hash=5b3e735deceb0b871682fe13e98e3698}{%
+           family={Seysyan},
+           familyi={S\bibinitperiod},
+           given={Razmik},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b3e735deceb0b871682fe13e98e3698}
+      \strng{fullhash}{5b3e735deceb0b871682fe13e98e3698}
+      \strng{bibnamehash}{5b3e735deceb0b871682fe13e98e3698}
+      \strng{authorbibnamehash}{5b3e735deceb0b871682fe13e98e3698}
+      \strng{authornamehash}{5b3e735deceb0b871682fe13e98e3698}
+      \strng{authorfullhash}{5b3e735deceb0b871682fe13e98e3698}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Flora (beta) Plugin on JetBrains Marketplace}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/plugin/17669-flora-beta-
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/plugin/17669-flora-beta-
+      \endverb
+    \endentry
+    \entry{StackOverflowSurvey2023}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{title}{Stack Overflow Developer Survey 2023}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://survey.stackoverflow.co/2023/
+      \endverb
+      \verb{url}
+      \verb https://survey.stackoverflow.co/2023/
+      \endverb
+    \endentry
+    \entry{StackOverflowSurvey}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{title}{Stack Overflow Insights - Survey Data}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://insights.stackoverflow.com/survey
+      \endverb
+      \verb{url}
+      \verb https://insights.stackoverflow.com/survey
+      \endverb
+    \endentry
+    \entry{TIOBEIndex}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{TIOBE Index}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.tiobe.com/tiobe-index/
+      \endverb
+      \verb{url}
+      \verb https://www.tiobe.com/tiobe-index/
+      \endverb
+    \endentry
+    \entry{VSCodeReleaseDate}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{Visual Studio Code editor hits version 1, has half a million users}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://arstechnica.com/information-technology/2016/04/visual-studio-code-editor-hits-version-1-has-half-a-million-users/
+      \endverb
+      \verb{url}
+      \verb https://arstechnica.com/information-technology/2016/04/visual-studio-code-editor-hits-version-1-has-half-a-million-users/
+      \endverb
+    \endentry
+    \entry{VSCodeMarketplace}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{Visual Studio Code Marketplace}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs
+      \endverb
+      \verb{url}
+      \verb https://marketplace.visualstudio.com/search?target=VSCode&category=All%20categories&sortBy=Installs
+      \endverb
+    \endentry
+    \entry{VSCodePreview}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{Visual Studio Code Preview. Archived from the original on 9 October 2015}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://web.archive.org/web/20151009211114/http:/blogs.msdn.com/b/vscode/archive/2015/04/29/announcing-visual-studio-code-preview.aspx
+      \endverb
+      \verb{url}
+      \verb https://web.archive.org/web/20151009211114/http:/blogs.msdn.com/b/vscode/archive/2015/04/29/announcing-visual-studio-code-preview.aspx
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

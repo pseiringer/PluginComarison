@@ -8,4 +8,4 @@ ide.registerAction(actionId, "Show Time", (e) => {
     }
 )
 
-ide.addShortcut(actionId, "ctrl 1")
+ide.addShortcut(actionId, "ctrl 1");
