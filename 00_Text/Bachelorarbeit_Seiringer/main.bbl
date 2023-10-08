@@ -19,34 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{ArnoldKen1996TJpl}{book}{}
-      \name{author}{1}{}{%
-        {{hash=5d710b72d32b34d9666ff39756bff23b}{%
-           family={Arnold},
-           familyi={A\bibinitperiod},
-           given={Ken},
-           giveni={K\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {eng}%
-      }
-      \strng{namehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{fullhash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{bibnamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authorbibnamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authornamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authorfullhash}{5d710b72d32b34d9666ff39756bff23b}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{1. print..}
-      \field{isbn}{0201634554}
-      \field{series}{The Java series}
-      \field{title}{The Java programming language}
-      \field{year}{1996}
-      \keyw{Java (Computer program language)}
-    \endentry
     \entry{HagosTed2022BII:}{book}{}
       \name{author}{1}{}{%
         {{hash=5975b9a73c19e769b6c357bb29240336}{%
@@ -73,46 +45,6 @@
       \field{title}{Beginning IntelliJ IDEA : Integrated Development Environment for Java Programming}
       \field{year}{2022}
       \keyw{Programming languages (Electronic computers)}
-    \endentry
-    \entry{KurbatovaZarina2021TIPa}{article}{}
-      \name{author}{4}{}{%
-        {{hash=ccf1b4b7c03647bd5fecb48120001004}{%
-           family={Kurbatova},
-           familyi={K\bibinitperiod},
-           given={Zarina},
-           giveni={Z\bibinitperiod}}}%
-        {{hash=a696abd7057cadee04c65dd79f2d0bbf}{%
-           family={Golubev},
-           familyi={G\bibinitperiod},
-           given={Yaroslav},
-           giveni={Y\bibinitperiod}}}%
-        {{hash=d054ef7b303e88ea8482efcf61c79688}{%
-           family={Kovalenko},
-           familyi={K\bibinitperiod},
-           given={Vladimir},
-           giveni={V\bibinitperiod}}}%
-        {{hash=84de0a0da97e0b74d006aa091c46e0c6}{%
-           family={Bryksin},
-           familyi={B\bibinitperiod},
-           given={Timofey},
-           giveni={T\bibinitperiod}}}%
-      }
-      \list{language}{1}{%
-        {eng}%
-      }
-      \strng{namehash}{c8fcfb1fad3a5409987025e5cad08234}
-      \strng{fullhash}{453014c21d98647da473e2075e340ea5}
-      \strng{bibnamehash}{c8fcfb1fad3a5409987025e5cad08234}
-      \strng{authorbibnamehash}{c8fcfb1fad3a5409987025e5cad08234}
-      \strng{authornamehash}{c8fcfb1fad3a5409987025e5cad08234}
-      \strng{authorfullhash}{453014c21d98647da473e2075e340ea5}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{The IntelliJ Platform: a Framework for Building Plugins and Mining Software Data}
-      \field{year}{2021}
-      \keyw{Computer Science - Software Engineering}
     \endentry
     \entry{MaharryDanTR}{book}{}
       \name{author}{1}{}{%

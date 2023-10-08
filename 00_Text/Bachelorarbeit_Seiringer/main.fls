@@ -668,6 +668,10 @@ INPUT ./images/diagram_VSCodeExtensionArchitecture.pdf
 INPUT ./images/diagram_VSCodeExtensionArchitecture.pdf
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT ./images/IntelliJExtensionArchitecture.pdf
+INPUT ./images/IntelliJExtensionArchitecture.pdf
+INPUT ./images/IntelliJExtensionArchitecture.pdf
+INPUT ./images/IntelliJExtensionArchitecture.pdf
 INPUT ./images/flora_plugin.png
 INPUT ./images/flora_plugin.png
 INPUT ./images/flora_plugin.png

@@ -177,8 +177,9 @@ Exception Handling und vieles mehr.
 
 \subsection{Visual Studio Code}
 
-Visual Studio Code bietet für Plugins im Grunde zwei Möglichkeiten der 
-Interaktion. Das Extension Manifest und die eigentliche API.
+Visual Studio Code bietet für Plugins zwei Arten der 
+Interaktion, welche zusammenspielen um Plugins zu ermöglichen. 
+Das Extension Manifest und die eigentliche API.
 \subsubsection{Extension Manifest} 
   Das Extension Manifest befindet sich in der \enquote{package.json} 
   Datei. In dieser werden statische Einstellungen vorgenommen und
@@ -218,6 +219,8 @@ Interaktion. Das Extension Manifest und die eigentliche API.
       vscode.window.showInformationMessage('Hello World!');
     }
   \end{JsCode}
+  Über diese API kann dann zum Beispiel festgelegt werden, durch welchen Code
+  die zuvor definierten Contribution Points implementiert werden sollen.
   Der Plugin Code wird in Visual Studio Code nicht im selben Prozess wie das
   Hauptprogramm ausgeführt, sondern abgekapselt in einem seperaten 
   \enquote{extension host process}. Dadurch kann verhindert werden, dass
@@ -230,6 +233,7 @@ Interaktion. Das Extension Manifest und die eigentliche API.
   können dann mithilfe der API Event Handler registriert werden. 
   Die registrierten Handler werden dann während der Ausführung und Verwendung
   von Visual Studio Code aufgerufen und können so beliebigen Code ausführen.
+  Siehe Abbildung \ref{fig:diagram_VSCodeExtensionArchitecture}.
   \begin{figure}
     \centering
     \fbox{\includegraphics[width=.95\textwidth]{diagram_VSCodeExtensionArchitecture}}
@@ -239,6 +243,44 @@ Interaktion. Das Extension Manifest und die eigentliche API.
 
 \subsection{IntelliJ IDEA}
 
+Der Aufbau der Plugin Architektur wirkt bei IntelliJ im ersten Moment genau
+gleich wie bei Visual Studio Code. Es gibt nämlich auch hier gibt
+es ein Plugin Configuration File, sowie ein Modul mit API Schnittstellen.
+Der große Unterschied liegt allerdings in der Funktionsweise und der Interaktion
+mit den Plugins und der Art wie der auszuführende Code angegeben wird.
+\subsubsection{Plugin Configuration File}
+  Die Konfiguration eines Plugins liegt in der \enquote{plugin.xml} Datei und
+  beinhaltet, equivalent zum Extension Manifest in VS Code, alle für das Plugin
+  notwendigen Meta-Informationen. So können auch hier Werte wie der Name,
+  eine Beschreibung, die aktuelle Versionsnummer und so weiter angegeben werden.
+  Für die Funktionen die das Plugin mitbringt gibt es Actions, Extension Points
+  und Listener. Hier ist anzumerken, dass es sich sowohl bei den Extension Points,
+  als auch den Listenern, immer direkt um eine Zuordnung eines Interfaces
+  (meist definiert von IntelliJ) zu einer Implementierung (definiert durch das Plugin)
+  handelt. Weiters ist es nicht nötig einen speziellen Aktivierungszeitpunkt
+  festzulegen, da die zuordnung der auszuführenden Klassen sowieso durch 
+  die Konfigurationsdatei festgelegt wird. Eine Besonderheit an IntelliJ ist,
+  dass Plugins auch eigene Extension Points definieren können, um weiteren Plugins
+  das erweitern des ursprünglichen Plugins zu erlauben.
+\subsubsection{IntelliJ Platform SDK}
+  Die API für IntelliJ Plugins ist in mehreren Paketen des IntelliJ 
+  Platform SDK enthalten. Diese API enthält auch die unterschiedlichen
+  Interfaces, welche dann in Form von Extension Points oder Listenern implementiert
+  werden können. 
+\subsubsection{Ablauf}
+  IntelliJ analysiert zuerst das Plugin Configuration File.
+  Je nachdem welche Funktionalität vom Plugin angeboten wird, werden
+  von IntelliJ automatisch die entsprechenden Event Handler 
+  auf die unterschiedlichen Extension Points registriert. 
+  Die registrierten Handler werden dann während der Ausführung und Verwendung
+  von IntelliJ aufgerufen und können so beliebigen Code ausführen.
+  Siehe Abbildung \ref{fig:diagram_IntelliJExtensionArchitecture}.
+  \begin{figure}
+    \centering
+    \fbox{\includegraphics[width=.95\textwidth]{IntelliJExtensionArchitecture}}
+    \caption{Übersicht über den Ablauf eines IntelliJ.}
+    \label{fig:diagram_IntelliJExtensionArchitecture}
+  \end{figure}   
 
 \section{Funktionalität der Plugin API}
 \label{sec:FunktionalitätDerPluginAPI}
