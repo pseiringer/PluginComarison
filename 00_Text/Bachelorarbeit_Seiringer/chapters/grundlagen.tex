@@ -287,7 +287,90 @@ mit den Plugins und der Art wie der auszuführende Code angegeben wird.
 
 \subsection{Visual Studio Code}
 
+Die VS Code API erlaubt es VS Code durch Commands, Code Completion und Spracherweiterung, 
+Themes, Custom Editor or Notebooks, Views, Source Control, Debugger, Tests und vielem mehr zu
+erweitern. Um dies zu ermöglichen werden unter anderem auch Einstellungen, Datenspeicherung
+und verschiedene Arten der Ein und Ausgabe von Daten bereitgestellt. In den folgenden Abschnitten
+werden die wichtigsten Elemente genauer vorgestellt.
+
+\subsubsection{Commands und Menüs}
+  Commands ermöglichen es dem Plugin bestimmten Code sozusagen \enquote{auf Befehl} auszuführen.
+  So können häufig wiederkehrende Aufgaben der User ganz einfach automatisiert werden.
+  Um einen Command anzulegen, muss dieser im Extension Manifest definiert werden. Dabei muss
+  das Plugin mindestens eine eindeutige Bezeichnung und zur Darstellung verwendeten Titel angeben.
+  Optional können auch eine Kategorie, ein Icon, eine Kurzbezeichnung und eine Bedingung, 
+  zu der der Command verwendbar wird, bestimmt werden.
+  \begin{JsCode}
+    "commands": [
+      {
+        "command": "vscodeplugindemo.helloWorld",
+        "title": "Hello World",
+      }
+    ]
+  \end{JsCode}
+  Welcher Code dann ausgeführt wird, muss über die API festgelegt werden. So wird meist
+  in der activate Funktion mithilfe von \enquote{registerCommand} oder \enquote{registerTextEditorCommand}
+  ein Callback festgelegt welches aufgerufen werden soll. Wichtig ist hier, dass
+  die Register Funktionen ein Disposable Objekt retournieren welches der API bekannt gegeben werden
+  muss. Die API kümmert sich dann auch um das deaktivieren des Commands, falls zum Beispiel
+  die Erweiterung deaktiviert werden sollte.
+  \begin{JsCode}
+    context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
+      vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
+    }));
+  \end{JsCode}
+  Um einen Command aufzurufen können die Nutzer direkt nach dem Command suchen (Tastenkombination Strg+Shift+P).
+  Komfortabler ist es allerdings den Nutzern direkt einen passenden Menüeintrag oder ein Keybinding
+  bereitzustellen. Menüeinträge können dabei an verschiedenen Stellen im IDE eingehängt werden.
+  Gängig sind hierfür die Titelleiste des Editors, verschiedene Kontext (Rechtsklick) Menüs, der Dialog
+  zum Anlegen einer neuen Datei, die Titelleiste einer bestimmten View oder ein neues Submenü in der Menüleiste.
+  Sowohl Menüs als auch Keybindings können im Manifest registriert werden.
+  % // TODO Call commands from code
+\subsubsection{Code Completion und Spracherweiterungen}
+  Ein wichtiger Teil der VS Code Plugin API sind Language Extensions.
+
+  % //TODO results of existing lsp can be gotten by calling built-in commands. need some further research for this...
+\subsubsection{Benutzereingaben}
+  Für die Eingabe von Daten bietet Visual Studio Code die Quick Pick API, die File Picker API
+  und den Configuration Contribution Point.
+  \begin{description}
+    \item[Quick Pick API] gibt dem Plugin eine Möglichkeit den Nutzern ein einfaches Eingabefenster
+      anzuzeigen. Dabei kann ein Fenster mit bereits vorgegebenen Auswahlmöglichkeiten durch
+      den Aufruf von \enquote{showQuickPick} oder \enquote{createQuickPick} erstellt werden.
+      Alternativ kann man mit den Funktionen \enquote{showInputBox} oder \enquote{createInputBox}
+      die Nutzer auch selber einen Text eingeben lassen. Die show Funktionen bieten dabei immer
+      eine einfache vorgefertigte Implementierung an. Falls diese Option nicht ausreichend ist,
+      kann mit den create Funktionen auch eine komplexere Implementierung angegeben werden.
+      Weiters kann auch eine Validierung des Inputs vorgenommen werden.
+      Möchte man mehrere solcher Dialoge als Abfolge hintereinander anzeigen, so muss dies leider
+      selber programmiert werden. Hierfür gibt es aber ein Beispiel im quickinput-sample
+      im vscode-extension-sample repository \cite{VSCodeExtensionSamples}. 
+    \item[File Picker API] erlaubt das Auswählen von Ordnern oder Dateien aus dem Dateisystem
+      des Betriebssystems mit der Funktion \enquote{showOpenDialog}. Dabei können optionen angegeben
+      werden die beeinflussen ob Ordner und/oder Dateien gewählt werden dürfen, ob mehrere Elemente
+      selektiert werden dürfen, ob nach Dateinamen gefiltert werden soll und so weiter.
+    \item[Configuration Contribution Point] ermöglichen das Festlegen von Einstellungen
+      die von den Nutzern eingegeben und vom Plugin ausgelesen werden können. Hier können
+      Einstellungen vom Typ number, string und boolean definiert werden, welche dann direkt
+      im User Interface der VS Code Einstellungen bearbeitet werden können.
+      Einfache object und array Properties können auch im UI dargestellt werden,
+      allerdings dürfen diese keine verschachtelten Objekte oder Arrays enthalten.
+      Ansonsten wird in den Einstellungen nur auf die manuell zu bearbeitende 
+      \enquote{settings.json} Datei verwiesen.
+      Für die Validierung der Einstellungen können Validierungsproperties
+      von JSON Schema verwendet werden. Es ist also zum Beispiel möglich
+      ein maximum/minimum, ein Regular Expression pattern oder ein enum Array
+      mit erlaubten Werten angegeben werden.
+      Zusätzlich ist es zu jeder Einstellung möglich einen Titel und eine Beschreibung
+      anzugeben, wobei es sogar Beschreibungen gibt, welche Markdown formattierungen
+      enthalten dürfen.
+  \end{description}
+\subsubsection{Ausgaben und Anzeigen}
+
+
 \subsection{IntelliJ IDEA}
+
+
 
 \subsection{IntelliJ Flora Plugins}
 
