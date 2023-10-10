@@ -2416,9 +2416,10 @@
     <bcf:citekey order="14" intorder="1">SharanKishori2022BJ1f</bcf:citekey>
     <bcf:citekey order="15" intorder="1">VSCodeArchitecture</bcf:citekey>
     <bcf:citekey order="15" intorder="2">VSCodeApproachToExtensibility</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">VSCodeExtensionSamples</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">FloraPluginMarketplace</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">TextMateGrammar</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">VSCodeExtensionSamples</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">FloraPluginMarketplace</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

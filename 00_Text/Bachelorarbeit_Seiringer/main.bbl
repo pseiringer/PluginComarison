@@ -104,6 +104,22 @@
       \field{year}{2022}
       \keyw{Java (Computer program language)}
     \endentry
+    \entry{TextMateGrammar}{onlie}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{TextMate Language Grammar}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://macromates.com/manual/en/language_grammars
+      \endverb
+      \verb{url}
+      \verb https://macromates.com/manual/en/language_grammars
+      \endverb
+    \endentry
     \entry{WinnieDoug2021EJfA}{book}{}
       \name{author}{1}{}{%
         {{hash=d560689cbaf9bd7f63bac050e7214b3e}{%

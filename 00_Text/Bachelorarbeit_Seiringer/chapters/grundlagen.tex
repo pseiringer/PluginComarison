@@ -327,9 +327,43 @@ werden die wichtigsten Elemente genauer vorgestellt.
   Sowohl Menüs als auch Keybindings können im Manifest registriert werden.
   % // TODO Call commands from code
 \subsubsection{Code Completion und Spracherweiterungen}
-  Ein wichtiger Teil der VS Code Plugin API sind Language Extensions.
-
+  Ein wichtiger Teil der VS Code Plugin API sind Language Extensions. Visual Studio Code unterscheidet
+  bei diesen Funktionen nach Highlighting, Language Features und Snippets.
+  \paragraph{Highlighting}
+  Das einfache Syntax Highlighting wird in VS Code durch eine TextMate Grammatik erledigt \cite{TextMateGrammar}.
+  Diese Grammatik wird dabei nicht nur für das Highlighting genutzt, sondern sie ist auch für die \enquote{Tokenization}
+  zuständig. Durch eine Code-Analyse anhand der gegebenen Grammatik wird also der Text in kleine 
+  zusammengehörige Abschnitte (sogenannte Tokens) unterteilt. Diese Tokens werden dann zusätzlich noch 
+  klassifiziert, sodass zum Beispiel zwischen Kommentaren, Strings, RegExen und Code unterschieden werden kann.
+  Die Grammatik wird hierfür in einer einfachen .json Datei im Plugin Projektordner abgelegt und dann per Manifest
+  unter dem Contribution Point \enquote{grammar} eigebunden. Mithilfe socher Grammatiken können auch bereits bestehende
+  Grammatiken erweitert werden. Bei der Auswahl von Scopes, die durch die Grammatik definiert werden, sollte man sich
+  an die Naming Conventions von TextMate halten, da diese vordefinierten Scopes von vielen Themes unterstützt werden.
+  Um die kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es auch \enquote{Semantic Highlighting} 
+  in VS Code. Es kann in der API programmatisch ein \enquote{DocumentSemanticTokensProvider} registriert werden,
+  welcher den Code analysiert und zusätzliche (und zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt.
+  \paragraph{Language Features}
+  Auch hier gibt es statisch definierte und programmatische Language Features.
+  Statisch kann unter dem Contribution Point \enquote{languages} eine Reihe von Informationen angegeben werden,
+  die es VS Code erlauben die User Experience stark zu verbessern. So kann man unter anderem Festlegen,
+  mit welchen Zeichen Kommentare eingeleitet werden, oder welche Klammern es gibt, damit VS Code das Zuklappen erlauben kann.
+  Zusammengehörige Paare von Zeichen (also Klammern, Anführungszeichen, u.s.w.) können automatisch geschlossen werden.
+  Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden.
+  Programmatisch ist das erweitern von Language Features etwas komplexer, allerdings steigt natürlich auch die
+  Menge an Möglichkeiten. In der API können verschiedene Provider registriert werden, durch die Features wie
+  \enquote{Go to Definition}, \enquote{IntelliSense} code completion oder diagnostische Fehleranalysen und
+  entsprechende Verbesserungsvorschläge ermöglicht werden. Grundsätzlich ist es auch möglich für einzelne
+  Features einen Provider zu registrieren, allerdings empfiehlt es sich bei der Einbindung einer neuen
+  Sprache einen \enquote{Language Server} und das Language Server Protocol zu nutzen. Diese Lösung
+  bringt nicht nur Performanceverbesserungen im Editor, sonder der Language Server kann auch für 
+  andere Editoren wiederverwendet werden, ohne ihn komplett neu implementieren zu müssen.
   % //TODO results of existing lsp can be gotten by calling built-in commands. need some further research for this...
+  \paragraph{Snippets}
+  Snippets sind eine sehr einfache Form der Spracherweiterung. Es wird unter dem Contribution Point
+  \enquote{snippets} einfach eine Datei mit den Vorlagen angegeben. Eine Vorlage enthält dabei immer
+  ein Kürzel für welches das Snippet vorgeschlagen werden soll, den zu ersetzenden Text und optional
+  eine Beschreibung. Dabei können im Text auch Platzhalter genutzt werden an die der Cursor beim Einsetzen
+  des Snippets springt.
 \subsubsection{Benutzereingaben}
   Für die Eingabe von Daten bietet Visual Studio Code die Quick Pick API, die File Picker API
   und den Configuration Contribution Point.
@@ -366,7 +400,21 @@ werden die wichtigsten Elemente genauer vorgestellt.
       enthalten dürfen.
   \end{description}
 \subsubsection{Ausgaben und Anzeigen}
+  Um den Usern auch Feedback über die Ausführung des Plugin Codes zu geben, 
+  ist in VS Code für drei allgemeine Anwendungsfälle vorgesorgt. 
+  
+  Um den Usern eine kurze 
+  Rückmeldung zu geben können am besten Notifications genutzt werden. Diese zeigen eine Kurze 
+  Nachricht an, welche im Stil einer Information, einer Warnung oder einer Error Meldung 
+  dargestellt werden kann. Um einen längeren Fluss von Ausgaben (wie zum Beispiel Log-Nachrichten 
+  des Plugins) anzuzeigen können Output Channels genutzt werden. An diese können Textzeilen nach 
+  und nach angehängt werden und sie werden dem User dann in einem Terminalartigen Fenster präsentiert. 
+  In vielen Fällen reicht es schon als Feedback einen einfachen Ladebalken anzuzeigen. So kann dem 
+  User klar gemacht werden, dass das Plugin immer noch arbeitet und noch kein Fehler aufgetreten 
+  ist. Für diesen Anwendungsfall kann die Progress API genutzt werden.
 
+  Eine etwas komplexere Anzeige bieten Views, die die sogenannte Workbench erweitern.
+  % //TODO treeview + webview
 
 \subsection{IntelliJ IDEA}
 
