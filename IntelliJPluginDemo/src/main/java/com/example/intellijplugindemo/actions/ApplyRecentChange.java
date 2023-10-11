@@ -1,6 +1,7 @@
 package com.example.intellijplugindemo.actions;
 
 import com.example.intellijplugindemo.services.RecentChangesService;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -9,11 +10,6 @@ import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 public class ApplyRecentChange extends AnAction {
-
-    private RecentChangesService recentChanges;
-    public ApplyRecentChange(){
-        this.recentChanges = RecentChangesService.getInstance();
-    }
 
     @Override
     public void actionPerformed(AnActionEvent event) {
@@ -33,7 +29,7 @@ public class ApplyRecentChange extends AnAction {
         var psiElemStart = currentElement.getTextOffset();
 
         //check if text matches a recent change
-        var matchingDiff = recentChanges.getMatchingDiff(selectedText);
+        var matchingDiff = RecentChangesService.getInstance().getMatchingDiff(selectedText);
         if (matchingDiff == null){
             System.out.println("no matching change detected");
             return;
@@ -70,7 +66,7 @@ public class ApplyRecentChange extends AnAction {
         var selectedText = currentElement.getText();
 
         //check if text matches a recent change
-        var matchingDiff = recentChanges.getMatchingDiff(selectedText);
+        var matchingDiff = RecentChangesService.getInstance().getMatchingDiff(selectedText);
         if (matchingDiff == null){
             System.out.println("no matching change detected");
             event.getPresentation().setVisible(false);
@@ -79,5 +75,10 @@ public class ApplyRecentChange extends AnAction {
 
         //found a match
         event.getPresentation().setEnabledAndVisible(true);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
     }
 }

@@ -139,7 +139,7 @@ Java wurde erstmals im Jahr 1995 von Sun Microsystems veröffentlicht.
 Im Januar 2010 wurde Sun Microsystems dann von der Oracle Corporation übernommen, 
 welche seitdem auch Java weiterentwickelt.
 
-Das Design und vor Allem die Syntax der Sprache war stark von C und C++ inspiriert \cite{SharanKishori2022BJ1f}, 
+Das Design und vor Allem die Syntax der Sprache war stark von C und C++ inspiriert \cite{ArnoldKen1996TJpl}, 
 um anderen Entwicklern einen leichten Umstieg auf das neue Java zu ermöglichen. 
 Allerdings versuchte Java die teils sehr komplexen (wenn auch effektiven) 
 Sprachfeatures von C++ etwas zu vereinfachen. Java sollte eine simple, objektorientierte 
@@ -266,7 +266,9 @@ mit den Plugins und der Art wie der auszuführende Code angegeben wird.
   Die API für IntelliJ Plugins ist in mehreren Paketen des IntelliJ 
   Platform SDK enthalten. Diese API enthält auch die unterschiedlichen
   Interfaces, welche dann in Form von Extension Points oder Listenern implementiert
-  werden können. 
+  werden können. Die Implementierung eines Plugins kann in den Sprachen Java
+  und Kotlin erledigt werden. Da die Plugin API allerdings auf Java basiert, können
+  nicht alle Sprachfeatures von Kotlin problemlos genutzt werden.
 \subsubsection{Ablauf}
   IntelliJ analysiert zuerst das Plugin Configuration File.
   Je nachdem welche Funktionalität vom Plugin angeboten wird, werden
@@ -308,6 +310,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
       }
     ]
   \end{JsCode}
+
   Welcher Code dann ausgeführt wird, muss über die API festgelegt werden. So wird meist
   in der activate Funktion mithilfe von \enquote{registerCommand} oder \enquote{registerTextEditorCommand}
   ein Callback festgelegt welches aufgerufen werden soll. Wichtig ist hier, dass
@@ -319,6 +322,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
       vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
     }));
   \end{JsCode}
+
   Um einen Command aufzurufen können die Nutzer direkt nach dem Command suchen (Tastenkombination Strg+Shift+P).
   Komfortabler ist es allerdings den Nutzern direkt einen passenden Menüeintrag oder ein Keybinding
   bereitzustellen. Menüeinträge können dabei an verschiedenen Stellen im IDE eingehängt werden.
@@ -326,44 +330,46 @@ werden die wichtigsten Elemente genauer vorgestellt.
   zum Anlegen einer neuen Datei, die Titelleiste einer bestimmten View oder ein neues Submenü in der Menüleiste.
   Sowohl Menüs als auch Keybindings können im Manifest registriert werden.
   % // TODO Call commands from code
-\subsubsection{Code Completion und Spracherweiterungen}
+\subsubsection{Spracherweiterungen}
   Ein wichtiger Teil der VS Code Plugin API sind Language Extensions. Visual Studio Code unterscheidet
   bei diesen Funktionen nach Highlighting, Language Features und Snippets.
-  \paragraph{Highlighting}
-  Das einfache Syntax Highlighting wird in VS Code durch eine TextMate Grammatik erledigt \cite{TextMateGrammar}.
-  Diese Grammatik wird dabei nicht nur für das Highlighting genutzt, sondern sie ist auch für die \enquote{Tokenization}
-  zuständig. Durch eine Code-Analyse anhand der gegebenen Grammatik wird also der Text in kleine 
-  zusammengehörige Abschnitte (sogenannte Tokens) unterteilt. Diese Tokens werden dann zusätzlich noch 
-  klassifiziert, sodass zum Beispiel zwischen Kommentaren, Strings, RegExen und Code unterschieden werden kann.
-  Die Grammatik wird hierfür in einer einfachen .json Datei im Plugin Projektordner abgelegt und dann per Manifest
-  unter dem Contribution Point \enquote{grammar} eigebunden. Mithilfe socher Grammatiken können auch bereits bestehende
-  Grammatiken erweitert werden. Bei der Auswahl von Scopes, die durch die Grammatik definiert werden, sollte man sich
-  an die Naming Conventions von TextMate halten, da diese vordefinierten Scopes von vielen Themes unterstützt werden.
-  Um die kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es auch \enquote{Semantic Highlighting} 
-  in VS Code. Es kann in der API programmatisch ein \enquote{DocumentSemanticTokensProvider} registriert werden,
-  welcher den Code analysiert und zusätzliche (und zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt.
-  \paragraph{Language Features}
-  Auch hier gibt es statisch definierte und programmatische Language Features.
-  Statisch kann unter dem Contribution Point \enquote{languages} eine Reihe von Informationen angegeben werden,
-  die es VS Code erlauben die User Experience stark zu verbessern. So kann man unter anderem Festlegen,
-  mit welchen Zeichen Kommentare eingeleitet werden, oder welche Klammern es gibt, damit VS Code das Zuklappen erlauben kann.
-  Zusammengehörige Paare von Zeichen (also Klammern, Anführungszeichen, u.s.w.) können automatisch geschlossen werden.
-  Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden.
-  Programmatisch ist das erweitern von Language Features etwas komplexer, allerdings steigt natürlich auch die
-  Menge an Möglichkeiten. In der API können verschiedene Provider registriert werden, durch die Features wie
-  \enquote{Go to Definition}, \enquote{IntelliSense} code completion oder diagnostische Fehleranalysen und
-  entsprechende Verbesserungsvorschläge ermöglicht werden. Grundsätzlich ist es auch möglich für einzelne
-  Features einen Provider zu registrieren, allerdings empfiehlt es sich bei der Einbindung einer neuen
-  Sprache einen \enquote{Language Server} und das Language Server Protocol zu nutzen. Diese Lösung
-  bringt nicht nur Performanceverbesserungen im Editor, sonder der Language Server kann auch für 
-  andere Editoren wiederverwendet werden, ohne ihn komplett neu implementieren zu müssen.
-  % //TODO results of existing lsp can be gotten by calling built-in commands. need some further research for this...
-  \paragraph{Snippets}
-  Snippets sind eine sehr einfache Form der Spracherweiterung. Es wird unter dem Contribution Point
-  \enquote{snippets} einfach eine Datei mit den Vorlagen angegeben. Eine Vorlage enthält dabei immer
-  ein Kürzel für welches das Snippet vorgeschlagen werden soll, den zu ersetzenden Text und optional
-  eine Beschreibung. Dabei können im Text auch Platzhalter genutzt werden an die der Cursor beim Einsetzen
-  des Snippets springt.
+  \begin{description}
+    \item[Highlighting] 
+      Das einfache Syntax Highlighting wird in VS Code durch eine TextMate Grammatik erledigt \cite{TextMateGrammar}.
+      Diese Grammatik wird dabei nicht nur für das Highlighting genutzt, sondern sie ist auch für die \enquote{Tokenization}
+      zuständig. Durch eine Code-Analyse anhand der gegebenen Grammatik wird also der Text in kleine 
+      zusammengehörige Abschnitte (sogenannte Tokens) unterteilt. Diese Tokens werden dann zusätzlich noch 
+      klassifiziert, sodass zum Beispiel zwischen Kommentaren, Strings, RegExen und Code unterschieden werden kann.
+      Die Grammatik wird hierfür in einer einfachen .json Datei im Plugin Projektordner abgelegt und dann per Manifest
+      unter dem Contribution Point \enquote{grammar} eigebunden. Mithilfe socher Grammatiken können auch bereits bestehende
+      Grammatiken erweitert werden. Bei der Auswahl von Scopes, die durch die Grammatik definiert werden, sollte man sich
+      an die Naming Conventions von TextMate halten, da diese vordefinierten Scopes von vielen Themes unterstützt werden.
+      Um die kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es auch \enquote{Semantic Highlighting} 
+      in VS Code. Es kann in der API programmatisch ein \enquote{DocumentSemanticTokensProvider} registriert werden,
+      welcher den Code analysiert und zusätzliche (und zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt.
+    \item[Language Features] 
+      Auch hier gibt es statisch definierte und programmatische Language Features.
+      Statisch kann unter dem Contribution Point \enquote{languages} eine Reihe von Informationen angegeben werden,
+      die es VS Code erlauben die User Experience stark zu verbessern. So kann man unter anderem Festlegen,
+      mit welchen Zeichen Kommentare eingeleitet werden, oder welche Klammern es gibt, damit VS Code das Zuklappen erlauben kann.
+      Zusammengehörige Paare von Zeichen (also Klammern, Anführungszeichen, u.s.w.) können automatisch geschlossen werden.
+      Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden.
+      Programmatisch ist das erweitern von Language Features etwas komplexer, allerdings steigt natürlich auch die
+      Menge an Möglichkeiten. In der API können verschiedene Provider registriert werden, durch die Features wie
+      \enquote{Go to Definition}, \enquote{IntelliSense} code completion oder diagnostische Fehleranalysen und
+      entsprechende Verbesserungsvorschläge ermöglicht werden. Grundsätzlich ist es auch möglich für einzelne
+      Features einen Provider zu registrieren, allerdings empfiehlt es sich bei der Einbindung einer neuen
+      Sprache einen \enquote{Language Server} und das Language Server Protocol zu nutzen. Diese Lösung
+      bringt nicht nur Performanceverbesserungen im Editor, sonder der Language Server kann auch für 
+      andere Editoren wiederverwendet werden, ohne ihn komplett neu implementieren zu müssen.
+      % //TODO results of existing lsp can be gotten by calling built-in commands. need some further research for this...
+    \item[Snippets] 
+      Snippets sind eine sehr einfache Form der Spracherweiterung. Es wird unter dem Contribution Point
+      \enquote{snippets} einfach eine Datei mit den Vorlagen angegeben. Eine Vorlage enthält dabei immer
+      ein Kürzel für welches das Snippet vorgeschlagen werden soll, den zu ersetzenden Text und optional
+      eine Beschreibung. Dabei können im Text auch Platzhalter genutzt werden an die der Cursor beim Einsetzen
+      des Snippets springt.
+  \end{description}
 \subsubsection{Benutzereingaben}
   Für die Eingabe von Daten bietet Visual Studio Code die Quick Pick API, die File Picker API
   und den Configuration Contribution Point.
@@ -414,11 +420,87 @@ werden die wichtigsten Elemente genauer vorgestellt.
   ist. Für diesen Anwendungsfall kann die Progress API genutzt werden.
 
   Eine etwas komplexere Anzeige bieten Views, die die sogenannte Workbench erweitern.
-  % //TODO treeview + webview
+  Mit der Tree View API kann eine einfach Baumstruktur, ähnlich der 
+  Dateiübersicht in der Explorer View, dargestellt werden. Für diese Implementierung
+  muss ein TreeDataProvider erstellt werden, welcher die Baumstruktur und
+  den Inhalt vorgibt. Die Webview API bietet im Gegensatz dazu sehr viel mehr
+  Optionen. Diese kann in einem View eine Art \enquote{iframe} anzeigen, in welchem
+  dann HTML Inhalte dargestellt werden können. Dabei kann auch JavaScript und CSS Code eingebunden
+  werden, es können Nachrichten vom Plugin an die Webview und zurück geschickt werden, 
+  es können Kontextmenüs in die View eingebunden werden und der Zustand der View
+  kann persistiert werden.
 
 \subsection{IntelliJ IDEA}
 
+Das IntelliJ Platform SDK enthält einen sehr großen Umfang von Features und Extension Points
+die durch ein Plugin erweitert werden können. Einige wichtige Teile der API werden in den 
+folgenden Abschnitten genauer beschrieben.
 
+\subsubsection{Actions und Menüs}
+  Actions in IntelliJ funktionieren fast ident zu den Commands aus VS Code. Es handelt sich um
+  einen vom Plugin definierten Code-Block, welcher von den Usern zum Beispiel über Menüeinträge
+  angestoßen werden kann. Eine Action ist dabei eine einfache Java Klasse, welche von \enquote{AnAction}
+  abgeleitet wird. Dabei muss die Methode \enquote{actionPerformed} überschrieben werden. Diese 
+  enthält den Code der von der Action ausgeführt wird. Optional kann (und sollte) auch die
+  \enquote{update} Methode überschrieben werden, durch welche bestimmt wird wann die Action 
+  aktiviert oder versteckt ist.
+
+  Im Plugin Configuration File wird festgelegt wo und wie die programmierten Actions angezeigt
+  werden. Dabei wird im Abschnitt \enquote{actions} ein \enquote{action} Element erstellt.
+  Dieses hat für gewöhnlich eine eindeutige ID, eine Klasse mit der Code-Implementierung und
+  einen Text, welcher zur Anzeige verwendet wird. Zusätzlich können eine Beschreibung und
+  ein Icon festgelegt werden. Es können Gruppenzuordnungen bestimmt werden, die bestimmen
+  wo und wie die Action angezeigt wird. Es können Keyboard Shortcuts bestimmt werden. Und
+  es kann mit \enquote{override-text} ein alternativer Text angegeben werden, der nur an
+  bestimmten Orten angezeigt wird.
+  
+  \begin{XmlCode}
+    <actions>
+        <action id="my.simple.DemoAction"
+                class="my.simple.DemoAction" 
+                text="Demo Action">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
+  \end{XmlCode}
+
+\subsubsection{Services}
+  IntelliJ erlaubt es einem Plugin Services zu definieren, welche dann auf drei Ebenen
+  in jeweils zwei Varianten implementiert werden können. Instanzen solcher Services können
+  dann an beliebigen Stellen im Plugin Code verwendet werden.
+
+  Die Ebene auf der ein Service erstellt wird, bestimmt wie viele Instanzen dieses 
+  Services existieren können. Dabei gibt es das application-level, welches den Service
+  als globales Singleton anbietet. Und project-level und module-level Services, bei welchen
+  für jedes geöffnetet Projekt bzw. Modul je eine Instanz des Services besteht. Allerdings 
+  wird empfohlen aus Effizienzgründen keine Services auf Modul-Level zu erstellen.
+  In Bezug auf die Varianten gibt es Light Services und normale Services.
+
+  Die Light Services sind dabei einfache Klassen, welche mit der Annotation \enquote{@Service}
+  versehen sind. Light Services sind sehr effizient, allerdings gibt es einige Einschränkungen.
+  So können beispielsweise keine anderen Services per Dependency Injektion injiziert werden.
+  Gewöhnliche Services haben diese Einschränkungen nicht. Bei ihnen wird ein beliebiges Interface und
+  eine dazugehörige Implementierung definiert. Diese werden daraufhin im Plugin Configuration File
+  unter den Extension Points \enquote{applicationService} oder \enquote{projectService} registriert.
+  Die Project-Level Services erhalten dabei sowohl als Light Service, als auch als normaler Service, 
+  eine referenz auf das aktuelle Projekt.
+
+\subsubsection{Listeners und Extension Points} % // TODO section could probably be removed
+
+\subsubsection{Spracherweiterungen und PSI}
+
+
+\subsubsection{User Interface Komponenten}
+  Auch in IntelliJ gibt es einige vorgefertigte UI Komponenten. Das dient vor allem dazu, die
+  User Experience über verschiedene Plugins hinweg möglichst einheitlich und im Stile
+  der IntelliJ Platform zu halten. Häufig verwendete Komponenten sind hierbei Dialoge, Popups,
+  Notifications und Tool Windows.
+  \begin{description}
+    \item[Dialoge] gibt dem 
+    \item[Popups] erlaubt dada
+    \item[Notifications] erlaubt dadu
+    \item[Tool Windows] erlaubt
+  \end{description}
 
 \subsection{IntelliJ Flora Plugins}
 
@@ -433,8 +515,6 @@ Alternative ist das „Flora Plugin“ für das IntelliJ IDEA.
 
 Flora kann über die Einstellungen des IntelliJ IDEA 
 im Abschnitt „Plugins“ installiert werden.
-
-% //TODO rework screenshots
 
 \begin{figure}
     \centering
@@ -454,7 +534,7 @@ ToolWindows zu erstellen.
 
 \begin{figure}
     \centering
-    \fbox{\includegraphics[width=.95\textwidth]{flora_codeCompletion}}
+    \fbox{\includegraphics[width=.75\textwidth]{flora_codeCompletion}}
     \caption{Übersicht über die API des Flora Plugins.}
     \label{fig:FloraPluginAPI}
 \end{figure}    
@@ -466,3 +546,6 @@ einfaches Plugin entwickelt werden kann, von großem Vorteil.
 Weiters spricht für diesen Anwendungsfall, dass der Plugin Code 
 direkt im Projektordner abgelegt wird und somit auch in einem Version 
 Control System wie Git mit abgelegt werden kann.
+
+% //TODO Frage: Sehr viele Absätze referenzieren "die Doku". soll jeder Absatz die entsprechende Sub-Page referenzieren?
+% //            Oder gibt es eine Möglichkeit für ein ganzen Kapitel die Doku zu referenzieren o.ä.?

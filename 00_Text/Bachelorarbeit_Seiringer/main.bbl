@@ -19,6 +19,34 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{ArnoldKen1996TJpl}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5d710b72d32b34d9666ff39756bff23b}{%
+           family={Arnold},
+           familyi={A\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{fullhash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{bibnamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authorbibnamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authornamehash}{5d710b72d32b34d9666ff39756bff23b}
+      \strng{authorfullhash}{5d710b72d32b34d9666ff39756bff23b}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1. print..}
+      \field{isbn}{0201634554}
+      \field{series}{The Java series}
+      \field{title}{The Java programming language}
+      \field{year}{1996}
+      \keyw{Java (Computer program language)}
+    \endentry
     \entry{HagosTed2022BII:}{book}{}
       \name{author}{1}{}{%
         {{hash=5975b9a73c19e769b6c357bb29240336}{%

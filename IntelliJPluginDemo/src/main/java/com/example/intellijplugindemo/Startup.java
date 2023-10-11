@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class Startup implements StartupActivity {
     @Override
     public void runActivity(@NotNull Project project) {
+        //TODO check if listener can be created from Plugin Configuration XML
         var projLevelService = RecentChangesService.getInstance();
         var eventMulticaster = EditorFactory.getInstance().getEventMulticaster();
         eventMulticaster.addDocumentListener(new SimpleChangeDocumentListener(project), projLevelService);
