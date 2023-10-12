@@ -494,12 +494,46 @@ folgenden Abschnitten genauer beschrieben.
   Auch in IntelliJ gibt es einige vorgefertigte UI Komponenten. Das dient vor allem dazu, die
   User Experience über verschiedene Plugins hinweg möglichst einheitlich und im Stile
   der IntelliJ Platform zu halten. Häufig verwendete Komponenten sind hierbei Dialoge, Popups,
-  Notifications und Tool Windows.
+  Notifications und Tool Windows. Für die Programmierung und Darstellung dieser Komponenten
+  setzt IntelliJ stark auf das Java Swing Framework. Dafür wurden auch bereits existierende
+  Elemente des Swing Frameworks zusätzlich überarbeitet und verbessert. So wurde zum Beispiel
+  die Swing JList durch die JetBrains JBList oder der JTree durch den Tree ersetzt.
   \begin{description}
-    \item[Dialoge] gibt dem 
-    \item[Popups] erlaubt dada
-    \item[Notifications] erlaubt dadu
-    \item[Tool Windows] erlaubt
+    \item[Dialoge] erlauben die Anzeige einer beliebigen Java Swing Komponente. 
+      Diese kann im einfachsten Fall ein Label mit einer Frage sein, es können allerdings
+      auch komplexere Dialoge mit mehreren Eingabefeldern erstellt werden. Wobei
+      sogar eine Validierung der Eingabefeldern eingebunden werden kann. Zusätzlich
+      werden im Dialog automatisch weitere Buttons für das Abschließen des Dialogs 
+      eingebunden. Diese Buttons sind per default OK und Cancel, allerdings können auch
+      diese manuell neu konfiguriert werden. Die Implementierung eines solchen Dialogs
+      kann durch Ableiten der \enquote{DialogWrapper} Klasse geschafft werden.
+    \item[Popups] sind eine sehr einfache Form von Dialogen. Der Unterschied zu Dialogen
+      ist, dass Popups keine zusätzlichen Buttons einbinden, sonder automatisch 
+      geschlossen werden, sobald der Fokus verloren geht. Um einige vorgefertigte 
+      Varianten zu nutzen, können die Methoden der JBPopupFactory aufgerufen werden.
+      So können einfache Popups zur Auswahl aus einer Liste oder zur Bestätigung einer
+      Frage erstellt werden. Natürlich ist es auch wieder möglich benutzerdefinierte
+      Popups mit eigenen Swing Komponenten zu erstellen. Dabei sollte allerdings im
+      Hinterkopf gehalten werden, dass diese nicht zu komplex werden sollten.
+    \item[Notifications] sind zum Anzeigen von kurzen Informationen gedacht, für die
+      ein vollständiger Dialog oder ein Popup zu störend wäre. Dabei gibt es die 
+      Editor Hints, welche eine art Sprechblase an der aktuellen Stelle des Editors
+      anzeigen. Diese können vor allem für kurze Fehlermeldungen von Editor-bezogenen
+      Actions genutzt werden. Editor Banner werden am besten für etwas gravierendere
+      Fehlermeldungen eingesetzt. So werden sie zum Beispiel von IntelliJ angewendet
+      wenn innerhalb eines Projekts kein passendes JKD definiert ist. Für weitere
+      Fehlermeldungen können am besten sogenannte \enquote{Balloons} genutzt werden.
+      Diese Meldungen tauchen für gewöhnlich in kleinen Blasen am rechten Rand
+      des IntelliJ Fensters auf, und verschwinden dann nach zehn Sekunden automatisch.
+      Sie können allerdings auch auf Sticky geschalten werden, damit sie nicht mehr
+      verschwinden können.
+    \item[Tool Windows] sind Fenster die in der Werkzeugleiste von IntelliJ eingehangen
+      werden können. Am einfachsten können diese erstellt werden, indem eine Klasse
+      von \enquote{ToolWindowFactory} abgeleitet wird. Diese Klasse kann dann 
+      in der Plugin Configuration als ToolWindow eingebunden werden. Jedes ToolWindow
+      kann mehrere \enquote{Contents} besitzen, welche im Grunde beliebige JPanel 
+      Elemente anzeigen können. Solche ToolWindows eignen sich am besten um komplexere
+      UI in das Plugin einzubinden.
   \end{description}
 
 \subsection{IntelliJ Flora Plugins}

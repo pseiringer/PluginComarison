@@ -28,6 +28,8 @@
         <postStartupActivity implementation="com.example.intellijplugindemo.Startup" />
         <toolWindow id="Recent Changes" secondary="true" icon="AllIcons.Actions.Diff" anchor="right"
                     factoryClass="com.example.intellijplugindemo.toolwindows.RecentChangesToolWindowFactory"/>
+        <notificationGroup id="CustomNotificationGroup"
+                           displayType="STICKY_BALLOON"/>
     </extensions>
 
 <!--    <applicationListeners>-->
@@ -40,6 +42,11 @@
         <action id="com.example.intellijplugindemo.actions.PopupDialogAction"
                 class="com.example.intellijplugindemo.actions.PopupDialogAction" text="Popup Dialog Action Demo"
                 description="SDK action example">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="com.example.intellijplugindemo.test.UITestAction"
+                class="com.example.intellijplugindemo.test.UITestAction" text="TestAction"
+                description="TestAction">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
         <action id="com.example.intellijplugindemo.actions.CopySelectedTextAction"
