@@ -11,7 +11,7 @@ abgekürzt auch als VS Code, wurde im April 2016 \cite{VSCodeReleaseDate}
 von Microsoft veröffentlicht. Die Idee hinter VS Code
 war einen möglichst einfachen Code Editor anzubieten, 
 welcher nur die wichtigsten und besten Funktionen für EntwicklerInnen 
-beinhaltete. Es hob sich somit von anderen IDEs wie der Visual Studio 
+beinhaltet. Es hob sich somit von anderen IDEs wie der Visual Studio 
 Reihe von Microsoft ab, da es ein sehr leichtgewichtiger Editor war, 
 welcher trotzdem mit einer großen Menge an Programmiersprachen arbeiten 
 konnte und für diese auch Microsofts code completion namens „IntelliSense“ 
@@ -29,9 +29,9 @@ aktiv genutzt\cite{StackOverflowSurvey,StackOverflowSurvey2023}.
 
 Ein Grund für diesen Erfolg mag vermutlich die Möglichkeit 
 zur Entwicklung und zum Anbieten von Plugins sein. Durch die direkte 
-Einbindung es Visual Studio Marketplace in VS Code bildete sich über die 
+Einbindung des Visual Studio Marketplace in VS Code bildete sich über die 
 Jahre eine große Community die eine enorme Anzahl von Plugins 
-entwickelt, verbessert und betreut. Durch solche, meist 
+entwickelt, verbessert und betreut. Durch solche, oft 
 community-erstellte, Plugins kann VS Code auch eine enorme Anzahl von
 Programmiersprachen unterstützen.
 
@@ -69,9 +69,9 @@ Editor, der sehr viel Funktionalität schon von Grund auf eingebaut
 hat. Die EntwicklerInnen sind hier nicht so stark auf Plugins angewiesen.
 Dies lässt sich auch durch die Anzahl von Plugins erkennen, die auf dem 
 JetBrains Marketplace angeboten werden. Für die IntelliJ Platform gibt 
-es aktuell etwas über 7500 Plugins die in die IDE integriert werden können 
+es aktuell etwas über 7.500 Plugins die in die IDE integriert werden können 
 \cite{IntelliJMarketplace}.
-Für Visual Studio Code sind es hingegen inzwischen über 51000 Plugins
+Für Visual Studio Code sind es hingegen inzwischen über 51.000 Plugins
 \cite{VSCodeMarketplace}.
 
 
@@ -105,7 +105,7 @@ nun auszubessern.
 TypeScript code wird mithilfe des TypeScript Compilers „tsc“ in einfache JavaScript 
 Dateien transpiliert. Dadurch kann auf die Popularität und Verbreitung von JavaScript 
 aufgebaut werden und TypeScript ist überall dort verwendbar, wo JavaScript 
-ausführbar ist. Weiters ist TypeScript ist ein Superset von JavaScript. 
+ausführbar ist. Weiters ist TypeScript ein Superset von JavaScript. 
 Es gilt also: „Any valid .js file can be renamed .ts and be compiled with other 
 TypeScript file.” \cite{MaharryDanTR}. 
 
@@ -134,7 +134,7 @@ gegenüber ihrer Basissprache.
 \subsection{Java}
 
 Die Entwicklung der Programmiersprache Java begann im Jahr 1991 und sie 
-wurde von den James Gosling, Mike Sheridan und Patrick Naughton designed \cite{WinnieDoug2021EJfA}.
+wurde von James Gosling, Mike Sheridan und Patrick Naughton designed \cite{WinnieDoug2021EJfA}.
 Java wurde erstmals im Jahr 1995 von Sun Microsystems veröffentlicht. 
 Im Januar 2010 wurde Sun Microsystems dann von der Oracle Corporation übernommen, 
 welche seitdem auch Java weiterentwickelt.
@@ -147,11 +147,11 @@ und robuste Sprache werden. Die Funktionalität die Java zu dem großen Erfolg v
 den sie später hatte, war das 
 \begin{quote}\begin{english}\enquote{write once, run anywhere}\end{english}\end{quote}
 (WORA) Prinzip, wie Sharan und Davis beschreiben \cite{SharanKishori2022BJ1f}. Im Gegensatz 
-zu den zuvor gängigen Programmiersprachen muss Java nämlich für bestimmte 
+zu den zuvor gängigen Programmiersprachen muss Java nämlich nicht für bestimmte 
 Hardwarearchitekturen kompiliert werden. Java Programme werden zu einer Art 
 Zwischensprache, dem sogenannten Java Bytecode kompiliert. Dieser Bytecode
 kann dann von einer Java Virtual Machine (JVM) ausgeführt werden. Diese JVM ist
-im Grunde ein eigenständiges Programm welche mit dem Java Runtime Environment 
+im Grunde ein eigenständiges Programm welches mit dem Java Runtime Environment 
 (JRE) mitgeliefert wird. Ein einmal kompiliertes Java Programm kann also auf 
 allen Geräten ausgeführt werden, auf denen ein passendes JRE installiert ist. 
 So ist es zum Beispiel auch möglich Java für die Entwicklung von Android nativen
@@ -210,7 +210,7 @@ Das Extension Manifest und die eigentliche API.
 \subsubsection{Visual Studio Code API} 
   Die eigentliche VS Code API kann im TypeScript Code (sowohl in der main, 
   als auch in anderen Dateien) genutzt werden. Hierfür wird einfach das \enquote{vscode}
-  Modul importiert. Dieses beinhaltet eine vollständige definition der angebotenen
+  Modul importiert. Dieses beinhaltet eine vollständige Definition der angebotenen
   Schnittstelle, auf welche programmatisch zugegriffen werden kann.
   \begin{JsCode}
     import * as vscode from 'vscode';
@@ -244,8 +244,8 @@ Das Extension Manifest und die eigentliche API.
 \subsection{IntelliJ IDEA}
 
 Der Aufbau der Plugin Architektur wirkt bei IntelliJ im ersten Moment genau
-gleich wie bei Visual Studio Code. Es gibt nämlich auch hier gibt
-es ein Plugin Configuration File, sowie ein Modul mit API Schnittstellen.
+gleich wie bei Visual Studio Code. Es gibt nämlich auch hier ein Plugin Configuration 
+File, sowie ein Modul mit API Schnittstellen.
 Der große Unterschied liegt allerdings in der Funktionsweise und der Interaktion
 mit den Plugins und der Art wie der auszuführende Code angegeben wird.
 \subsubsection{Plugin Configuration File}
@@ -258,10 +258,10 @@ mit den Plugins und der Art wie der auszuführende Code angegeben wird.
   als auch den Listenern, immer direkt um eine Zuordnung eines Interfaces
   (meist definiert von IntelliJ) zu einer Implementierung (definiert durch das Plugin)
   handelt. Weiters ist es nicht nötig einen speziellen Aktivierungszeitpunkt
-  festzulegen, da die zuordnung der auszuführenden Klassen sowieso durch 
+  festzulegen, da die Zuordnung der auszuführenden Klassen sowieso durch 
   die Konfigurationsdatei festgelegt wird. Eine Besonderheit an IntelliJ ist,
   dass Plugins auch eigene Extension Points definieren können, um weiteren Plugins
-  das erweitern des ursprünglichen Plugins zu erlauben.
+  das Erweitern des ursprünglichen Plugins zu erlauben.
 \subsubsection{IntelliJ Platform SDK}
   Die API für IntelliJ Plugins ist in mehreren Paketen des IntelliJ 
   Platform SDK enthalten. Diese API enthält auch die unterschiedlichen
@@ -280,7 +280,7 @@ mit den Plugins und der Art wie der auszuführende Code angegeben wird.
   \begin{figure}
     \centering
     \fbox{\includegraphics[width=.95\textwidth]{IntelliJExtensionArchitecture}}
-    \caption{Übersicht über den Ablauf eines IntelliJ.}
+    \caption{Übersicht über den Ablauf eines IntelliJ Plugins.}
     \label{fig:diagram_IntelliJExtensionArchitecture}
   \end{figure}   
 
@@ -290,7 +290,7 @@ mit den Plugins und der Art wie der auszuführende Code angegeben wird.
 \subsection{Visual Studio Code}
 
 Die VS Code API erlaubt es VS Code durch Commands, Code Completion und Spracherweiterung, 
-Themes, Custom Editor or Notebooks, Views, Source Control, Debugger, Tests und vielem mehr zu
+Themes, Custom Editor oder Notebooks, Views, Source Control, Debugger, Tests und vielem mehr zu
 erweitern. Um dies zu ermöglichen werden unter anderem auch Einstellungen, Datenspeicherung
 und verschiedene Arten der Ein und Ausgabe von Daten bereitgestellt. In den folgenden Abschnitten
 werden die wichtigsten Elemente genauer vorgestellt.
@@ -312,10 +312,10 @@ werden die wichtigsten Elemente genauer vorgestellt.
   \end{JsCode}
 
   Welcher Code dann ausgeführt wird, muss über die API festgelegt werden. So wird meist
-  in der activate Funktion mithilfe von \enquote{registerCommand} oder \enquote{registerTextEditorCommand}
+  in der activate Funktion mithilfe von \enquote{registerCommand} oder \enquote{registerTextEditorCommand} % //TODO funktionen einheitlich groß/klein
   ein Callback festgelegt welches aufgerufen werden soll. Wichtig ist hier, dass
   die Register Funktionen ein Disposable Objekt retournieren welches der API bekannt gegeben werden
-  muss. Die API kümmert sich dann auch um das deaktivieren des Commands, falls zum Beispiel
+  muss. Die API kümmert sich dann auch um das Deaktivieren des Commands, falls zum Beispiel
   die Erweiterung deaktiviert werden sollte.
   \begin{JsCode}
     context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
@@ -341,10 +341,10 @@ werden die wichtigsten Elemente genauer vorgestellt.
       zusammengehörige Abschnitte (sogenannte Tokens) unterteilt. Diese Tokens werden dann zusätzlich noch 
       klassifiziert, sodass zum Beispiel zwischen Kommentaren, Strings, RegExen und Code unterschieden werden kann.
       Die Grammatik wird hierfür in einer einfachen .json Datei im Plugin Projektordner abgelegt und dann per Manifest
-      unter dem Contribution Point \enquote{grammar} eigebunden. Mithilfe socher Grammatiken können auch bereits bestehende
+      unter dem Contribution Point \enquote{grammar} eingebunden. Mithilfe solcher Grammatiken können auch bereits bestehende
       Grammatiken erweitert werden. Bei der Auswahl von Scopes, die durch die Grammatik definiert werden, sollte man sich
       an die Naming Conventions von TextMate halten, da diese vordefinierten Scopes von vielen Themes unterstützt werden.
-      Um die kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es auch \enquote{Semantic Highlighting} 
+      Um die Kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es auch \enquote{Semantic Highlighting} 
       in VS Code. Es kann in der API programmatisch ein \enquote{DocumentSemanticTokensProvider} registriert werden,
       welcher den Code analysiert und zusätzliche (und zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt.
     \item[Language Features] 
@@ -354,13 +354,13 @@ werden die wichtigsten Elemente genauer vorgestellt.
       mit welchen Zeichen Kommentare eingeleitet werden, oder welche Klammern es gibt, damit VS Code das Zuklappen erlauben kann.
       Zusammengehörige Paare von Zeichen (also Klammern, Anführungszeichen, u.s.w.) können automatisch geschlossen werden.
       Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden.
-      Programmatisch ist das erweitern von Language Features etwas komplexer, allerdings steigt natürlich auch die
+      Programmatisch ist das Erweitern von Language Features etwas komplexer, allerdings steigt natürlich auch die
       Menge an Möglichkeiten. In der API können verschiedene Provider registriert werden, durch die Features wie
       \enquote{Go to Definition}, \enquote{IntelliSense} code completion oder diagnostische Fehleranalysen und
       entsprechende Verbesserungsvorschläge ermöglicht werden. Grundsätzlich ist es auch möglich für einzelne
       Features einen Provider zu registrieren, allerdings empfiehlt es sich bei der Einbindung einer neuen
       Sprache einen \enquote{Language Server} und das Language Server Protocol zu nutzen. Diese Lösung
-      bringt nicht nur Performanceverbesserungen im Editor, sonder der Language Server kann auch für 
+      bringt nicht nur Performanceverbesserungen im Editor, sondern der Language Server kann auch für 
       andere Editoren wiederverwendet werden, ohne ihn komplett neu implementieren zu müssen.
       % //TODO results of existing lsp can be gotten by calling built-in commands. need some further research for this...
     \item[Snippets] 
@@ -386,7 +386,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
       selber programmiert werden. Hierfür gibt es aber ein Beispiel im quickinput-sample
       im vscode-extension-sample repository \cite{VSCodeExtensionSamples}. 
     \item[File Picker API] erlaubt das Auswählen von Ordnern oder Dateien aus dem Dateisystem
-      des Betriebssystems mit der Funktion \enquote{showOpenDialog}. Dabei können optionen angegeben
+      des Betriebssystems mit der Funktion \enquote{showOpenDialog}. Dabei können Optionen angegeben
       werden die beeinflussen ob Ordner und/oder Dateien gewählt werden dürfen, ob mehrere Elemente
       selektiert werden dürfen, ob nach Dateinamen gefiltert werden soll und so weiter.
     \item[Configuration Contribution Point] ermöglichen das Festlegen von Einstellungen
@@ -402,7 +402,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
       ein maximum/minimum, ein Regular Expression pattern oder ein enum Array
       mit erlaubten Werten angegeben werden.
       Zusätzlich ist es zu jeder Einstellung möglich einen Titel und eine Beschreibung
-      anzugeben, wobei es sogar Beschreibungen gibt, welche Markdown formattierungen
+      anzugeben, wobei es sogar Beschreibungen gibt, welche Markdownformattierungen
       enthalten dürfen.
   \end{description}
 \subsubsection{Ausgaben und Anzeigen}
@@ -413,8 +413,8 @@ werden die wichtigsten Elemente genauer vorgestellt.
   Rückmeldung zu geben können am besten Notifications genutzt werden. Diese zeigen eine Kurze 
   Nachricht an, welche im Stil einer Information, einer Warnung oder einer Error Meldung 
   dargestellt werden kann. Um einen längeren Fluss von Ausgaben (wie zum Beispiel Log-Nachrichten 
-  des Plugins) anzuzeigen können Output Channels genutzt werden. An diese können Textzeilen nach 
-  und nach angehängt werden und sie werden dem User dann in einem Terminalartigen Fenster präsentiert. 
+  des Plugins) anzuzeigen, können Output Channels genutzt werden. An diese können Textzeilen nach 
+  und nach angehängt werden und sie werden dem User dann in einem terminalartigen Fenster präsentiert. 
   In vielen Fällen reicht es schon als Feedback einen einfachen Ladebalken anzuzeigen. So kann dem 
   User klar gemacht werden, dass das Plugin immer noch arbeitet und noch kein Fehler aufgetreten 
   ist. Für diesen Anwendungsfall kann die Progress API genutzt werden.
@@ -483,12 +483,46 @@ folgenden Abschnitten genauer beschrieben.
   eine dazugehörige Implementierung definiert. Diese werden daraufhin im Plugin Configuration File
   unter den Extension Points \enquote{applicationService} oder \enquote{projectService} registriert.
   Die Project-Level Services erhalten dabei sowohl als Light Service, als auch als normaler Service, 
-  eine referenz auf das aktuelle Projekt.
+  eine Referenz auf das aktuelle Projekt.
 
-\subsubsection{Listeners und Extension Points} % // TODO section could probably be removed
+\subsubsection{Listeners und Extension Points}
 
-\subsubsection{Spracherweiterungen und PSI}
+  Ganz ähnlich zu den (nicht Light) Services funktioniert auch die Registrierung von Listenern
+  und Extension Points. Allerdings gibt es hier bereits vorgefertigte Interfaces die implementiert
+  werden müssen. Wurde die Implementierung dann in der Project Configuration registriert, wird
+  sie zu den entsprechenden Zeitpunkten aufgerufen.
+  
+  Bei Extension Points gibt es die weitere Besonderheit, dass auch eigene Extension Points deklariert
+  und im Plugin Code aufgerufen werden können. Diese werden dann für andere Plugins zur Erweiterung
+  angeboten.
 
+\subsubsection{PSI und Spracherweiterungen}
+
+  PSI steht für Program Structure Interface und ist die Grundlage jeder Sprachunterstützung in
+  IntelliJ. Eine Datei mit Quellcode wird von IntelliJ immer zu einer PSI File geparsed. 
+  Dieses PSI File enthält dann eine Baumstruktur von PSI Elements, welche der
+  Struktur des Quellcodes entspricht. Die Blattknoten eines solchen Baumes entsprechen dabei
+  für gewöhnlich einzelnen Tokens und Identifiern, die nicht mehr zerlegt werden können.
+  Nach oben hin werden diese dann zu Statements, Code-Blöcken, Methoden, Klassen u.s.w. gebündelt.
+  Der Vorteil dieser PSI Files ist, dass sie von IntelliJ und auch von Plugins jederzeit
+  verwendet werden können. Somit können unter anderem verschiedene Sprachfeatures sehr
+  effizient implementiert werden.
+
+  Um die IntelliJ Plattform mit einer neuen Sprache zu erweitern, muss zuerst die entsprechende
+  Sprache und ihre Grammatik definiert werden. Die Grammatik hat dabei nicht nur die Aufgabe die 
+  Regeln einer neuen Sprache festzulegen. Durch sie wird auch die Struktur der Sprache festgestellt,
+  was später für den Aufbau der PSI Elemente wichtig ist. Hierfür wird eine Art der Backus Naur Form (BNF) 
+  verwendet, welche mit zusätzlichen Informationen gespickt wird. So gibt es zum Beispiel Attribute
+  wie private, inner oder upper, welche die Struktur des PSI Baumes beinflussen. Mithilfe des Grammar Kit Plugins
+  kann aus einer solchen BNF automatisch ein Parser und die entsprechenden PSI Elemente generiert werden. 
+  Zusätzlich zum Parser wird auch ein eigener Lexer benötigt. Dabei wird empfohlen mithilfe von JFlex
+  eine Datei mit Regeln automatisch in einen Lexer übersetzen zu lassen.
+
+  Sobald Parser und Lexer registriert sind steht das Grundgerüst der Spracherweiterung. Danach können
+  verschiedene Features für die Sprache unabhängig voneinander implementiert werden. In den meisten
+  Fällen ist dabei ein bestimmtes Interface zu implementieren und der entsprechende Contributor oder
+  Provider im Configuration File zu registrieren. So können Auto Completion, Folding, Go To Symbol,
+  References und Refactoring sowie viele weitere Funktionalitäten unterstützt werden.
 
 \subsubsection{User Interface Komponenten}
   Auch in IntelliJ gibt es einige vorgefertigte UI Komponenten. Das dient vor allem dazu, die
@@ -517,10 +551,10 @@ folgenden Abschnitten genauer beschrieben.
       Hinterkopf gehalten werden, dass diese nicht zu komplex werden sollten.
     \item[Notifications] sind zum Anzeigen von kurzen Informationen gedacht, für die
       ein vollständiger Dialog oder ein Popup zu störend wäre. Dabei gibt es die 
-      Editor Hints, welche eine art Sprechblase an der aktuellen Stelle des Editors
+      Editor Hints, welche eine Art Sprechblase an der aktuellen Stelle des Editors
       anzeigen. Diese können vor allem für kurze Fehlermeldungen von Editor-bezogenen
       Actions genutzt werden. Editor Banner werden am besten für etwas gravierendere
-      Fehlermeldungen eingesetzt. So werden sie zum Beispiel von IntelliJ angewendet
+      Fehlermeldungen eingesetzt. So werden sie zum Beispiel von IntelliJ angewendet, 
       wenn innerhalb eines Projekts kein passendes JKD definiert ist. Für weitere
       Fehlermeldungen können am besten sogenannte \enquote{Balloons} genutzt werden.
       Diese Meldungen tauchen für gewöhnlich in kleinen Blasen am rechten Rand
@@ -540,7 +574,7 @@ folgenden Abschnitten genauer beschrieben.
 
 In der Plugin Dokumentation von JetBrains wird zu Beginn 
 empfohlen sich noch einmal gründlich zu überlegen, ob man 
-für die von einem gewünschte Funktionalität wirklich ein 
+für die gewünschte Funktionalität wirklich ein 
 vollwertiges Plugin benötigt. Häufig kommt es nämlich vor, 
 dass nur bestimmte kleine Tasks innerhalb des IDEs 
 automatisiert werden sollen \cite{IntelliJSDKDocumentation}. Hierfür schlägt JetBrains 
@@ -561,7 +595,7 @@ Das Plugin sucht dann in den geöffneten Projektverzeichnissen
 nach ausführbaren JavaScript oder Kotlin Script „micro plugin“ 
 Dateien. Diese müssen sich in einem Ordner namens „.plugins“ 
 befinden und auf „.plugin.js“ oder „.plugin.kts“ enden \cite{FloraPluginMarketplace}.
-Innerhalb diese Plugin Dateien kann über die Variable „ide“ auf 
+Innerhalb dieser Plugin Dateien kann über die Variable „ide“ auf 
 die angebotene Schnittstelle zugegriffen werden. Diese erlaubt 
 es unter anderem Actions, Keyboard Shortcuts, Services und 
 ToolWindows zu erstellen.

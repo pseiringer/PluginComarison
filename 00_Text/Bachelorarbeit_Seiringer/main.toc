@@ -40,9 +40,9 @@
 \contentsline {subsubsection}{Actions und Menüs}{11}{subsection.2.4.2}%
 \contentsline {subsubsection}{Services}{12}{lstnumber.-4.8}%
 \contentsline {subsubsection}{Listeners und Extension Points}{12}{lstnumber.-4.8}%
-\contentsline {subsubsection}{Spracherweiterungen und PSI}{12}{lstnumber.-4.8}%
-\contentsline {subsubsection}{User Interface Komponenten}{12}{lstnumber.-4.8}%
-\contentsline {subsection}{\numberline {2.4.3}IntelliJ Flora Plugins}{13}{subsection.2.4.3}%
+\contentsline {subsubsection}{PSI und Spracherweiterungen}{13}{lstnumber.-4.8}%
+\contentsline {subsubsection}{User Interface Komponenten}{13}{lstnumber.-4.8}%
+\contentsline {subsection}{\numberline {2.4.3}IntelliJ Flora Plugins}{14}{subsection.2.4.3}%
 \contentsline {chapter}{\numberline {3}Anforderungen an den Prototyp}{16}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Aufbau}{16}{section.3.1}%
 \contentsline {chapter}{\numberline {4}Entwicklung des Prototpys für Visual Studio Code}{17}{chapter.4}%
