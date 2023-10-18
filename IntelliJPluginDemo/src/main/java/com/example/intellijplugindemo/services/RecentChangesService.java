@@ -4,12 +4,13 @@ import com.google.common.collect.EvictingQueue;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;
+import com.intellij.openapi.project.Project;
 
-import javax.swing.*;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-@Service(Service.Level.PROJECT)
+@Service(Service.Level.APP)
 public final class RecentChangesService implements Disposable {
 
     // list of recent changes
@@ -34,13 +35,16 @@ public final class RecentChangesService implements Disposable {
         return recentChanges;
     }
 
-    public SimpleDiff getMatchingDiff(String text) {
+    public SimpleDiff getDiffMatchingRemovedText(String text) {
+        return getDiff(diff -> text.contains(diff.getRemovedText()));
+    }
+    public SimpleDiff getDiff(Predicate<SimpleDiff> isValid) {
         var reverseIterator = recentChanges.stream()
                 .collect(Collectors.toCollection(ArrayDeque::new))
                 .descendingIterator();
         while(reverseIterator.hasNext()) {
             var nextDiff = reverseIterator.next();
-            if(text.contains(nextDiff.getRemovedText())){
+            if(isValid.test(nextDiff)){
                 return nextDiff;
             }
         }
@@ -59,7 +63,8 @@ public final class RecentChangesService implements Disposable {
         });
     }
 
-    public static RecentChangesService getInstance(){
+    public static RecentChangesService getInstance(/*Project project*/){
+//        return project.getService(RecentChangesService.class);
         return ApplicationManager.getApplication().getService(RecentChangesService.class);
     }
 

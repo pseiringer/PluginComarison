@@ -3,11 +3,18 @@ package com.example.intellijplugindemo.eventlisteners;
 import com.example.intellijplugindemo.services.RecentChangesService;
 import com.example.intellijplugindemo.util.DiffWordModeExtender;
 import com.example.intellijplugindemo.util.diff_match_patch;
+import com.intellij.ide.DataManager;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.DataConstants;
+import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.event.DocumentEvent;
 import com.intellij.openapi.editor.event.DocumentListener;
+import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.psi.PsiDocumentManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,14 +30,14 @@ public class SimpleChangeDocumentListener implements DocumentListener {
     private TimerTask doneTyping;
     private Timer timer = new Timer("Timer");
 
-    private Project project;
+//    private Project project;
     private RecentChangesService recentChanges;
 
     private String textBeforeChange;
     private diff_match_patch dmp;
 
-    public SimpleChangeDocumentListener(Project project){
-        this.project = project;
+    public SimpleChangeDocumentListener(/*Project project*/){
+//        this.project = project;
         recentChanges = RecentChangesService.getInstance();
 
         dmp = new diff_match_patch();
@@ -98,17 +105,21 @@ public class SimpleChangeDocumentListener implements DocumentListener {
         };
     }
 
-
     private String getOriginalTextFromDocument(Document document){
         CompletableFuture<String> future = new CompletableFuture();
 
-        ApplicationManager.getApplication().runReadAction(() -> {
-            future.complete(PsiDocumentManager
-                    .getInstance(project)
-                    .getPsiFile(document)
-                    .getOriginalFile()
-                    .getText());
-        });
+        DataManager.getInstance()
+                .getDataContextFromFocusAsync()
+                .onSuccess(dataContext -> {
+                    var project = dataContext.getData(CommonDataKeys.PROJECT);
+                    ApplicationManager.getApplication().runReadAction(() -> {
+                        future.complete(PsiDocumentManager
+                                .getInstance(project)
+                                .getPsiFile(document)
+                                .getOriginalFile()
+                                .getText());
+                    });
+                });
 
         return future.join();
     }

@@ -1,12 +1,12 @@
 package com.example.intellijplugindemo.actions;
 
 import com.example.intellijplugindemo.services.RecentChangesService;
+import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.command.WriteCommandAction;
-import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 public class ApplyRecentChange extends AnAction {
@@ -29,8 +29,9 @@ public class ApplyRecentChange extends AnAction {
         var psiElemStart = currentElement.getTextOffset();
 
         //check if text matches a recent change
-        var matchingDiff = RecentChangesService.getInstance().getMatchingDiff(selectedText);
+        var matchingDiff = RecentChangesService.getInstance().getDiffMatchingRemovedText(selectedText);
         if (matchingDiff == null){
+            HintManager.getInstance().showErrorHint(editor, "No matching change detected");
             System.out.println("no matching change detected");
             return;
         }
@@ -54,6 +55,7 @@ public class ApplyRecentChange extends AnAction {
     public void update(@NotNull AnActionEvent event) {
         var psiFile = event.getData(CommonDataKeys.PSI_FILE);
         var editor = event.getRequiredData(CommonDataKeys.EDITOR);
+        var project = event.getRequiredData(CommonDataKeys.PROJECT);
 
         //get element text where caret is currently located
         var caret = editor.getCaretModel().getPrimaryCaret();
@@ -66,7 +68,7 @@ public class ApplyRecentChange extends AnAction {
         var selectedText = currentElement.getText();
 
         //check if text matches a recent change
-        var matchingDiff = RecentChangesService.getInstance().getMatchingDiff(selectedText);
+        var matchingDiff = RecentChangesService.getInstance().getDiffMatchingRemovedText(selectedText);
         if (matchingDiff == null){
             System.out.println("no matching change detected");
             event.getPresentation().setVisible(false);

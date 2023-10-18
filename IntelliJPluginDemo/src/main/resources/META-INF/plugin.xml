@@ -26,39 +26,16 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="com.example.intellijplugindemo.Startup" />
-        <toolWindow id="Recent Changes" secondary="true" icon="AllIcons.Actions.Diff" anchor="right"
+        <toolWindow id="Recent Changes" secondary="true" icon="/icons/diff_13x13.svg" anchor="right"
                     factoryClass="com.example.intellijplugindemo.toolwindows.RecentChangesToolWindowFactory"/>
-        <notificationGroup id="CustomNotificationGroup"
-                           displayType="STICKY_BALLOON"/>
+        <notificationGroup id="RecentChangesNotificationGroup"
+                           displayType="BALLOON"/>
+        <completion.contributor
+                language="any"
+                implementationClass="com.example.intellijplugindemo.languageSupport.RecentChangesCompletionContributor"/>
     </extensions>
 
-<!--    <applicationListeners>-->
-<!--        <listener-->
-<!--                class="com.example.intellijplugindemo.eventlisteners.SimpleChangeDocumentListener"-->
-<!--                topic="com.intellij.openapi.editor.event.DocumentListener"/>-->
-<!--    </applicationListeners>-->
-
     <actions>
-        <action id="com.example.intellijplugindemo.actions.PopupDialogAction"
-                class="com.example.intellijplugindemo.actions.PopupDialogAction" text="Popup Dialog Action Demo"
-                description="SDK action example">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
-        <action id="com.example.intellijplugindemo.test.UITestAction"
-                class="com.example.intellijplugindemo.test.UITestAction" text="TestAction"
-                description="TestAction">
-            <add-to-group group-id="ToolsMenu" anchor="first"/>
-        </action>
-        <action id="com.example.intellijplugindemo.actions.CopySelectedTextAction"
-                class="com.example.intellijplugindemo.actions.CopySelectedTextAction" text="Google Selected Text"
-                description="Google Example">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
-        <action id="com.example.intellijplugindemo.actions.EditorContextDialogTest"
-                class="com.example.intellijplugindemo.actions.EditorContextDialogTest" text="Context Menu Demo"
-                description="Context Menu Demo">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
         <action id="ReplayLastChange" class="com.example.intellijplugindemo.actions.ApplyRecentChange" text="ReplayLastChange"
                 description="ReplayLastChange">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>

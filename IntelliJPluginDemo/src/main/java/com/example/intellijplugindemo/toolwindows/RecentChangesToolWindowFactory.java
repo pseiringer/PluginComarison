@@ -36,9 +36,11 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
         private final JPanel contentPanel = new JPanel();
         private DefaultTreeModel model;
         private Tree changesTree = new Tree();
-        private final RecentChangesService recentChangesService = RecentChangesService.getInstance();
+        private final RecentChangesService recentChangesService;
 
         public RecentChangesToolWindowContent(ToolWindow toolWindow) {
+            recentChangesService = RecentChangesService.getInstance();
+
             // set up the overall layout of the toolwindow
             contentPanel.setLayout(new BorderLayout(0, 20));
             contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
