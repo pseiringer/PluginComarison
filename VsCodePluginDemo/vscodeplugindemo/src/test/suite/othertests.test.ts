@@ -16,7 +16,7 @@ suite('Demo Test Suite', () => {
 	test('Async test', (done) => {
 		vscode.commands.executeCommand('vscodeplugindemo.returnOne')
 			.then((val) => {
-				//fulfilled //TODO this is not called? maybe command needs to specify that it returns sth?
+				//fulfilled
 				assert.strictEqual(1, val);
 				done();
 			});

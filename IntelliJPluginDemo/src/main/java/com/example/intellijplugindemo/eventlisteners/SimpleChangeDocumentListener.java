@@ -31,14 +31,12 @@ public class SimpleChangeDocumentListener implements DocumentListener {
     private Timer timer = new Timer("Timer");
 
 //    private Project project;
-    private RecentChangesService recentChanges;
 
     private String textBeforeChange;
     private diff_match_patch dmp;
 
     public SimpleChangeDocumentListener(/*Project project*/){
 //        this.project = project;
-        recentChanges = RecentChangesService.getInstance();
 
         dmp = new diff_match_patch();
         dmp.Diff_Timeout = 3;
@@ -50,7 +48,10 @@ public class SimpleChangeDocumentListener implements DocumentListener {
         if (!timerActive){
             //a new typing action has started
             System.out.println("started typing");
-            textBeforeChange = getOriginalTextFromDocument(event.getDocument());
+            var currentText = getOriginalTextFromDocument(event.getDocument());
+            if (currentText != null) {
+                textBeforeChange = currentText;
+            }
         }
     }
 
@@ -78,8 +79,14 @@ public class SimpleChangeDocumentListener implements DocumentListener {
 //                var diffs = dmp.diff_main(textBeforeChange, getOriginalTextFromDocument(event.getDocument()));
 //                dmp.diff_cleanupSemantic(diffs);
 
+                // get current text
+                var currentText = getOriginalTextFromDocument(event.getDocument());
+                if (currentText == null) {
+                    return;
+                }
+
                 // use custom word mode instead
-                var diffs = DiffWordModeExtender.diff_wordMode(dmp, textBeforeChange, getOriginalTextFromDocument(event.getDocument()));
+                var diffs = DiffWordModeExtender.diff_wordMode(dmp, textBeforeChange, currentText);
 
                 var changes = diffs.stream()
                         .filter(x -> x.operation != diff_match_patch.Operation.EQUAL)
@@ -97,10 +104,10 @@ public class SimpleChangeDocumentListener implements DocumentListener {
                         else
                             simpleDiff.setRemovedText(change.text);
                     }
-                    recentChanges.addChange(simpleDiff);
+                    RecentChangesService.getInstance().addChange(simpleDiff);
                 }
 
-                recentChanges.printChanges();
+                RecentChangesService.getInstance().printChanges();
             }
         };
     }
@@ -113,12 +120,16 @@ public class SimpleChangeDocumentListener implements DocumentListener {
                 .onSuccess(dataContext -> {
                     var project = dataContext.getData(CommonDataKeys.PROJECT);
                     ApplicationManager.getApplication().runReadAction(() -> {
-                        future.complete(PsiDocumentManager
+                        var psiFile = PsiDocumentManager
                                 .getInstance(project)
-                                .getPsiFile(document)
-                                .getOriginalFile()
-                                .getText());
+                                .getPsiFile(document);
+                        future.complete(
+                                (psiFile == null) ? null : psiFile.getOriginalFile().getText()
+                        );
                     });
+                })
+                .onError(e -> {
+                    future.complete(null);
                 });
 
         return future.join();

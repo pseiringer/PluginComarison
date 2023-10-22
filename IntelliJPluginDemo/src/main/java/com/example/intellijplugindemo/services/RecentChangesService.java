@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 @Service(Service.Level.APP)
 public final class RecentChangesService implements Disposable {
 
+    public static final int QUEUE_SIZE = 10;
+
     // list of recent changes
-    private Queue<SimpleDiff> recentChanges = EvictingQueue.create(10);
+    private Queue<SimpleDiff> recentChanges = EvictingQueue.create(QUEUE_SIZE);
     private List<RecentDiffsChangedListener> changeListeners = new ArrayList<>();
 
     public void addChange(SimpleDiff change) {
@@ -67,11 +69,18 @@ public final class RecentChangesService implements Disposable {
 //        return project.getService(RecentChangesService.class);
         return ApplicationManager.getApplication().getService(RecentChangesService.class);
     }
+    public void reset(){
+        clearChanges();
+        changeListeners = new ArrayList<>();
+    }
+    private void clearChanges(){
+        recentChanges.clear();
+        notifyListeners();
+    }
 
     @Override
     public void dispose() {
-        recentChanges.clear();
-        notifyListeners();
+        clearChanges();
     }
 
 

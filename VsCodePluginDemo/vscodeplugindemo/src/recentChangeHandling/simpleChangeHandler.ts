@@ -111,7 +111,7 @@ export class SimpleChangeHandler {
             while (wordEnd < text.length - 1) {
                 // Modified here to look for word boundaries, not just newlines
                 // find idx of next word bound
-                const WORD_BOUND: RegExp = /\W/;
+                const WORD_BOUND: RegExp = /\W/; //TODO check if word bound can be improved
                 let foundIndex = text.slice(wordStart).search(WORD_BOUND);
                 if (foundIndex < 0) {
                     wordEnd = text.length;
@@ -150,7 +150,6 @@ export class SimpleChangeHandler {
         // this.dmp.diff_cleanupSemantic(diffs);
 
         // use custom word mode instead
-        //TODO improve word mode
         let diffs = this.diff_wordMode(previousText, currentText);
 
         // filter all equal parts

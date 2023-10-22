@@ -11,11 +11,10 @@ export class ApplyRecentChangeCommand {
         this.changes = changesStorage;
     }
 
-    public applyRecentChange() {
+    public applyRecentChange(editor: vscode.TextEditor, editBuilder: vscode.TextEditorEdit) {
         console.log("apply recent change");
 
         //check conditions
-        let editor = vscode.window.activeTextEditor;
         if (editor === undefined){
             console.log("no editor active");
             return;
@@ -31,6 +30,7 @@ export class ApplyRecentChangeCommand {
         let foundDiff = this.changes.findMatchingChange(selectedText);
         if (foundDiff === undefined){
             console.log("no matching change detected");
+            vscode.window.showInformationMessage("No matching change detected");
             return;
         }
 
@@ -48,12 +48,14 @@ export class ApplyRecentChangeCommand {
         let replacementRange = new vscode.Range(replacementStart, replacementEnd);
         
         //replace calculated range
-        editor.edit((editBuilder) => {
-            editBuilder.replace(replacementRange, (foundDiff?.replacementText)??"");
-        },{
-            undoStopBefore: true, 
-            undoStopAfter: false
-        });
+
+        editBuilder.replace(replacementRange, (foundDiff?.replacementText)??"");
+        // editor.edit((editBuilder) => {
+        //     editBuilder.replace(replacementRange, (foundDiff?.replacementText)??"");
+        // },{
+        //     undoStopBefore: true, 
+        //     undoStopAfter: false
+        // });
     }
 
 

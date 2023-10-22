@@ -36,11 +36,8 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
         private final JPanel contentPanel = new JPanel();
         private DefaultTreeModel model;
         private Tree changesTree = new Tree();
-        private final RecentChangesService recentChangesService;
 
         public RecentChangesToolWindowContent(ToolWindow toolWindow) {
-            recentChangesService = RecentChangesService.getInstance();
-
             // set up the overall layout of the toolwindow
             contentPanel.setLayout(new BorderLayout(0, 20));
             contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
@@ -48,7 +45,7 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
             // update the content
             updateRecentChangesTree();
             // subscribe to changes service
-            recentChangesService.addChangeListener(() -> {
+            RecentChangesService.getInstance().addChangeListener(() -> {
                 updateRecentChangesTree();
             });
         }
@@ -75,7 +72,7 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
             model.reload(root);
 
             // add children for all recent changes
-            recentChangesService.getRecentChanges().forEach(diff -> {
+            RecentChangesService.getInstance().getRecentChanges().forEach(diff -> {
                 // add diff node
                 DefaultMutableTreeNode diffNode = new DefaultMutableTreeNode(
                         String.format("'%s' -> '%s'", diff.getRemovedText(), diff.getReplacementText()),

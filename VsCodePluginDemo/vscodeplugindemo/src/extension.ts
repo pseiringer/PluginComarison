@@ -33,8 +33,9 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	// register ApplyRecentChangeCommand for applying previously found changes
-	//TODO use register texteditorcommand
-	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.applyRecentChange', 
+	// since it is registered as TextEditorCommand it can only be activated when there is 
+	// an editor in active.
+	context.subscriptions.push(vscode.commands.registerTextEditorCommand('vscodeplugindemo.applyRecentChange', 
 		applyRecentChangeCommand.applyRecentChange, 
 		applyRecentChangeCommand
 	));
