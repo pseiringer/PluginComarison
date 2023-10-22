@@ -45,9 +45,3 @@ jobs:
         with:
           name: tests-result
           path: ${{ github.workspace }}/IntelliJPluginDemo/build/reports/tests
-
-      # Upload the Kover report to CodeCov
-      - name: Upload Code Coverage Report
-        uses: codecov/codecov-action@v3
-        with:
-          files: ${{ github.workspace }}/IntelliJPluginDemo/build/reports/kover/report.xml

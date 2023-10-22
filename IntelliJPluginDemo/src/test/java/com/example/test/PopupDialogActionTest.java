@@ -48,6 +48,12 @@ public class PopupDialogActionTest extends BasePlatformTestCase {
         myFixture.checkResultByFile("someExpectedFile.xml");
     }
 
+
+    @Test
+    void failing() {
+        assertTrue(false);
+    }
+
     @Override
     protected String getTestDataPath() {
         return "src/test/testdata";
