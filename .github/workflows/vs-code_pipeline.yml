@@ -18,6 +18,7 @@ jobs:
       with:
         node-version: 16.x
     - run: cd ./VsCodePluginDemo/vscodeplugindemo
+    - run: pwd
     - run: npm install
     - run: xvfb-run -a npm test
       if: runner.os == 'Linux'
