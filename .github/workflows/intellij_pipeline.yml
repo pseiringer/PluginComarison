@@ -8,7 +8,7 @@ jobs:
 
   # Run tests and upload a code coverage report
   test:
-    name: Test
+    name: Build and Test IntelliJ
     runs-on: ubuntu-latest
     defaults:
       run:

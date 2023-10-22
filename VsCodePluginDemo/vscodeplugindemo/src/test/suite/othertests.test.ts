@@ -31,8 +31,4 @@ suite('Demo Test Suite', () => {
 			assert.ok([0,1,2,3,4].includes(value));
 		});
 	});
-
-	test('failing', () => {
-		assert.ok(false);
-	});
 });
