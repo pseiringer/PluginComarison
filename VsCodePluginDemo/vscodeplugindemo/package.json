@@ -1,7 +1,8 @@
 {
-  "name": "vscodeplugindemo",
-  "displayName": "VsCodePluginDemo",
+  "name": "pseiringer-vscodeplugindemo",
+  "displayName": "pseiringer VsCodePluginDemo",
   "description": "",
+  "publisher": "pseiringer",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.80.0"
