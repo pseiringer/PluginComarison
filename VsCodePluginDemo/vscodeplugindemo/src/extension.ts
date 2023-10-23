@@ -4,6 +4,7 @@ import { SimpleChangeHandler } from './recentChangeHandling/simpleChangeHandler'
 import { RecentChangeStorage } from './recentChangeHandling/recentChangeStorage';
 import { ApplyRecentChangeCommand } from './recentChangeHandling/applyRecentChangeCommand';
 import { RecentChangeTreeViewProvider } from './recentChangeViews/recentChangeTreeViewProvider';
+import { activateRecentChangesCompletionProvider } from './languageSupport/recentChangesCompletionProvider';
 
 let changeStorage = new RecentChangeStorage();
 let simpleChangeHandler = new SimpleChangeHandler(changeStorage);
@@ -54,6 +55,9 @@ export function activate(context: vscode.ExtensionContext) {
 	changeStorage.addEventListener(changeStorage.storageChangedEventName, () => {		
 		recentChangeTreeViewProvider.refresh();
 	});
+
+	// activate auto completion
+	activateRecentChangesCompletionProvider(context, changeStorage);
 }
 
 // This method is called when your extension is deactivated

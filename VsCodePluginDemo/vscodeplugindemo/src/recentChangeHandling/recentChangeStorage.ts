@@ -18,9 +18,13 @@ export class RecentChangeStorage extends EventTarget{
     }
     
     public findMatchingChange(text: string): SimpleDiff | undefined {
+        return this.findChange(diff => text.includes(diff.removedText));
+    }
+    
+    public findChange(isValid: (diff: SimpleDiff) => boolean): SimpleDiff | undefined {
         let queuedChanges = this.recentChanges.getData().slice().reverse();
         for(let diff of queuedChanges){
-            if(text.includes(diff.removedText)){
+            if(isValid(diff)){
                 return diff;
             }
         }
