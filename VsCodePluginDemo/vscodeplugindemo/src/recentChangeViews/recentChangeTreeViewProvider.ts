@@ -23,6 +23,8 @@ export class RecentChangeTreeViewProvider implements vscode.TreeDataProvider<Sim
     } else {
       return Promise.resolve(
         this.changes.getAllChanges()
+          .slice()
+          .reverse()
           .map(x => new SimpleDiffTreeItem(x, undefined, undefined, false)));
     }
   }

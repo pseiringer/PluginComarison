@@ -72,7 +72,9 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
             model.reload(root);
 
             // add children for all recent changes
-            RecentChangesService.getInstance().getRecentChanges().forEach(diff -> {
+            RecentChangesService.getInstance()
+                    .getRecentChanges().
+                    descendingIterator().forEachRemaining(diff -> {
                 // add diff node
                 DefaultMutableTreeNode diffNode = new DefaultMutableTreeNode(
                         String.format("'%s' -> '%s'", diff.getRemovedText(), diff.getReplacementText()),

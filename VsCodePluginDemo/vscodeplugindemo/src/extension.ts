@@ -13,24 +13,33 @@ let recentChangeTreeViewProvider = new RecentChangeTreeViewProvider(changeStorag
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "vscodeplugindemo" is now active!');
+	console.log('"vscodeplugindemo" is now active!');
+	// TODO add setting for debounce time and maybe queue size
 
-	// register some simple commands
-	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
-		vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
-	}));
-	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
-		vscode.window.showInformationMessage('returnOne was called!');
-		return 1;
-	}));
+	// TODO remove
+	// // register some simple commands
+	// context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
+	// 	vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
+	// }));
+	// context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
+	// 	vscode.window.showInformationMessage('returnOne was called!');
+	// 	return 1;
+	// }));
 
 
 	// register SimpleChangeHandler for recognizing changes
-	vscode.workspace.onDidOpenTextDocument(simpleChangeHandler.handleOpenDocument, simpleChangeHandler);
-	vscode.workspace.onDidChangeTextDocument(simpleChangeHandler.handleChange, simpleChangeHandler);
+	context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(
+		simpleChangeHandler.handleOpenDocument, 
+		simpleChangeHandler
+	));
+	context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(
+		simpleChangeHandler.handleChange, 
+		simpleChangeHandler
+	));
 
 	if (vscode.window.activeTextEditor !== undefined){
-		simpleChangeHandler.handleOpenDocument.call(simpleChangeHandler, vscode.window.activeTextEditor.document);
+		// handle the document that has been opened at startup
+		simpleChangeHandler.handleOpenDocument(vscode.window.activeTextEditor.document);
 	}
 
 	// register ApplyRecentChangeCommand for applying previously found changes

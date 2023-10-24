@@ -13,15 +13,15 @@ suite('Demo Test Suite', () => {
 	});
 
 	
-	test('Async test', (done) => {
-		vscode.commands.executeCommand('vscodeplugindemo.returnOne')
-			.then((val) => {
-				//fulfilled
-				assert.strictEqual(1, val);
-				done();
-			});
-		
-	});
+	// test('Async test', (done) => {
+	// 	vscode.commands.executeCommand('vscodeplugindemo.returnOne')
+	// 		.then((val) => {
+	// 			//fulfilled
+	// 			assert.strictEqual(1, val);
+	// 			done();
+	// 		});
+	// });
+
 	test('third test', () => {
 		assert.strictEqual(-1, [1, 2, 3].indexOf(5));
 	});

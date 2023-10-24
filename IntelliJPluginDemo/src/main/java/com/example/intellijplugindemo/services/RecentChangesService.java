@@ -33,17 +33,16 @@ public final class RecentChangesService implements Disposable {
         System.out.println("]");
     }
 
-    public Queue<SimpleDiff> getRecentChanges() {
-        return recentChanges;
+    public Deque<SimpleDiff> getRecentChanges() {
+        return recentChanges.stream()
+                .collect(Collectors.toCollection(ArrayDeque::new));
     }
 
     public SimpleDiff getDiffMatchingRemovedText(String text) {
         return getDiff(diff -> text.contains(diff.getRemovedText()));
     }
     public SimpleDiff getDiff(Predicate<SimpleDiff> isValid) {
-        var reverseIterator = recentChanges.stream()
-                .collect(Collectors.toCollection(ArrayDeque::new))
-                .descendingIterator();
+        var reverseIterator = getRecentChanges().descendingIterator();
         while(reverseIterator.hasNext()) {
             var nextDiff = reverseIterator.next();
             if(isValid.test(nextDiff)){
