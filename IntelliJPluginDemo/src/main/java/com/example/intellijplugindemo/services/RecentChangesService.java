@@ -13,11 +13,15 @@ import java.util.stream.Collectors;
 @Service(Service.Level.APP)
 public final class RecentChangesService implements Disposable {
 
-    public static final int QUEUE_SIZE = 10;
-
     // list of recent changes
-    private Queue<SimpleDiff> recentChanges = EvictingQueue.create(QUEUE_SIZE);
+    private Queue<SimpleDiff> recentChanges;
     private List<RecentDiffsChangedListener> changeListeners = new ArrayList<>();
+
+    public RecentChangesService(){
+        var settings = RecentChangesSettingsService.getInstance();
+        recentChanges = EvictingQueue.create(settings.getQueueSize());
+        settings.addQueueSizeListener(size -> resizeChangesQueue(size));
+    }
 
     public void addChange(SimpleDiff change) {
         recentChanges.add(change);
@@ -52,6 +56,15 @@ public final class RecentChangesService implements Disposable {
         return null;
     }
 
+    public void resizeChangesQueue(int size){
+        Queue<SimpleDiff> newQueue = EvictingQueue.create(size);
+        recentChanges.forEach(change -> {
+            newQueue.add(change);
+        });
+        recentChanges = newQueue;
+        notifyListeners();
+    }
+
     public void addChangeListener(RecentDiffsChangedListener l){
         changeListeners.add(l);
     }
@@ -68,6 +81,7 @@ public final class RecentChangesService implements Disposable {
 //        return project.getService(RecentChangesService.class);
         return ApplicationManager.getApplication().getService(RecentChangesService.class);
     }
+
     public void reset(){
         clearChanges();
         changeListeners = new ArrayList<>();

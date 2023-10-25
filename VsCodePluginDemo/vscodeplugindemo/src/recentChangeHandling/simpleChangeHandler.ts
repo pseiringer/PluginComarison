@@ -2,11 +2,11 @@
 import * as vscode from 'vscode';
 import { diff_match_patch, Diff } from 'diff-match-patch';
 import { RecentChangeStorage, SimpleDiff } from './recentChangeStorage';
+import { RecentChangesSettings } from '../settings/recentChangesSettings';
 
 export class SimpleChangeHandler {
 
-    private readonly debounceTime = 750;
-    private readonly debounce: (event: vscode.TextDocumentChangeEvent) => void;
+    private readonly debounce: (event: vscode.TextDocumentChangeEvent, debounceTime: number) => void;
     private isTyping: boolean = false;
 
     private textBeforeChange: string = "";
@@ -16,7 +16,8 @@ export class SimpleChangeHandler {
     private readonly changes: RecentChangeStorage;
 
     constructor(changesStorage: RecentChangeStorage) {
-        this.debounce = this.createDebouncedChangeHandler(this.doneTyping, 1000);
+        //TODO get settings value
+        this.debounce = this.createDebouncedChangeHandler(this.doneTyping);
 
         this.dmp = new diff_match_patch();
         this.dmp.Diff_Timeout = 3;
@@ -25,9 +26,9 @@ export class SimpleChangeHandler {
         this.changes = changesStorage;
     }
 
-    private createDebouncedChangeHandler(callback: (event: vscode.TextDocumentChangeEvent) => void, debounceTime: number): (event: vscode.TextDocumentChangeEvent) => void {
+    private createDebouncedChangeHandler(callback: (event: vscode.TextDocumentChangeEvent) => void): (event: vscode.TextDocumentChangeEvent, debounceTime: number) => void {
         let timer: NodeJS.Timeout;
-        return (event: vscode.TextDocumentChangeEvent) => {
+        return (event: vscode.TextDocumentChangeEvent, debounceTime: number) => {
             console.log("resetting timer...");
             clearTimeout(timer);
             timer = setTimeout(() => {callback.call(this, event);}, debounceTime);
@@ -35,13 +36,28 @@ export class SimpleChangeHandler {
     }
 
     public handleOpenDocument(document: vscode.TextDocument){
-        //document before first change == document after opening
+        if (vscode.window.activeTextEditor === undefined){
+            //no active text editor -> ignore document
+            return;
+        }
         if(!this.isTyping){
+            //document before first change <-> document after opening
             this.textBeforeChange = document.getText();
         }
     }
 
+    public handleChangeEditor(e: vscode.TextEditor | undefined){
+        if (e !== undefined){
+            this.textBeforeChange = e.document.getText();
+            console.log("edit changed")
+        }
+    }
+
     public handleChange(event: vscode.TextDocumentChangeEvent) {
+        if (vscode.window.activeTextEditor === undefined){
+            //no active text editor -> ignore changes
+            return;
+        }
         if (!this.isTyping){
             //beginning of new change
             console.log("startTyping");
@@ -49,7 +65,7 @@ export class SimpleChangeHandler {
             //after the last change or when opening the document
         }
         this.isTyping = true;
-        this.debounce.call(this, event);
+        this.debounce.call(this, event, RecentChangesSettings.getDebounceTimeFromSettings());
     }
 
     private doneTyping(event: vscode.TextDocumentChangeEvent){

@@ -26,8 +26,7 @@ public class RecentChangesCompletionContributor extends CompletionContributor {
 
                         var textBefore = elemBefore.getText();
                         var possibleDiff = RecentChangesService.getInstance()
-                                .getDiff(diff -> diff.getReplacementText().contains(textBefore)); // &&
-//                                        !textBefore.equals(diff.getRemovedText())); //TODO remove/rework second condition
+                                .getDiff(diff -> diff.getReplacementText().contains(textBefore));
                         if (possibleDiff == null)
                             return;
 

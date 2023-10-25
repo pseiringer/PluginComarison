@@ -33,6 +33,13 @@
         <completion.contributor
                 language="any"
                 implementationClass="com.example.intellijplugindemo.languageSupport.RecentChangesCompletionContributor"/>
+        <applicationService
+                serviceImplementation="com.example.intellijplugindemo.services.RecentChangesSettingsService"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.example.intellijplugindemo.settings.RecentChangesSettingsConfigurable"
+                id="org.intellij.sdk.settings.RecentChangesSettingsConfigurable"
+                displayName="Recent Changes Settings"/>
     </extensions>
 
     <actions>

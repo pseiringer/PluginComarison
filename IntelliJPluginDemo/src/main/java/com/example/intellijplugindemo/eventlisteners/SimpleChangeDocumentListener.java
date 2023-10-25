@@ -1,6 +1,7 @@
 package com.example.intellijplugindemo.eventlisteners;
 
 import com.example.intellijplugindemo.services.RecentChangesService;
+import com.example.intellijplugindemo.services.RecentChangesSettingsService;
 import com.example.intellijplugindemo.util.DiffWordModeExtender;
 import com.example.intellijplugindemo.util.diff_match_patch;
 import com.intellij.ide.DataManager;
@@ -25,19 +26,15 @@ import java.util.stream.Collectors;
 public class SimpleChangeDocumentListener implements DocumentListener {
 
 
-    private long delay = 750L;
     private boolean timerActive = false;
     private TimerTask doneTyping;
     private Timer timer = new Timer("Timer");
 
-//    private Project project;
 
     private String textBeforeChange;
     private diff_match_patch dmp;
 
-    public SimpleChangeDocumentListener(/*Project project*/){
-//        this.project = project;
-
+    public SimpleChangeDocumentListener(){
         dmp = new diff_match_patch();
         dmp.Diff_Timeout = 3;
 //        dmp.Diff_EditCost = 4;
@@ -65,7 +62,7 @@ public class SimpleChangeDocumentListener implements DocumentListener {
         }
         timerActive = true;
         doneTyping = getDoneTyping(event);
-        timer.schedule(doneTyping, delay);
+        timer.schedule(doneTyping, RecentChangesSettingsService.getInstance().getDebounceTimeMs());
     }
 
     private TimerTask getDoneTyping(DocumentEvent event) {

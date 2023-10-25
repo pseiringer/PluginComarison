@@ -61,22 +61,19 @@
     ],
     "configuration": [
       {
-        "title": "Recent Changes Settings",
+        "title": "Recent Changes",
         "properties": {
-          "someSetting": {
-            "type": "string",
-            "default": "abc",
-            "description": "some description"
+          "recentChanges.debounceTime": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 750,
+            "description": "The time (in milliseconds) between inputs it takes for a change to be registered as completed."
           },
-          "server.name": {
-            "type": "string",
-            "default": "def",
-            "description": "some description"
-          },
-          "server.password": {
-            "type": "null",
-            "scope": "application",
-            "markdownDescription": "[Set Password](mynotebook.setPassword)"
+          "recentChanges.queueSize": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 10,
+            "description": "The maximum amount of recent changes remembered before old changes are forgotten."
           }
         }
       }

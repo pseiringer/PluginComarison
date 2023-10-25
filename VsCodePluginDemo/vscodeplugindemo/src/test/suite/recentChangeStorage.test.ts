@@ -31,7 +31,8 @@ suite('recentChangeStorage Unit Tests', () => {
 		// Arrange.
 		const numDiffs = 5;
 
-		let changeStorage = new RecentChangeStorage(numDiffs + 1);
+		// let changeStorage = new RecentChangeStorage(numDiffs + 1);
+		let changeStorage = new RecentChangeStorage();
 
 		let diffs: SimpleDiff[] = [];
 		for (let i = 0; i < numDiffs; i++) {
@@ -55,7 +56,8 @@ suite('recentChangeStorage Unit Tests', () => {
 		const queueSize = 2;
 		let evictedDiffs = numDiffs - queueSize;
 
-		let changeStorage = new RecentChangeStorage(queueSize);
+		let changeStorage = new RecentChangeStorage();
+		// let changeStorage = new RecentChangeStorage(queueSize);
 
 		let diffs: SimpleDiff[] = [];
 		let removedDiffs: SimpleDiff[] = [];
@@ -93,7 +95,8 @@ suite('recentChangeStorage Unit Tests', () => {
 			replacementText: 'REPLACEMENT'
 		};
 
-		let changeStorage = new RecentChangeStorage(numDiffs + 1);
+		let changeStorage = new RecentChangeStorage();
+		// let changeStorage = new RecentChangeStorage(numDiffs + 1);
 
 		let diffs: SimpleDiff[] = [];
 		for (let i = 0; i < numDiffs; i++) {
@@ -115,7 +118,8 @@ suite('recentChangeStorage Unit Tests', () => {
 		// Arrange.
 		const numDiffs = 5;
 
-		let changeStorage = new RecentChangeStorage(numDiffs + 1);
+		let changeStorage = new RecentChangeStorage();
+		// let changeStorage = new RecentChangeStorage(numDiffs + 1);
 
 		let diffs: SimpleDiff[] = [];
 		for (let i = 0; i < numDiffs; i++) {
@@ -142,7 +146,8 @@ suite('recentChangeStorage Unit Tests', () => {
 			replacementText: 'REPLACEMENT'
 		};
 
-		let changeStorage = new RecentChangeStorage(queueSize);
+		let changeStorage = new RecentChangeStorage();
+		// let changeStorage = new RecentChangeStorage(queueSize);
 
 		let diffs: SimpleDiff[] = [];
 		for (let i = 0; i < numDiffs; i++) {

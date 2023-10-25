@@ -1,6 +1,7 @@
 package com.example.test;
 
 import com.example.intellijplugindemo.services.RecentChangesService;
+import com.example.intellijplugindemo.services.RecentChangesSettingsService;
 import com.intellij.testFramework.HeavyPlatformTestCase;
 import com.intellij.testFramework.fixtures.BasePlatformTestCase;
 import org.junit.jupiter.api.AfterEach;
@@ -74,7 +75,7 @@ public class RecentChangesServiceTest extends BasePlatformTestCase {
     void addRecentChangeEvictsOldSimpleDiff() {
         // Arrange.
         final int evictedDiffs = 2;
-        final int numDiffs = RecentChangesService.QUEUE_SIZE + evictedDiffs;
+        final int numDiffs = RecentChangesSettingsService.getInstance().getQueueSize() + evictedDiffs;
 
         var changeStorage = RecentChangesService.getInstance();
 
@@ -159,7 +160,7 @@ public class RecentChangesServiceTest extends BasePlatformTestCase {
     @Test
     void getDiffMatchingRemovedTextReturnsNullOnEvictedDiff() {
         // Arrange.
-		final int numDiffs = RecentChangesService.QUEUE_SIZE + 3;
+		final int numDiffs = RecentChangesSettingsService.getInstance().getQueueSize() + 3;
         RecentChangesService.SimpleDiff expectedDiff = new RecentChangesService.SimpleDiff();
         expectedDiff.setRemovedText("diff2");
         expectedDiff.setReplacementText("REPLACEMENT");

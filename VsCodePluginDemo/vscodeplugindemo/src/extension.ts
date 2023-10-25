@@ -6,10 +6,10 @@ import { ApplyRecentChangeCommand } from './recentChangeHandling/applyRecentChan
 import { RecentChangeTreeViewProvider } from './recentChangeViews/recentChangeTreeViewProvider';
 import { activateRecentChangesCompletionProvider } from './languageSupport/recentChangesCompletionProvider';
 
-let changeStorage = new RecentChangeStorage();
-let simpleChangeHandler = new SimpleChangeHandler(changeStorage);
-let applyRecentChangeCommand = new ApplyRecentChangeCommand(changeStorage);
-let recentChangeTreeViewProvider = new RecentChangeTreeViewProvider(changeStorage);
+let changeStorage: RecentChangeStorage;
+let simpleChangeHandler: SimpleChangeHandler;
+let applyRecentChangeCommand: ApplyRecentChangeCommand;
+let recentChangeTreeViewProvider: RecentChangeTreeViewProvider;
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -25,9 +25,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// 	vscode.window.showInformationMessage('returnOne was called!');
 	// 	return 1;
 	// }));
+	
+	changeStorage = new RecentChangeStorage(context);
+	simpleChangeHandler = new SimpleChangeHandler(changeStorage);
+	applyRecentChangeCommand = new ApplyRecentChangeCommand(changeStorage);
+	recentChangeTreeViewProvider = new RecentChangeTreeViewProvider(changeStorage);
 
 
 	// register SimpleChangeHandler for recognizing changes
+	context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(
+		simpleChangeHandler.handleChangeEditor, 
+		simpleChangeHandler	
+	));
 	context.subscriptions.push(vscode.workspace.onDidOpenTextDocument(
 		simpleChangeHandler.handleOpenDocument, 
 		simpleChangeHandler
@@ -36,6 +45,7 @@ export function activate(context: vscode.ExtensionContext) {
 		simpleChangeHandler.handleChange, 
 		simpleChangeHandler
 	));
+	
 
 	if (vscode.window.activeTextEditor !== undefined){
 		// handle the document that has been opened at startup

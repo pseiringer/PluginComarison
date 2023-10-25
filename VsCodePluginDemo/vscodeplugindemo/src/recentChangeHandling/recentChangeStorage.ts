@@ -1,15 +1,28 @@
+import * as vscode from 'vscode';
+
 import { EvictingQueue } from '../util/evictingQueue';
+import { RecentChangesSettings } from '../settings/recentChangesSettings';
 
 export class RecentChangeStorage extends EventTarget{
 
     public readonly storageChangedEventName: string = "storageChanged";
+
     private storageChangedEvent: Event = new Event(this.storageChangedEventName);
 
     private recentChanges: EvictingQueue<SimpleDiff>;
 
-    constructor(queueSize: number = 10) {
+    constructor(context: vscode.ExtensionContext | undefined = undefined) {
         super();
-        this.recentChanges = new EvictingQueue(queueSize);
+        context?.subscriptions.push(vscode.workspace.onDidChangeConfiguration(evt => {
+                if (evt.affectsConfiguration(
+                        `${RecentChangesSettings.settingsSection}.${RecentChangesSettings.settingQueueSize}`
+                    )){
+                    this.resizeChangesQueue(RecentChangesSettings.getQueueSizeFromSettings());
+                }
+            }, 
+            this
+        ));
+        this.recentChanges = new EvictingQueue(RecentChangesSettings.getQueueSizeFromSettings());
     }
 
     public addRecentChange(change: SimpleDiff): void {
@@ -37,6 +50,15 @@ export class RecentChangeStorage extends EventTarget{
 
     public getAllChanges(): SimpleDiff[]{
         return this.recentChanges.getData();
+    }
+
+    public resizeChangesQueue(size: number): void {
+        let newQueue = new EvictingQueue<SimpleDiff>(size);
+        this.recentChanges.getData().forEach(change => {
+            newQueue.enqueue(change);
+        });
+        this.recentChanges = newQueue;
+        this.dispatchEvent(this.storageChangedEvent);
     }
 }
 
