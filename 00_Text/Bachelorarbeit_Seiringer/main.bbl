@@ -47,6 +47,33 @@
       \field{year}{1996}
       \keyw{Java (Computer program language)}
     \endentry
+    \entry{GunasingheNadeeshaan2022Lspa}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8a7159b03e67e5c1ccae028ce1bf2c29}{%
+           family={Gunasinghe},
+           familyi={G\bibinitperiod},
+           given={Nadeeshaan},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \strng{namehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \strng{fullhash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \strng{bibnamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \strng{authorbibnamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \strng{authornamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \strng{authorfullhash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Understand the important aspects of implementing a production-grade language server in support of language-smart tools such as code editors and other programming utilities. This book shows you how to create a single implementation of a language server that can be used by multiple tools, enabling you to do the job once in a way that can be shared and reused. This book covers the language server protocol used for communication between programming tools and your language server. The book also provides an in-depth understanding of the design, implementation, and user experience aspects which should be considered when implementing a language server. The book walks you through an example language server implementation to illustrate the basic concepts, then goes on to cover advanced aspects of language server use such as progress reporting, launchers, and extension points. User experience is an important aspect of language server implementation and different tooling vendors strive to provide their own unique user experiences. This book explains how the protocol features can be leveraged to address the unique developer experience provided by different tooling vendors. The book also shows how to enhance the smoothness of the editing experience by orchestrating multiple features together. What You Will Learn Implement a language server from scratch Understand language server protocol and its data models Leverage the protocol while preserving the unique user experience of different editors Extend the protocol to support more than its standard capabilities Run a language server on top of launchers such as standard I/O and TCP socket Seamlessly incorporate language semantics into your protocol features Who This Book Is For Developers focused on and passionate about implementing language development tools such as plug-ins and extensions for interactive development environments (IDEs) or other tools that rely upon parsing of language statements and commands, and developers who need an in-depth understanding of the language server protocol as well as how to use the language server protocol to develop extensible language services.}
+      \field{isbn}{1-4842-7792-9}
+      \field{title}{Language server protocol and implementation : : supporting language-smart editing and programming tools}
+      \field{year}{2022}
+      \keyw{Computer programming}
+    \endentry
     \entry{HagosTed2022BII:}{book}{}
       \name{author}{1}{}{%
         {{hash=5975b9a73c19e769b6c357bb29240336}{%
@@ -73,6 +100,28 @@
       \field{title}{Beginning IntelliJ IDEA : Integrated Development Environment for Java Programming}
       \field{year}{2022}
       \keyw{Programming languages (Electronic computers)}
+    \endentry
+    \entry{klein2010jflex}{article}{}
+      \name{author}{1}{}{%
+        {{hash=199a8abce7ff51f1ce18d08d6910be68}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={Gerwin},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{fullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{bibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorbibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authornamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorfullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Available on-line at www. jflex. de. Accessed August}
+      \field{title}{Jflex users manual}
+      \field{year}{2010}
     \endentry
     \entry{MaharryDanTR}{book}{}
       \name{author}{1}{}{%
@@ -105,6 +154,55 @@
       \field{title}{TypeScript Revealed}
       \keyw{Computer Science ; Professional and Applied Computing ; Software Engineering/Programming and Operating Systems ; Web Development}
     \endentry
+    \entry{mccracken2003backus}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=b44e6889865ea86c640f7ac40cd9e9df}{%
+           family={McCracken},
+           familyi={M\bibinitperiod},
+           given={Daniel\bibnamedelima D},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3b9a896f2874a85d47169d97f7016ee5}{%
+           family={Reilly},
+           familyi={R\bibinitperiod},
+           given={Edwin\bibnamedelima D},
+           giveni={E\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \strng{namehash}{439f939c90321ddd7c8a6aff01569840}
+      \strng{fullhash}{439f939c90321ddd7c8a6aff01569840}
+      \strng{bibnamehash}{439f939c90321ddd7c8a6aff01569840}
+      \strng{authorbibnamehash}{439f939c90321ddd7c8a6aff01569840}
+      \strng{authornamehash}{439f939c90321ddd7c8a6aff01569840}
+      \strng{authorfullhash}{439f939c90321ddd7c8a6aff01569840}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Encyclopedia of Computer Science}
+      \field{title}{Backus-naur form (bnf)}
+      \field{year}{2003}
+      \field{pages}{129\bibrangedash 131}
+      \range{pages}{3}
+    \endentry
+    \entry{rozentals2017mastering}{book}{}
+      \name{author}{1}{}{%
+        {{hash=8fd90245a12aee5b4dec89288c7eff34}{%
+           family={Rozentals},
+           familyi={R\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{8fd90245a12aee5b4dec89288c7eff34}
+      \strng{fullhash}{8fd90245a12aee5b4dec89288c7eff34}
+      \strng{bibnamehash}{8fd90245a12aee5b4dec89288c7eff34}
+      \strng{authorbibnamehash}{8fd90245a12aee5b4dec89288c7eff34}
+      \strng{authornamehash}{8fd90245a12aee5b4dec89288c7eff34}
+      \strng{authorfullhash}{8fd90245a12aee5b4dec89288c7eff34}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mastering TypeScript}
+    \endentry
     \entry{SharanKishori2022BJ1f}{book}{}
       \name{author}{1}{}{%
         {{hash=88e882623a1e03f8b57eca6a56d4a658}{%
@@ -131,22 +229,6 @@
       \field{title}{Beginning Java 17 fundamentals : : object-oriented programming in Java 17}
       \field{year}{2022}
       \keyw{Java (Computer program language)}
-    \endentry
-    \entry{TextMateGrammar}{onlie}{}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labeltitlesource}{title}
-      \field{title}{TextMate Language Grammar}
-      \field{urlday}{10}
-      \field{urlmonth}{10}
-      \field{urlyear}{2023}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://macromates.com/manual/en/language_grammars
-      \endverb
-      \verb{url}
-      \verb https://macromates.com/manual/en/language_grammars
-      \endverb
     \endentry
     \entry{WinnieDoug2021EJfA}{book}{}
       \name{author}{1}{}{%
@@ -196,6 +278,22 @@
       \endverb
       \verb{url}
       \verb https://web.archive.org/web/20150403224440/https://typescript.codeplex.com/releases/view/95554
+      \endverb
+    \endentry
+    \entry{GrammarKit}{online}{}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{Grammar-Kit GitHub Repository}
+      \field{urlday}{31}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/JetBrains/Grammar-Kit
+      \endverb
+      \verb{url}
+      \verb https://github.com/JetBrains/Grammar-Kit
       \endverb
     \endentry
     \entry{VSCodeArchitecture}{online}{}
@@ -307,6 +405,22 @@
       \endverb
       \verb{url}
       \verb https://plugins.jetbrains.com/docs/intellij/welcome.html
+      \endverb
+    \endentry
+    \entry{JFlex}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JFlex Homepage}
+      \field{urlday}{31}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jflex.de/
+      \endverb
+      \verb{url}
+      \verb https://jflex.de/
       \endverb
     \endentry
     \entry{VSCodeExtensionSamples}{online}{}
@@ -429,6 +543,22 @@
       \endverb
       \verb{url}
       \verb https://insights.stackoverflow.com/survey
+      \endverb
+    \endentry
+    \entry{TextMateGrammar}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{TextMate Language Grammar}
+      \field{urlday}{10}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://macromates.com/manual/en/language_grammars
+      \endverb
+      \verb{url}
+      \verb https://macromates.com/manual/en/language_grammars
       \endverb
     \endentry
     \entry{TIOBEIndex}{online}{}

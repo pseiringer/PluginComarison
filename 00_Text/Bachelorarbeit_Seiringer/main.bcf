@@ -2400,26 +2400,34 @@
     <bcf:citekey order="2" intorder="1">VSCodePreview</bcf:citekey>
     <bcf:citekey order="3" intorder="1">StackOverflowSurvey</bcf:citekey>
     <bcf:citekey order="3" intorder="2">StackOverflowSurvey2023</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">IntelliJIDEAWikipedia</bcf:citekey>
-    <bcf:citekey order="4" intorder="2">IntelliJReleasePage</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">HagosTed2022BII:</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">IntelliJMarketplace</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">VSCodeMarketplace</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">TypeScriptCodePlexArchived</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">StackOverflowSurvey</bcf:citekey>
-    <bcf:citekey order="10" intorder="2">TIOBEIndex</bcf:citekey>
-    <bcf:citekey order="10" intorder="3">PYPL</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">MaharryDanTR</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">WinnieDoug2021EJfA</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">ArnoldKen1996TJpl</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">SharanKishori2022BJ1f</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">VSCodeArchitecture</bcf:citekey>
-    <bcf:citekey order="15" intorder="2">VSCodeApproachToExtensibility</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">TextMateGrammar</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">VSCodeExtensionSamples</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">FloraPluginMarketplace</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">StackOverflowSurvey</bcf:citekey>
+    <bcf:citekey order="4" intorder="2">StackOverflowSurvey2023</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">IntelliJIDEAWikipedia</bcf:citekey>
+    <bcf:citekey order="5" intorder="2">IntelliJReleasePage</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">HagosTed2022BII:</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">IntelliJMarketplace</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">VSCodeMarketplace</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">TypeScriptCodePlexArchived</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">StackOverflowSurvey</bcf:citekey>
+    <bcf:citekey order="11" intorder="2">TIOBEIndex</bcf:citekey>
+    <bcf:citekey order="11" intorder="3">PYPL</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">rozentals2017mastering</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">MaharryDanTR</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">WinnieDoug2021EJfA</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">ArnoldKen1996TJpl</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">SharanKishori2022BJ1f</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">VSCodeArchitecture</bcf:citekey>
+    <bcf:citekey order="17" intorder="2">VSCodeApproachToExtensibility</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">TextMateGrammar</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">GunasingheNadeeshaan2022Lspa</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">VSCodeExtensionSamples</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">mccracken2003backus</bcf:citekey>
+    <bcf:citekey order="21" intorder="2">GrammarKit</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">JFlex</bcf:citekey>
+    <bcf:citekey order="22" intorder="2">klein2010jflex</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">FloraPluginMarketplace</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
