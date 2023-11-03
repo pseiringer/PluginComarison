@@ -1,15 +1,26 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[111] biber-MSWIN64:340> INFO - === 
-[147] Biber.pm:419> INFO - Reading 'main.bcf'
-[251] Biber.pm:979> INFO - Found 28 citekeys in bib section 0
-[266] Biber.pm:4419> INFO - Processing section 0
-[279] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
-[325] bibtex.pm:1713> INFO - LaTeX decoding ...
-[361] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
-[486] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[486] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[486] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'de-DE'
-[486] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
-[512] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[519] bbl.pm:763> INFO - Output to main.bbl
+[101] biber-MSWIN64:340> INFO - === 
+[133] Biber.pm:419> INFO - Reading 'main.bcf'
+[235] Biber.pm:979> INFO - Found 75 citekeys in bib section 0
+[249] Biber.pm:4419> INFO - Processing section 0
+[260] Biber.pm:4610> INFO - Looking for bibtex file 'references.bib' for section 0
+[299] bibtex.pm:1713> INFO - LaTeX decoding ...
+[355] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[522] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[522] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[522] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'de-DE'
+[522] Biber.pm:4245> INFO - No sort tailoring available for locale 'de-DE'
+[569] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[583] bbl.pm:763> INFO - Output to main.bbl
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[583] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[584] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[584] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[584] Biber.pm:131> WARN - Duplicate entry key: 'IntelliJPlatformSDK' in file 'references.bib', skipping ...
+[584] Biber.pm:133> INFO - WARNINGS: 10

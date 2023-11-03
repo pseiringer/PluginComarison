@@ -40,14 +40,14 @@ enorme Anzahl von Programmiersprachen unterstützen.
 
 \subsection{IntelliJ IDEA}
 
-IntelliJ IDEA wurde erstmals im Januar 2001 \cite{IntelliJIDEAWikipedia,IntelliJReleasePage}
+IntelliJ IDEA wurde erstmals im Januar 2001 \cite{IntelliJReleasePage}
 von dem Unternehmen 
 JetBrains veröffentlicht. Im Gegensatz zu VS Code handelt 
 es sich bei IntelliJ um eine vollausgetattetes Integrate Development Environment (IDE),
 welche speziell auf die Entwicklung 
 von Programmen in den Programmiersprachen Java, Kotlin und Groovy ausgelegt ist. 
 IntelliJ IDEA wird in einer freien, Open Source 
-\enquote{Community Edition} sowie in einer kommerziellen Form 
+\enquote{Community Edition} \cite{IntelliJCommunityEditionGithub} sowie in einer kommerziellen Form 
 \enquote{IntelliJ IDEA Ultimate} angeboten \cite{HagosTed2022BII:}. 
 
 Aufgrund der Spezialisierung auf JVM-kompatible Sprachen unterstützt 
@@ -199,7 +199,8 @@ Das Extension Manifest und die eigentliche API.
   anderem Name, Beschreibung, Herausgeber und Lizenzvereinbarungen
   eingestellt werden. Weiters definiert das Manifest eine sogenannte
   JavaScript- oder TypeScript-Datei \emph{main}  und dazu passende
-  \emph{Activation Events} und \emph{Contribution Points}.
+  \emph{Activation Events} und \emph{Contribution Points}
+  \cite{VSCodeExtensionAPIExtensionManifest,VSCodeExtensionAPIExtensionAnatomy}.
   \begin{description}
     \item[Activation Events] bestimmen den Zeitpunkt, an dem das Plugin zum ersten Mal
       aktiviert wird. Dabei wird die \emph{activate} Funktion der zuvor definierten
@@ -212,20 +213,23 @@ Das Extension Manifest und die eigentliche API.
       Wurde das Plugin einmal aktiv, bleibt es auch aktiv bis VS Code wieder geschlossen
       wird oder das Plugin entfernt oder deaktiviert wird. Hierfür gibt es optional
       noch eine \emph{deactivate}-Funktion in der \emph{main}-Datei, welche für etwaige
-      Aufräumarbeiten genutzt werden kann.
+      Aufräumarbeiten genutzt werden kann
+      \cite{VSCodeExtensionAPIActivationEvents,VSCodeExtensionAPIExtensionAnatomy}.
     \item[Contribution Points] legen fest, welche Funktionalität das Plugin anbietet
       und somit auch, welche zusätzlichen UI-Elemente
       dem Nutzer in VS Code angezeigt werden sollen.
       Hier ist es beispielsweise möglich, Visual Studio Code mit neuen Befehlen (\enquote{Commands}),
       Menüs und Submenüs, Views für das Anzeigen von Plugin-definiertem Content,
-      Keyboard Shortcuts, Unterstützung für neue Sprache und vieles mehr auszustatten.
+      Keyboard Shortcuts, Unterstützung für neue Sprache und vieles mehr auszustatten 
+      \cite{VSCodeExtensionAPIContributionPoints}.
   \end{description}
 \subsubsection{Visual Studio Code API} 
   Die eigentliche VS Code API kann in jeder TypeScript-Datei 
   (zum Beispiel auch in der Datei \emph{main}) genutzt werden. 
   Hierfür wird das Modul \emph{vscode} importiert. 
   Dieses beinhaltet eine vollständige Definition der angebotenen
-  Schnittstelle, auf welche zugegriffen werden kann.
+  Schnittstelle, auf welche zugegriffen werden kann 
+  \cite{VSCodeExtensionAPIExtensionAnatomy,VSCodeExtensionAPIVSCodeAPI}.
 \begin{JsCode}
     import * as vscode from 'vscode';
 
@@ -259,7 +263,7 @@ Das Extension Manifest und die eigentliche API.
 
 Der Aufbau der Plugin-Architektur wirkt bei IntelliJ im ersten Moment 
 gleich wie bei VS Code. Es gibt auch hier ein \emph{Plugin Configuration File}, 
-sowie ein Modul mit API Schnittstellen.
+sowie ein Modul mit API Schnittstellen \cite{IntelliJPlatformSDKPluginStructure}.
 Der große Unterschied liegt allerdings in der Funktionsweise und der Interaktion
 mit den Plugins sowie der Art, wie der auszuführende Code angegeben wird.
 \subsubsection{Plugin Configuration File}
@@ -272,17 +276,20 @@ mit den Plugins sowie der Art, wie der auszuführende Code angegeben wird.
   als auch den Listenern immer um eine Zuordnung eines Interfaces
   (meist definiert von IntelliJ) zu einer Implementierung (definiert durch das Plugin)
   handelt. Weiters ist es nicht nötig einen speziellen Aktivierungszeitpunkt
-  festzulegen, da die Zuordnung der auszuführenden Klassen sowieso durch 
-  die Konfigurationsdatei festgelegt wird. Eine Besonderheit an IntelliJ ist,
+  festzulegen, da dieser durch die Zuordnung der auszuführenden Klassen sowieso durch 
+  die Konfigurationsdatei festgelegt wird \cite{IntelliJPlatformSDKPluginConfigurationFile}. 
+  Eine Besonderheit an IntelliJ ist,
   dass Plugins auch eigene Extension Points definieren können, um weiteren Plugins
-  das Erweitern des ursprünglichen Plugins zu ermöglichen.
+  das Erweitern des ursprünglichen Plugins zu ermöglichen
+  \cite{IntelliJPlatformSDKExtensionPoints}.
 \subsubsection{IntelliJ Platform SDK}
   Die API für IntelliJ Plugins ist in mehreren Paketen des IntelliJ 
   Platform SDK enthalten. Diese API enthält auch die unterschiedlichen
   Interfaces, welche dann in Form von Extension Points oder Listenern implementiert
   werden können. Die Implementierung eines Plugins kann in den Sprachen Java
   und Kotlin erledigt werden. Da die Plugin API allerdings auf Java basiert, können
-  nicht alle Sprachfeatures von Kotlin problemlos genutzt werden.
+  nicht alle Sprachfeatures von Kotlin problemlos genutzt werden 
+  \cite{IntelliJPlatformSDKConfiguringKotlinSupport}.
 \subsubsection{Ablauf}
   Wie in Abbildung \ref{fig:diagram_IntelliJExtensionArchitecture} zu sehen ist,
   analysiert IntelliJ zuerst das Plugin Configuration File.
@@ -316,7 +323,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
   das Plugin mindestens eine eindeutige Bezeichnung und zur Darstellung verwendeten Titel angeben.
   Optional können auch eine Kategorie, ein Icon und eine Kurzbezeichnung bestimmt werden. 
   Weiters ist es möglich eine Bedingung festzulegen, die beeinflusst, wann
-  der Command verwendbar ist und wann nicht.
+  der Command verwendbar ist und wann nicht \cite{VSCodeExtensionAPIContributionPointsCommands}.
 \begin{JsCode}
     "commands": [
       {
@@ -332,7 +339,7 @@ werden die wichtigsten Elemente genauer vorgestellt.
   die register-Funktionen ein Objekt retournieren, welches \emph{Disposable} implementiert.
   Dieses muss der API bekannt gegeben werden. 
   Die API kümmert sich dann auch um das Deaktivieren des Commands, falls zum Beispiel
-  die Erweiterung deaktiviert werden sollte.
+  die Erweiterung deaktiviert werden sollte \cite{VSCodeExtensionAPICommands}.
 \begin{JsCode}
     context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
       vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
@@ -345,7 +352,8 @@ werden die wichtigsten Elemente genauer vorgestellt.
   Benutzeroberfläche eingehängt werden.
   Gängig sind hierfür die Titelleiste des Editors, verschiedene Kontext-Menüs, der Dialog
   zum Anlegen einer neuen Datei, die Titelleiste einer bestimmten View oder ein neues Submenü in der Menüleiste.
-  Sowohl Menüs als auch Keybindings können im Manifest registriert werden.
+  Sowohl Menüs als auch Keybindings können im Manifest registriert werden
+  \cite{VSCodeExtensionAPIContributionPointsMenus}.
   % // TODO OPTIONAL paragraph: about calling commands from code
 \subsubsection{Spracherweiterungen}
   Ein wichtiger Teil der VS Code Plugin API sind Language Extensions. Visual Studio Code unterscheidet
@@ -361,21 +369,26 @@ werden die wichtigsten Elemente genauer vorgestellt.
       Die Grammatik wird hierfür in einer einfachen Json-Datei im Plugin Projektordner abgelegt und dann per Manifest
       unter dem Contribution Point \emph{grammar} eingebunden. Mithilfe solcher Grammatiken können auch bereits bestehende
       Grammatiken erweitert werden. Bei der Auswahl von Scopes, die durch die Grammatik definiert werden, sollte man sich
-      an die Namenskonventionen von TextMate halten. Scopes mit diesem Namensschema werden auch von vielen Themes unterstützt werden.
+      an die Namenskonventionen von TextMate halten. Scopes mit diesem Namensschema werden auch von vielen Themes unterstützt werden
+      \cite{VSCodeExtensionAPISyntaxHighlightGuide}.
       Um die Kategorisierung von bestimmten Tokens noch genauer zu erledigen, gibt es in VS Code auch \enquote{Semantic Highlighting}. 
       Es kann in der API ein \emph{DocumentSemanticTokensProvider} registriert werden,
-      welcher den Code analysiert und zusätzliche (zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt.
+      welcher den Code analysiert und zusätzliche (zum Beispiel kontextabhängige) Informationen über die Tokens bereitstellt
+      \cite{VSCodeExtensionAPISemanticHighlightGuide}.
     \item[Language Features] 
       Auch hier gibt es statisch definierte und programmatische Language Features.
       Statisch kann unter dem Contribution Point \emph{languages} eine Reihe von Informationen angegeben werden,
       die es VS Code erlauben, die User Experience stark zu verbessern. So kann man unter anderem festlegen,
       mit welchen Zeichen Kommentare eingeleitet werden, oder welche Klammern es gibt, damit VS Code das Zuklappen erlauben kann.
       Zusammengehörige Paare von Zeichen (also Klammern, Anführungszeichen, u.s.w.) können automatisch geschlossen werden.
-      Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden.
+      Und sogar für das automatische Einrücken der nächsten Zeile bei einem Zeilenumbruch kann eine Regel erstellt werden
+      \cite{VSCodeExtensionAPILanguageConfigurationGuide}.
       Programmatisch ist das Erweitern von Language Features etwas komplexer, allerdings steigt auch die
       Menge an Möglichkeiten. In der API können verschiedene Provider registriert werden, durch die Features wie
       \enquote{Go to Definition}, \enquote{IntelliSense} Codevervollständigung oder diagnostische Fehleranalysen und
-      entsprechende Verbesserungsvorschläge ermöglicht werden. Grundsätzlich ist es auch möglich, für einzelne
+      entsprechende Verbesserungsvorschläge ermöglicht werden
+      \cite{VSCodeExtensionAPIProgrammaticLanguageFeatures}. 
+      Grundsätzlich ist es auch möglich, für einzelne
       Features einen Provider zu registrieren. Allerdings empfiehlt es sich, bei der Einbindung einer neuen
       Sprache, einen \enquote{Language Server} und das Language Server Protocol zu nutzen. Diese Lösung
       bringt nicht nur Performanceverbesserungen im Editor sondern der Language Server kann auch für 
@@ -386,11 +399,12 @@ werden die wichtigsten Elemente genauer vorgestellt.
       \emph{snippets} einfach eine Datei mit den Vorlagen angegeben. Eine Vorlage enthält dabei immer
       ein Kürzel für welches das Snippet vorgeschlagen werden soll, den zu ersetzenden Text und optional
       eine Beschreibung. Dabei können im Text auch Platzhalter genutzt werden an die der Cursor beim Einsetzen
-      des Snippets springt.
+      des Snippets springt
+      \cite{VSCodeExtensionAPISnippetGuide}.
   \end{description}
 \subsubsection{Benutzereingaben}
   Für die Eingabe von Daten bietet VS Code die Quick Pick API, die File Picker API
-  und den Configuration Contribution Point.
+  und den Configuration Contribution Point \cite{VSCodeExtensionAPICommonCapabilities}.
   \begin{description}
     \item[Quick Pick API] gibt dem Plugin eine Möglichkeit, den Nutzern ein einfaches Eingabefenster
       anzuzeigen. Dabei kann ein Fenster mit bereits vorgegebenen Auswahlmöglichkeiten durch
@@ -399,14 +413,16 @@ werden die wichtigsten Elemente genauer vorgestellt.
       die Nutzer auch selber einen Text eingeben lassen. Die show-Funktionen bieten dabei immer
       eine einfache vorgefertigte Implementierung an. Falls diese Option nicht ausreichend ist,
       kann mit den create-Funktionen auch eine komplexere Implementierung angegeben werden.
-      Weiters kann auch eine Validierung des Inputs vorgenommen werden.
+      Weiters kann auch eine Validierung des Inputs vorgenommen werden \cite{VSCodeExtensionAPIQuickPick}.
       Möchte man mehrere solcher Dialoge als Abfolge hintereinander anzeigen, so muss dies
       selber programmiert werden. Hierfür gibt es ein Beispiel namens \emph{quickinput-sample}
+      \cite{VSCodeExtensionAPIQuickInputSample}
       im Repository \emph{vscode-extension-sample} \cite{VSCodeExtensionSamples}. 
     \item[File Picker API] erlaubt das Auswählen von Ordnern oder Dateien aus dem Dateisystem
       des Betriebssystems mit der Funktion \emph{showOpenDialog}. Dabei können Optionen angegeben
       werden, die zum Beispiel beeinflussen, ob Ordner und/oder Dateien gewählt werden dürfen, 
-      ob mehrere Elemente selektiert werden dürfen oder ob nach Dateinamen gefiltert werden soll.
+      ob mehrere Elemente selektiert werden dürfen oder ob nach Dateinamen gefiltert werden soll
+      \cite{VSCodeExtensionAPIFilePicker}.
     \item[Configuration Contribution Point] ermöglichen das Festlegen von Einstellungen,
       die von den Nutzern eingegeben und vom Plugin ausgelesen werden können. Hier können
       Einstellungen vom Typ \emph{number}, \emph{string} und \emph{boolean} definiert werden, welche dann direkt
@@ -421,32 +437,37 @@ werden die wichtigsten Elemente genauer vorgestellt.
       mit erlaubten Werten anzugeben.
       Zusätzlich ist es zu jeder Einstellung möglich, einen Titel und eine Beschreibung
       anzugeben, wobei es sogar Beschreibungen gibt, welche Markdown-Formattierungen
-      enthalten dürfen.
+      enthalten dürfen \cite{VSCodeExtensionAPIContributionPointsConfiguration}.
   \end{description}
 \subsubsection{Ausgaben und Anzeigen}
   Um den BenutzerInnen auch Feedback über die Ausführung des Plugin-Codes zu geben, 
-  ist in VS Code für drei allgemeine Anwendungsfälle vorgesorgt. 
+  ist in VS Code für drei allgemeine Anwendungsfälle vorgesorgt 
+  \cite{VSCodeExtensionAPICommonCapabilities}. 
   
   Um den BenutzerInnen eine kurze 
   Rückmeldung zu geben, können am besten Notifications genutzt werden. Diese zeigen eine kurze 
   Nachricht an, welche im Stil einer Information, einer Warnung oder einer Fehlermeldung 
-  dargestellt werden kann. Um einen längeren Fluss von Ausgaben (wie zum Beispiel Log-Nachrichten 
+  dargestellt werden kann \cite{VSCodeExtensionAPINotifications}. 
+  Um einen längeren Fluss von Ausgaben (wie zum Beispiel Log-Nachrichten 
   des Plugins) anzuzeigen, können Output Channels genutzt werden. An diese können Textzeilen nach 
-  und nach angehängt werden und sie werden den BenutzerInnen dann in einer einfachen Textausgabe präsentiert. 
+  und nach angehängt werden und sie werden den BenutzerInnen dann in einer einfachen Textausgabe präsentiert
+  \cite{VSCodeExtensionAPIOutputChannel}. 
   In vielen Fällen reicht es schon als Feedback eine einfache Fortschrittsanzeige anzuzeigen. So kann den 
   BenutzerInnen klar gemacht werden, dass das Plugin immer noch arbeitet und noch kein Fehler aufgetreten 
-  ist. Für diesen Anwendungsfall kann die Progress API genutzt werden.
+  ist. Für diesen Anwendungsfall kann die Progress API genutzt werden
+  \cite{VSCodeExtensionAPIProgress}.
 
   Eine etwas komplexere Anzeige bieten Views, die die sogenannte Workbench erweitern.
   Mit der Tree View API kann eine einfache Baumstruktur, ähnlich der 
   Dateiübersicht in der Explorer View, dargestellt werden. Für diese Implementierung
   muss ein \emph{TreeDataProvider} erstellt werden, welcher die Baumstruktur und
-  den Inhalt vorgibt. Die Webview API bietet im Gegensatz dazu mehr
+  den Inhalt vorgibt \cite{VSCodeExtensionAPITreeViewAPI}. 
+  Die Webview API bietet im Gegensatz dazu mehr
   Optionen. Diese kann in einer View eine Art \emph{iframe} anzeigen, in welchem
   dann HTML-Inhalte dargestellt werden können. Dabei kann auch JavaScript und CSS Code eingebunden
   werden, es können Nachrichten vom Plugin an die Webview und zurück geschickt werden, 
   es können Kontextmenüs in die View eingebunden werden und der Zustand der View
-  kann persistiert werden.
+  kann persistiert werden \cite{VSCodeExtensionAPIWebviewAPI}.
 
 \subsection{IntelliJ IDEA}
 
@@ -461,7 +482,7 @@ folgenden Abschnitten genauer beschrieben.
   abgeleitet wird. Dabei muss die Methode \emph{actionPerformed} überschrieben werden. Diese 
   enthält den Code, der von der Action ausgeführt wird. Optional sollte auch die
   \emph{update}-Methode überschrieben werden, durch welche bestimmt wird, wann die Action 
-  aktiviert oder versteckt ist.
+  aktiviert oder versteckt ist \cite{IntelliJPlatformSDKActions,IntelliJPlatformSDKActionSystem}.
 
   Im Plugin Configuration File wird festgelegt, wo und wie die programmierten Actions angezeigt
   werden. Dabei wird im Abschnitt \emph{actions} ein \emph{action}-Element erstellt.
@@ -470,7 +491,7 @@ folgenden Abschnitten genauer beschrieben.
   ein Icon festgelegt werden. Es können Gruppenzuordnungen bestimmt werden, die bestimmen,
   wo und wie die Action angezeigt wird. Es können Keyboard Shortcuts bestimmt werden. Und
   es kann mit \emph{override-text} ein alternativer Text angegeben werden, der nur an
-  bestimmten Orten angezeigt wird.
+  bestimmten Orten angezeigt wird \cite{IntelliJPlatformSDKConfigurationActions}.
   
 \begin{XmlCode}
     <actions>
@@ -484,8 +505,8 @@ folgenden Abschnitten genauer beschrieben.
 
 \subsubsection{Services}
   IntelliJ erlaubt es, Plugin Services zu definieren, welche dann auf drei Ebenen
-  in jeweils zwei Varianten implementiert werden können. Instanzen solcher Services können
-  dann an beliebigen Stellen im Plugin Code verwendet werden.
+  in jeweils zwei Varianten implementiert werden können \cite{IntelliJPlatformSDKServices}. 
+  Instanzen solcher Services können dann an beliebigen Stellen im Plugin Code verwendet werden.
 
   Die Ebene auf der ein Service erstellt wird, bestimmt, wie viele Instanzen dieses 
   Services existieren können. Dabei gibt es das \emph{application-level}, welches den Service
@@ -508,7 +529,8 @@ folgenden Abschnitten genauer beschrieben.
   Ganz ähnlich zu den vollwertigen Services funktioniert auch die Registrierung von Listenern
   und Extension Points. Allerdings gibt es hier bereits vorgefertigte Interfaces die implementiert
   werden müssen. Wurde die Implementierung dann in der Project Configuration registriert, wird
-  sie zu den entsprechenden Zeitpunkten aufgerufen.
+  sie zu den entsprechenden Zeitpunkten aufgerufen 
+  \cite{IntelliJPlatformSDKExtensionPoints,IntelliJPlatformSDKListeners}.
   
   Bei Extension Points gibt es die weitere Besonderheit, dass auch eigene Extension Points deklariert
   und im Plugin Code aufgerufen werden können. Diese werden dann für andere Plugins zur Erweiterung
@@ -517,13 +539,17 @@ folgenden Abschnitten genauer beschrieben.
 \subsubsection{PSI und Spracherweiterungen}
 
   PSI steht für Program Structure Interface und ist die Grundlage jeder Sprachunterstützung in
-  IntelliJ. Immer wenn eine Datei mit Quellcode wird von IntelliJ geparsed wird, wird zugleich auch ein
+  IntelliJ \cite{IntelliJPlatformSDKPSI}. 
+  Immer wenn eine Datei mit Quellcode wird von IntelliJ geparsed wird, wird zugleich auch ein
   Objekt der Klasse \emph{PsiFile} generiert. 
   Dieses \emph{PsiFile}-Objekt enthält dann eine Baumstruktur von Objekten der Klasse
-  \emph{PsiElement}, welche der Struktur des Quellcodes entspricht. 
+  \emph{PsiElement}, welche der Struktur des Quellcodes entspricht 
+  \cite{IntelliJPlatformSDKPSIFiles,IntelliJPlatformSDKPSIElements}. 
   Die Blattknoten eines solchen Baumes entsprechen dabei
   für gewöhnlich einzelnen Tokens und Identifiern, die nicht mehr zerlegt werden können.
   Nach oben hin werden diese dann zu Anweisungen, Code-Blöcken, Methoden, Klassen u.s.w. gebündelt.
+  Diese Struktur kann mithilfe des PsiViewers sehr gut analysiert werden 
+  \cite{IntelliJPlatformSDKPsiViewer}.
   Der Vorteil dieser \emph{PsiFile}-Objekte ist, dass sie von IntelliJ und auch von Plugins jederzeit
   verwendet werden können. Somit können unter anderem verschiedene Sprachfeatures sehr
   effizient implementiert werden.
@@ -535,24 +561,30 @@ folgenden Abschnitten genauer beschrieben.
   verwendet, welche mit zusätzlichen Informationen gespickt wird \cite{mccracken2003backus,GrammarKit}. 
   So gibt es zum Beispiel Attribute
   wie private, inner oder upper, welche die Struktur des PSI Baumes beinflussen. Mithilfe des Grammar Kit Plugins
-  kann aus einer solchen Grammatik automatisch ein Parser und die entsprechenden PSI-Elemente generiert werden. 
+  kann aus einer solchen Grammatik automatisch ein Parser und die entsprechenden PSI-Elemente generiert werden
+  \cite{IntelliJPlatformSDKLanguageTutorialGrammar}. 
   Zusätzlich zum Parser wird auch ein Lexer benötigt. Dabei wird empfohlen, mithilfe von JFlex
-  eine Datei mit Regeln automatisch in einen Lexer übersetzen zu lassen \cite{JFlex,klein2010jflex}.
+  eine Datei mit Regeln automatisch in einen Lexer übersetzen zu lassen 
+  \cite{JFlex,klein2010jflex,IntelliJPlatformSDKLanguageTutorialLexer}.
 
   Sobald Parser und Lexer registriert sind, steht das Grundgerüst der Spracherweiterung. Danach können
   verschiedene Features für die Sprache unabhängig voneinander implementiert werden. In den meisten
   Fällen ist dabei ein bestimmtes Interface zu implementieren und der entsprechende Contributor oder
   Provider im Configuration File zu registrieren. So können Auto Completion, Folding, Go To Symbol,
-  References und Refactoring sowie viele weitere Funktionalitäten unterstützt werden.
+  References und Refactoring sowie viele weitere Funktionalitäten unterstützt werden
+  \cite{IntelliJPlatformSDKCustomLanguageSupport,IntelliJPlatformSDKLanguageTutorial}.
 
 \subsubsection{User Interface Komponenten}
   Auch in IntelliJ gibt es einige vorgefertigte UI-Komponenten. Diese dienen vor allem dazu, die
   User Experience über verschiedene Plugins hinweg möglichst einheitlich und im Stile
   der IntelliJ Platform zu halten. Häufig verwendete Komponenten sind hierbei Dialoge, Popups,
   Notifications und Tool Windows. Für die Programmierung und Darstellung dieser Komponenten
-  setzt IntelliJ auf das Java Swing Framework. Dafür wurden auch bereits existierende
-  Elemente des Swing Frameworks zusätzlich überarbeitet und verbessert. So wurde zum Beispiel
-  die Swing \emph{JList} durch die JetBrains \emph{JBList} oder der \emph{JTree} durch den \emph{Tree} ersetzt.
+  setzt IntelliJ auf das Java Swing Framework 
+  \cite{IntelliJPlatformSDKUserInterfaceComponents}. 
+  Dafür wurden auch bereits existierende Elemente des Swing Frameworks zusätzlich überarbeitet 
+  und verbessert. So wurde zum Beispiel die Swing \emph{JList} durch die JetBrains \emph{JBList} 
+  oder der \emph{JTree} durch den \emph{Tree} ersetzt 
+  \cite{IntelliJPlatformSDKListAndTreeControls,IntelliJPlatformSDKMiscellaneousSwingComponents}.
   \begin{description}
     \item[Dialoge] erlauben die Anzeige einer beliebigen Java-Swing-Komponente. 
       Diese kann im einfachsten Fall ein Label mit einer Frage sein, es können allerdings
@@ -561,7 +593,8 @@ folgenden Abschnitten genauer beschrieben.
       werden im Dialog automatisch weitere Buttons für das Abschließen des Dialogs 
       eingebunden. Diese Buttons sind per default OK und Cancel, allerdings können auch
       diese manuell neu konfiguriert werden. Die Implementierung eines solchen Dialogs
-      kann durch Ableiten der \emph{DialogWrapper}-Klasse geschafft werden.
+      kann durch Ableiten der \emph{DialogWrapper}-Klasse geschafft werden
+      \cite{IntelliJPlatformSDKDialogs}.
     \item[Popups] sind eine sehr einfache Form von Dialogen. Der Unterschied zu Dialogen
       ist, dass Popups keine zusätzlichen Buttons einbinden, sondern automatisch 
       geschlossen werden, sobald der Fokus verloren geht. Um einige vorgefertigte 
@@ -569,7 +602,8 @@ folgenden Abschnitten genauer beschrieben.
       So können einfache Popups zur Auswahl aus einer Liste oder zur Bestätigung einer
       Frage erstellt werden. Natürlich ist es auch wieder möglich, benutzerdefinierte
       Popups mit eigenen Swing-Komponenten zu erstellen. Dabei sollte allerdings im
-      Hinterkopf gehalten werden, dass diese nicht zu komplex werden sollten.
+      Hinterkopf gehalten werden, dass diese nicht zu komplex werden sollten
+      \cite{IntelliJPlatformSDKPopups}.
     \item[Notifications] sind zum Anzeigen von kurzen Informationen gedacht, für die
       ein vollständiger Dialog oder ein Popup zu störend wäre. Dabei gibt es die 
       Editor Hints, welche eine Art Sprechblase an der aktuellen Stelle des Editors
@@ -577,19 +611,19 @@ folgenden Abschnitten genauer beschrieben.
       Actions genutzt werden. Editor Banner werden häufig für Fehlermeldungen 
       oder Warnungen eingesetzt, welche die Projektstruktur oder die 
       Projekteinstellungen betreffen. So werden sie zum Beispiel von IntelliJ angewendet, 
-      wenn innerhalb eines Projekts kein passendes Java Development KitJDK definiert ist. Für weitere
+      wenn innerhalb eines Projekts kein passendes Java Development Kit (JDK) definiert ist. Für weitere
       Fehlermeldungen können am besten sogenannte \enquote{Balloons} genutzt werden.
       Diese Meldungen tauchen für gewöhnlich in kleinen Blasen am rechten Rand
       des IntelliJ-Fensters auf, und verschwinden dann nach zehn Sekunden automatisch.
       Sie können allerdings auch auf \enquote{sticky} geschalten werden, damit sie nicht mehr
-      verschwinden können.
+      verschwinden können \cite{IntelliJPlatformSDKNotifications}.
     \item[Tool Windows] sind Fenster die in der Werkzeugleiste von IntelliJ eingehangen
       werden können. Am einfachsten können diese erstellt werden, indem eine Klasse
       von \emph{ToolWindowFactory} abgeleitet wird. Diese Klasse kann dann 
       in der Plugin Configuration als \emph{ToolWindow} eingebunden werden. Jedes \emph{ToolWindow}
       kann mehrere \enquote{Contents} besitzen, welche im Grunde beliebige \emph{JPanel} 
       Elemente anzeigen können. Solche \emph{ToolWindows} eignen sich am besten um komplexere
-      UI in das Plugin einzubinden.
+      UI in das Plugin einzubinden \cite{IntelliJPlatformSDKToolWindows}.
   \end{description}
 
 \subsection{IntelliJ Flora Plugins}
@@ -637,6 +671,6 @@ Weiters spricht für diesen Anwendungsfall, dass der Plugin Code
 direkt im Projektordner abgelegt wird und somit auch in einem Version 
 Control System wie Git mit abgelegt werden kann.
 
-% //TODO add references to subpages of docs
-
 % //TODO fix manual \linebreak in multiple places 
+
+% //TODO improve diagrams 

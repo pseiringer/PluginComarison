@@ -343,22 +343,6 @@
       \verb https://2021.desosa.nl/projects/vscode/posts/essay2/
       \endverb
     \endentry
-    \entry{IntelliJIDEAWikipedia}{online}{}
-      \field{sortinit}{I}
-      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
-      \field{labeltitlesource}{title}
-      \field{title}{IntelliJ IDEA Wikipedia}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
-      \field{urlyear}{2023}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/IntelliJ_IDEA
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/IntelliJ_IDEA
-      \endverb
-    \endentry
     \entry{IntelliJReleasePage}{online}{}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
@@ -391,6 +375,390 @@
       \verb https://plugins.jetbrains.com/
       \endverb
     \endentry
+    \entry{IntelliJPlatformSDKActionSystem}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Action System}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/basic-action-system.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/basic-action-system.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKActions}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Actions}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-actions.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-actions.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKConfigurationActions}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Configuration - Actions}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html#idea-plugin__actions__action
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html#idea-plugin__actions__action
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKConfiguringKotlinSupport}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Configuring Kotlin Support}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/using-kotlin.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/using-kotlin.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKCustomLanguageSupport}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Custom Language Support}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/custom-language-support.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/custom-language-support.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKDialogs}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Dialogs}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/dialog-wrapper.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/dialog-wrapper.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKExtensionPoints}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Extension Points}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKLanguageTutorial}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Language Support Tutorial}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/custom-language-support-tutorial.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/custom-language-support-tutorial.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKLanguageTutorialGrammar}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Language Support Tutorial - Grammar and Parser}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/grammar-and-parser.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/grammar-and-parser.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKLanguageTutorialLexer}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Language Support Tutorial - Lexer and Parser Definition}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/lexer-and-parser-definition.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/lexer-and-parser-definition.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKListAndTreeControls}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - List and Tree Controls}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/lists-and-trees.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/lists-and-trees.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKListeners}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Listeners}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-listeners.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-listeners.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKMiscellaneousSwingComponents}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Miscellaneous Swing Components}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/misc-swing-components.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/misc-swing-components.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKNotifications}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Notifications}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/notifications.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/notifications.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPluginConfigurationFile}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Plugin Configuration File}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPluginStructure}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Plugin Structure}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-structure.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-structure.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPopups}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Popups}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/popups.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/popups.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPSI}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Program Structure Interface (PSI)}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPSIElements}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - PSI Elements}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi-elements.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi-elements.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPSIFiles}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - PSI Files}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi-files.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/psi-files.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKPsiViewer}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - PsiViewer}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/explore-api.html#31-use-internal-mode-and-psiviewer
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/explore-api.html#31-use-internal-mode-and-psiviewer
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKServices}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Services}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-services.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/plugin-services.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKToolWindows}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - Tool Windows}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/tool-windows.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/tool-windows.html
+      \endverb
+    \endentry
+    \entry{IntelliJPlatformSDKUserInterfaceComponents}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Platform SDK - User Interface Components}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://plugins.jetbrains.com/docs/intellij/user-interface-components.html
+      \endverb
+      \verb{url}
+      \verb https://plugins.jetbrains.com/docs/intellij/user-interface-components.html
+      \endverb
+    \endentry
     \entry{IntelliJSDKDocumentation}{online}{}
       \field{sortinit}{I}
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
@@ -405,6 +773,34 @@
       \endverb
       \verb{url}
       \verb https://plugins.jetbrains.com/docs/intellij/welcome.html
+      \endverb
+    \endentry
+    \entry{IntelliJCommunityEditionGithub}{online}{}
+      \name{author}{1}{}{%
+        {{hash=b6a77f3f5bead76a495a90d63703e1f9}{%
+           family={JetBrains},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \strng{fullhash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \strng{bibnamehash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \strng{authorbibnamehash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \strng{authornamehash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \strng{authorfullhash}{b6a77f3f5bead76a495a90d63703e1f9}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{IntelliJ Community Edition Github Repository}
+      \field{urlday}{6}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/JetBrains/intellij-community/tree/master
+      \endverb
+      \verb{url}
+      \verb https://github.com/JetBrains/intellij-community/tree/master
       \endverb
     \endentry
     \entry{JFlex}{online}{}
@@ -623,6 +1019,374 @@
       \endverb
       \verb{url}
       \verb https://web.archive.org/web/20151009211114/http:/blogs.msdn.com/b/vscode/archive/2015/04/29/announcing-visual-studio-code-preview.aspx
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIActivationEvents}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Activation Events}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/activation-events
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/activation-events
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPICommands}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Commands}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/extension-guides/command
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/extension-guides/command
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPICommonCapabilities}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Common Capabilities}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/extension-capabilities/common-capabilities
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/extension-capabilities/common-capabilities
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIContributionPoints}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Contribution Points}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/contribution-points
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/contribution-points
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIContributionPointsCommands}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Contribution Points - Commands}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.commands
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.commands
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIContributionPointsConfiguration}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Contribution Points - Configuration}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.configuration
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.configuration
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIContributionPointsMenus}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Contribution Points - Menus}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.menus
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/contribution-points#contributes.menus
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIExtensionAnatomy}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Extension Anatomy}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/get-started/extension-anatomy
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/get-started/extension-anatomy
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIExtensionManifest}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Extension Manifest}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/extension-manifest
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/extension-manifest
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIFilePicker}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - FilePicker}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api#window.showOpenDialog
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api#window.showOpenDialog
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPILanguageConfigurationGuide}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Language Configuration Guide}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/language-extensions/language-configuration-guide
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/language-extensions/language-configuration-guide
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPINotifications}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Notifications}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api#window.showInformationMessage
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api#window.showInformationMessage
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIOutputChannel}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - OutputChannel}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api#OutputChannel
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api#OutputChannel
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIProgrammaticLanguageFeatures}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Programmatic Language Features}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/language-extensions/programmatic-language-features
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/language-extensions/programmatic-language-features
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIProgress}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Progress}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api#Progress
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api#Progress
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIQuickInputSample}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - QuickInput Sample}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/microsoft/vscode-extension-samples/tree/main/quickinput-sample
+      \endverb
+      \verb{url}
+      \verb https://github.com/microsoft/vscode-extension-samples/tree/main/quickinput-sample
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIQuickPick}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - QuickPick}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api#QuickPick
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api#QuickPick
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPISemanticHighlightGuide}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Semantic Highlight Guide}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPISnippetGuide}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Snippet Guide}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/language-extensions/snippet-guide
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/language-extensions/snippet-guide
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPISyntaxHighlightGuide}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Syntax Highlight Guide}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPITreeViewAPI}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Tree View API}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/extension-guides/tree-view
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/extension-guides/tree-view
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIVSCodeAPI}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - VS Code API}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/references/vscode-api
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/references/vscode-api
+      \endverb
+    \endentry
+    \entry{VSCodeExtensionAPIWebviewAPI}{online}{}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labeltitlesource}{title}
+      \field{title}{VS Code Extension API - Webview API}
+      \field{urlday}{1}
+      \field{urlmonth}{11}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://code.visualstudio.com/api/extension-guides/webview
+      \endverb
+      \verb{url}
+      \verb https://code.visualstudio.com/api/extension-guides/webview
       \endverb
     \endentry
   \enddatalist
