@@ -1,6 +1,85 @@
 \chapter{Anforderungen an den Prototyp}
 \label{cha:Prototyp}
 
+Für den direkten Vergleich der beiden Plugin APIs, sollte 
+in VS Code und in IntelliJ ein möglichst funktionsgleicher 
+Prototyp implementiert werden.
+
+Durch diesen Prototyp können die Features der beiden APIs 
+demonstriert und bewertet werden. Weiters bietet der Prototyp
+eine praxisnahe Methode um sich auch mit dem Arbeitsablauf der
+beiden Plattformen, speziell auch dem Veröffentlichen
+des Plugins, vertraut zu machen.
+
 \section{Aufbau}
 \label{sec:Prototyp_Aufbau}
 
+Um diese Aufgaben möglichst gut zu erfüllen, wurde das
+\enquote{RecentChangesPlugin} entworfen. Kurz gesagt handelt
+es sich dabei um ein Plugin, welches Text- oder Codeänderungen 
+im Editor mitschreibt und die Wiederholung von gleichen oder
+ähnlichen Änderungen erleichtert.
+Als Änderung wird hierbei das Abändern oder das Ersetzen eines
+Wortes durch ein anderes verstanden.
+
+\subsection{Bemerken von Textänderungen}
+
+Der Prototyp soll Änderungen in Text- oder Codedateien automatisch
+erkennen können um diese mitzuschreiben. Hierfür muss auch erkannt
+werden, wann eine Änderung vollständig abgeschlossen ist. Hierfür
+soll ein Debounce-Effekt % //TODO cite
+genutzt werden. Die erkannten Änderungen 
+müssen analysiert und zwischengespeichert werden.
+
+\subsection{Anwenden von Änderungen auf Befehl}
+
+Der Prototyp soll zuvor erkannte Änderungen auf Befehl an der
+aktuellen Position im Editor anwenden können. Dafür muss zuerst die
+aktuelle Textcursor-Position analysiert werden, um das Wort zu finden,
+an dem sich der Textcursor befindet. Danach muss in den 
+zwischengespeicherten Änderungen ein passender Eintrag gefunden werden,
+der auch auf die aktuelle Position angewendet werden kann.
+Dabei sollen neuere Änderungen gegenüber älteren bevorzugt werden.
+
+\subsection{Anwenden von Änderungen durch Tastenkombination}
+
+Der Vorgang des Anwenden von Änderungen soll auch durch eine
+Tastenkombination auslößbar sein.
+
+\subsection{Vergessen von alten Änderungen}
+
+Um erkannte Änderungen nicht ewig im Zwischenspeicher zu halten,
+soll nur eine bestimmte Menge gleichzeitig gespeichert werden 
+können. Wird diese Menge überschritten, so soll die älteste Änderung
+aus dem Zwischenspeicher entfernt, und somit \enquote{vergessen}, werden.
+
+\subsection{Automatische Codevervollständigung}
+
+Anhand der kürzlichen Änderungen sollen auch Vorschläge
+in der Codevervollständigung angezeigt werden. Für diese
+Vorschläge sind natürlich nur die bereits geänderten Worte
+relevant, nicht die die in der Änderung ersetzt wurden.
+
+\subsection{Anzeige der Änderungen}
+
+Damit die NutzerInnen einen Überblick über die kürzlichen Änderungen
+haben, sollen alle Änderungen die sich im Zwischenspeicher befinden
+über eine View angezeigt werden können.
+
+\subsection{Einstellungen}
+
+Es soll möglich Einstellungen des Plugins festzulegen, welche
+auch beim Schließen der Entwicklungsumgebunge persistent bleiben.
+
+Es soll gespeichert werden:
+\begin{itemize}
+    \item wie viele Änderungen gleichzeitig im 
+        Zwischenspeicher gehalten werden.
+    \item welche Debounce Zeit für das erkennen 
+        von Änderungen verwendet wird. 
+\end{itemize}
+
+\subsection{Tests}
+
+Es soll eine kleine, demonstrative Menge von Unit Tests für
+den Plugin Code geschrieben werden.
