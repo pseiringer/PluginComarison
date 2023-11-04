@@ -7,8 +7,11 @@ on:
 
 jobs:
   publish-to-marketplace:
-
+    name: Publish IntelliJ Plugin
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/IntelliJPluginDemo
     permissions:
       contents: read
       packages: write
