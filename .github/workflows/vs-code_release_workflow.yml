@@ -2,7 +2,7 @@ name: VS Code Plugin
 on:
   push:
     branches:
-      - main
+      - vscode_release
 
 jobs:
   test:
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./VsCodePluginDemo/vscodeplugindemo
@@ -26,3 +26,8 @@ jobs:
       if: runner.os == 'Linux'
     - run: npm test
       if: runner.os != 'Linux'
+    - name: Publish
+      if: success() && matrix.os == 'ubuntu-latest'
+      run: npm run deploy
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}

@@ -1,4 +1,4 @@
-name: IntelliJ Plugin
+name: IntelliJ Plugin Dev
 on:
   push:
     branches: 
