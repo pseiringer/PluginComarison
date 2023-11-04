@@ -1,0 +1,28 @@
+name: VS Code Plugin
+on:
+  push:
+    branches:
+      - vscode_release
+
+jobs:
+  test:
+    name: Build and Test VS Code
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ./VsCodePluginDemo/vscodeplugindemo
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+    - run: npm install
+    - run: xvfb-run -a npm test
+      if: runner.os == 'Linux'
+    - run: npm test
+      if: runner.os != 'Linux'

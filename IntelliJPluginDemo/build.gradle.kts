@@ -46,12 +46,12 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("222")
-        untilBuild.set("232.*")
+        untilBuild.set("233.*")
     }
 
     signPlugin {
         certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
-        privateKey.set(System.getenv("IJ_PluginSign_PK"))
+        privateKey.set(providers.environmentVariable("IJ_PluginSign_PK"))
         password.set(System.getenv("IJ_PluginSign_Pass"))
     }
 
