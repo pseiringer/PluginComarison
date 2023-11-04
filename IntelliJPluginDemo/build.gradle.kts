@@ -51,7 +51,7 @@ tasks {
 
     signPlugin {
         certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
-        privateKey.set(providers.environmentVariable("IJ_PluginSign_PK"))
+        privateKey.set(System.getenv("IJ_PluginSign_PK"))
         password.set(System.getenv("IJ_PluginSign_Pass"))
     }
 
