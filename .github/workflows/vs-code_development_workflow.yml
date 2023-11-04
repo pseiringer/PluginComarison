@@ -1,4 +1,4 @@
-name: VS Code Plugin
+name: VS Code Plugin Dev
 on:
   push:
     branches:
