@@ -7,7 +7,7 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>RecentChanges (demo)</name>
 
-    <version>0.0.1</version>
+    <version>1.1</version>
 
     <idea-version since-build="223"></idea-version>
 
