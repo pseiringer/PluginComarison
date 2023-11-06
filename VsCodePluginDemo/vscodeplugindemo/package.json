@@ -19,12 +19,8 @@
       {
         "command": "vscodeplugindemo.applyRecentChange",
         "title": "Apply recent Change"
-      },
-      {
-        "command": "recentChangeView.refreshEntry",
-        "title": "Refresh",
-        "icon": "$(refresh)"
       }
+
     ],
     "viewsContainers": {
       "activitybar": [
@@ -43,15 +39,7 @@
         }
       ]
     },
-    "menus": {
-      "view/title": [
-        {
-          "command": "recentChangeView.refreshEntry",
-          "when": "view == recentChangeView",
-          "group": "navigation"
-        }
-      ]
-    },
+    "menus": {},
     "keybindings": [
       {
         "command": "vscodeplugindemo.applyRecentChange",
