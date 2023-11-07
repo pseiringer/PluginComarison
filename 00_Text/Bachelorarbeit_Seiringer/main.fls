@@ -702,6 +702,11 @@ INPUT ./images/diagram_VSCodeDesign-Simplified.pdf
 INPUT ./images/diagram_VSCodeDesign-Simplified.pdf
 INPUT ./images/diagram_VSCodeDesign-Simplified.pdf
 INPUT ./images/diagram_VSCodeDesign-Simplified.pdf
+INPUT ./images/vscode_generated_structure.png
+INPUT ./images/vscode_generated_structure.png
+INPUT ./images/vscode_generated_structure.png
+INPUT ./images/vscode_generated_structure.png
+INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT ./chapters/entwicklungIntelliJ.tex
 INPUT ./chapters/entwicklungIntelliJ.tex
 OUTPUT chapters/entwicklungIntelliJ.aux

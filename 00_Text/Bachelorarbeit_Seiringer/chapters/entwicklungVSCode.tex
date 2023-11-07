@@ -89,7 +89,31 @@ beobachtet und die TreeView bei Veränderungen aktualisiert.
 
 \subsection{Aufsetzen des Projektes}
 
-\subsubsection{Aufbau der Ordnerstruktur}
+% //TODO source
+Um mit der Entwicklung eines VS Code Plugins zu starten, muss zuerst \emph{Node.js} % //TODO add source or link?
+auf dem Gerät installiert sein. Mithilfe von Node.js können das Werkzeug
+\emph{Yeoman} und ein dazugehöriger Generator mit dem Befehl
+\begin{GenericCode}[numbers=none]
+    npm install -g yo generator-code
+\end{GenericCode}
+installiert werden.
+\emph{Yeoman} kann daraufhin ein Plugin-Projekt automatisch über den Befehl
+\begin{GenericCode}[numbers=none]
+    yo code
+\end{GenericCode}
+erstellen. Während dieses Erstellungsprozesses können verschiedene Einstellungen
+wie der Name und die Art der Extension festgelegt werden. Generiert wird dann,
+je nach vorgenommenen Einstellungen, eine Ordnerstruktur die die wichtigsten
+Elemente eines Plugins beinhaltet. So wird mit den Standardeinstellungen
+ein Projekt angelegt, welches bereits ein Extension Manifest, eine Datei 
+\emph{extension.ts} mit dem Aktivierungs-Code und einige leere Testfälle enthält.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.35\textwidth]{vscode_generated_structure}
+    \caption{Durch \emph{Yeoman} generierte Ordnerstruktur.}
+    \label{fig:vscode_generated_structure}
+\end{figure}   
 
 \subsection{Entwicklung}
 
@@ -98,6 +122,40 @@ beobachtet und die TreeView bei Veränderungen aktualisiert.
 
 \section{Publishing}
 \label{sec:EntwicklungVsCode_Publishing}
+
+% //TODO source
+Das Veröffentlichen einer VS Code Extension funktioniert über das 
+\emph{vsce} Komandozeilenwerkzeug. Dieses kann mithilfe des Befehls
+\begin{GenericCode}[numbers=none]
+    npm install -g @vscode/vsce
+\end{GenericCode}
+installiert werden. Das fertige Plugin kann daraufhin mit 
+\begin{GenericCode}[numbers=none]
+    vsce package
+\end{GenericCode}
+verpackt und mit 
+\begin{GenericCode}[numbers=none]
+    vsce publish
+\end{GenericCode}
+in den VS Code Marketplace hochgeladen werden.
+
+Beim Hochladen ist zu beachten, dass ein \emph{personal access token}
+und ein \emph{publisher} Name benötigt werden.
+Um den Token zu erhalten, muss man zuerst in Azure DevOps eine neue Organisation
+anlegen (sofern man nicht bereits Teil einer Organisation ist). In den 
+Benutzereinstellungen kann ein neuer Token erstellt werden. Dabei müssen auch die 
+Berechtigungen für den Token festgelegt werden. Bei dem Abschnitt für 
+\emph{Marketplace} muss hier die Berechtigung \emph{Manage} gesetzt sein.
+Ein Publisher kann erstellt werden indem man sich im Marketplace anmeldet
+und die Seite \url{https://marketplace.visualstudio.com/manage} aufruft.
+Hier gibt es einen Dialog zum Erstellen eines neuen Publishers. Dieser
+Publisher benötigt mindestens eine eindeutige ID und einen eindeutigen
+Namen, welche später im Marketplace angezeigt werden. Der Publisher Name
+muss weiters noch in der Datei \emph{package.json} eingetragen werden.
+
+Das Verwalten von bereits hochgeladenen Extensions kann entweder
+über das Werkzeug \emph{vsce} oder über die grafische Benutzeroberfläche
+im Marketplace erledigt werden.
 
 \section{CI/CD}
 \label{sec:EntwicklungVsCode_CICD}
