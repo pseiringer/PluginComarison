@@ -1,6 +1,6 @@
 {
-  "name": "pseiringer-vscodeplugindemo",
-  "displayName": "pseiringer VsCodePluginDemo",
+  "name": "pseiringer-recentchangesdemo",
+  "displayName": "RecentChanges (demo)",
   "description": "",
   "publisher": "pseiringer",
   "version": "0.0.2",
@@ -19,12 +19,8 @@
       {
         "command": "vscodeplugindemo.applyRecentChange",
         "title": "Apply recent Change"
-      },
-      {
-        "command": "recentChangeView.refreshEntry",
-        "title": "Refresh",
-        "icon": "$(refresh)"
       }
+
     ],
     "viewsContainers": {
       "activitybar": [
@@ -43,19 +39,11 @@
         }
       ]
     },
-    "menus": {
-      "view/title": [
-        {
-          "command": "recentChangeView.refreshEntry",
-          "when": "view == recentChangeView",
-          "group": "navigation"
-        }
-      ]
-    },
+    "menus": {},
     "keybindings": [
       {
         "command": "vscodeplugindemo.applyRecentChange",
-        "key": "shift+r",
+        "key": "shift+alt+r",
         "when": "editorTextFocus"
       }
     ],
