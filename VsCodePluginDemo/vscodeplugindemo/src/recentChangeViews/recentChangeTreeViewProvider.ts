@@ -3,7 +3,12 @@ import { SimpleDiff, RecentChangeStorage } from '../recentChangeHandling/recentC
 
 export class RecentChangeTreeViewProvider implements vscode.TreeDataProvider<SimpleDiffTreeItem> {
   
-  constructor(private changes: RecentChangeStorage) {}
+  constructor(private changes: RecentChangeStorage) {
+    // add eventlistener to refresh the tree when the data changes
+    changes.addEventListener(changes.storageChangedEventName, () => {		
+      this.refresh();
+    });
+  }
 
   getTreeItem(element: SimpleDiffTreeItem): vscode.TreeItem {
     return element;
