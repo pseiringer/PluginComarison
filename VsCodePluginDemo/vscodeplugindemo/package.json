@@ -1,6 +1,6 @@
 {
-  "name": "pseiringer-vscodeplugindemo",
-  "displayName": "pseiringer VsCodePluginDemo",
+  "name": "pseiringer-recentchangesdemo",
+  "displayName": "RecentChanges (demo)",
   "description": "",
   "publisher": "pseiringer",
   "version": "0.0.2",
@@ -43,7 +43,7 @@
     "keybindings": [
       {
         "command": "vscodeplugindemo.applyRecentChange",
-        "key": "shift+r",
+        "key": "shift+alt+r",
         "when": "editorTextFocus"
       }
     ],
