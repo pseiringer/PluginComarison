@@ -6,7 +6,6 @@ import com.example.intellijplugindemo.util.DiffWordModeExtender;
 import com.example.intellijplugindemo.util.diff_match_patch;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.actionSystem.DataConstants;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;

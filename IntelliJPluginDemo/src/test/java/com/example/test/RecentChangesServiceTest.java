@@ -20,12 +20,12 @@ public class RecentChangesServiceTest extends BasePlatformTestCase {
     @Override
     protected void setUp() throws Exception{
         super.setUp();
+        RecentChangesService.getInstance().reset();
     }
 
     @AfterEach
     @Override
     protected void tearDown() throws Exception{
-        RecentChangesService.getInstance().reset();
         super.tearDown();
     }
 
