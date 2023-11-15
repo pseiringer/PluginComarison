@@ -43,7 +43,7 @@ Command auch über eine Tastenkombination aktiviert werden.
 Der \emph{RecentChangesTreeViewProvider} implementiert eine Schnittstelle
 um VS Code ein TreeView bereitzustellen. Die Daten für dieses TreeView
 erhält er vom \emph{RecentChangeStorage}. Damit die TreeView aktuell
-gehalten wird, wird der \emph{RecentChangeStorage} mithilfe eines Observer-Patterns % //TODO source
+gehalten wird, wird der \emph{RecentChangeStorage} mithilfe eines Observer-Patterns \cite{2005Dp:e}
 beobachtet und die TreeView bei Veränderungen aktualisiert.
 
 
@@ -52,10 +52,9 @@ beobachtet und die TreeView bei Veränderungen aktualisiert.
 
 \subsection{Aufsetzen des Projektes}
 
-% //TODO source
-Um mit der Entwicklung eines VS Code Plugins zu starten, muss zuerst \emph{Node.js} % //TODO add source or link?
+Um mit der Entwicklung eines VS Code Plugins zu starten, muss zuerst \emph{Node.js} \cite{NodeJSWebsite}
 auf dem Gerät installiert sein. Mithilfe von Node.js können das Werkzeug
-\emph{Yeoman} und ein dazugehöriger Generator mit dem Befehl
+\emph{Yeoman} \cite{YeomanWebsite} und ein dazugehöriger Generator mit dem Befehl
 \begin{GenericCode}[numbers=none]
     npm install -g yo generator-code
 \end{GenericCode}
@@ -69,7 +68,8 @@ wie der Name und die Art der Extension festgelegt werden. Generiert wird dann,
 je nach vorgenommenen Einstellungen, eine Ordnerstruktur die die wichtigsten
 Elemente eines Plugins beinhaltet. So wird mit den Standardeinstellungen
 ein Projekt angelegt, welches bereits ein Extension Manifest, eine Datei 
-\emph{extension.ts} mit dem Aktivierungs-Code und einige leere Testfälle enthält.
+\emph{extension.ts} mit dem Aktivierungs-Code und einige leere Testfälle enthält
+\cite{VSCodeExtensionAPIYourFirstExtension}.
 
 \begin{figure}
     \centering
@@ -129,7 +129,7 @@ in der Zwischenzeit, wird eine Änderung registriert. Auf diese
 Weise wird ein Debounce-Effekt erzeugt. Sobald eine Änderung
 registriert wurde, werden der Ausgangszustand und der neue Zustand
 der Datei verglichen. Hierfür wird Googles 
-\emph{diff-match-patch}-Algorithmus % //TODO source
+\emph{diff-match-patch}-Algorithmus \cite{DiffMatchPatchGithub}
 verwendet, der auch komplexe Veränderungen in Texten erkennen kann. 
 Immer wenn durch den Algorithmus eine einfache Veränderung gefunden
 wurde, wird diese, in Form eines \emph{SimpleDiff}-Objekts in
@@ -240,10 +240,26 @@ ersichtlich.
 \section{Tests}
 \label{sec:EntwicklungVsCode_Tests}
 
+Beim Erstellen einer neuen Extension wird im Ordner \emph{src} 
+auch automatisch ein Ordner \emph{test} angelegt. 
+In den generierten Dateien befindet sich 
+eine Konfiguration für das Testframework Mocha \cite{MochaJSWebsite}
+die bereits zur Ausführung bereite Tests enthält. Natürlich
+kann Mocha auch mit jedem anderen, programmatisch ausführbaren,
+TestFramework ersetzt werden. Die Testfälle nutzen eine Schnittstelle
+aus dem Paket \emph{@vscode/test-electron} \cite{VSCodeTestElectronGithub}. 
+Diese führt die Tests
+innerhalb einer speziellen Instanz von VS Code, namens 
+\emph{Extension Development Host}, aus. Auf diese Weise kann auch
+während der Tests auf das Modul \emph{vscode} zugegriffen werden.
+Dadurch ist es nicht nur möglich einfache Unit-Tests zu entwickeln.
+Sondern es können auch größer angelegte Integrationstests
+geprüft werden, die eine Interaktion mit VS Code benötigen 
+\cite{VSCodeExtensionAPITestingExtensions}.
+
 \section{Publishing}
 \label{sec:EntwicklungVsCode_Publishing}
 
-% //TODO source
 Das Veröffentlichen einer VS Code Extension funktioniert über das 
 \emph{vsce} Komandozeilenwerkzeug. Dieses kann mithilfe des Befehls
 \begin{GenericCode}[numbers=none]
@@ -257,7 +273,7 @@ verpackt und mit
 \begin{GenericCode}[numbers=none]
 vsce publish
 \end{GenericCode}
-in den VS Code Marketplace hochgeladen werden.
+in den VS Code Marketplace hochgeladen werden \cite{VSCodeExtensionAPIPublishingExtension}.
 
 Beim Hochladen ist zu beachten, dass ein \emph{personal access token}
 und ein \emph{publisher} Name benötigt werden.
@@ -284,7 +300,7 @@ Die Einbindung von automatisiertem Testen und Veröffentlichen
 einer VS Code Extension ist sehr unkompliziert, da es hierzu
 ausführliche Dokumentation gibt. Die Dokumentation bietet
 weiters vorgefertigte Beispiele für Azure Pipelines, 
-GitHub Actions, GitLab CI und Travis CI.
+GitHub Actions, GitLab CI und Travis CI \cite{VSCodeExtensionAPIContinuousIntegration}.
 
 Im Zuge der Entwicklung wurde mit GitHub Actions gearbeitet.
 Der vorgeschlagene Workflow testet die Anwendung dabei unter

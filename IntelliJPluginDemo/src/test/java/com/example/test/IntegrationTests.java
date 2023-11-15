@@ -30,9 +30,10 @@ public class IntegrationTests extends BasePlatformTestCase {
     void simpleChangeDocumentListenerAddsSimpleChangeToRecentChangesService() throws InterruptedException {
         //open file in editor
         var file = myFixture.copyFileToProject("TestSandbox.java");
-//        myFixture.openFileInEditor(file);
+        myFixture.openFileInEditor(file);
 //        myFixture.configureByFile();
-        myFixture.configureFromExistingVirtualFile(file);
+//        myFixture.configureFromExistingVirtualFile(file);
+//        myFixture.allowTreeAccessForFile(file);
 
         //replace selected text
         myFixture.type("TestReplacement");

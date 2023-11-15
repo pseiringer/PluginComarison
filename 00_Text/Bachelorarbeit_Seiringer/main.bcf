@@ -2479,6 +2479,16 @@
     <bcf:citekey order="65" intorder="1">IntelliJPlatformSDKToolWindows</bcf:citekey>
     <bcf:citekey order="66" intorder="1">IntelliJSDKDocumentation</bcf:citekey>
     <bcf:citekey order="67" intorder="1">FloraPluginMarketplace</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">2005Dp:e</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">NodeJSWebsite</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">YeomanWebsite</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">VSCodeExtensionAPIYourFirstExtension</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">DiffMatchPatchGithub</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">MochaJSWebsite</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">VSCodeTestElectronGithub</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">VSCodeExtensionAPITestingExtensions</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">VSCodeExtensionAPIPublishingExtension</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">VSCodeExtensionAPIContinuousIntegration</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
