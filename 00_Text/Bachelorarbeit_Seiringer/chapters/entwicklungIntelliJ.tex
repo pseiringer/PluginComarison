@@ -4,9 +4,9 @@
 \section{Design}
 \label{sec:EntwicklungIntelliJ_Design}
 
-Um das in Kapitel \ref{cha:Prototyp} beschriebene Plugin in IntelliJ
-zu entwickeln, werden die Komponenten verwendet, die auch in 
-Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} abgebildet sind.
+Wie schon in Kapitel \ref{cha:EntwicklungVsCode}, setzt sich das 
+beschriebene Plugin in IntelliJ durch die Komponenten zusammen,
+die in Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} abgebildet sind.
 
 \begin{figure}
     \centering
@@ -15,51 +15,205 @@ Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} abgebildet sind.
     \label{fig:diagram_IntelliJDesign-Simplified}
 \end{figure}
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Settings}
-%     \caption{Detaillierte Darstellung der \emph{Settings} Komponenten.}
-%     \label{fig:diagram_IntelliJDesign-Detail_Settings}
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Listener}
-%     \caption{Detaillierte Darstellung des \emph{SimpleChangeDocumentListener}.}
-%     \label{fig:diagram_IntelliJDesign-Detail_Listener}
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Contributor}
-%     \caption{Detaillierte Darstellung des \emph{RecentChangesCompletionContributor}.}
-%     \label{fig:diagram_IntelliJDesign-Detail_Contributor}
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Action}
-%     \caption{Detaillierte Darstellung des Commands \emph{ApplyRecentChange}.}
-%     \label{fig:diagram_IntelliJDesign-Detail_Action}
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_ToolWindow}
-%     \caption{Detaillierte Darstellung der \emph{RecentChangesToolWindowFactory}.}
-%     \label{fig:diagram_IntelliJDesign-Detail_ToolWindow}
-% \end{figure}
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Service}
-%     \caption{Detaillierte Darstellung des \emph{RecentChangesService}.}
-%     \label{fig:diagram_IntelliJDesign-Detail_Service}
-% \end{figure}
+Da die beiden Plugins im Aufbau sehr ähnlich sind, sind auch die Aufgaben der
+Einzelnen Komponenten beinahe deckungsgleich. Die Unterschiede liegen eher in
+den Details.
+
+Der \emph{SimpleChangeDocumentListener} übernimmt hier die Aufgabe,
+des Beobachten des geöffneten Dokuments auf Veränderungen. Wird
+eine Änderung festgestellt, so wird diese an den \emph{RecentChangesService}
+zur Speicherung übergeben. Im Gegensatz zum \emph{RecentChangeStorage}
+ist dieser allerdings als expliziter Service deklariert, der von IntelliJ
+selbst verwaltet wird.
+
+Die Komponenten für Einstellungen teilen sich auf 
+\emph{RecentChangesSettingsConfigurable} und \emph{RecentChangesSettingsService}
+auf. Die Klasse \emph{RecentChangesSettingsConfigurable} kümmert sich dabei
+um die Darstellung und die Interaktivität der Einstellungen in der Benutzerschnittstelle.
+Die Klasse \emph{RecentChangesSettingsService} wird wieder als Service 
+angeboten und kümmert sich um das Speichern, Auslesen und Persistieren
+der Einstellungen.
+
+Die Codevervollständigung wird im IntelliJ Plugin durch den
+\emph{RecentChangesCompletionContributor} durchgeführt. Dieser
+sucht im \emph{RecentChangesService} nach Änderungen, die auf
+das ausgewählte Wort passen und gibt diese als Vorschläge zurück.
+
+Für das Einsetzen der Änderungen im Editor wird die Klasse
+\emph{ApplyRecentChange} verwendet, die als Action registriert ist.
+Bei der Action ist wie bereits im VS Code Plugin eine Tastenkombination
+zum schnelleren Aufrufen hinterlegt.
+Sollte keine passende Änderung gefunden werden, so wird direkt im
+Editor ein Warnhinweis mit einer entsprechenden Meldung angezeigt.
+
+Die Klasse \emph{RecentChangesToolWindowFactory} ist für die Darstellung
+einer UI-Komponente zuständig, die dem TreeView aus dem VS Code Plugin
+ähnelt. Sie ließt dafür den Zustand des \emph{RecentChangesService} aus
+und baut eine entsprechende Baumstruktur auf. Um die Ansicht auch zum richtigen
+Zeitpunkt aktualsieren zu können, wird der Service mithilfe eines
+Observer-Patterns \cite{2005Dp:e} beobachtet.
+
+Die Komponente \emph{IsRecentChangesRunningService} existiert für den Fall,
+das zwei Instanzen von IntelliJ gleichzeitig auf einem Gerät gestartet werden.
+Beim Start der Anwendung, müssen nämlich einige Initialisierungen vorgenommen
+werden, die nur einmalig durchgeführt werden dürfen. Gegen den
+\emph{IsRecentChangesRunningService} kann auf diese Weise geprüft werden, ob
+die Initialisierung noch nötig ist, oder bereits gemacht wurde.
+
 
 \section{Implementierung}
 \label{sec:EntwicklungIntelliJ_Implementierung}
 
 \subsection{Aufsetzen des Projektes}
 
-\subsubsection{Aufbau der Ordnerstruktur}
+% //TODO source
+
+Das Erstellen eines neuen Plugin-Projektes kann in IntelliJ über den 
+\enquote{New Project Wizard} erledigt werden. Dafür muss einfach
+im Programm IntelliJ IDEA das Menü \emph{File -> New -> Project...}
+gewählt werden. Hier gibt auf der linken Seite des Fensters eine 
+Liste mit Projekt-Vorlagen, in welcher sich auch der Eintrag 
+\emph{IDE Plugin} befindet. Für diesen Projekttyp kann dann unter anderem
+ein Name für das Projekt gewählt werden. Dieser Name wird initial auch als
+Name des Plugins verwendet.
+
+Die durch IntelliJ generierte Ordnerstruktur kann (ausschnittsweise) in 
+Abbildung \ref{fig:intellij_generated_structure} betrachtet werden.
+Relevant ist hier vor allem die Datei \emph{plugin.xml}, die das 
+enstprechend vorbereitete Plugin Manifest beinhaltet. Der Ordner
+\emph{kotlin} ist als Verzeichnis für den Plugin-Code vorgesehen.
+Er kann allerdings je nach Präferenz auch durch einen Ordner \emph{java}
+ersetzt werden. Ein Ordner für Tests wird nicht automatisch generiert
+und muss manuell hinzugefügt werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.35\textwidth]{intellij_generated_structure}
+    \caption{Ausschnitt der durch \emph{IntelliJ IDEA} generierten Ordnerstruktur.}
+    \label{fig:intellij_generated_structure}
+\end{figure}   
 
 \subsection{Entwicklung}
+
+\subsubsection{RecentChangesService}
+
+Die Klasse \emph{RecentChangesService} (dargestellt in
+Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Service}) 
+wird in der Form eines
+Services auf Applikationsebene implementiert. Dies wird 
+über die Annotation \emph{@Service(Service.Level.APP)} festgelegt. 
+Auf diese Weise kann eine Instanz der Klasse in der gesamten Anwendung
+bereitgestellt werden. Die statische Methode \emph{getInstance}
+abstrahiert dabei die Aufrufe der IntelliJ API, die nötig sind um eine
+Referenz auf diese Instanz zu erhalten. Genau wie im VS Code Plugin,
+werden die Änderungen in einer \emph{EvictingQueue} von 
+\emph{SimpleDiff}-Objekten gespeichert. Allerdings muss diese
+Warteschlange hier nicht selbst implementiert werden, da es in
+der Bibliothek \emph{Guava} von Google bereits eine etablierte 
+Implementierung gibt. % //TODO source
+Diese Bibliothek kann einfach
+in der Datei \emph{build.gradle.kts} eingebunden werden.
+Die verschiedenen Methoden der Klasse \emph{RecentChangesService} erlauben
+das Einfügen, sowie das Auslesen, von \emph{SimpleDiff}-Objekten aus
+der darunterliegenden Datenstruktur. Über die Methoden \emph{addChangeListener},
+\emph{removeChangeListener} und \emph{notifyListeners} wird ein Observer-Pattern
+abgebildet. Observer, welche die eigens erstellte Schnittstelle 
+\emph{RecentDiffsChangedListener} implementieren, können sich also
+beim \emph{RecentChangesService} anmelden. Sie werden dann bei Änderungen 
+an den Daten über die Methode \emph{notifyChanged} notifiziert.
+Da es sich bei der Klasse \emph{RecentChangesService} aufgrund der Implementierung
+als IntelliJ Service um eine Singleton-Klasse % //TODO source
+handelt, wird zusätzlich eine Methode \emph{reset} benötigt, um beim Testen
+die Unabhängigkeit der verschiedenen Unit-Tests zu erhalten. Da für
+die einzelnen Testfälle keine neuen Instanzen erzeugt werden können, muss
+die Klasse also vor jedem Test zurückgesetzt werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Service}
+    \caption{Detaillierte Darstellung des \emph{RecentChangesService}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Service}
+\end{figure}
+
+\subsubsection{SimpleChangeDocumentListener}
+
+Der detaillierte Aufbau der Komponente \emph{SimpleChangeDocumentListener}
+kann in Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Listener} betrachtet werden.
+Eine Instanz der Klasse wird beim ersten Start von IntelliJ als so registriert, 
+dass er über die Änderungen in \emph{allen} geöffneten Dokumenten informiert wird. 
+Hierfür muss die Schnittstelle \emph{DocumentListener} implementiert werden.
+Diese definiert unter anderem die Methodensignaturen \emph{beforeDocumentChange}
+und \emph{documentChanged}. Durch das Zusammenspiel dieser beiden Methoden
+wird der gewünschte Debounce-Effekt erzeugt. Zu Beginn einer Änderung
+wird in der Methode \emph{beforeDocumentChange} der aktuelle Text aus der 
+unveränderten Datei ausgelesen. In der Methode \emph{documentChanged} wird
+dann ein Timer gestartet (oder neu gestartet, falls er bereits laufen sollte).
+Erst nach Ablauf des Timers (ohne einer weiteren Eingabe) wird
+eine Änderung als abgeschlossen erkannt. Sobald dies geschieht, wird 
+der Algorithmus \emph{diff-match-patch} verwendet um die Änderung zu analysieren.
+Wird daraufhin festgestellt, dass es sich um eine einfache Änderung handelt,
+so wird diese in den Speicher des \emph{RecentChangesService} eingefügt.
+Zu beachten ist in dieser Klasse weiters die private Methode 
+\emph{getOriginalTextFromDocument}. Dieser komplexe Aufruf
+ist in IntelliJ notwendig, um den reinen Text des veränderten Dokuments
+zu erhalten. Die Klasse \emph{Document} hätte zwar eigentlich
+eine Methode \emph{getText}, dieser Text befindet sich aber möglicherweise
+in einem Zwischenzustand, in dem IntelliJ spezielle Zeichenketten 
+einsetzt, um die Anzeige der Codevervollständigung zu erleichtern.
+% //TODO source IntelliJIdeaRulezzz https://intellij-support.jetbrains.com/hc/en-us/community/posts/206752355-The-dreaded-IntellijIdeaRulezzz-string
+Um die originale Datei (und nicht eine modifizierte Kopie) zu erhalten
+müssen also einige Umwege gegangen werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Listener}
+    \caption{Detaillierte Darstellung des \emph{SimpleChangeDocumentListener}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Listener}
+\end{figure}
+
+\subsubsection{ApplyRecentChange}
+
+Text
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Action}
+    \caption{Detaillierte Darstellung der Action \emph{ApplyRecentChange}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Action}
+\end{figure}
+
+\subsubsection{RecentChangesCompletionContributor}
+
+Text
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Contributor}
+    \caption{Detaillierte Darstellung des \emph{RecentChangesCompletionContributor}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Contributor}
+\end{figure}
+
+\subsubsection{RecentChangesToolWindowFactory}
+
+Text
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_ToolWindow}
+    \caption{Detaillierte Darstellung der \emph{RecentChangesToolWindowFactory}.}
+    \label{fig:diagram_IntelliJDesign-Detail_ToolWindow}
+\end{figure}
+
+\subsubsection{Einstellungen}
+
+Text
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Settings}
+    \caption{Detaillierte Darstellung der \emph{Settings} Komponenten.}
+    \label{fig:diagram_IntelliJDesign-Detail_Settings}
+\end{figure}
 
 \section{Tests}
 \label{sec:EntwicklungIntelliJ_Tests}
