@@ -101,7 +101,7 @@ Die Klasse \emph{RecentChangesService} (dargestellt in
 Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Service}) 
 wird in der Form eines
 Services auf Applikationsebene implementiert. Dies wird 
-über die Annotation \emph{@Service(Service.Level.APP)} festgelegt. 
+über das Attribut \emph{@Service(Service.Level.APP)} festgelegt. 
 Auf diese Weise kann eine Instanz der Klasse in der gesamten Anwendung
 bereitgestellt werden. Die statische Methode \emph{getInstance}
 abstrahiert dabei die Aufrufe der IntelliJ API, die nötig sind um eine
@@ -173,7 +173,30 @@ müssen also einige Umwege gegangen werden.
 
 \subsubsection{ApplyRecentChange}
 
-Text
+Bei \emph{ApplyRecentChange} handelt es sich um eine von
+\emph{AnAction} abgeleitete Klasse. In Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Action} sind die Interaktionen
+der Klasse dargestellt. Die Methoden \emph{actionPerformed} und \emph{update}
+werden von IntelliJ aufgerufen. In beiden Methoden muss zuerst
+der Inhalt der Datei an der aktuellen Position gelesen werden, um 
+herauszufinden, ob das Anwenden der Action momentan möglich ist.
+Sollte das Anwenden nicht möglich sein, wird
+in der Methode \emph{update} mithilfe des übergebenen
+\emph{AnActionEvent}-Objekt die Sichtbarkeit der Action (in den
+registrierten Menüs des User Interface) entsprechend gesetzt.
+In der Methode \emph{actionPerformed} wird in einem solchen Fall
+eine Fehlermeldung mithilfe des IntelliJ Services \emph{HintManager}
+angezeigt. Sollte ein ersetzen möglich sein,
+so wird mittels der statischen Methode 
+\emph{WriteCommandAction.runWriteCommandAction} ein Schreibbefehl
+abgesetzt, in welchem der zu ersetzende Inhalt des Dokuments 
+ausgetauscht wird. Dies ist nur über einen solchen Schreibbefehl möglich,
+da ansonsten Synchronisationsprobleme auftreten könnten.
+% //TODO source https://plugins.jetbrains.com/docs/intellij/working-with-text.html#safely-replacing-selected-text-in-the-document
+% //TODO source https://plugins.jetbrains.com/docs/intellij/general-threading-rules.html#read-access
+Im Manifest des Plugins wird die Action mit der 
+Tastenkombination \emph{alt + R} registriert, um
+auch Aufrufbar zu sein.
 
 \begin{figure}
     \centering
@@ -184,7 +207,21 @@ Text
 
 \subsubsection{RecentChangesCompletionContributor}
 
-Text
+Die Klasse \emph{RecentChangesCompletionContributor}, die in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Contributor} dargestellt wird,
+leitet von \emph{CompletionContributor} ab. Im Konstruktor muss
+die Methode \emph{extend} aufgerufen werden, der eine Instanz 
+des eigentlichen \emph{CompletionProvider} übergeben wird.
+Dieser \emph{CompletionProvider} überschreibt wiederum die 
+Methode \emph{addCompletions}, welche die eigentliche Arbeit erledigt.
+Genau wie bei der Action \emph{ApplyRecentChange}, wird der
+Inhalt der Datei an der aktuellen Position ausgelesen. Das gefundene
+Wort wird im \emph{RecentChangesService} nachgeschlagen.
+Falls eine passende Änderung gefunden wird, wird diese über den 
+Parameter \emph{resultSet} zu den Vorschlägen für die Codevervollständigung
+hinzugefügt.
+Im Manifest wird der Contributor für die Sprache \emph{any} registriert,
+um Sprachunabhängig zu funktionieren.
 
 \begin{figure}
     \centering
@@ -195,7 +232,25 @@ Text
 
 \subsubsection{RecentChangesToolWindowFactory}
 
-Text
+Die Klasse \emph{RecentChangesToolWindowFactory} ist in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_ToolWindow} dargestellt.
+Sie implementiert die Schnittstelle \emph{ToolWindowFactory} 
+und überschreibt die Methode \emph{createToolWindowContent}. Zur besseren 
+Abgrenzung der Aufgaben, wird in dieser zuerst eine neue Instanz
+der Klasse \emph{RecentChangesToolWindowContent} erstellt.
+Diese innere Klasse verwaltet den Inhalt und das Aussehen des Fensters.
+Sie lädt die nötigen Daten aus dem \emph{RecentChangesService} und
+meldet sich bei dem Service auch als Listener an, um gegebenenfalls den
+Inhalt zu aktualisieren. Die Darstellung des Fensterinhalts
+geschieht über ein \emph{JPanel} aus Java Swing und einem \emph{Tree}
+aus der UI-Bibliothek von IntelliJ. Dieser Inhalt wird
+durch die Methode \emph{getContentPanel} von außen zugänglich gemacht.
+Zum Schluss setzt die Methode \emph{createToolWindowContent} 
+den eigentlichen Inhalt des Fensters durch den Aufruf von
+\emph{toolWindow.getContentManager().addContent} auf dem übergebenen
+Parameter.
+Im Manifest wird \emph{RecentChangesToolWindowFactory} als Factory-Klasse
+für ein ToolWindow namens \emph{Recent Changes} registriert.
 
 \begin{figure}
     \centering
@@ -206,7 +261,38 @@ Text
 
 \subsubsection{Einstellungen}
 
-Text
+Die für die Einstellungen nötigen Klassen sind in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Settings} zu sehen.
+\emph{RecentChangesSettingsConfigurable} ist die Hauptschnittstelle 
+zu IntelliJ, die auch im Manifest entsprechend registriert ist. 
+Sie implementiert das Interface \emph{Configurable}
+und bietet verschiedene Methoden an, die für die Darstellung
+und Interaktivität in der Benutzerschnittstelle nötig sind.
+Durch die Methode \emph{apply} sollen die aktuell gewählten Einstellungen
+persistiert werden. Durch die Methode \emph{reset} sollen die 
+zuvor gespeicherten Einstellungen wieder angezeigt werden.
+Durch die Methode \emph{isModified} wird überprüft, ob die angezeigten
+Einstellungen von den persistierten Einstellungen abweichen. 
+Ist dies nicht der Fall, wird der Knopf zum Speichern der Einstellungen
+automatisch ausgegraut. Die Methode \emph{createComponent} stellt
+den Inhalt der Einstellungsseite in Form eines \emph{JComponent} bereit.
+Um gute Aufgabenteilung zu ermöglichen, ist diese Darstellung an die 
+Klasse \emph{RecentChangesSettingsComponent} ausgelagert. Sie beinhaltet
+Felder zum Eingeben der Warteschlangengröße und der Debouncezeit.
+Über Getter- und Setter-Methoden können diese Werte von 
+\emph{RecentChangesSettingsConfigurable} beliebig verwaltet werden.
+Um das Eingeben von ungültigen Werten zu vermeiden, werden zusätzlich
+Filter auf die Eingabefelder angewandt.
+Der \emph{RecentChangesSettingsService} ist die Komponente die für das 
+Persistieren der Einstellungen verantwortlich ist. Hierfür
+wird die Schnittstelle \emph{PersistentStateComponent} implementiert
+und das Attribut \emph{@State} angegeben. Auf diese Weise ruft
+IntelliJ zu den passenden Zeitpunkten automatisch die Methoden
+\emph{getState} und \emph{loadState} auf und serialisiert den Zustand
+in einer \emph{.xml}-Datei.
+Zusätzlich ist die Klasse im Manifest als Service registriert, und bietet
+passende Methoden zum Auslesen und Setzen, sowie ein Observer-Pattern
+zum Beobachten der Einstellungen, an.
 
 \begin{figure}
     \centering
