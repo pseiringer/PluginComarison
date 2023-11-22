@@ -304,8 +304,121 @@ zum Beobachten der Einstellungen, an.
 \section{Tests}
 \label{sec:EntwicklungIntelliJ_Tests}
 
+% //TODO source
+Für Tests eines IntelliJ Plugins werden von JetBrains 
+die Frameworks \emph{JUnit}, \emph{TestNG} und \emph{Cucumber} empfohlen. 
+Alle Tests für das IntelliJ Plugin laufen innerhalb einer sogenannten
+\emph{headless Umgebung}. Das bedeutet, es wird eine echte Instanz
+des IntelliJ IDEA zum Testen verwendet. Dieses wird allerdings ohne einem
+User Interface gestartet und wird daher nicht angezeigt.
+Als Hauptschnittstelle für die Test bietet IntelliJ die Klassen
+\emph{BasePlatformTestCase} und \emph{HeavyPlatformTestCase}.
+Bei Test-Klassen, die von \emph{HeavyPlatformTestCase} ableiten,
+handelt es sich um \emph{Heavy}-Tests. Diese erstellen in
+der Testumgebung für jeden Testfall ein neues (temporäres)
+Projekt, in welchem das Plugin arbeiten kann. Da das erstellen solcher
+Projekte allerdings sehr aufwändig ist, führt das Einsetzen solcher
+Tests zu längeren Ausführungszeiten.
+Bei Test-Klassen, die von \emph{BasePlatformTestCase} ableiten,
+handelt es sich um \emph{Light}-Tests. Diese sind darauf optimiert
+möglichst effizient abzulaufen und versuchen, wenn möglich, das 
+erstellte Projekt von vorherigen Tests weiter zu verwenden.
+Dadurch wird zwar an Geschwindigkeit gewonnen, allerdings
+muss speziell darauf geachtet werden, dass keine Abhängigkeiten zwischen
+den Testfällen entstehen.
+Sollten diese beiden Klassen zu einschränkend sein, kann auch die
+Klasse \emph{IdeaTestFixtureFactory} verwendet werden. Mit dieser
+müssen allerdings einige \emph{setup}-Methoden manuell aufgerufen
+werden und man hat einen höheren Konfigurationsaufwand.
+Innerhalb der Testfälle kann beliebig mit der IntelliJ API interagiert
+werden. Es gibt sogar zusätzliche Methoden wie \emph{copyFileToProject},
+\emph{type}, \emph{performEditorAction}. Diese erleichtern
+das Arbeiten mit der headless Umgebung und erlauben es zum Beispiel
+Tastatureingaben zu simulieren.
+Wenn Dateien in das Testprojekt geladen werden, kann spezielles Markup
+verwendet werden. So kann Beispielsweise mit \emph{<caret>} die Position
+markiert werden, an der sich der Cursor befinden soll.
+
 \section{Publishing}
 \label{sec:EntwicklungIntelliJ_Publishing}
 
+Um ein Plugin in IntelliJ zu veröffentlichen, gibt es mehrere Voraussetzungen.
+Man benötigt einen Account im JetBrains Marketplace und ein Zertifikat
+zum Signieren des Plugins. Der Account kann über die Seite 
+\url{https://plugins.jetbrains.com/} erstellt werden. Das Generieren eines
+Zertifikats und den dafür benötigten Schlüsseln geht mithilfe des 
+Programms \emph{openssl} und ist in der IntelliJ Dokumentation beschrieben.
+
+Im ersten Schritt muss das Plugin gebaut werden. Dies ist über den
+Gradle Task \emph{buildPlugin} möglich, welcher das Plugin baut, und
+das Ergebnis im Ordner \emph{build/distributions} als \emph{.zip}-Datei
+speichert.
+
+Um das gebaute Plugin zu signieren, können die im Projekt bereits vordefinierten
+Gradle Tasks genutzt werden. Hierfür muss allerdings die Datei 
+\emph{build.gradle.kts} angepasst werden. Im Abschnit \emph{signPlugin}
+müssen das zuvor generierte Zertifikat, der dazugehörige Privatschlüssel
+und das Passwort, mit welchem der Schüssel erstellt wurde, angegeben werden.
+Um diese sensiblen Daten nicht unabsichtlich zu veröffentlichen, empfiehlt
+es sich hier auf Umgebungsvariablen des Systems zurückzugreifen, welche
+natürlich entsprechend gesetzt werden müssen.
+\begin{JsCode}[numbers=none]
+    signPlugin {
+        certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
+        privateKey.set(System.getenv("IJ_PluginSign_PK"))
+        password.set(System.getenv("IJ_PluginSign_Pass"))
+    }
+\end{JsCode}
+Durch Ausführung des Task \emph{signPlugin} kann das Plugin signiert werden.
+
+Das Hochladen des Plugins in den JetBrains Marketplace muss beim ersten Mal
+manuell gemacht werden. Hierfür meldet man sich auf der Webseite an,
+klickt am oberen rechten Rand auf seinen Benutzernamen und daraufhin
+auf \emph{Upload plugin}. Im erscheinenden Dialog gibt man
+daraufhin die nötigen Daten ein und lädt die zuvor generierte und signierte
+\emph{.zip}-Datei hoch.
+Das hochgeladene Plugin kann daraufhin auf der Seite des eigenen Profils
+verwaltet und mit zusätzlichen Informationen, wie zum Beispiel Screenshots,
+ausgeschmückt werden.
+Bevor das Plugin öffentlich im Marketplace angeboten wird, wird es 
+zusätzlich von JetBrains Mitarbeitern geprüft. Um diese Prüfung
+zu bestehen, sollte bereits vor dem Hochladen auf verschiedene
+Anforderungen geachtet werden, die in der Dokumentation beschrieben sind.
+So muss zum Beispiel beachtet werden, was als Logo verwendet wird, welcher
+Titel gewählt wurde, und wie die Beschreibung formattiert ist.
+Diese Richtlinien können unter \url{https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html}
+nachgeschlagen werden.
+
+Laut der IntelliJ Dokumentation ist es auch möglich sein ein
+Plugin automatisiert in den Marketplace hochzuladen. Hierfür
+kann der Gradle Task \emph{publishPlugin}, in Kombination
+mit einem Access Token von der Marketplace Webseite, genutzt werden.
+\begin{JsCode}[numbers=none]
+    publishPlugin {
+        token.set(System.getenv("IJ_PluginSign_PublishToken"))
+    }
+\end{JsCode}
+% //TODO publish fails
+% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/870
+% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/1482
+
 \section{CI/CD}
 \label{sec:EntwicklungIntelliJ_CICD}
+
+Für das automatisierte Testen und Veröffentlichen eines Plugins
+gibt es einen vorgefertigten GitHub Actions Workflow für 
+Pluginprojekte die mit Gradle arbeiten. % //TODO source https://github.com/JetBrains/intellij-platform-plugin-template/blob/main/.github/workflows/build.yml
+Für andere CI/CD Pipelines gibt es keine Dokumentation.
+
+Die Pipeline muss im Grunde verschiedene vordefinierte Gradle Tasks
+ausführen. Das Ausführen der Tests ist beispielsweise durch den Befehl
+\begin{GenericCode}[numbers=none]
+    ./gradlew check
+\end{GenericCode}
+möglich. Das Veröffentlichen des Plugins kann durch
+\begin{GenericCode}[numbers=none]
+    ./gradlew publishPlugin 
+\end{GenericCode}
+angestoßen werden. Beim Veröffentlichen treten allerdings die
+selben Probleme auf, wie sie in Abschnitt \ref{sec:EntwicklungIntelliJ_Publishing}
+beschrieben sind.
