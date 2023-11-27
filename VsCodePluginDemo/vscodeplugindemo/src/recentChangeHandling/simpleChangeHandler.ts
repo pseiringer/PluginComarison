@@ -16,9 +16,10 @@ export class SimpleChangeHandler {
     private readonly changes: RecentChangeStorage;
 
     constructor(changesStorage: RecentChangeStorage) {
-        //TODO get settings value
+        // create the debounced function to call doneTyping
         this.debounce = this.createDebouncedChangeHandler(this.doneTyping);
 
+        // initialize the diff_match_patch algorithm
         this.dmp = new diff_match_patch();
         this.dmp.Diff_Timeout = 3;
         // this.dmp.Diff_EditCost = 4;
@@ -26,62 +27,118 @@ export class SimpleChangeHandler {
         this.changes = changesStorage;
     }
 
-    private createDebouncedChangeHandler(callback: (event: vscode.TextDocumentChangeEvent) => void): (event: vscode.TextDocumentChangeEvent, debounceTime: number) => void {
+    // creates a function, that calls the given callback with a debounced delay
+    private createDebouncedChangeHandler(callback: (event: vscode.TextDocumentChangeEvent) => void): 
+            (event: vscode.TextDocumentChangeEvent, debounceTime: number) => void {
+        // create the timer
         let timer: NodeJS.Timeout;
+        // create the debounce function
         return (event: vscode.TextDocumentChangeEvent, debounceTime: number) => {
-            console.log("resetting timer...");
+            // reset the timer
+            // console.log("resetting timer...");
             clearTimeout(timer);
+            // reinitialize the timer with the given debounce time
             timer = setTimeout(() => {callback.call(this, event);}, debounceTime);
         };
     }
 
+    // stores the text before change on open document events
     public handleOpenDocument(document: vscode.TextDocument){
         if (vscode.window.activeTextEditor === undefined){
-            //no active text editor -> ignore document
+            // no active text editor -> ignore document
             return;
         }
         if(!this.isTyping){
-            //document before first change <-> document after opening
+            // document before first change <-> document after opening
+            // store the current text so it can be
+            // compared to after a change is complete
             this.textBeforeChange = document.getText();
         }
     }
 
+    // stores the text before change on change editor events
     public handleChangeEditor(e: vscode.TextEditor | undefined){
         if (e !== undefined){
+            // another editor has gained focus
+            // store the current text so it can be
+            // compared to after a change is complete
             this.textBeforeChange = e.document.getText();
-            console.log("edit changed")
         }
     }
 
+    // starts a debounce timer to on change events
     public handleChange(event: vscode.TextDocumentChangeEvent) {
         if (vscode.window.activeTextEditor === undefined){
-            //no active text editor -> ignore changes
+            // no active text editor -> ignore changes
             return;
         }
         if (!this.isTyping){
-            //beginning of new change
-            console.log("startTyping");
-            //current state of document (textBeforeChange) has already been recorded 
-            //after the last change or when opening the document
+            // beginning of new change
+            // current state of document (textBeforeChange) has already been recorded 
+            // after the last change or when opening the document/editor
+            this.isTyping = true;
         }
-        this.isTyping = true;
+        // create a debounced call to doneTyping
         this.debounce.call(this, event, RecentChangesSettings.getDebounceTimeFromSettings());
     }
 
+    // records a change after it has been completed
     private doneTyping(event: vscode.TextDocumentChangeEvent){
+        // a change has been completed
         this.isTyping = false;
-        console.log("done typing");
 
         let currentText = event.document.getText();
 
+        // record a change if one is found
         let foundChange = this.findSimpleChange(this.textBeforeChange, currentText);
         if (foundChange !== undefined){
             this.changes.addRecentChange(foundChange);
         }
         
-        //text before next change == text after current change            
+        // text before next change == text after current change            
         this.textBeforeChange = currentText;
     }
+
+    // returns a simple change if one can be found
+    private findSimpleChange(previousText: string, currentText: string): SimpleDiff | undefined {
+        // calculate all diffs
+
+        // // calculate fully accurate diff and clean up to simplify
+        // // sadly the cleanupSemantic feature does not work properly
+        // let diffs = this.dmp.diff_main(previousText, currentText);        
+        // this.dmp.diff_cleanupSemantic(diffs);
+
+        // use custom word mode instead
+        let diffs = this.diff_wordMode(previousText, currentText);
+
+        // filter all equal parts
+        let changes = diffs.filter(diff => diff[0] !== 0); //diff.operation != Operation.EQUAL
+            
+        // see if remaining diffs are a simple change
+        if (changes.length === 2
+            && changes.some(diff => diff[0] === 1) // diff.operation == Operation.INSERT
+            && changes.some(diff => diff[0] === -1)){ // diff.operation == Operation.DELETE
+            // simple change (insert + delete) detected
+            // insert the simplified diff into recent changes
+            // console.log("simple change found");
+            let simpleDiff = new SimpleDiff();
+            changes.forEach(diff => {
+                if(diff[0] === 1) { // diff.operation == Operation.INSERT
+                    simpleDiff.replacementText = diff[1];
+                } else {
+                    simpleDiff.removedText = diff[1];
+                }
+            });
+            return simpleDiff;
+        }
+        else {
+            // no simple change found
+            // console.log("no simple change found");
+            return undefined;
+        }
+    }
+
+    
 
     /** Modified copy of diff_lineMode from original diff-match-patch documentation */
     private diff_wordMode(text1: string, text2: string): Diff[] {
@@ -154,45 +211,5 @@ export class SimpleChangeHandler {
         maxWords = 65535;
         let chars2 = diff_wordsToCharsMunge(text2);
         return {chars1: chars1, chars2: chars2, wordArray: wordArray};
-    };
-
-    private findSimpleChange(previousText: string, currentText: string): SimpleDiff | undefined {
-        
-        // calculate all diffs
-
-        // // calculate fully accurate diff
-        // // sadly the cleanupSemantic feature does not work properly
-        // let diffs = this.dmp.diff_main(previousText, currentText);        
-        // this.dmp.diff_cleanupSemantic(diffs);
-
-        // use custom word mode instead
-        let diffs = this.diff_wordMode(previousText, currentText);
-
-        // filter all equal parts
-        let changes = diffs.filter(diff => diff[0] !== 0); //diff.operation != Operation.EQUAL
-            
-        // see if remaining diffs are a simple change
-        if (changes.length === 2
-            && changes.some(diff => diff[0] === 1) //diff.operation == Operation.INSERT
-            && changes.some(diff => diff[0] === -1)){ //diff.operation == Operation.DELETE
-            //simple change (insert + delete) detected
-            //insert the simplified diff into recent changes
-            console.log("simple change detected");
-
-            let simpleDiff = new SimpleDiff();
-            changes.forEach(change => {
-                if(change[0] === 1) {
-                    simpleDiff.replacementText = change[1];
-                } else {
-                    simpleDiff.removedText = change[1];
-                }
-            });
-            return simpleDiff;
-        }
-        else {
-            console.log("no simple change found");
-            return undefined;
-        }
     }
-
 }

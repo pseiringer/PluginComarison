@@ -14,25 +14,14 @@ let recentChangeTreeViewProvider: RecentChangeTreeViewProvider;
 export function activate(context: vscode.ExtensionContext) {
 
 	console.log('"vscodeplugindemo" is now active!');
-	// TODO add setting for debounce time and maybe queue size
-
-	// TODO remove
-	// // register some simple commands
-	// context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.helloWorld', () => {
-	// 	vscode.window.showInformationMessage('Hello World from VsCodePluginDemo!');
-	// }));
-	// context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.returnOne', () => {
-	// 	vscode.window.showInformationMessage('returnOne was called!');
-	// 	return 1;
-	// }));
 	
+	// create the storage and all change handlers
 	changeStorage = new RecentChangeStorage(context);
 	simpleChangeHandler = new SimpleChangeHandler(changeStorage);
 	applyRecentChangeCommand = new ApplyRecentChangeCommand(changeStorage);
 	recentChangeTreeViewProvider = new RecentChangeTreeViewProvider(changeStorage);
 
-
-	// register SimpleChangeHandler for recognizing changes
+	// register SimpleChangeHandler for recognizing document/text changes
 	context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor(
 		simpleChangeHandler.handleChangeEditor, 
 		simpleChangeHandler	
@@ -52,9 +41,9 @@ export function activate(context: vscode.ExtensionContext) {
 		simpleChangeHandler.handleOpenDocument(vscode.window.activeTextEditor.document);
 	}
 
-	// register ApplyRecentChangeCommand for applying previously found changes
-	// since it is registered as TextEditorCommand it can only be activated when there is 
-	// an editor in active.
+	// register ApplyRecentChangeCommand for applying previously found changes.
+	// since it is registered as TextEditorCommand it can only be activated 
+	// when there is an editor active.
 	context.subscriptions.push(vscode.commands.registerTextEditorCommand('vscodeplugindemo.applyRecentChange', 
 		applyRecentChangeCommand.applyRecentChange, 
 		applyRecentChangeCommand
@@ -62,13 +51,13 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// register tree view
 	vscode.window.createTreeView(
-		'recentChangeView',
+		'recentChangesView',
 		{
 			treeDataProvider: recentChangeTreeViewProvider
 		}
 	);
 	
-	// activate auto completion
+	// activate/register auto completion
 	activateRecentChangesCompletionProvider(context, changeStorage);
 }
 
