@@ -66,7 +66,7 @@ export class SimpleChangeHandler {
         }
     }
 
-    // starts a debounce timer to on change events
+    // starts a debounce timer to call doneTyping on document change events
     public handleChange(event: vscode.TextDocumentChangeEvent) {
         if (vscode.window.activeTextEditor === undefined){
             // no active text editor -> ignore changes
