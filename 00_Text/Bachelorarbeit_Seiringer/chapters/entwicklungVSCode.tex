@@ -25,7 +25,7 @@ Löschen von veralteten Änderungen.
 Die Klasse \emph{RecentChangesSettings} bietet Zugriffsmethoden an,
 um die von VS Code angebotenen Einstellungen abzufragen. Über sie
 werden die Einstellungen für die \emph{QueueSize} (Anzahl von Veränderungen)
-und die \emph{DebounceTime} (Debounce Zeit für das erkennen von Änderungen)
+und die \emph{DebounceTime} (Debounce Zeit für das Erkennen von Änderungen)
 zugänglich gemacht.
 
 Der \emph{RecentChangesCompletionProvider} implementiert die VS Code Schnittstelle
@@ -33,9 +33,9 @@ für Codevervollständigung. Er analysiert dabei das zu vervollständigende Wort
 im Editor und fragt daraufhin den \emph{RecentChangeStorage} nach einer passenden
 Änderung ab.
 
-Der \emph{ApplyRecentChangeCommand} ist ein ausführbarer Command. Er ließt
+Der \emph{ApplyRecentChangeCommand} ist ein ausführbarer Command. Er liest
 das aktuelle Wort aus dem Editor aus, sucht im \emph{RecentChangeStorage}
-nach einer passenden Änderung ersetzt und das Wort im Editor, falls
+nach einer passenden Änderung und ersetzt das Wort im Editor, falls
 er fündig wird. Wird keine passende Änderung gefunden, so wird eine entsprechende
 Nachricht angezeigt. Durch die Konfiguration des Plugins, kann der
 Command auch über eine Tastenkombination aktiviert werden.
@@ -65,7 +65,7 @@ installiert werden.
 \end{GenericCode}
 erstellen. Während dieses Erstellungsprozesses können verschiedene Einstellungen
 wie der Name und die Art der Extension festgelegt werden. Generiert wird dann,
-je nach vorgenommenen Einstellungen, eine Ordnerstruktur die die wichtigsten
+je nach vorgenommenen Einstellungen, eine Ordnerstruktur, die die wichtigsten
 Elemente eines Plugins beinhaltet. So wird mit den Standardeinstellungen
 ein Projekt angelegt, welches bereits ein Extension Manifest, eine Datei 
 \emph{extension.ts} mit dem Aktivierungs-Code und einige leere Testfälle enthält
@@ -100,7 +100,7 @@ das Auslesen und das Verändern der Anzahl von gespeicherten
 Zusätzlich ist relevant, dass \emph{RecentChangeStorage} von der
 Schnittstelle \emph{EventTarget} ableitet. Durch solche Events
 kann ein Observer Pattern implementiert werden. Das \emph{storageChanged}
-Event wird dabei immer ausgelößt wenn sich der Inhalt der Warteschlange
+Event wird dabei immer ausgelöst, wenn sich der Inhalt der Warteschlange
 verändert. Initialisiert wird der \emph{RecentChangeStorage} zu Beginn der
 Methode \emph{activate}, in der Datei \emph{extension.ts}. So kann
 das erstellte Objekt allen anderen Komponenten über den Konstruktor
@@ -121,18 +121,18 @@ enthält mehrere Listener-Methoden,
 die das Öffnen von Dateien, das Bearbeiten von Dateien und das
 Wechseln des aktiven Editors beobachten. Diese Listener werden
 in der Methode \emph{activate} registriert. Durch diese Listener
-kann der der aktuelle Zustand der geöffneten Datei, sowie ihr Zustand
+kann der aktuelle Zustand der geöffneten Datei, sowie ihr Zustand
 zu Beginn einer Änderung, ständig beobachtet werden. Während
 die NutzerInnen die Datei bearbeiten, wird immer wieder ein
-Timer gestartet. Erst wenn der Timer abläuft, ohne einer Eingabe
-in der Zwischenzeit, wird eine Änderung registriert. Auf diese 
+Timer gestartet. Erst wenn der Timer, ohne einer Eingabe
+in der Zwischenzeit, abläuft wird eine Änderung registriert. Auf diese 
 Weise wird ein Debounce-Effekt erzeugt. Sobald eine Änderung
 registriert wurde, werden der Ausgangszustand und der neue Zustand
 der Datei verglichen. Hierfür wird Googles 
 \emph{diff-match-patch}-Algorithmus \cite{DiffMatchPatchGithub}
 verwendet, der auch komplexe Veränderungen in Texten erkennen kann. 
 Immer wenn durch den Algorithmus eine einfache Veränderung gefunden
-wurde, wird diese, in Form eines \emph{SimpleDiff}-Objekts in
+wurde, wird diese in Form eines \emph{SimpleDiff}-Objekts in
 den \emph{RecentChangeStorage} eingefügt.
 
 \begin{figure}
@@ -145,10 +145,10 @@ den \emph{RecentChangeStorage} eingefügt.
 \subsubsection{ApplyRecentChangeCommand}
 
 Der \emph{ApplyRecentChangeCommand}, 
-der in Abbildung \ref{fig:diagram_VSCodeDesign-Detail_Command} gefunden werden kann ist,
+der in Abbildung \ref{fig:diagram_VSCodeDesign-Detail_Command} gefunden werden kann,
 enthält eine einfache Methode,
 die bei Aktivierung des Commands aufgerufen wird. Sie prüft zuerst
-einfache Bedingungen, zum Beispiel ob ein Editor aktiv ist.
+einfache Bedingungen, zum Beispiel, ob ein Editor aktiv ist.
 Danach selektiert sie Mithilfe der Methode \emph{getWordRangeAtPosition},
 welche von der VS Code API bereitgestellt wird, das zu ersetzende Wort.
 Für dieses Wort wird der \emph{RecentChangeStorage} nach einer passenden
@@ -157,7 +157,7 @@ Positionen berechnet und dann im Editor ersetzt. Um den Command auch
 verwendbar zu machen, müssen zusätzlich ein Command und ein Keybinding
 in der Datei \emph{package.json} registriert werden. Die Zuordnung
 der auszuführenden Methode erfolgt in der Methode \emph{activate}
-durch registrierung.
+durch Registrierung.
 
 \begin{figure}
     \centering
@@ -170,12 +170,12 @@ durch registrierung.
 
 Die Logik des \emph{RecentChangesCompletionProvider}, 
 der in Abbildung \ref{fig:diagram_VSCodeDesign-Detail_Provider} dargestellt wird,
-ist Ähnlich
-zu der des \emph{ApplyRecentChangeCommand}, da im Grunde nur, für
-die aktuelle Position im Editor, nach einer passenden Änderung 
+ist ähnlich
+zu der des \emph{ApplyRecentChangeCommand}, da im Grunde nur für
+die aktuelle Position im Editor nach einer passenden Änderung 
 gesucht wird. Allerdings muss die Änderung hier nicht sofort
-angewendet werden, sonder nur, in Form von \emph{CompletionItem}-Objekten,
-retourniert werden. Das registrieren des Providers wird durch
+angewendet werden, sondern nur, in Form von \emph{CompletionItem}-Objekten,
+retourniert werden. Das Registrieren des Providers wird durch
 Aufruf der Methode \emph{activateRecentChangesCompletionProvider} bei
 der Aktivierung des Plugins erledigt. Hier muss bei der Registrierung
 auch ein Pattern für die Dateien angegeben werden, auf die der Provider
@@ -195,21 +195,21 @@ der in Abbildung \ref{fig:diagram_VSCodeDesign-Detail_TreeView} abgebildet ist.
 Um das TreeView bereitzustellen, muss die Schnittstelle
 \emph{TreeDataProvider<T>} implementiert werden. Diese
 enthält eine Methode um alle Kinder eines \emph{T}-Elements
-zu erhalten, und eine Methode um ein \emph{T}-Element in
+zu erhalten und eine Methode um ein \emph{T}-Element in
 ein \emph{TreeItem} umzuwandeln. Um die zweite Methode etwas zu
 vereinfachen, kann eine Klasse \emph{SimpleDiffTreeItem} direkt
 von \emph{TreeItem} abgeleitet werden. Jedes TreeItem definiert
 bestimmte Werte wie zum Beispiel eine Beschriftung (\emph{label}), 
 ein Symbol (\emph{iconPath}) oder einen Hinweis (\emph{tooltip}).
 Die \emph{SimpleDiffTreeItem}-Objekte enthalten zusätzliche
-Metainformationen über ihre Position im Baum. Um die Baumstrutkur
+Metainformationen über ihre Position im Baum. Um die Baumstruktur
 neu zu laden, kann das Event \emph{\_onDidChangeTreeData} aktiviert
 werden. Dies muss immer dann passieren, wenn vom \emph{RecentChangeStorage}
 das \emph{storageChanged} Event gefeuert wird.
 Um die TreeView auch anzuzeigen, müssen in der Datei \emph{package.json}
-sowohl ein ViewContainer, als auch eine dazugehörige View registriert werden.
+sowohl ein ViewContainer als auch eine dazugehörige View registriert werden.
 In der Methode \emph{activate} wird die Provider-Klasse mittels
-dem Aufruf von \emph{vscode.window.createTreeView} dem registrierten
+des Aufrufes von \emph{vscode.window.createTreeView} dem registrierten
 View zugeordnet.
 
 \begin{figure}
@@ -225,7 +225,7 @@ Die Einstellungen der Extension werden hauptsächlich in der Datei
 \emph{package.json} festgelegt. Hier werden die Namen, Typen, 
 Beschreibungen und Standardwerte der einzelnen Einstellungen bestimmt.
 Die Klasse \emph{RecentChangesSettings} enthält nur statische 
-Methoden, welche das Auslesen der Einstellungen übernehmen, und
+Methoden, welche das Auslesen der Einstellungen übernehmen und
 von überall im Code aufgerufen werden können.
 Diese Klasse ist auch in der Abbildung \ref{fig:diagram_VSCodeDesign-Detail_Settings} 
 ersichtlich.
@@ -243,17 +243,17 @@ ersichtlich.
 Beim Erstellen einer neuen Extension wird im Ordner \emph{src} 
 auch automatisch ein Ordner \emph{test} angelegt. 
 In den generierten Dateien befindet sich 
-eine Konfiguration für das Testframework Mocha \cite{MochaJSWebsite}
+eine Konfiguration für das Test\-framework Mocha \cite{MochaJSWebsite}, 
 die bereits zur Ausführung bereite Tests enthält. Natürlich
 kann Mocha auch mit jedem anderen, programmatisch ausführbaren,
 TestFramework ersetzt werden. Die Testfälle nutzen eine Schnittstelle
 aus dem Paket \emph{@vscode/test-electron} \cite{VSCodeTestElectronGithub}. 
 Diese führt die Tests
-innerhalb einer speziellen Instanz von VS Code, namens 
-\emph{Extension Development Host}, aus. Auf diese Weise kann auch
+innerhalb einer speziellen Instanz von VS Code namens 
+\emph{Extension Development Host} aus. Auf diese Weise kann auch
 während der Tests auf das Modul \emph{vscode} zugegriffen werden.
-Dadurch ist es nicht nur möglich einfache Unit-Tests zu entwickeln.
-Sondern es können auch größer angelegte Integrationstests
+Dadurch ist es nicht nur möglich einfache Unit-Tests zu entwickeln, 
+sondern es können auch größer angelegte Integrationstests
 geprüft werden, die eine Interaktion mit VS Code benötigen 
 \cite{VSCodeExtensionAPITestingExtensions}.
 
@@ -282,7 +282,7 @@ anlegen (sofern man nicht bereits Teil einer Organisation ist). In den
 Benutzereinstellungen kann ein neuer Token erstellt werden. Dabei müssen auch die 
 Berechtigungen für den Token festgelegt werden. Bei dem Abschnitt für 
 \emph{Marketplace} muss hier die Berechtigung \emph{Manage} gesetzt sein.
-Ein Publisher kann erstellt werden indem man sich im Marketplace anmeldet
+Ein Publisher kann erstellt werden, indem man sich im Marketplace anmeldet
 und die Seite \url{https://marketplace.visualstudio.com/manage} aufruft.
 Hier gibt es einen Dialog zum Erstellen eines neuen Publishers. Dieser
 Publisher benötigt mindestens eine eindeutige ID und einen eindeutigen

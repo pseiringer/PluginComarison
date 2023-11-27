@@ -1,7 +1,7 @@
 \chapter{Anforderungen an den Prototyp}
 \label{cha:Prototyp}
 
-Für den direkten Vergleich der beiden Plugin APIs, sollte 
+Für den direkten Vergleich der beiden Plugin APIs sollte 
 in VS Code und in IntelliJ ein möglichst funktionsgleicher 
 Prototyp implementiert werden.
 
@@ -21,17 +21,18 @@ im Editor mitschreibt und die Wiederholung von gleichen oder
 ähnlichen Änderungen erleichtert.
 Als Änderung wird hierbei das einfache Abändern oder das Ersetzen eines
 Wortes durch ein anderes verstanden. 
-Das Mitschreiben von komplexeren Veränderungen, zum Beispiel 
+Das Mitschreiben von komplexeren Veränderungen, zum Beispiel, 
 wenn in mehreren Zeilen gleichzeitig Änderungen vorgenommen 
-werden, ist nicht Ziel des Prototypen,da dies das Erkennen 
+werden, ist nicht Ziel des Prototypen, da dies das Erkennen 
 und das Wiederholen der Änderung stark verkomplizieren würde.
 
 \subsection{Bemerken von Textänderungen}
 
 Der Prototyp soll Änderungen in Text- oder Codedateien automatisch
-erkennen können um diese mitzuschreiben. Hierfür muss auch erkannt
-werden, wann eine Änderung vollständig abgeschlossen ist. Hierfür
-soll ein Debounce-Effekt % //TODO cite
+erkennen können um diese mitzuschreiben. Um solche Änderungen
+zu erkennen, muss auch erkannt werden, wann eine Änderung 
+vollständig abgeschlossen ist. Hierfür
+soll ein Debounce-Effekt % //TODO ask if this needs a citation
 genutzt werden. Die erkannten Änderungen 
 müssen analysiert und zwischengespeichert werden.
 
@@ -48,42 +49,44 @@ Dabei sollen neuere Änderungen gegenüber älteren bevorzugt werden.
 \subsection{Anwenden von Änderungen durch Tastenkombination}
 
 Der Vorgang des Anwenden von Änderungen soll auch durch eine
-Tastenkombination auslößbar sein.
+Tastenkombination auslösbar sein.
 
 \subsection{Vergessen von alten Änderungen}
 
 Um erkannte Änderungen nicht ewig im Zwischenspeicher zu halten,
 soll nur eine bestimmte Menge gleichzeitig gespeichert werden 
 können. Wird diese Menge überschritten, so soll die älteste Änderung
-aus dem Zwischenspeicher entfernt, und somit \enquote{vergessen}, werden.
+aus dem Zwischenspeicher entfernt und somit \enquote{vergessen} werden.
 
 \subsection{Automatische Codevervollständigung}
 
 Anhand der kürzlichen Änderungen sollen auch Vorschläge
-in der Codevervollständigung angezeigt werden. Für diese
-Vorschläge sind natürlich nur die bereits geänderten Worte
-relevant, nicht die die in der Änderung ersetzt wurden.
+in der Codevervollständigung angezeigt werden. 
+Da eine Änderung ja immer aus einem entfernten Wort 
+und einem ersetzenden Wort besteht, liegt es hier nahe
+für die Codevervollständigung nur die ersetzenden Worte
+vorzuschlagen. Die entfernten Worte werden also ignoriert.
 
 \subsection{Anzeige der Änderungen}
 
 Damit die NutzerInnen einen Überblick über die kürzlichen Änderungen
-haben, sollen alle Änderungen die sich im Zwischenspeicher befinden
+haben, sollen alle Änderungen, die sich im Zwischenspeicher befinden,
 über eine View angezeigt werden können.
 
 \subsection{Einstellungen}
 
-Es soll möglich Einstellungen des Plugins festzulegen, welche
+Es soll möglich sein Einstellungen des Plugins festzulegen, welche
 auch beim Schließen der Entwicklungsumgebunge persistent bleiben.
 
 Es soll gespeichert werden:
 \begin{itemize}
     \item wie viele Änderungen gleichzeitig im 
         Zwischenspeicher gehalten werden.
-    \item welche Debounce Zeit für das erkennen 
+    \item welche Debounce Zeit für das Erkennen 
         von Änderungen verwendet wird. 
 \end{itemize}
 
 \subsection{Tests}
 
-Es soll eine kleine, demonstrative Menge von Unit- und Intergrationstests für
+Es soll eine kleine, demonstrative Menge von Unit- und Integrationstests für
 den Plugin Code geschrieben werden.

@@ -19,7 +19,7 @@ Da die beiden Plugins im Aufbau sehr ähnlich sind, sind auch die Aufgaben der
 Einzelnen Komponenten beinahe deckungsgleich. Die Unterschiede liegen eher in
 den Details.
 
-Der \emph{SimpleChangeDocumentListener} übernimmt hier die Aufgabe,
+Der \emph{SimpleChangeDocumentListener} übernimmt hier die Aufgabe
 des Beobachten des geöffneten Dokuments auf Veränderungen. Wird
 eine Änderung festgestellt, so wird diese an den \emph{RecentChangesService}
 zur Speicherung übergeben. Im Gegensatz zum \emph{RecentChangeStorage}
@@ -46,19 +46,21 @@ zum schnelleren Aufrufen hinterlegt.
 Sollte keine passende Änderung gefunden werden, so wird direkt im
 Editor ein Warnhinweis mit einer entsprechenden Meldung angezeigt.
 
+% //TODO FIX manual \linebreak
 Die Klasse \emph{RecentChangesToolWindowFactory} ist für die Darstellung
-einer UI-Komponente zuständig, die dem TreeView aus dem VS Code Plugin
-ähnelt. Sie ließt dafür den Zustand des \emph{RecentChangesService} aus
+einer \linebreak
+UI-Komponente zuständig, die dem TreeView aus dem VS Code Plugin
+ähnelt. Sie liest dafür den Zustand des \emph{RecentChangesService} aus
 und baut eine entsprechende Baumstruktur auf. Um die Ansicht auch zum richtigen
-Zeitpunkt aktualsieren zu können, wird der Service mithilfe eines
+Zeitpunkt aktualisieren zu können, wird der Service mithilfe eines
 Observer-Patterns \cite{2005Dp:e} beobachtet.
 
 Die Komponente \emph{IsRecentChangesRunningService} existiert für den Fall,
 das zwei Instanzen von IntelliJ gleichzeitig auf einem Gerät gestartet werden.
-Beim Start der Anwendung, müssen nämlich einige Initialisierungen vorgenommen
+Beim Start der Anwendung müssen nämlich einige Initialisierungen vorgenommen
 werden, die nur einmalig durchgeführt werden dürfen. Gegen den
 \emph{IsRecentChangesRunningService} kann auf diese Weise geprüft werden, ob
-die Initialisierung noch nötig ist, oder bereits gemacht wurde.
+die Initialisierung noch nötig ist oder bereits gemacht wurde.
 
 
 \section{Implementierung}
@@ -66,10 +68,9 @@ die Initialisierung noch nötig ist, oder bereits gemacht wurde.
 
 \subsection{Aufsetzen des Projektes}
 
-% //TODO source
-
 Das Erstellen eines neuen Plugin-Projektes kann in IntelliJ über den 
-\enquote{New Project Wizard} erledigt werden. Dafür muss einfach
+\enquote{New Project Wizard} erledigt werden
+\cite{IntelliJPlatformSDKCreateProject}. Dafür muss einfach
 im Programm IntelliJ IDEA das Menü \emph{File -> New -> Project...}
 gewählt werden. Hier gibt auf der linken Seite des Fensters eine 
 Liste mit Projekt-Vorlagen, in welcher sich auch der Eintrag 
@@ -80,7 +81,7 @@ Name des Plugins verwendet.
 Die durch IntelliJ generierte Ordnerstruktur kann (ausschnittsweise) in 
 Abbildung \ref{fig:intellij_generated_structure} betrachtet werden.
 Relevant ist hier vor allem die Datei \emph{plugin.xml}, die das 
-enstprechend vorbereitete Plugin Manifest beinhaltet. Der Ordner
+ent\-sprechend vorbereitete Plugin Manifest beinhaltet. Der Ordner
 \emph{kotlin} ist als Verzeichnis für den Plugin-Code vorgesehen.
 Er kann allerdings je nach Präferenz auch durch einen Ordner \emph{java}
 ersetzt werden. Ein Ordner für Tests wird nicht automatisch generiert
@@ -104,17 +105,17 @@ Services auf Applikationsebene implementiert. Dies wird
 über das Attribut \emph{@Service(Service.Level.APP)} festgelegt. 
 Auf diese Weise kann eine Instanz der Klasse in der gesamten Anwendung
 bereitgestellt werden. Die statische Methode \emph{getInstance}
-abstrahiert dabei die Aufrufe der IntelliJ API, die nötig sind um eine
+abstrahiert dabei die Aufrufe der IntelliJ API, die nötig sind, um eine
 Referenz auf diese Instanz zu erhalten. Genau wie im VS Code Plugin,
 werden die Änderungen in einer \emph{EvictingQueue} von 
 \emph{SimpleDiff}-Objekten gespeichert. Allerdings muss diese
 Warteschlange hier nicht selbst implementiert werden, da es in
 der Bibliothek \emph{Guava} von Google bereits eine etablierte 
-Implementierung gibt. % //TODO source
+Implementierung gibt \cite{GuavaGitHub}.
 Diese Bibliothek kann einfach
 in der Datei \emph{build.gradle.kts} eingebunden werden.
 Die verschiedenen Methoden der Klasse \emph{RecentChangesService} erlauben
-das Einfügen, sowie das Auslesen, von \emph{SimpleDiff}-Objekten aus
+das Einfügen sowie das Auslesen von \emph{SimpleDiff}-Objekten aus
 der darunterliegenden Datenstruktur. Über die Methoden \emph{addChangeListener},
 \emph{removeChangeListener} und \emph{notifyListeners} wird ein Observer-Pattern
 abgebildet. Observer, welche die eigens erstellte Schnittstelle 
@@ -122,7 +123,7 @@ abgebildet. Observer, welche die eigens erstellte Schnittstelle
 beim \emph{RecentChangesService} anmelden. Sie werden dann bei Änderungen 
 an den Daten über die Methode \emph{notifyChanged} notifiziert.
 Da es sich bei der Klasse \emph{RecentChangesService} aufgrund der Implementierung
-als IntelliJ Service um eine Singleton-Klasse % //TODO source
+als IntelliJ Service um eine Singleton-Klasse \cite{2005Dp:e}
 handelt, wird zusätzlich eine Methode \emph{reset} benötigt, um beim Testen
 die Unabhängigkeit der verschiedenen Unit-Tests zu erhalten. Da für
 die einzelnen Testfälle keine neuen Instanzen erzeugt werden können, muss
@@ -139,7 +140,7 @@ die Klasse also vor jedem Test zurückgesetzt werden.
 
 Der detaillierte Aufbau der Komponente \emph{SimpleChangeDocumentListener}
 kann in Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Listener} betrachtet werden.
-Eine Instanz der Klasse wird beim ersten Start von IntelliJ als so registriert, 
+Eine Instanz der Klasse wird beim ersten Start von IntelliJ also so registriert, 
 dass er über die Änderungen in \emph{allen} geöffneten Dokumenten informiert wird. 
 Hierfür muss die Schnittstelle \emph{DocumentListener} implementiert werden.
 Diese definiert unter anderem die Methodensignaturen \emph{beforeDocumentChange}
@@ -148,8 +149,8 @@ wird der gewünschte Debounce-Effekt erzeugt. Zu Beginn einer Änderung
 wird in der Methode \emph{beforeDocumentChange} der aktuelle Text aus der 
 unveränderten Datei ausgelesen. In der Methode \emph{documentChanged} wird
 dann ein Timer gestartet (oder neu gestartet, falls er bereits laufen sollte).
-Erst nach Ablauf des Timers (ohne einer weiteren Eingabe) wird
-eine Änderung als abgeschlossen erkannt. Sobald dies geschieht, wird 
+Erst nach Ablauf des Timers (ohne eine weitere Eingabe) wird
+eine Änderung als abgeschlossen erkannt. Sobald dies geschieht wird 
 der Algorithmus \emph{diff-match-patch} verwendet um die Änderung zu analysieren.
 Wird daraufhin festgestellt, dass es sich um eine einfache Änderung handelt,
 so wird diese in den Speicher des \emph{RecentChangesService} eingefügt.
@@ -159,9 +160,9 @@ ist in IntelliJ notwendig, um den reinen Text des veränderten Dokuments
 zu erhalten. Die Klasse \emph{Document} hätte zwar eigentlich
 eine Methode \emph{getText}, dieser Text befindet sich aber möglicherweise
 in einem Zwischenzustand, in dem IntelliJ spezielle Zeichenketten 
-einsetzt, um die Anzeige der Codevervollständigung zu erleichtern.
-% //TODO source IntelliJIdeaRulezzz https://intellij-support.jetbrains.com/hc/en-us/community/posts/206752355-The-dreaded-IntellijIdeaRulezzz-string
-Um die originale Datei (und nicht eine modifizierte Kopie) zu erhalten
+einsetzt, um die Anzeige der Codevervollständigung zu erleichtern
+\cite{IntelliJTheDreadedString,IntelliJGitHubCompletionUtilCore}.
+Um die originale Datei (und nicht eine modifizierte Kopie) zu erhalten,
 müssen also einige Umwege gegangen werden.
 
 \begin{figure}
@@ -186,14 +187,13 @@ in der Methode \emph{update} mithilfe des übergebenen
 registrierten Menüs des User Interface) entsprechend gesetzt.
 In der Methode \emph{actionPerformed} wird in einem solchen Fall
 eine Fehlermeldung mithilfe des IntelliJ Services \emph{HintManager}
-angezeigt. Sollte ein ersetzen möglich sein,
+angezeigt. Sollte ein Ersetzen möglich sein,
 so wird mittels der statischen Methode 
 \emph{WriteCommandAction.runWriteCommandAction} ein Schreibbefehl
 abgesetzt, in welchem der zu ersetzende Inhalt des Dokuments 
 ausgetauscht wird. Dies ist nur über einen solchen Schreibbefehl möglich,
-da ansonsten Synchronisationsprobleme auftreten könnten.
-% //TODO source https://plugins.jetbrains.com/docs/intellij/working-with-text.html#safely-replacing-selected-text-in-the-document
-% //TODO source https://plugins.jetbrains.com/docs/intellij/general-threading-rules.html#read-access
+da ansonsten Synchronisationsprobleme auftreten könnten
+\cite{IntelliJPlatformSDKSafelyReplacingText,IntelliJPlatformSDKGeneralThreadingRules}.
 Im Manifest des Plugins wird die Action mit der 
 Tastenkombination \emph{alt + R} registriert, um
 auch Aufrufbar zu sein.
@@ -221,7 +221,7 @@ Falls eine passende Änderung gefunden wird, wird diese über den
 Parameter \emph{resultSet} zu den Vorschlägen für die Codevervollständigung
 hinzugefügt.
 Im Manifest wird der Contributor für die Sprache \emph{any} registriert,
-um Sprachunabhängig zu funktionieren.
+um sprachunabhängig zu funktionieren.
 
 \begin{figure}
     \centering
@@ -236,7 +236,7 @@ Die Klasse \emph{RecentChangesToolWindowFactory} ist in Abbildung
 \ref{fig:diagram_IntelliJDesign-Detail_ToolWindow} dargestellt.
 Sie implementiert die Schnittstelle \emph{ToolWindowFactory} 
 und überschreibt die Methode \emph{createToolWindowContent}. Zur besseren 
-Abgrenzung der Aufgaben, wird in dieser zuerst eine neue Instanz
+Abgrenzung der Aufgaben wird in dieser zuerst eine neue Instanz
 der Klasse \emph{RecentChangesToolWindowContent} erstellt.
 Diese innere Klasse verwaltet den Inhalt und das Aussehen des Fensters.
 Sie lädt die nötigen Daten aus dem \emph{RecentChangesService} und
@@ -269,7 +269,7 @@ Sie implementiert das Interface \emph{Configurable}
 und bietet verschiedene Methoden an, die für die Darstellung
 und Interaktivität in der Benutzerschnittstelle nötig sind.
 Durch die Methode \emph{apply} sollen die aktuell gewählten Einstellungen
-persistiert werden. Durch die Methode \emph{reset} sollen die 
+persistiert werden, durch die Methode \emph{reset} die 
 zuvor gespeicherten Einstellungen wieder angezeigt werden.
 Durch die Methode \emph{isModified} wird überprüft, ob die angezeigten
 Einstellungen von den persistierten Einstellungen abweichen. 
@@ -291,8 +291,8 @@ IntelliJ zu den passenden Zeitpunkten automatisch die Methoden
 \emph{getState} und \emph{loadState} auf und serialisiert den Zustand
 in einer \emph{.xml}-Datei.
 Zusätzlich ist die Klasse im Manifest als Service registriert, und bietet
-passende Methoden zum Auslesen und Setzen, sowie ein Observer-Pattern
-zum Beobachten der Einstellungen, an.
+passende Methoden zum Auslesen und Setzen sowie ein Observer-Pattern
+zum Beobachten der Einstellungen an.
 
 \begin{figure}
     \centering
@@ -304,19 +304,21 @@ zum Beobachten der Einstellungen, an.
 \section{Tests}
 \label{sec:EntwicklungIntelliJ_Tests}
 
-% //TODO source
 Für Tests eines IntelliJ Plugins werden von JetBrains 
-die Frameworks \emph{JUnit}, \emph{TestNG} und \emph{Cucumber} empfohlen. 
+die Frameworks \emph{JUnit}, \emph{TestNG} und \emph{Cucumber} empfohlen
+\cite{IntelliJPlatformSDKTestsAndFixtures}. 
 Alle Tests für das IntelliJ Plugin laufen innerhalb einer sogenannten
-\emph{headless Umgebung}. Das bedeutet, es wird eine echte Instanz
+\emph{headless Umgebung} \cite{IntelliJPlatformSDKTestingOverview}. 
+Das bedeutet, es wird eine echte Instanz
 des IntelliJ IDEA zum Testen verwendet. Dieses wird allerdings ohne einem
 User Interface gestartet und wird daher nicht angezeigt.
-Als Hauptschnittstelle für die Test bietet IntelliJ die Klassen
-\emph{BasePlatformTestCase} und \emph{HeavyPlatformTestCase}.
+Als Hauptschnittstelle für die Tests bietet IntelliJ die Klassen
+\emph{BasePlatformTestCase} und \emph{HeavyPlatformTestCase}
+\cite{IntelliJPlatformSDKLightAndHeavyTests}.
 Bei Test-Klassen, die von \emph{HeavyPlatformTestCase} ableiten,
 handelt es sich um \emph{Heavy}-Tests. Diese erstellen in
 der Testumgebung für jeden Testfall ein neues (temporäres)
-Projekt, in welchem das Plugin arbeiten kann. Da das erstellen solcher
+Projekt, in welchem das Plugin arbeiten kann. Da das Erstellen solcher
 Projekte allerdings sehr aufwändig ist, führt das Einsetzen solcher
 Tests zu längeren Ausführungszeiten.
 Bei Test-Klassen, die von \emph{BasePlatformTestCase} ableiten,
@@ -327,22 +329,25 @@ Dadurch wird zwar an Geschwindigkeit gewonnen, allerdings
 muss speziell darauf geachtet werden, dass keine Abhängigkeiten zwischen
 den Testfällen entstehen.
 Sollten diese beiden Klassen zu einschränkend sein, kann auch die
-Klasse \emph{IdeaTestFixtureFactory} verwendet werden. Mit dieser
+Klasse \emph{IdeaTestFixtureFactory} verwendet werden
+\cite{IntelliJPlatformSDKTestsAndFixtures}. Mit dieser
 müssen allerdings einige \emph{setup}-Methoden manuell aufgerufen
 werden und man hat einen höheren Konfigurationsaufwand.
 Innerhalb der Testfälle kann beliebig mit der IntelliJ API interagiert
 werden. Es gibt sogar zusätzliche Methoden wie \emph{copyFileToProject},
-\emph{type}, \emph{performEditorAction}. Diese erleichtern
-das Arbeiten mit der headless Umgebung und erlauben es zum Beispiel
-Tastatureingaben zu simulieren.
+\emph{type}, \emph{performEditorAction}
+\cite{IntelliJPlatformSDKTestProjectAndTestdataDirectories,IntelliJPlatformSDKWritingTests}. 
+Diese erleichtern das Arbeiten mit der headless Umgebung 
+und erlauben es zum Beispiel Tastatureingaben zu simulieren.
 Wenn Dateien in das Testprojekt geladen werden, kann spezielles Markup
-verwendet werden. So kann Beispielsweise mit \emph{<caret>} die Position
+verwendet werden. So kann beispielsweise mit \emph{<caret>} die Position
 markiert werden, an der sich der Cursor befinden soll.
 
 \section{Publishing}
 \label{sec:EntwicklungIntelliJ_Publishing}
 
-Um ein Plugin in IntelliJ zu veröffentlichen, gibt es mehrere Voraussetzungen.
+Um ein Plugin in IntelliJ zu veröffentlichen, gibt es mehrere Voraussetzungen
+\cite{IntelliJPlatformSDKPluginSigning}.
 Man benötigt einen Account im JetBrains Marketplace und ein Zertifikat
 zum Signieren des Plugins. Der Account kann über die Seite 
 \url{https://plugins.jetbrains.com/} erstellt werden. Das Generieren eines
@@ -371,13 +376,15 @@ natürlich entsprechend gesetzt werden müssen.
 \end{JsCode}
 Durch Ausführung des Task \emph{signPlugin} kann das Plugin signiert werden.
 
+Nach dem Signieren kann das Plugin veröffentlicht werden
+\cite{IntelliJPlatformSDKPublishingAPlugin}.
 Das Hochladen des Plugins in den JetBrains Marketplace muss beim ersten Mal
 manuell gemacht werden. Hierfür meldet man sich auf der Webseite an,
 klickt am oberen rechten Rand auf seinen Benutzernamen und daraufhin
 auf \emph{Upload plugin}. Im erscheinenden Dialog gibt man
-daraufhin die nötigen Daten ein und lädt die zuvor generierte und signierte
+danach die nötigen Daten ein und lädt die zuvor generierte und signierte
 \emph{.zip}-Datei hoch.
-Das hochgeladene Plugin kann daraufhin auf der Seite des eigenen Profils
+Das hochgeladene Plugin kann dann auf der Seite des eigenen Profils
 verwaltet und mit zusätzlichen Informationen, wie zum Beispiel Screenshots,
 ausgeschmückt werden.
 Bevor das Plugin öffentlich im Marketplace angeboten wird, wird es 
@@ -385,14 +392,15 @@ zusätzlich von JetBrains Mitarbeitern geprüft. Um diese Prüfung
 zu bestehen, sollte bereits vor dem Hochladen auf verschiedene
 Anforderungen geachtet werden, die in der Dokumentation beschrieben sind.
 So muss zum Beispiel beachtet werden, was als Logo verwendet wird, welcher
-Titel gewählt wurde, und wie die Beschreibung formattiert ist.
+Titel gewählt wurde und wie die Beschreibung formatiert ist.
 Diese Richtlinien können unter \url{https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html}
 nachgeschlagen werden.
 
-Laut der IntelliJ Dokumentation ist es auch möglich sein ein
+Laut der IntelliJ Dokumentation ist es auch möglich ein
 Plugin automatisiert in den Marketplace hochzuladen. Hierfür
-kann der Gradle Task \emph{publishPlugin}, in Kombination
-mit einem Access Token von der Marketplace Webseite, genutzt werden.
+kann der Gradle Task \emph{publishPlugin} in Kombination
+mit einem Access Token von der Marketplace Webseite genutzt werden.
+Dieser muss wiederum in der Datei \emph{build.gradle.kts} gesetzt werden.
 \begin{JsCode}[numbers=none]
     publishPlugin {
         token.set(System.getenv("IJ_PluginSign_PublishToken"))
@@ -407,7 +415,7 @@ mit einem Access Token von der Marketplace Webseite, genutzt werden.
 
 Für das automatisierte Testen und Veröffentlichen eines Plugins
 gibt es einen vorgefertigten GitHub Actions Workflow für 
-Pluginprojekte die mit Gradle arbeiten. % //TODO source https://github.com/JetBrains/intellij-platform-plugin-template/blob/main/.github/workflows/build.yml
+Pluginprojekte, die mit Gradle arbeiten \cite{IntelliJGitHubBuildWorkflow}.
 Für andere CI/CD Pipelines gibt es keine Dokumentation.
 
 Die Pipeline muss im Grunde verschiedene vordefinierte Gradle Tasks
@@ -419,6 +427,8 @@ möglich. Das Veröffentlichen des Plugins kann durch
 \begin{GenericCode}[numbers=none]
     ./gradlew publishPlugin 
 \end{GenericCode}
-angestoßen werden. Beim Veröffentlichen treten allerdings die
-selben Probleme auf, wie sie in Abschnitt \ref{sec:EntwicklungIntelliJ_Publishing}
-beschrieben sind.
+angestoßen werden. 
+% //TODO see if problems still arise or may be fixed somehow...
+% Beim Veröffentlichen treten allerdings die
+% selben Probleme auf, wie sie in Abschnitt \ref{sec:EntwicklungIntelliJ_Publishing}
+% beschrieben sind.
