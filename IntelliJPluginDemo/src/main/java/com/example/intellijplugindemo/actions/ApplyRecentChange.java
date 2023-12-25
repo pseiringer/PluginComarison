@@ -10,9 +10,11 @@ import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import jnr.ffi.annotations.In;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ApplyRecentChange extends AnAction {
 
@@ -109,14 +111,17 @@ public class ApplyRecentChange extends AnAction {
 
         //find the closest occurrence of matching diff if it exists multiple times
         // (e.g. inside a string literal which counts as one single token)
-        var indices = new ArrayList<Integer>();
+        List<Integer> indices = new ArrayList<Integer>();
         int currIdx = 0;
         while (currIdx >= 0){
-            currIdx++;
             currIdx = selectedText.indexOf(matchingDiff.getRemovedText(), currIdx);
-            if (currIdx >= 0) indices.add(currIdx);
+            if (currIdx >= 0) {
+                indices.add(currIdx);
+                currIdx++;
+            }
         }
         var caretIdx = caret.getOffset() - currentElement.getTextOffset();
+        indices = indices.stream().filter(x -> x <= caretIdx).toList();
         int shortestDistance = Math.abs(indices.get(0) - caretIdx);
         int closestIdx = indices.get(0);
         for (int i = 1; i < indices.size(); i++) {

@@ -4,6 +4,7 @@ import com.example.intellijplugindemo.services.RecentChangesService;
 import com.example.intellijplugindemo.services.RecentChangesSettingsService;
 import com.example.intellijplugindemo.util.DiffWordModeExtender;
 import com.example.intellijplugindemo.util.diff_match_patch;
+import com.intellij.codeInsight.completion.CompletionUtilCore;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -133,28 +134,36 @@ public class SimpleChangeDocumentListener implements DocumentListener {
      * @return The original text of the document.
      */
     private String getOriginalTextFromDocument(Document document){
-        //TODO find a simple way to get the document content.
+        //remove "IntellijIdeaRulezzz" string
+        var filtered = document.getText();
+        filtered = filtered.replaceAll(CompletionUtilCore.DUMMY_IDENTIFIER, "");
+        filtered = filtered.replaceAll(CompletionUtilCore.DUMMY_IDENTIFIER_TRIMMED, "");
+        return filtered;
 
-        CompletableFuture<String> future = new CompletableFuture();
-
-        DataManager.getInstance()
-                .getDataContextFromFocusAsync()
-                .onSuccess(dataContext -> {
-                    var project = dataContext.getData(CommonDataKeys.PROJECT);
-                    ApplicationManager.getApplication().runReadAction(() -> {
-                        var psiFile = PsiDocumentManager
-                                .getInstance(project)
-                                .getPsiFile(document);
-                        future.complete(
-                                (psiFile == null) ? null : psiFile.getOriginalFile().getText()
-                        );
-                    });
-                })
-                .onError(e -> {
-                    future.complete(null);
-                });
-
-        return future.join();
+        // a more advanced way of handling this situation would be
+        // trying to get the original file and read the text from it.
+        // however, this does not work in all situations and fails
+        // in the test environment.
+//        CompletableFuture<String> future = new CompletableFuture();
+//
+//        DataManager.getInstance()
+//                .getDataContextFromFocusAsync()
+//                .onSuccess(dataContext -> {
+//                    var project = dataContext.getData(CommonDataKeys.PROJECT);
+//                    ApplicationManager.getApplication().runReadAction(() -> {
+//                        var psiFile = PsiDocumentManager
+//                                .getInstance(project)
+//                                .getPsiFile(document);
+//                        future.complete(
+//                                (psiFile == null) ? null : psiFile.getOriginalFile().getText()
+//                        );
+//                    });
+//                })
+//                .onError(e -> {
+//                    future.complete(null);
+//                });
+//
+//        return future.join();
     }
 
 }
