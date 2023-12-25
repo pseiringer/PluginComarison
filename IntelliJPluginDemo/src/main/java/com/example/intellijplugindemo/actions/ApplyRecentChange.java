@@ -12,6 +12,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class ApplyRecentChange extends AnAction {
 
     /**
@@ -43,8 +45,8 @@ public class ApplyRecentChange extends AnAction {
         var selectedText = found.currentElement.getText();
         var psiElemStart = found.currentElement.getTextOffset();
 
-        //replace the text in the document
-        var idxInPsiElement = selectedText.indexOf(found.matchingDiff.getRemovedText());
+        // calculate the position that needs to be replaced
+        var idxInPsiElement = found.idxInElement;
         var replacementStart = psiElemStart + idxInPsiElement;
         var replacementEnd = replacementStart + found.matchingDiff.getRemovedText().length();
 
@@ -105,7 +107,27 @@ public class ApplyRecentChange extends AnAction {
             return null;
         }
 
-        return new FindDiffResult(currentElement, matchingDiff);
+        //find the closest occurrence of matching diff if it exists multiple times
+        // (e.g. inside a string literal which counts as one single token)
+        var indices = new ArrayList<Integer>();
+        int currIdx = 0;
+        while (currIdx >= 0){
+            currIdx++;
+            currIdx = selectedText.indexOf(matchingDiff.getRemovedText(), currIdx);
+            if (currIdx >= 0) indices.add(currIdx);
+        }
+        var caretIdx = caret.getOffset() - currentElement.getTextOffset();
+        int shortestDistance = Math.abs(indices.get(0) - caretIdx);
+        int closestIdx = indices.get(0);
+        for (int i = 1; i < indices.size(); i++) {
+            int currentDistance = Math.abs(indices.get(i) - caretIdx);
+            if(currentDistance < shortestDistance){
+                closestIdx = indices.get(i);
+                shortestDistance = currentDistance;
+            }
+        }
+
+        return new FindDiffResult(currentElement, matchingDiff, closestIdx);
     }
 
     @Override
@@ -116,9 +138,11 @@ public class ApplyRecentChange extends AnAction {
     private class FindDiffResult {
         public final PsiElement currentElement;
         public final RecentChangesService.SimpleDiff matchingDiff;
-        public FindDiffResult(PsiElement currentElement, RecentChangesService.SimpleDiff matchingDiff){
+        public final int idxInElement;
+        public FindDiffResult(PsiElement currentElement, RecentChangesService.SimpleDiff matchingDiff, int idxInElement){
             this.currentElement = currentElement;
             this.matchingDiff = matchingDiff;
+            this.idxInElement = idxInElement;
         }
     }
 }
