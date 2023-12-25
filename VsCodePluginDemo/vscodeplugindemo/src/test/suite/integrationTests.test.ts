@@ -31,6 +31,7 @@ suite('Integration Test Suite', () => {
 				return editor.edit(editBuilder => {
 					editBuilder.replace(range,"TEST");
 					// TODO the test does not work, since i could not get the simpleChangeHandler to trigger here
+					// maybe add an additional command just for triggering a text changed?
 				});
 			})
 			.then(

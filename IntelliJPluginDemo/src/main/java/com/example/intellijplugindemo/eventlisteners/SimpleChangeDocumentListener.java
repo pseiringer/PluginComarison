@@ -133,6 +133,8 @@ public class SimpleChangeDocumentListener implements DocumentListener {
      * @return The original text of the document.
      */
     private String getOriginalTextFromDocument(Document document){
+        //TODO find a simple way to get the document content.
+
         CompletableFuture<String> future = new CompletableFuture();
 
         DataManager.getInstance()
