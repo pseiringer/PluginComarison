@@ -26,6 +26,44 @@ Das Mitschreiben von komplexeren Veränderungen, zum Beispiel,
 wenn in mehreren Zeilen gleichzeitig Änderungen vorgenommen 
 werden, ist nicht Ziel des Prototyps.
 
+\subsection{Beispiel}
+
+Zur besseren Demonstration der Funktionalität wurde folgendes 
+Beispiel konstruiert, welches in Abbildung \ref{fig:example_vscode_change-step}
+und in Abbildung Abbildung \ref{fig:example_vscode_reapply-step}
+zu sehen ist:
+
+Eine Person entwickelt gerade ein Programm und erstellt 
+in der Datei \emph{Main.java} einige statische Variablen.
+Nun bemerkt die Person, dass es sich bei den Variablen 
+\emph{someValue2} und \emph{someValue4} eigentlich um 
+Werte vom Typ \emph{double} handelt. Sie macht daher eine 
+erste Änderung und passt den Datentyp von \emph{someValue2} an.
+Wie in Abbildung \ref{fig:example_vscode_change-step} zu erkennen ist,
+bemerkt das Plugin die Änderung und schreibt diese sofort mit.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{example_vscode_change-step}
+    \caption{Mitschreiben einer Änderung durch das \emph{RecentChangesPlugin}.}
+    \label{fig:example_vscode_change-step}
+\end{figure}
+
+Die Person möchte nun dieselbe Änderung auch noch einmal für
+die Variable \emph{someValue4} wiederholen. Sie stellt sich daher
+mit dem Cursor an die Position im Text, an der das \emph{int} steht.
+Durch das Drücken einer Tastenkombination wird nun die zuvor erkannte
+Änderung wieder angewandt und das \emph{int} an der aktuellen Position
+wird durch ein \emph{double} ersetzt. Dieser Schritt
+ist in Abbildung \ref{fig:example_vscode_reapply-step} zu sehen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{example_vscode_reapply-step}
+    \caption{Erneutes Anwenden einer Änderung durch das \emph{RecentChangesPlugin}.}
+    \label{fig:example_vscode_reapply-step}
+\end{figure}
+
 \subsection{Funktionen}
 
 Für das Plugin wurden folgende Funktionen vorgesehen:

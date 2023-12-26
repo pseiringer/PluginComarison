@@ -156,16 +156,18 @@ eine Änderung als abgeschlossen erkannt. Sobald dies geschieht, wird
 der Algorithmus \emph{diff-match-patch} verwendet, um die Änderung zu analysieren.
 Wird daraufhin festgestellt, dass es sich um eine einfache Änderung handelt,
 so wird diese in den Speicher des \emph{RecentChangesService} eingefügt.
-Zu beachten ist in dieser Klasse weiters die private Methode 
-\emph{getOriginalTextFromDocument}. Dieser komplexe Aufruf % //TODO rewrite after call is simplified, //TODO simplify code
-ist in IntelliJ notwendig, um den reinen Text des veränderten Dokuments
-zu erhalten. Die Klasse \emph{Document} hätte zwar eigentlich
+Zu beachten ist in dieser Klasse weiters dass ein Aufruf der privaten Methode 
+\emph{getOriginalTextFromDocument} nötig ist. 
+Die Klasse \emph{Document} hätte zwar eigentlich
 eine Methode \emph{getText}, dieser Text befindet sich aber möglicherweise
 in einem Zwischenzustand, in dem IntelliJ spezielle Zeichenketten 
 einsetzt, um die Anzeige der Codevervollständigung zu erleichtern
 \cite{IntelliJTheDreadedString,IntelliJGitHubCompletionUtilCore}.
-Um die originale Datei (und nicht eine modifizierte Kopie) zu erhalten,
-müssen also einige Umwege gegangen werden. % //TODO fix: weird page break in pdf. werden is on the next page.
+Um den originalen Dateiinhalt (und nicht eine modifizierte Kopie) zu erhalten,
+müssen also einige Umwege gegangen werden. Das Problem wurde gelöst,
+indem diese speziellen Zeichenketten einfach aus dem Text herausgefiltert
+und somit ignoriert werden.
+% //TODO FIX: weird page break in pdf. werden is on the next page. maybe set width to .90 on fig:diagram_IntelliJDesign-Detail_Service
 
 \begin{figure}
     \centering
