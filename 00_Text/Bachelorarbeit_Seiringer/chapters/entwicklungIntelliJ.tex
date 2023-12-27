@@ -378,7 +378,14 @@ natürlich entsprechend gesetzt werden müssen.
         password.set(System.getenv("IJ_PluginSign_Pass"))
     }
 \end{JsCode}
-Durch Ausführung des Task \emph{signPlugin} kann das Plugin signiert werden.
+Durch Ausführung des Task \emph{signPlugin} kann das Plugin signiert werden. 
+
+Da es sich bei dem Zertifikat und dem Privatschlüssel um mehrzeilige
+Werte handelt, kann es beim Speichern in Umgebungsvariablen
+zu Schwierigkeiten führen.
+Um hier etwaige Fehler zu vermeiden, müssen diese mehrzeiligen
+Werte als \emph{base64} kodiert werden. Der \emph{signPlugin}-Task
+erkennt diese Kodierung und dekodiert sie automatisch.
 
 Nach dem Signieren kann das Plugin veröffentlicht werden
 \cite{IntelliJPlatformSDKPublishingAPlugin}.
@@ -400,19 +407,20 @@ Titel gewählt wurde und wie die Beschreibung formatiert ist.
 Diese Richtlinien können unter \url{https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html}
 nachgeschlagen werden.
 
-Laut der IntelliJ Dokumentation ist es auch möglich ein
+Nach dem ersten manuellen Upload, ist auch möglich ein
 Plugin automatisiert in den Marketplace hochzuladen. Hierfür
 kann der Gradle Task \emph{publishPlugin} in Kombination
-mit einem Access Token von der Marketplace Webseite genutzt werden.
-Dieser muss wiederum in der Datei \emph{build.gradle.kts} gesetzt werden.
+mit einem \emph{Access Token} für den JetBrains Marketplace genutzt werden.
+Ein solcher \emph{Access Token} kann auf der Marketplace Webseite
+unter \url{https://plugins.jetbrains.com/author/me/tokens} generiert werden.
+Der Token muss in der Datei \emph{build.gradle.kts} gesetzt werden.
 \begin{JsCode}[numbers=none]
     publishPlugin {
         token.set(System.getenv("IJ_PluginSign_PublishToken"))
     }
 \end{JsCode}
-% //TODO publish fails
-% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/870
-% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/1482
+Auch dieser Token wird am besten als Umgebungsvariable festgelegt.
+
 
 \section{CI/CD}
 \label{sec:EntwicklungIntelliJ_CICD}
@@ -431,8 +439,7 @@ möglich. Das Veröffentlichen des Plugins kann durch
 \begin{GenericCode}[numbers=none]
     ./gradlew publishPlugin 
 \end{GenericCode}
-angestoßen werden. 
-% //TODO see if problems still arise or may be fixed somehow...
-% Beim Veröffentlichen treten allerdings die
-% selben Probleme auf, wie sie in Abschnitt \ref{sec:EntwicklungIntelliJ_Publishing}
-% beschrieben sind.
+angestoßen werden.
+Natürlich muss hier beachtet werden, dass die zuvor definierten
+Umgebungsvariablen auch im GitHub Runner, 
+am besten in Form von \emph{secrets}, gesetzt sein müssen.
