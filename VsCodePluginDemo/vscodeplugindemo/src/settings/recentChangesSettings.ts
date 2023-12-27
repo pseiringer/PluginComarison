@@ -28,7 +28,7 @@ export class RecentChangesSettings{
         var value = settings.get<number>(setting);
 
         // check if a value could be found
-        if (value == undefined){
+        if (value === undefined){
             // the setting was somehow invalid, get the default value
             value = Number(settings.inspect(setting)?.defaultValue ?? fallbackDefault);
         }

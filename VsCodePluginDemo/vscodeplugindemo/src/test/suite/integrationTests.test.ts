@@ -52,7 +52,7 @@ suite('Integration Test Suite', () => {
 			.then((value) => value as SimpleDiff[] | undefined) // cast the result to the correct type
 			.then((value) => { // cleanup (close the opened document and return the previous value)
 				return vscode.commands.executeCommand('workbench.action.closeActiveEditor')
-							.then(() => value)
+							.then(() => value);
 			}) 
 			.then( // assert the result
 				result => { //fulfilled

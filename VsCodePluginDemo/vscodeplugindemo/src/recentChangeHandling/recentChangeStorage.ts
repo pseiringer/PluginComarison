@@ -31,8 +31,9 @@ export class RecentChangeStorage extends EventTarget{
 
     // enqueues a new change if it was not previously contained
     public addRecentChange(change: SimpleDiff): void {
-        if (this.containsChange(change))
+        if (this.containsChange(change)){            
             return;
+        }
         this.recentChanges.enqueue(change);
         this.dispatchEvent(this.storageChangedEvent);
     }
@@ -59,7 +60,7 @@ export class RecentChangeStorage extends EventTarget{
             x => 
                 x.removedText === diff.removedText && 
                 x.replacementText === diff.replacementText
-        ) != undefined;
+        ) !== undefined;
     }
 
     // returns whether there are any changes stored currently
