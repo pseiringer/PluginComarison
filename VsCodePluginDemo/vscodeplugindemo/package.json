@@ -3,7 +3,7 @@
   "displayName": "RecentChanges (demo)",
   "description": "",
   "publisher": "pseiringer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -19,8 +19,11 @@
       {
         "command": "vscodeplugindemo.applyRecentChange",
         "title": "Apply recent Change"
+      },
+      {
+        "command": "vscodeplugindemo.getRecentChanges",
+        "title": "Get recent Changes"
       }
-
     ],
     "viewsContainers": {
       "activitybar": [
@@ -34,7 +37,7 @@
     "views": {
       "changes-explorer": [
         {
-          "id": "recentChangeView",
+          "id": "recentChangesView",
           "name": "Recent Changes"
         }
       ]

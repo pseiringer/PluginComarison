@@ -6,23 +6,34 @@ export class RecentChangesSettings{
     public static readonly settingDebounceTime: string = "debounceTime";
     public static readonly settingQueueSize: string = "queueSize";
     
-    
-    public static getDebounceTimeFromSettings(){
-        var settings = vscode.workspace.getConfiguration(RecentChangesSettings.settingsSection);
-        var size = settings.get<number>(RecentChangesSettings.settingDebounceTime);
-        if (size == undefined){
-            size = Number(settings.inspect(RecentChangesSettings.settingDebounceTime)?.defaultValue ?? 1);
-        }
-        return size;
+    // returns the debounce time (in ms) that is stored in the settings
+    public static getDebounceTimeFromSettings(): number {
+        return RecentChangesSettings.getNumberFromSettings(
+            RecentChangesSettings.settingsSection, 
+            RecentChangesSettings.settingDebounceTime, 
+            1);
     }
     
-    public static getQueueSizeFromSettings(){
-        var settings = vscode.workspace.getConfiguration(RecentChangesSettings.settingsSection);
-        var size = settings.get<number>(RecentChangesSettings.settingQueueSize);
-        if (size == undefined){
-            size = Number(settings.inspect(RecentChangesSettings.settingQueueSize)?.defaultValue ?? 1);
+    // returns the queue size that is stored in the settings
+    public static getQueueSizeFromSettings(): number {
+        return RecentChangesSettings.getNumberFromSettings(
+            RecentChangesSettings.settingsSection, 
+            RecentChangesSettings.settingQueueSize, 
+            1);
+    }
+
+    private static getNumberFromSettings(section: string, setting: string, fallbackDefault: number): number{
+        // get the correct settings section
+        var settings = vscode.workspace.getConfiguration(section);
+        var value = settings.get<number>(setting);
+
+        // check if a value could be found
+        if (value === undefined){
+            // the setting was somehow invalid, get the default value
+            value = Number(settings.inspect(setting)?.defaultValue ?? fallbackDefault);
         }
-        return size;
+
+        return value;
     }
 }
 

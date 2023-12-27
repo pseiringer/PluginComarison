@@ -25,41 +25,70 @@ public class RecentChangesSettingsService implements PersistentStateComponent<Re
     private RecentChangesSettingsState state = new RecentChangesSettingsState();
     private ArrayList<Consumer<Integer>> queueSizeListeners = new ArrayList<>();
 
+    /**
+     * Returns the settings state that should be persisted.
+     * @inheritDoc
+     */
     @Override
     public @Nullable RecentChangesSettingsState getState() {
         return state;
     }
 
+    /**
+     * Loads the read state into the current state of settings.
+     * @inheritDoc
+     */
     @Override
     public void loadState(@NotNull RecentChangesSettingsState state) {
         XmlSerializerUtil.copyBean(state, this.state);
     }
 
+    /**
+     * @return The current Instance of {@link RecentChangesSettingsService}.
+     */
     public static RecentChangesSettingsService getInstance() {
         return ApplicationManager.getApplication().getService(RecentChangesSettingsService.class);
     }
 
 
+    /**
+     * @return The currently selected debounce time.
+     */
     public long getDebounceTimeMs() {
         return state.debounceTimeMs;
     }
-
+    /**
+     * @param debounceTimeMs The new value for the currently selected debounce time.
+     */
     public void setDebounceTimeMs(long debounceTimeMs) {
         state.debounceTimeMs = debounceTimeMs;
     }
 
+    /**
+     * @return The currently selected queue size.
+     */
     public int getQueueSize() {
         return state.queueSize;
     }
-
+    /**
+     * @param queueSize The new value for the currently selected queue size.
+     */
     public void setQueueSize(int queueSize) {
         state.queueSize = queueSize;
         queueSizeListeners.forEach(c -> c.accept(state.queueSize));
     }
 
+    /**
+     * Adds a listener to the list of subscribed listeners.
+     * @param consumer The listener to be added.
+     */
     public void addQueueSizeListener(Consumer<Integer> consumer){
         queueSizeListeners.add(consumer);
     }
+    /**
+     * Removes a listener from the list of subscribed listeners.
+     * @param consumer The listener to be removed.
+     */
     public void removeQueueSizeListener(Consumer<Integer> consumer){
         queueSizeListeners.remove(consumer);
     }
