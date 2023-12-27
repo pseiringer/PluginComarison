@@ -19,8 +19,11 @@
       {
         "command": "vscodeplugindemo.applyRecentChange",
         "title": "Apply recent Change"
+      },
+      {
+        "command": "vscodeplugindemo.getRecentChanges",
+        "title": "Get recent Changes"
       }
-
     ],
     "viewsContainers": {
       "activitybar": [
