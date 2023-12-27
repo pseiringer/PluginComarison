@@ -5,9 +5,9 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>RecentChanges (demo)</name>
+    <name>Recent Changes (demo)</name>
 
-    <version>0.0.1</version>
+    <version>1.1</version>
 
     <idea-version since-build="223"></idea-version>
 
@@ -18,8 +18,17 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    <h1>Recent Changes Demo</h1>
-    This plugin is a prototype highlighting some features of the IntelliJ Extension API
+    <p>The Recent Changes Plugin remembers your most recent code changes and helps you reapply them in similar lines of code.</p>
+
+    <p>
+    Features:
+    <ul>
+        <li>Recent Changes remembers a certain amount of your most recent changes, like exchanging a certain word in your code or text.</li>
+        <li>When you want to apply the change at another place in your code, you can simply put your caret into the word and press *alt + R*.</li>
+        <li>Recent Changes adds your changes to code completion when it is appropriate.</li>
+        <li>Which changes are currently remembered can be seen in the Recent Changes tool window.</li>
+    </ul>
+    </p>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.

@@ -8,11 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 public class RecentChangesSettingsConfigurable implements Configurable {
-    //TODO apply settings to code
     private RecentChangesSettingsComponent mySettingsComponent;
-
-    // A default constructor with no arguments is required because this implementation
-    // is registered in an applicationConfigurable EP
 
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
@@ -28,20 +24,24 @@ public class RecentChangesSettingsConfigurable implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
+        // initialize the settings component and return its panel
         mySettingsComponent = new RecentChangesSettingsComponent();
         return mySettingsComponent.getPanel();
     }
 
     @Override
     public boolean isModified() {
-        RecentChangesSettingsService settings = RecentChangesSettingsService.getInstance();
-        boolean modified = mySettingsComponent.getDebounceTimeText() != settings.getDebounceTimeMs();
-        modified |= mySettingsComponent.getQueueSizeText() != settings.getQueueSize();
+        // get the service containing the persisted settings
+        RecentChangesSettingsService settingsService = RecentChangesSettingsService.getInstance();
+        // check if the current settings deviate from the settings stored in the service
+        boolean modified = mySettingsComponent.getDebounceTimeText() != settingsService.getDebounceTimeMs();
+        modified |= mySettingsComponent.getQueueSizeText() != settingsService.getQueueSize();
         return modified;
     }
 
     @Override
     public void apply() {
+        // persist the current settings in the service
         RecentChangesSettingsService settings = RecentChangesSettingsService.getInstance();
         settings.setDebounceTimeMs(mySettingsComponent.getDebounceTimeText());
         settings.setQueueSize(mySettingsComponent.getQueueSizeText());
@@ -49,6 +49,7 @@ public class RecentChangesSettingsConfigurable implements Configurable {
 
     @Override
     public void reset() {
+        // reset the displayed fields to show the persisted settings from the service
         RecentChangesSettingsService settings = RecentChangesSettingsService.getInstance();
         mySettingsComponent.setDebounceTimeText(settings.getDebounceTimeMs());
         mySettingsComponent.setQueueSizeText(settings.getQueueSize());

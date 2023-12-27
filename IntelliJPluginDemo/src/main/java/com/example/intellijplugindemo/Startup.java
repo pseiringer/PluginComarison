@@ -18,17 +18,24 @@ public class Startup implements StartupActivity {
         startRecentChangesPlugin(project);
     }
 
+    /**
+     * Initializes all services and listeners needed for the plugin.
+     * @param project
+     */
     public static synchronized void startRecentChangesPlugin(Project project){
+        // check if the plugin is already running
         var isRunningService = IsRecentChangesRunningService.getInstance();
         if (isRunningService.isRunning())
             return;
 
         System.out.println("===> Started Service");
 
+        // register document listener for all documents
         var appLevelService = RecentChangesService.getInstance();
         var eventMulticaster = EditorFactory.getInstance().getEventMulticaster();
         eventMulticaster.addDocumentListener(new SimpleChangeDocumentListener(), appLevelService);
 
+        // set the plugin to running
         isRunningService.setRunning();
     }
 }

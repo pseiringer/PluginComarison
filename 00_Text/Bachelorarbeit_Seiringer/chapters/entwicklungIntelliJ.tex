@@ -4,20 +4,435 @@
 \section{Design}
 \label{sec:EntwicklungIntelliJ_Design}
 
+Das beschriebene Plugin setzt sich in IntelliJ 
+durch die Komponenten zusammen,
+die in Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} 
+abgebildet sind.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Simplified}
+    \caption{Vereinfachte Design-Übersicht des Plugins in IntelliJ.}
+    \label{fig:diagram_IntelliJDesign-Simplified}
+\end{figure}
+
+Da die beiden Plugins im Aufbau sehr ähnlich sind, sind auch die Aufgaben der
+Einzelnen Komponenten beinahe deckungsgleich. Die Unterschiede liegen eher in
+den Details.
+
+Der \emph{SimpleChangeDocumentListener} übernimmt hier die Aufgabe
+des Beobachten des geöffneten Dokuments auf Veränderungen. Wird
+eine Änderung festgestellt, so wird diese an den \emph{RecentChangesService}
+zur Speicherung übergeben. Im Gegensatz zum \emph{RecentChangeStorage}
+ist dieser allerdings als expliziter Service deklariert, der von IntelliJ
+selbst verwaltet wird.
+
+Die Komponenten für Einstellungen teilen sich auf 
+\emph{RecentChangesSettingsConfigurable} und \emph{RecentChangesSettingsService}
+auf. Die Klasse \emph{RecentChangesSettingsConfigurable} kümmert sich dabei
+um die Darstellung und die Interaktivität der Einstellungen in der Benutzerschnittstelle.
+Die Klasse \emph{RecentChangesSettingsService} wird wieder als Service 
+angeboten und kümmert sich um das Speichern, Auslesen und Persistieren
+der Einstellungen.
+
+Die Codevervollständigung wird im IntelliJ Plugin durch den
+\emph{RecentChangesCompletionContributor} durchgeführt. Dieser
+sucht im \emph{RecentChangesService} nach Änderungen, die auf
+das ausgewählte Wort passen und gibt diese als Vorschläge zurück.
+
+Für das Einsetzen der Änderungen im Editor wird die Klasse
+\emph{ApplyRecentChange} verwendet, die als Action registriert ist.
+Bei der Action ist wie bereits im VS Code Plugin eine Tastenkombination
+zum schnelleren Aufrufen hinterlegt.
+Sollte keine passende Änderung gefunden werden, so wird direkt im
+Editor ein Warnhinweis mit einer entsprechenden Meldung angezeigt.
+
+% //TODO FIX manual \linebreak
+Die Klasse \emph{RecentChangesToolWindowFactory} ist für die Darstellung
+einer \linebreak
+UI-Komponente zuständig, die dem TreeView aus dem VS Code Plugin
+ähnelt. Sie liest dafür den Zustand des \emph{RecentChangesService} aus
+und baut eine entsprechende Baumstruktur auf. Um die Ansicht auch zum richtigen
+Zeitpunkt aktualisieren zu können, wird der Service mithilfe eines
+Observer-Patterns \cite{2005Dp:e} beobachtet.
+
+Die Komponente \emph{IsRecentChangesRunningService} existiert für den Fall,
+das zwei Instanzen von IntelliJ gleichzeitig auf einem Gerät gestartet werden.
+Beim Start der Anwendung müssen nämlich einige Initialisierungen vorgenommen
+werden, die nur einmalig durchgeführt werden dürfen. Gegen den
+\emph{IsRecentChangesRunningService} kann auf diese Weise geprüft werden, ob
+die Initialisierung noch nötig ist oder bereits gemacht wurde.
+
+
 \section{Implementierung}
 \label{sec:EntwicklungIntelliJ_Implementierung}
 
 \subsection{Aufsetzen des Projektes}
 
-\subsubsection{Aufbau der Ordnerstruktur}
+Das Erstellen eines neuen Plugin-Projektes kann in IntelliJ über den 
+\enquote{New Project Wizard} erledigt werden
+\cite{IntelliJPlatformSDKCreateProject}. Dafür muss einfach
+im Programm IntelliJ IDEA das Menü \emph{File -> New -> Project...}
+gewählt werden. Hier kann in der Liste der Projekt-Vorlagen
+auch ein Eintrag für ein \emph{IDE Plugin}-Projekt gefunden werden.
+Für diesen Projekttyp kann dann unter anderem
+ein Name für das Projekt gewählt werden. Dieser Name wird initial auch als
+Name des Plugins verwendet.
+
+Die durch IntelliJ generierte Ordnerstruktur ist (ausschnittsweise) in 
+Abbildung \ref{fig:intellij_generated_structure} dargestellt.
+Relevant ist hier vor allem die Datei \emph{plugin.xml}, die das 
+ent\-sprechend vorbereitete Plugin Manifest beinhaltet. Der Ordner
+\emph{kotlin} ist als Verzeichnis für den Plugin-Code vorgesehen.
+Für die Implementierung des \emph{RecentChangesPlugin} wurde dieser
+allerdings durch einen Ordner \emph{java} ersetzt.
+Ein Ordner für Tests wird nicht automatisch generiert
+und muss manuell hinzugefügt werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.35\textwidth]{intellij_generated_structure}
+    \caption{Ausschnitt der durch \emph{IntelliJ IDEA} generierten Ordnerstruktur.}
+    \label{fig:intellij_generated_structure}
+\end{figure}   
 
 \subsection{Entwicklung}
+
+\subsubsection{RecentChangesService}
+
+Die Klasse \emph{RecentChangesService} (dargestellt in
+Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Service}) 
+wird in der Form eines
+Services auf Applikationsebene implementiert. Dies wird 
+über das Attribut \emph{@Service(Service.Level.APP)} festgelegt. 
+Auf diese Weise kann eine Instanz der Klasse in der gesamten Anwendung
+bereitgestellt werden. Die statische Methode \emph{getInstance}
+abstrahiert dabei die Aufrufe der IntelliJ API, die nötig sind, um eine
+Referenz auf diese Instanz zu erhalten. Genau wie im VS Code Plugin,
+werden die Änderungen in einer \emph{EvictingQueue} von 
+\emph{SimpleDiff}-Objekten gespeichert. Allerdings muss diese
+Warteschlange hier nicht selbst implementiert werden, da es in
+der Bibliothek \emph{Guava} von Google bereits eine 
+Implementierung gibt \cite{GuavaGitHub}.
+Diese Bibliothek kann 
+in der Datei \emph{build.gradle.kts} eingebunden werden.
+Die verschiedenen Methoden der Klasse \emph{RecentChangesService} erlauben
+das Einfügen sowie das Auslesen von \emph{SimpleDiff}-Objekten aus
+der darunterliegenden Datenstruktur. Über die Methoden \emph{addChangeListener},
+\emph{removeChangeListener} und \emph{notifyListeners} wird ein Observer-Pattern
+abgebildet. Observer, welche die eigens erstellte Schnittstelle 
+\emph{RecentDiffsChangedListener} implementieren, können sich also
+beim \emph{RecentChangesService} anmelden. Sie werden dann bei Änderungen 
+an den Daten über die Methode \emph{notifyChanged} notifiziert.
+Da es sich bei der Klasse \emph{RecentChangesService} aufgrund der Implementierung
+als IntelliJ Service um eine Singleton-Klasse \cite{2005Dp:e}
+handelt, wird zusätzlich eine Methode \emph{reset} benötigt, um beim Testen
+die Unabhängigkeit der verschiedenen Unit-Tests zu erhalten. Da für
+die einzelnen Testfälle keine neuen Instanzen erzeugt werden können, muss
+die Klasse also vor jedem Test zurückgesetzt werden.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Service}
+    \caption{Detaillierte Darstellung des \emph{RecentChangesService}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Service}
+\end{figure}
+
+\subsubsection{SimpleChangeDocumentListener}
+
+Der detaillierte Aufbau der Komponente \emph{SimpleChangeDocumentListener}
+kann in Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Listener} betrachtet werden.
+Eine Instanz der Klasse wird beim ersten Start von IntelliJ so registriert, 
+dass er über die Änderungen in \emph{allen} geöffneten Dokumenten informiert wird. 
+Hierfür muss die Schnittstelle \emph{DocumentListener} implementiert werden.
+Diese definiert unter anderem die Methodensignaturen \emph{beforeDocumentChange}
+und \emph{documentChanged}. Durch das Zusammenspiel dieser beiden Methoden
+wird der gewünschte Debounce-Effekt erzeugt. Zu Beginn einer Änderung
+wird in der Methode \emph{beforeDocumentChange} der aktuelle Text aus der 
+unveränderten Datei ausgelesen. In der Methode \emph{documentChanged} wird
+dann ein Timer gestartet (oder neu gestartet, falls er bereits laufen sollte).
+Erst nach Ablauf des Timers (ohne eine weitere Eingabe) wird
+eine Änderung als abgeschlossen erkannt. Sobald dies geschieht, wird 
+der Algorithmus \emph{diff-match-patch} verwendet, um die Änderung zu analysieren.
+Wird daraufhin festgestellt, dass es sich um eine einfache Änderung handelt,
+so wird diese in den Speicher des \emph{RecentChangesService} eingefügt.
+Zu beachten ist in dieser Klasse weiters dass ein Aufruf der privaten Methode 
+\emph{getOriginalTextFromDocument} nötig ist. 
+Die Klasse \emph{Document} hätte zwar eigentlich
+eine Methode \emph{getText}, dieser Text befindet sich aber möglicherweise
+in einem Zwischenzustand, in dem IntelliJ spezielle Zeichenketten 
+einsetzt, um die Anzeige der Codevervollständigung zu erleichtern
+\cite{IntelliJTheDreadedString,IntelliJGitHubCompletionUtilCore}.
+Um den originalen Dateiinhalt (und nicht eine modifizierte Kopie) zu erhalten,
+müssen also einige Umwege gegangen werden. Das Problem wurde gelöst,
+indem diese speziellen Zeichenketten einfach aus dem Text herausgefiltert
+und somit ignoriert werden.
+% //TODO FIX: weird page break in pdf. werden is on the next page. maybe set width to .90 on fig:diagram_IntelliJDesign-Detail_Service
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Listener}
+    \caption{Detaillierte Darstellung des \emph{SimpleChangeDocumentListener}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Listener}
+\end{figure}
+
+\subsubsection{ApplyRecentChange}
+
+Bei \emph{ApplyRecentChange} handelt es sich um eine von
+\emph{AnAction} abgeleitete Klasse. In Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Action} sind die Interaktionen
+der Klasse dargestellt. Die Methoden \emph{actionPerformed} und \emph{update}
+werden von IntelliJ aufgerufen. In beiden Methoden muss zuerst
+der Inhalt der Datei an der aktuellen Position gelesen werden, um 
+herauszufinden, ob das Anwenden der Action momentan möglich ist.
+Sollte das Anwenden nicht möglich sein, wird
+in der Methode \emph{update} mithilfe des übergebenen
+\emph{AnActionEvent}-Objekt die Sichtbarkeit der Action (in den
+registrierten Menüs des User Interface) gesetzt.
+In der Methode \emph{actionPerformed} wird in einem solchen Fall
+eine Fehlermeldung mithilfe des IntelliJ Services \emph{HintManager}
+angezeigt. Sollte ein Ersetzen möglich sein,
+so wird mittels der statischen Methode 
+\emph{WriteCommandAction.runWriteCommandAction} ein Schreibbefehl
+abgesetzt, in welchem der zu ersetzende Inhalt des Dokuments 
+ausgetauscht wird. Dies ist nur über einen solchen Schreibbefehl möglich,
+da ansonsten Synchronisationsprobleme auftreten könnten
+\cite{IntelliJPlatformSDKSafelyReplacingText,IntelliJPlatformSDKGeneralThreadingRules}.
+Im Manifest des Plugins wird die Action mit der 
+Tastenkombination \emph{alt + R} registriert, um
+auch Aufrufbar zu sein.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Action}
+    \caption{Detaillierte Darstellung der Action \emph{ApplyRecentChange}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Action}
+\end{figure}
+
+\subsubsection{RecentChangesCompletionContributor}
+
+Die Klasse \emph{RecentChangesCompletionContributor}, die in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Contributor} dargestellt wird,
+leitet von \emph{CompletionContributor} ab. Im Konstruktor muss
+die Methode \emph{extend} aufgerufen werden, der eine Instanz 
+des eigentlichen \emph{CompletionProvider} übergeben wird.
+Dieser \emph{CompletionProvider} überschreibt wiederum die 
+Methode \emph{addCompletions}, welche die eigentliche Arbeit erledigt.
+Genau wie bei der Action \emph{ApplyRecentChange}, wird der
+Inhalt der Datei an der aktuellen Position ausgelesen. Das gefundene
+Wort wird im \emph{RecentChangesService} nachgeschlagen.
+Falls eine passende Änderung gefunden wird, wird diese über den 
+Parameter \emph{resultSet} zu den Vorschlägen für die Codevervollständigung
+hinzugefügt.
+Im Manifest wird der Contributor für die Sprache \emph{any} registriert,
+um sprachunabhängig zu funktionieren.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Contributor}
+    \caption{Detaillierte Darstellung des \emph{RecentChangesCompletionContributor}.}
+    \label{fig:diagram_IntelliJDesign-Detail_Contributor}
+\end{figure}
+
+\subsubsection{RecentChangesToolWindowFactory}
+
+Die Klasse \emph{RecentChangesToolWindowFactory} ist in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_ToolWindow} dargestellt.
+Sie implementiert die Schnittstelle \emph{ToolWindowFactory} 
+und überschreibt die Methode \emph{createToolWindowContent}. Zur besseren 
+Abgrenzung der Aufgaben wird in dieser zuerst eine neue Instanz
+der Klasse \emph{RecentChangesToolWindowContent} erstellt.
+Diese innere Klasse verwaltet den Inhalt und das Aussehen des Fensters.
+Sie lädt die nötigen Daten aus dem \emph{RecentChangesService} und
+meldet sich bei dem Service auch als Listener an, um gegebenenfalls den
+Inhalt zu aktualisieren. Die Darstellung des Fensterinhalts
+geschieht über ein \emph{JPanel} aus Java Swing und einem \emph{Tree}
+aus der UI-Bibliothek von IntelliJ. Dieser Inhalt wird
+durch die Methode \emph{getContentPanel} von außen zugänglich gemacht.
+Zum Schluss setzt die Methode \emph{createToolWindowContent} 
+den eigentlichen Inhalt des Fensters durch den Aufruf von
+\emph{toolWindow.getContentManager().addContent} auf dem übergebenen
+Parameter.
+Im Manifest wird \emph{RecentChangesToolWindowFactory} als Factory-Klasse
+für ein ToolWindow namens \emph{Recent Changes} registriert.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_ToolWindow}
+    \caption{Detaillierte Darstellung der \emph{RecentChangesToolWindowFactory}.}
+    \label{fig:diagram_IntelliJDesign-Detail_ToolWindow}
+\end{figure}
+
+\subsubsection{Einstellungen}
+
+Die für die Einstellungen nötigen Klassen sind in Abbildung
+\ref{fig:diagram_IntelliJDesign-Detail_Settings} zu sehen.
+\emph{RecentChangesSettingsConfigurable} ist die Hauptschnittstelle 
+zu IntelliJ, die auch im Manifest registriert ist. 
+Sie implementiert das Interface \emph{Configurable}
+und bietet verschiedene Methoden an, die für die Darstellung
+und Interaktivität in der Benutzerschnittstelle nötig sind.
+Durch die Methode \emph{apply} sollen die aktuell gewählten Einstellungen
+persistiert werden, durch die Methode \emph{reset} die 
+zuvor gespeicherten Einstellungen wieder angezeigt werden.
+Durch die Methode \emph{isModified} wird überprüft, ob die angezeigten
+Einstellungen von den persistierten Einstellungen abweichen. 
+Ist dies nicht der Fall, wird der Knopf zum Speichern der Einstellungen
+automatisch ausgegraut. Die Methode \emph{createComponent} stellt
+den Inhalt der Einstellungsseite in Form eines \emph{JComponent} bereit.
+Um gute Aufgabenteilung zu ermöglichen, ist diese Darstellung an die 
+Klasse \emph{RecentChangesSettingsComponent} ausgelagert. Sie beinhaltet
+Felder zum Eingeben der Warteschlangengröße und der Debouncezeit.
+Über Getter- und Setter-Methoden können diese Werte von 
+\emph{RecentChangesSettingsConfigurable} beliebig verwaltet werden.
+Um das Eingeben von ungültigen Werten zu vermeiden, werden zusätzlich
+Filter auf die Eingabefelder angewandt.
+Der \emph{RecentChangesSettingsService} ist die Komponente die für das 
+Persistieren der Einstellungen verantwortlich ist. Hierfür
+wird die Schnittstelle \emph{PersistentStateComponent} implementiert
+und das Attribut \emph{@State} angegeben. Auf diese Weise ruft
+IntelliJ zu den passenden Zeitpunkten automatisch die Methoden
+\emph{getState} und \emph{loadState} auf und serialisiert den Zustand
+in einer \emph{.xml}-Datei.
+Zusätzlich ist die Klasse im Manifest als Service registriert, und bietet
+passende Methoden zum Auslesen und Setzen sowie ein Observer-Pattern
+zum Beobachten der Einstellungen an.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Detail_Settings}
+    \caption{Detaillierte Darstellung der \emph{Settings} Komponenten.}
+    \label{fig:diagram_IntelliJDesign-Detail_Settings}
+\end{figure}
 
 \section{Tests}
 \label{sec:EntwicklungIntelliJ_Tests}
 
+Für Tests eines IntelliJ-Plugins werden von JetBrains 
+die Frameworks \emph{JUnit}, \emph{TestNG} und \emph{Cucumber} empfohlen
+\cite{IntelliJPlatformSDKTestsAndFixtures}. 
+Alle Tests für das IntelliJ Plugin laufen innerhalb einer sogenannten
+\emph{headless Umgebung} \cite{IntelliJPlatformSDKTestingOverview}. 
+Das bedeutet, es wird eine echte Instanz
+des IntelliJ IDEA zum Testen verwendet. Dieses wird allerdings ohne einer
+Benutzerschnittstelle gestartet und wird daher nicht angezeigt.
+Als Hauptschnittstelle für die Tests bietet IntelliJ die Klassen
+\emph{BasePlatformTestCase} und \emph{HeavyPlatformTestCase}
+\cite{IntelliJPlatformSDKLightAndHeavyTests}.
+Bei Test-Klassen, die von \emph{HeavyPlatformTestCase} ableiten,
+handelt es sich um \emph{Heavy}-Tests. Diese erstellen in
+der Testumgebung für jeden Testfall ein neues (temporäres)
+Projekt, in welchem das Plugin arbeiten kann. Da das Erstellen solcher
+Projekte allerdings sehr aufwändig ist, führt das Einsetzen solcher
+Tests zu längeren Ausführungszeiten.
+Bei Test-Klassen, die von \emph{BasePlatformTestCase} ableiten,
+handelt es sich um \emph{Light}-Tests. Diese sind darauf optimiert,
+möglichst effizient abzulaufen und versuchen, wenn möglich, das 
+erstellte Projekt von vorherigen Tests weiter zu verwenden.
+Dadurch wird zwar an Geschwindigkeit gewonnen, allerdings
+muss speziell darauf geachtet werden, dass keine Abhängigkeiten zwischen
+den Testfällen entstehen.
+Sollten diese beiden Klassen zu einschränkend sein, kann auch die
+Klasse \emph{IdeaTestFixtureFactory} verwendet werden
+\cite{IntelliJPlatformSDKTestsAndFixtures}. Mit dieser
+müssen allerdings einige \emph{setup}-Methoden manuell aufgerufen
+werden und man hat einen höheren Konfigurationsaufwand.
+Innerhalb der Testfälle kann beliebig mit der IntelliJ API interagiert
+werden. Es gibt sogar zusätzliche Methoden wie \emph{copyFileToProject},
+\emph{type}, \emph{performEditorAction}
+\cite{IntelliJPlatformSDKTestProjectAndTestdataDirectories,IntelliJPlatformSDKWritingTests}. 
+Diese erleichtern das Arbeiten mit der headless Umgebung 
+und erlauben es zum Beispiel, Tastatureingaben zu simulieren.
+Wenn Dateien in das Testprojekt geladen werden, kann spezielles Markup
+verwendet werden. So kann beispielsweise mit \emph{<caret>} die Position
+markiert werden, an der sich der Cursor befinden soll.
+
 \section{Publishing}
 \label{sec:EntwicklungIntelliJ_Publishing}
 
+Um ein Plugin in IntelliJ zu veröffentlichen, gibt es mehrere Voraussetzungen
+\cite{IntelliJPlatformSDKPluginSigning}.
+Man benötigt einen Account im JetBrains Marketplace und ein Zertifikat
+zum Signieren des Plugins. Der Account kann über die Seite 
+\url{https://plugins.jetbrains.com/} erstellt werden. Das Generieren eines
+Zertifikats und den dafür benötigten Schlüsseln geht mithilfe des 
+Programms \emph{openssl} und ist in der IntelliJ Dokumentation beschrieben.
+
+Im ersten Schritt muss das Plugin gebaut werden. Dies ist über den
+Gradle Task \emph{buildPlugin} möglich, welcher das Plugin baut, und
+das Ergebnis im Ordner \emph{build/distributions} als \emph{.zip}-Datei
+speichert.
+
+Um das gebaute Plugin zu signieren, können die im Projekt bereits vordefinierten
+Gradle Tasks genutzt werden. Hierfür muss allerdings die Datei 
+\emph{build.gradle.kts} angepasst werden. Im Abschnit \emph{signPlugin}
+müssen das zuvor generierte Zertifikat, der dazugehörige Privatschlüssel
+und das Passwort, mit welchem der Schüssel erstellt wurde, angegeben werden.
+Um diese sensiblen Daten nicht unabsichtlich zu veröffentlichen, empfiehlt
+es sich hier auf Umgebungsvariablen des Systems zurückzugreifen, welche
+natürlich entsprechend gesetzt werden müssen.
+\begin{JsCode}[numbers=none]
+    signPlugin {
+        certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
+        privateKey.set(System.getenv("IJ_PluginSign_PK"))
+        password.set(System.getenv("IJ_PluginSign_Pass"))
+    }
+\end{JsCode}
+Durch Ausführung des Task \emph{signPlugin} kann das Plugin signiert werden.
+
+Nach dem Signieren kann das Plugin veröffentlicht werden
+\cite{IntelliJPlatformSDKPublishingAPlugin}.
+Das Hochladen des Plugins in den JetBrains Marketplace muss beim ersten Mal
+manuell gemacht werden. Hierfür meldet man sich auf der Webseite an,
+klickt am oberen rechten Rand auf seinen Benutzernamen und daraufhin
+auf \emph{Upload plugin}. Im erscheinenden Dialog gibt man
+danach die nötigen Daten ein und lädt die zuvor generierte und signierte
+\emph{.zip}-Datei hoch.
+Das hochgeladene Plugin kann dann auf der Seite des eigenen Profils
+verwaltet und mit zusätzlichen Informationen, wie zum Beispiel Screenshots,
+ausgeschmückt werden.
+Bevor das Plugin öffentlich im Marketplace angeboten wird, wird es 
+zusätzlich von JetBrains Mitarbeitern geprüft. Um diese Prüfung
+zu bestehen, sollte bereits vor dem Hochladen auf verschiedene
+Anforderungen geachtet werden, die in der Dokumentation beschrieben sind.
+So muss zum Beispiel beachtet werden, was als Logo verwendet wird, welcher
+Titel gewählt wurde und wie die Beschreibung formatiert ist.
+Diese Richtlinien können unter \url{https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html}
+nachgeschlagen werden.
+
+Laut der IntelliJ Dokumentation ist es auch möglich ein
+Plugin automatisiert in den Marketplace hochzuladen. Hierfür
+kann der Gradle Task \emph{publishPlugin} in Kombination
+mit einem Access Token von der Marketplace Webseite genutzt werden.
+Dieser muss wiederum in der Datei \emph{build.gradle.kts} gesetzt werden.
+\begin{JsCode}[numbers=none]
+    publishPlugin {
+        token.set(System.getenv("IJ_PluginSign_PublishToken"))
+    }
+\end{JsCode}
+% //TODO publish fails
+% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/870
+% documented issue: https://github.com/JetBrains/gradle-intellij-plugin/issues/1482
+
 \section{CI/CD}
 \label{sec:EntwicklungIntelliJ_CICD}
+
+Für das automatisierte Testen und Veröffentlichen eines Plugins
+gibt es einen vorgefertigten GitHub Actions Workflow für 
+Plugin-Projekte, die mit Gradle arbeiten \cite{IntelliJGitHubBuildWorkflow}.
+Für andere CI/CD Pipelines gibt es keine Dokumentation.
+
+Die Pipeline muss im Grunde verschiedene vordefinierte Gradle Tasks
+ausführen. Das Ausführen der Tests ist beispielsweise durch den Befehl
+\begin{GenericCode}[numbers=none]
+    ./gradlew check
+\end{GenericCode}
+möglich. Das Veröffentlichen des Plugins kann durch
+\begin{GenericCode}[numbers=none]
+    ./gradlew publishPlugin 
+\end{GenericCode}
+angestoßen werden. 
+% //TODO see if problems still arise or may be fixed somehow...
+% Beim Veröffentlichen treten allerdings die
+% selben Probleme auf, wie sie in Abschnitt \ref{sec:EntwicklungIntelliJ_Publishing}
+% beschrieben sind.

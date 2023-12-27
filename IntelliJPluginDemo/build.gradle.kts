@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.example"
-version = "1.0-SNAPSHOT"
+version = "1.3-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -52,6 +52,11 @@ tasks {
     signPlugin {
         certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
         privateKey.set(System.getenv("IJ_PluginSign_PK"))
+        // privateKey.set(System.getenv("IJ_PluginSign_PK")) is used for signing in the repository
+//        // providers.environmentVariable("IJ_PluginSign_PK_full") is used for local
+//        // signing, since the private key gets cropped when saved in windows
+//        // environment variables
+//        privateKey.set(providers.environmentVariable("IJ_PluginSign_PK_full"))
         password.set(System.getenv("IJ_PluginSign_Pass"))
     }
 

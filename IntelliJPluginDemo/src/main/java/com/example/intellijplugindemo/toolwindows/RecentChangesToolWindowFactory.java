@@ -25,6 +25,10 @@ import java.util.stream.Collectors;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 public class RecentChangesToolWindowFactory implements ToolWindowFactory {
+    /**
+     * Provides a tool window containing a tree of recent changes.
+     * @inheritDoc
+     */
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         RecentChangesToolWindowContent toolWindowContent = new RecentChangesToolWindowContent(toolWindow);
@@ -46,10 +50,16 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
             updateRecentChangesTree();
             // subscribe to changes service
             RecentChangesService.getInstance().addChangeListener(() -> {
+                // refresh the tree on changed data
                 updateRecentChangesTree();
             });
         }
 
+        /**
+         * Creates an empty Tree {@link #changesTree} based on the Model {@link #model}.
+         * The tree is returned inside a JPanel.
+         * @return A JPanel containing the tree.
+         */
         @NotNull
         private JPanel createChangesTreePanel() {
             // create the root node and model of the tree
@@ -63,7 +73,11 @@ public class RecentChangesToolWindowFactory implements ToolWindowFactory {
             treePanel.add(changesTree);
             return treePanel;
         }
-        
+
+        /**
+         * Regenerates the {@link #model} and refreshes {@link #changesTree}.
+         * The data for the model is fetched from {@link RecentChangesService}.
+         */
         private void updateRecentChangesTree() {
             var root = (DefaultMutableTreeNode) model.getRoot();
 
