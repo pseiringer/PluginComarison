@@ -1,6 +1,7 @@
 
 import * as vscode from 'vscode';
-import { diff_match_patch, Diff } from 'diff-match-patch';
+// import { diff_match_patch, Diff } from 'diff-match-patch';
+import diff_match_patch = require('diff-match-patch');
 import { RecentChangeStorage, SimpleDiff } from './recentChangeStorage';
 import { RecentChangesSettings } from '../settings/recentChangesSettings';
 
@@ -142,7 +143,7 @@ export class SimpleChangeHandler {
     
 
     /** Modified copy of diff_lineMode from original diff-match-patch documentation */
-    private diff_wordMode(text1: string, text2: string): Diff[] {
+    private diff_wordMode(text1: string, text2: string): diff_match_patch.Diff[] {
         let a = this.diff_wordsToChars(text1, text2);
         let wordText1 = a.chars1;
         let wordText2 = a.chars2;
