@@ -29,11 +29,7 @@ public class IntegrationTests extends BasePlatformTestCase {
     @Test
     void simpleChangeDocumentListenerAddsSimpleChangeToRecentChangesService() throws InterruptedException {
         //open file in editor
-        var file = myFixture.copyFileToProject("TestSandbox.java");
-        myFixture.openFileInEditor(file);
-//        myFixture.configureByFile();
-//        myFixture.configureFromExistingVirtualFile(file);
-//        myFixture.allowTreeAccessForFile(file);
+        myFixture.configureByFile("TestSandbox.java");
 
         //replace selected text
         myFixture.type("TestReplacement");
@@ -56,35 +52,9 @@ public class IntegrationTests extends BasePlatformTestCase {
         //wait for the timerTask to be finished
         lock.await(taskWaitTime + 1000, TimeUnit.MILLISECONDS);
 
+        //see if a change has been found
         assertNotNull(foundChanges.get());
-        //TODO i could not get this test to work, since the fixture only creates virtual files.
-        // therefore the getOriginalTextFromDocument() method does not work and returns null.
     }
-
-//    @Test
-//    void firstTest() {
-//        assertEquals(1,1);
-//    }
-//    @Test
-//    void secondTest() {
-//        assertEquals(1,1);
-//    }
-//    @Test
-//    void thirdTest() {
-//        //open file in editor
-//        myFixture.configureByFile("someFile.xml");
-//
-//        Runnable r = () -> {
-//            //commands to run on the open editor
-//            myFixture.renameElementAtCaret("newTagName");
-//        };
-//
-//        //execute specified commands
-//        WriteCommandAction.runWriteCommandAction(getProject(), r);
-//
-//        //check if editor content equals "someExpectedFile" content
-//        myFixture.checkResultByFile("someExpectedFile.xml");
-//    }
 
     @Override
     protected String getTestDataPath() {

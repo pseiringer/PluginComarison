@@ -28,10 +28,13 @@ public final class RecentChangesService implements Disposable {
     }
 
     /**
-     * Adds a SimpleDiff element to the stored queue.
+     * Adds a SimpleDiff element to the stored queue
+     * if it was not stored already.
      * @param change The element to be added.
      */
     public void addChange(SimpleDiff change) {
+        if (containsDiff(change))
+            return;
         recentChanges.add(change);
         notifyListeners();
     }
@@ -79,6 +82,15 @@ public final class RecentChangesService implements Disposable {
             }
         }
         return null;
+    }
+
+    /**
+     * Checks if a diff is already contained in the storage.
+     * @param diff The SimpleDiff object to be looked for.
+     * @return Whether a SimpleDiff from the storage equals the given diff.
+     */
+    private boolean containsDiff(SimpleDiff diff){
+        return getDiff(x -> Objects.equals(x, diff)) != null;
     }
 
     /**

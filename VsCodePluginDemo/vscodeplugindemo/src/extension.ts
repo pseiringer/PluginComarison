@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 
 import { SimpleChangeHandler } from './recentChangeHandling/simpleChangeHandler';
-import { RecentChangeStorage } from './recentChangeHandling/recentChangeStorage';
+import { RecentChangeStorage, SimpleDiff } from './recentChangeHandling/recentChangeStorage';
 import { ApplyRecentChangeCommand } from './recentChangeHandling/applyRecentChangeCommand';
 import { RecentChangeTreeViewProvider } from './recentChangeViews/recentChangeTreeViewProvider';
 import { activateRecentChangesCompletionProvider } from './languageSupport/recentChangesCompletionProvider';
@@ -47,6 +47,15 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerTextEditorCommand('vscodeplugindemo.applyRecentChange', 
 		applyRecentChangeCommand.applyRecentChange, 
 		applyRecentChangeCommand
+	));
+	
+	// register getRecentChanges command so the storage can be read out in the integration tests
+	context.subscriptions.push(vscode.commands.registerCommand('vscodeplugindemo.getRecentChanges', 
+		() => {
+			var result = changeStorage?.getAllChanges() ?? undefined;
+			// console.log(result);
+			return result;
+		}
 	));
 
 	// register tree view

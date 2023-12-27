@@ -105,6 +105,7 @@ export class SimpleChangeHandler {
 
         // // calculate fully accurate diff and clean up to simplify
         // // sadly the cleanupSemantic feature does not work properly
+        // // cleanupSemantic does not work -> using word mode instead
         // let diffs = this.dmp.diff_main(previousText, currentText);        
         // this.dmp.diff_cleanupSemantic(diffs);
 

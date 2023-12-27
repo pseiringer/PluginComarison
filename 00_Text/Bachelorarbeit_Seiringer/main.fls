@@ -692,6 +692,15 @@ OUTPUT chapters/prototyp.aux
 INPUT ./chapters/prototyp.tex
 INPUT ./chapters/prototyp.tex
 INPUT chapters/prototyp.tex
+INPUT ./images/example_vscode_change-step.png
+INPUT ./images/example_vscode_change-step.png
+INPUT ./images/example_vscode_change-step.png
+INPUT ./images/example_vscode_change-step.png
+INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
+INPUT ./images/example_vscode_reapply-step.png
+INPUT ./images/example_vscode_reapply-step.png
+INPUT ./images/example_vscode_reapply-step.png
+INPUT ./images/example_vscode_reapply-step.png
 INPUT ./chapters/entwicklungVSCode.tex
 INPUT ./chapters/entwicklungVSCode.tex
 OUTPUT chapters/entwicklungVsCode.aux
@@ -706,7 +715,6 @@ INPUT ./images/vscode_generated_structure.png
 INPUT ./images/vscode_generated_structure.png
 INPUT ./images/vscode_generated_structure.png
 INPUT ./images/vscode_generated_structure.png
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT ./images/diagram_VSCodeDesign-Detail_Storage.pdf
 INPUT ./images/diagram_VSCodeDesign-Detail_Storage.pdf
 INPUT ./images/diagram_VSCodeDesign-Detail_Storage.pdf

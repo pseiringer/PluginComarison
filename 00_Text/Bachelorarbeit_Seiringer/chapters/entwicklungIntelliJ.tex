@@ -4,14 +4,15 @@
 \section{Design}
 \label{sec:EntwicklungIntelliJ_Design}
 
-Wie schon in Kapitel \ref{cha:EntwicklungVsCode}, setzt sich das 
-beschriebene Plugin in IntelliJ durch die Komponenten zusammen,
-die in Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} abgebildet sind.
+Das beschriebene Plugin setzt sich in IntelliJ 
+durch die Komponenten zusammen,
+die in Abbildung \ref{fig:diagram_IntelliJDesign-Simplified} 
+abgebildet sind.
 
 \begin{figure}
     \centering
     \includegraphics[width=.95\textwidth]{diagram_IntelliJDesign-Simplified}
-    \caption{Stark vereinfachte Übersicht über das Design des Plugins in IntelliJ.}
+    \caption{Vereinfachte Design-Übersicht des Plugins in IntelliJ.}
     \label{fig:diagram_IntelliJDesign-Simplified}
 \end{figure}
 
@@ -72,19 +73,20 @@ Das Erstellen eines neuen Plugin-Projektes kann in IntelliJ über den
 \enquote{New Project Wizard} erledigt werden
 \cite{IntelliJPlatformSDKCreateProject}. Dafür muss einfach
 im Programm IntelliJ IDEA das Menü \emph{File -> New -> Project...}
-gewählt werden. Hier gibt auf der linken Seite des Fensters eine 
-Liste mit Projekt-Vorlagen, in welcher sich auch der Eintrag 
-\emph{IDE Plugin} befindet. Für diesen Projekttyp kann dann unter anderem
+gewählt werden. Hier kann in der Liste der Projekt-Vorlagen
+auch ein Eintrag für ein \emph{IDE Plugin}-Projekt gefunden werden.
+Für diesen Projekttyp kann dann unter anderem
 ein Name für das Projekt gewählt werden. Dieser Name wird initial auch als
 Name des Plugins verwendet.
 
-Die durch IntelliJ generierte Ordnerstruktur kann (ausschnittsweise) in 
-Abbildung \ref{fig:intellij_generated_structure} betrachtet werden.
+Die durch IntelliJ generierte Ordnerstruktur ist (ausschnittsweise) in 
+Abbildung \ref{fig:intellij_generated_structure} dargestellt.
 Relevant ist hier vor allem die Datei \emph{plugin.xml}, die das 
 ent\-sprechend vorbereitete Plugin Manifest beinhaltet. Der Ordner
 \emph{kotlin} ist als Verzeichnis für den Plugin-Code vorgesehen.
-Er kann allerdings je nach Präferenz auch durch einen Ordner \emph{java}
-ersetzt werden. Ein Ordner für Tests wird nicht automatisch generiert
+Für die Implementierung des \emph{RecentChangesPlugin} wurde dieser
+allerdings durch einen Ordner \emph{java} ersetzt.
+Ein Ordner für Tests wird nicht automatisch generiert
 und muss manuell hinzugefügt werden.
 
 \begin{figure}
@@ -110,9 +112,9 @@ Referenz auf diese Instanz zu erhalten. Genau wie im VS Code Plugin,
 werden die Änderungen in einer \emph{EvictingQueue} von 
 \emph{SimpleDiff}-Objekten gespeichert. Allerdings muss diese
 Warteschlange hier nicht selbst implementiert werden, da es in
-der Bibliothek \emph{Guava} von Google bereits eine etablierte 
+der Bibliothek \emph{Guava} von Google bereits eine 
 Implementierung gibt \cite{GuavaGitHub}.
-Diese Bibliothek kann einfach
+Diese Bibliothek kann 
 in der Datei \emph{build.gradle.kts} eingebunden werden.
 Die verschiedenen Methoden der Klasse \emph{RecentChangesService} erlauben
 das Einfügen sowie das Auslesen von \emph{SimpleDiff}-Objekten aus
@@ -140,7 +142,7 @@ die Klasse also vor jedem Test zurückgesetzt werden.
 
 Der detaillierte Aufbau der Komponente \emph{SimpleChangeDocumentListener}
 kann in Abbildung \ref{fig:diagram_IntelliJDesign-Detail_Listener} betrachtet werden.
-Eine Instanz der Klasse wird beim ersten Start von IntelliJ also so registriert, 
+Eine Instanz der Klasse wird beim ersten Start von IntelliJ so registriert, 
 dass er über die Änderungen in \emph{allen} geöffneten Dokumenten informiert wird. 
 Hierfür muss die Schnittstelle \emph{DocumentListener} implementiert werden.
 Diese definiert unter anderem die Methodensignaturen \emph{beforeDocumentChange}
@@ -150,20 +152,22 @@ wird in der Methode \emph{beforeDocumentChange} der aktuelle Text aus der
 unveränderten Datei ausgelesen. In der Methode \emph{documentChanged} wird
 dann ein Timer gestartet (oder neu gestartet, falls er bereits laufen sollte).
 Erst nach Ablauf des Timers (ohne eine weitere Eingabe) wird
-eine Änderung als abgeschlossen erkannt. Sobald dies geschieht wird 
-der Algorithmus \emph{diff-match-patch} verwendet um die Änderung zu analysieren.
+eine Änderung als abgeschlossen erkannt. Sobald dies geschieht, wird 
+der Algorithmus \emph{diff-match-patch} verwendet, um die Änderung zu analysieren.
 Wird daraufhin festgestellt, dass es sich um eine einfache Änderung handelt,
 so wird diese in den Speicher des \emph{RecentChangesService} eingefügt.
-Zu beachten ist in dieser Klasse weiters die private Methode 
-\emph{getOriginalTextFromDocument}. Dieser komplexe Aufruf
-ist in IntelliJ notwendig, um den reinen Text des veränderten Dokuments
-zu erhalten. Die Klasse \emph{Document} hätte zwar eigentlich
+Zu beachten ist in dieser Klasse weiters dass ein Aufruf der privaten Methode 
+\emph{getOriginalTextFromDocument} nötig ist. 
+Die Klasse \emph{Document} hätte zwar eigentlich
 eine Methode \emph{getText}, dieser Text befindet sich aber möglicherweise
 in einem Zwischenzustand, in dem IntelliJ spezielle Zeichenketten 
 einsetzt, um die Anzeige der Codevervollständigung zu erleichtern
 \cite{IntelliJTheDreadedString,IntelliJGitHubCompletionUtilCore}.
-Um die originale Datei (und nicht eine modifizierte Kopie) zu erhalten,
-müssen also einige Umwege gegangen werden.
+Um den originalen Dateiinhalt (und nicht eine modifizierte Kopie) zu erhalten,
+müssen also einige Umwege gegangen werden. Das Problem wurde gelöst,
+indem diese speziellen Zeichenketten einfach aus dem Text herausgefiltert
+und somit ignoriert werden.
+% //TODO FIX: weird page break in pdf. werden is on the next page. maybe set width to .90 on fig:diagram_IntelliJDesign-Detail_Service
 
 \begin{figure}
     \centering
@@ -184,7 +188,7 @@ herauszufinden, ob das Anwenden der Action momentan möglich ist.
 Sollte das Anwenden nicht möglich sein, wird
 in der Methode \emph{update} mithilfe des übergebenen
 \emph{AnActionEvent}-Objekt die Sichtbarkeit der Action (in den
-registrierten Menüs des User Interface) entsprechend gesetzt.
+registrierten Menüs des User Interface) gesetzt.
 In der Methode \emph{actionPerformed} wird in einem solchen Fall
 eine Fehlermeldung mithilfe des IntelliJ Services \emph{HintManager}
 angezeigt. Sollte ein Ersetzen möglich sein,
@@ -264,7 +268,7 @@ für ein ToolWindow namens \emph{Recent Changes} registriert.
 Die für die Einstellungen nötigen Klassen sind in Abbildung
 \ref{fig:diagram_IntelliJDesign-Detail_Settings} zu sehen.
 \emph{RecentChangesSettingsConfigurable} ist die Hauptschnittstelle 
-zu IntelliJ, die auch im Manifest entsprechend registriert ist. 
+zu IntelliJ, die auch im Manifest registriert ist. 
 Sie implementiert das Interface \emph{Configurable}
 und bietet verschiedene Methoden an, die für die Darstellung
 und Interaktivität in der Benutzerschnittstelle nötig sind.
@@ -304,14 +308,14 @@ zum Beobachten der Einstellungen an.
 \section{Tests}
 \label{sec:EntwicklungIntelliJ_Tests}
 
-Für Tests eines IntelliJ Plugins werden von JetBrains 
+Für Tests eines IntelliJ-Plugins werden von JetBrains 
 die Frameworks \emph{JUnit}, \emph{TestNG} und \emph{Cucumber} empfohlen
 \cite{IntelliJPlatformSDKTestsAndFixtures}. 
 Alle Tests für das IntelliJ Plugin laufen innerhalb einer sogenannten
 \emph{headless Umgebung} \cite{IntelliJPlatformSDKTestingOverview}. 
 Das bedeutet, es wird eine echte Instanz
-des IntelliJ IDEA zum Testen verwendet. Dieses wird allerdings ohne einem
-User Interface gestartet und wird daher nicht angezeigt.
+des IntelliJ IDEA zum Testen verwendet. Dieses wird allerdings ohne einer
+Benutzerschnittstelle gestartet und wird daher nicht angezeigt.
 Als Hauptschnittstelle für die Tests bietet IntelliJ die Klassen
 \emph{BasePlatformTestCase} und \emph{HeavyPlatformTestCase}
 \cite{IntelliJPlatformSDKLightAndHeavyTests}.
@@ -322,7 +326,7 @@ Projekt, in welchem das Plugin arbeiten kann. Da das Erstellen solcher
 Projekte allerdings sehr aufwändig ist, führt das Einsetzen solcher
 Tests zu längeren Ausführungszeiten.
 Bei Test-Klassen, die von \emph{BasePlatformTestCase} ableiten,
-handelt es sich um \emph{Light}-Tests. Diese sind darauf optimiert
+handelt es sich um \emph{Light}-Tests. Diese sind darauf optimiert,
 möglichst effizient abzulaufen und versuchen, wenn möglich, das 
 erstellte Projekt von vorherigen Tests weiter zu verwenden.
 Dadurch wird zwar an Geschwindigkeit gewonnen, allerdings
@@ -338,7 +342,7 @@ werden. Es gibt sogar zusätzliche Methoden wie \emph{copyFileToProject},
 \emph{type}, \emph{performEditorAction}
 \cite{IntelliJPlatformSDKTestProjectAndTestdataDirectories,IntelliJPlatformSDKWritingTests}. 
 Diese erleichtern das Arbeiten mit der headless Umgebung 
-und erlauben es zum Beispiel Tastatureingaben zu simulieren.
+und erlauben es zum Beispiel, Tastatureingaben zu simulieren.
 Wenn Dateien in das Testprojekt geladen werden, kann spezielles Markup
 verwendet werden. So kann beispielsweise mit \emph{<caret>} die Position
 markiert werden, an der sich der Cursor befinden soll.
@@ -415,7 +419,7 @@ Dieser muss wiederum in der Datei \emph{build.gradle.kts} gesetzt werden.
 
 Für das automatisierte Testen und Veröffentlichen eines Plugins
 gibt es einen vorgefertigten GitHub Actions Workflow für 
-Pluginprojekte, die mit Gradle arbeiten \cite{IntelliJGitHubBuildWorkflow}.
+Plugin-Projekte, die mit Gradle arbeiten \cite{IntelliJGitHubBuildWorkflow}.
 Für andere CI/CD Pipelines gibt es keine Dokumentation.
 
 Die Pipeline muss im Grunde verschiedene vordefinierte Gradle Tasks

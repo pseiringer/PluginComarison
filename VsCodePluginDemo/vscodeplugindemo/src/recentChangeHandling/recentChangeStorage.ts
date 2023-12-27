@@ -29,8 +29,10 @@ export class RecentChangeStorage extends EventTarget{
         this.recentChanges = new EvictingQueue(RecentChangesSettings.getQueueSizeFromSettings());
     }
 
-    // enqueues a new change
+    // enqueues a new change if it was not previously contained
     public addRecentChange(change: SimpleDiff): void {
+        if (this.containsChange(change))
+            return;
         this.recentChanges.enqueue(change);
         this.dispatchEvent(this.storageChangedEvent);
     }
@@ -49,6 +51,15 @@ export class RecentChangeStorage extends EventTarget{
             }
         }
         return undefined;
+    }
+
+    // checks whether a SimpleDiff that equals the given diff is already contained in the storage
+    private containsChange(diff: SimpleDiff): boolean {
+        return this.findChange(
+            x => 
+                x.removedText === diff.removedText && 
+                x.replacementText === diff.replacementText
+        ) != undefined;
     }
 
     // returns whether there are any changes stored currently

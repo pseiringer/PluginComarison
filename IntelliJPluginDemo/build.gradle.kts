@@ -51,8 +51,8 @@ tasks {
 
     signPlugin {
         certificateChain.set(System.getenv("IJ_PluginSign_CertChain"))
-        // System.getenv("IJ_PluginSign_PK") is used for signing in the repository
         privateKey.set(System.getenv("IJ_PluginSign_PK"))
+        // privateKey.set(System.getenv("IJ_PluginSign_PK")) is used for signing in the repository
 //        // providers.environmentVariable("IJ_PluginSign_PK_full") is used for local
 //        // signing, since the private key gets cropped when saved in windows
 //        // environment variables
