@@ -6,19 +6,106 @@
 
 \subsection{Visual Studio Code}
 
+Laut der Stack Overflow Developer Survey von 2023 ist
+VS Code der große Spitzenreiter der IDEs. Es wurde von
+73,71 Prozent der EntwicklerInnen angegeben,
+dass sie VS Code verwenden \cite{StackOverflowSurvey2023}.
+Auch der PYPL Index bestätigt die Beliebtheit von VS Code \cite{PYPL}.
+Dieser Index misst die Anzahl von Suchanfragen in der Google Suchmaschine
+und reiht VS Code auf dem zweiten Platz, gleich hinter Visual Studio.
+
+Die Anzahl von Extensions die im Visual Studio Marketplace angeboten werden
+beträgt aktuell über 54.000 \cite{VSCodeMarketplace}. Allerdings sind 
+darunter auch viele Extensions die nicht viel verwendet werden und die nur
+wenige downloads vorweisen können. Zählt man nur die größten 
+Extensions, die über eine Million Downloads erreicht haben,
+kommt man auf etwas über 350 Extensions.
+
 \subsection{IntelliJ IDEA}
+
+In der Stack Overflow Developer Survey gaben 2023
+26,42 Prozent der EntwicklerInnen an, IntelliJ IDEA zu verwenden,
+womit es in der Umfrage den dritten Platz erreichte \cite{StackOverflowSurvey2023}.
+PYPL stuft IntelliJ auf Platz sieben ihres Index ein \cite{PYPL}.
+Allerdings darf hierbei nicht vergessen werden, dass Plugins
+für die IntelliJ Platform auch in anderen JetBrains IDEs installiert
+werden können. Berechnet man aus den Daten der Stack Overflow Umfrage
+eine gemeinsame Beliebtheit der IntelliJ Platform IDEs, so findet man,
+dass 52,87 Prozent der Entwicklerinnen eine solche Programmierumgebung nutzen \cite{StackOverflowSurvey}.
+Weiters muss beachtet werden, dass die Zielgruppe von IntelliJ IDEA
+vor allem Java EntwicklerInnen sind. Bei Umfragen mit rein Java
+EntwicklerInnen schneidet IntelliJ IDEA meist mit dem ersten Platz ab \cite{JRebelIDEs,JRebelDeveloperProductivityReport,BetterprojectsfasterPouplarityIndex}.
+
+Im JetBrains Marketplace werden für die gesamte IntelliJ Platform aktuell
+etwas über 7.800 Plugins zum Download angeboten. Zählt man nur die 
+großen Plugins mit mehr als einer Million Downloads, kommt man auf
+knapp über 100 Plugins.
 
 \subsection{Vergleich}
 
+Während es sich bei VS Code um einen allgemeinen Code-Editor handelt,
+der sehr vielseitig eingesetzt werden kann, bietet die IntelliJ Platform
+eher spezifische Werkzeuge in erster Linie auf die Entwicklung in
+einer einzelnen Programmiersprache ausgerichtet sind.
+Obwohl VS Code zwar insgesamt der häufiger genutzte Editor ist,
+sind die JetBrains IDEs für das Programmieren in einer 
+speziellen Sprache (zum Beispiel IntelliJ IDEA für Java) oft die
+beliebtere Wahl.
+
+% //TODO maybe add a table
+% \begin{tabular}{@{}llll@{}}
+%     \toprule
+%     VS Code & IntelliJ Platform \\
+%     \midrule
+%     C++ & Kompiliert & Applikationen & ISO/IEC 14882:2020 \\
+%     COBOL & Kompiliert & Business & ISO/IEC 1989:2014 \\
+%     JavaScript & Interpretiert & Web & ECMA-262 \\
+%     Python & Interpretiert & Machine Learning & PEPs \\
+%     \bottomrule
+% \end{tabular}
+
+
+    
 
 \section{Performance}
 \label{sec:Vergleich_Performance}
 
 \subsection{Visual Studio Code}
 
+Mithilfe der Anwendung \emph{AppTimer} von PassMark konnte
+die durchschnittliche Startzeit von VS Code ermittelt werden \cite{PassMarkAppTimer}.
+AppTimer wurde so konfiguriert, dass VS Code automatisch gestartet
+und wieder geschlossen wurden. Beim Start wurde von VS Code ein
+einfacher Projektordner geladen. Der AppTimer maß bei jedem Start
+die Zeit die VS Code brauchte, um in einen Zustand zu gelangen,
+in dem Nutzereingaben angenommen werden konnten.
+Diese Messung wurde in 100 Iterationen wiederholt.
+Daraus ergab sich eine durchschnittliche Startzeit von 0.294 Sekunden.
+
+Die Hardwareanforderungen sind sehr gering. VS Code benötigt weniger
+als 500 MB Festplattenspeicher, 1 GB RAM und eine Prozessorgeschwindigkeit
+von 1.6 GHz um lauffähig zu sein.
+
 \subsection{IntelliJ IDEA}
 
+Die Messungen mithilfe der AppTimer-Anwendung wurden auch
+für IntelliJ IDEA Ultimate in 100 Iterationen wiederholt.
+Hier war die durchschnittliche Startzeit bei 8.123 Sekunden.
+
+Als Hardwareanforderungen benötigt IntelliJ IDEA
+mindestens 3.5 GB Festplattenspeicher, 2 GB RAM und eine
+moderne CPU.
+
 \subsection{Vergleich}
+
+Da es sich bei VS Code nur um einen leichtgewichtigen Editor handelt,
+hat dieser auch einen klaren Vorteil bei der Performance 
+und den Hardwareanforderungen.
+IntelliJ IDEA ist eine vollständige IDE und hat daher auch längere
+Startzeiten und höhere Hardwareanforderungen.
+Auf einigermaßen modernen Geräten sollten beide Entwicklungsumgebungen
+problemlos ausführbar und verwendbar sein. Nur bei starken
+Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 
 \section{Feature Umfang}

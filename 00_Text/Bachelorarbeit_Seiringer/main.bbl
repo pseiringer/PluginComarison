@@ -452,8 +452,8 @@
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labeltitlesource}{title}
       \field{title}{IntelliJ Marketplace}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
       \field{urlyear}{2023}
       \field{urldateera}{ce}
       \verb{urlraw}
@@ -1099,6 +1099,54 @@
       \verb https://jflex.de/
       \endverb
     \endentry
+    \entry{JRebelDeveloperProductivityReport}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Java Developer Productivity Report 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jrebel.com/success/java-developer-productivity-report-2023
+      \endverb
+      \verb{url}
+      \verb https://www.jrebel.com/success/java-developer-productivity-report-2023
+      \endverb
+    \endentry
+    \entry{BetterprojectsfasterPouplarityIndex}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Java Developer Productivity Report 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://betterprojectsfaster.com/guide/java-tech-popularity-index-2023-q4/ide/
+      \endverb
+      \verb{url}
+      \verb https://betterprojectsfaster.com/guide/java-tech-popularity-index-2023-q4/ide/
+      \endverb
+    \endentry
+    \entry{JRebelIDEs}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Most Popular Java IDEs in 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jrebel.com/blog/best-java-ide
+      \endverb
+      \verb{url}
+      \verb https://www.jrebel.com/blog/best-java-ide
+      \endverb
+    \endentry
     \entry{VSCodeExtensionSamples}{online}{}
       \name{author}{1}{}{%
         {{hash=140864078aeca1c7c35b4beb33c53c34}{%
@@ -1203,6 +1251,22 @@
       \endverb
       \verb{url}
       \verb https://vscode-docs.readthedocs.io/en/stable/extensions/our-approach/
+      \endverb
+    \endentry
+    \entry{PassMarkAppTimer}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{PassMark AppTimer}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.passmark.com/products/apptimer/
+      \endverb
+      \verb{url}
+      \verb https://www.passmark.com/products/apptimer/
       \endverb
     \endentry
     \entry{PYPL}{online}{}
@@ -1336,8 +1400,8 @@
       \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
       \field{labeltitlesource}{title}
       \field{title}{Visual Studio Code Marketplace}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
       \field{urlyear}{2023}
       \field{urldateera}{ce}
       \verb{urlraw}
