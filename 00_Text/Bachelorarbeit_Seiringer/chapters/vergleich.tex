@@ -113,9 +113,37 @@ Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 \subsection{Visual Studio Code}
 
+VS Code unterstützt viele grundlegende Features (wie zum Beispiel 
+Commands, Interaktionen mit dem Editor, Einstellungen oder persistente
+Datenspeicherung) sehr gut. Auch werden komplexe Spracherweiterungen
+durch den Einsatz des \emph{Language Server Protocol} möglich.
+Weiters bietet VS Code auch dedizierte Schnittstellen an, wenn Extensions
+den Debugger oder das Testsystem von VS Code erweitern möchten.
+Zur Anzeige bietet VS Code ein \emph{Tree View} und ein 
+\emph{Webview}, in welchem beliebige Inhalte dargestellt werden können.
+
 \subsection{IntelliJ IDEA}
 
+Auch die IntelliJ Platform bietet viele grundlegende Funktionalitäten
+für Plugins an (zum Beisiel Actions, Interaktion mit den geöffneten Dokumenten
+und Projekten oder Einstellungen). Die Besonderheit die IntelliJ
+in Bezug auf Spracherweiterungen
+mitbringt, ist das \emph{Program Structure Interface (PSI)}. 
+Auf diese Weise können Sprachen gut in die IDEs Integriert werden
+und es kann extrem effizient mit dem Code interagiert werden.
+Einbindung eines Debuggers oder Compilers sollte zwar grundsätzliche
+möglich sein, allerdings gibt es hierzu (aktuell noch) keine Dokumentation.
+Zur Anzeige wird auf Java Swing \emph{Tool Windows} gesetzt.
+
 \subsection{Vergleich}
+
+Beide APIs sind sich in den angebotenen Grundlagen sehr ähnlich.
+Der größte Unterschied liegt bei den Spracherweiterungen, da VS Code 
+vollständig auf das Language Server Protocol setzt, während IntelliJ
+dieses nicht verwendet. Natürlich kann es für Plugin EntwicklerInnen
+auch einen Unterschied machen, ob sie Benutzerschnittstellen
+lieber mit HTML + CSS + JavaScript (Webviews) oder
+mit Java Swing (Tool Windows) implementieren. 
 
 
 \section{Intuitivität der API}
@@ -123,9 +151,28 @@ Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 \subsection{Visual Studio Code}
 
+Mit der VS Code Extension API wird ausschließlich
+über das \emph{Extension Manifest} und das Modul \emph{vscode} interagiert.
+Dieses Modul fasst alle Code-Schnittstellen zusammen und ist
+in übersichtliche Abschnitte (z.B. commands, window, workspace) unterteilt.
+
 \subsection{IntelliJ IDEA}
 
+In IntelliJ werden deklarationen im \emph{Plugin Configuration File}.
+Die Schnittstellen die vom Plugin implementiert werden müssen und
+die Klassen mit denen interagiert wird hängt von den deklarierten
+\emph{Extension Points} ab. Es handelt sich dabei um unterschiedlichste
+Klassen aus dem Quellcode der IntelliJ Platform.
+
 \subsection{Vergleich}
+
+Die VS Code API ist sehr übersichtlich und intuitiv und kann auch
+schon nach kurzem Einlesen in die Dokumentation verwendet werden.
+IntelliJ Plugins müssen mit vielen verschiedenen Klassen interagieren
+bei denen auf verschiedene Implementierungsdetails geachtet werden muss.
+Dadurch kann auch die Dokumentation auf den ersten Blick sehr komplex
+wirken. Durch diese starke Kopplung mit dem Quellcode ist das Plugin
+allerdings nicht auf die Interaktion mit einer konkreten Schnittstelle beschränkt.
 
 
 \section{Dokumentation der API}
@@ -133,19 +180,65 @@ Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 \subsection{Visual Studio Code}
 
+Die Dokumentation für VS Code Extensions ist sehr übersichtlich.
+Zuerst werden Grundlagen und häufig verwendete Features beschrieben.
+Daraufhin gibt es Anleitungen für spezielle Features,
+Dokumentation für Spracherweiterungen und Beschreibungen
+für das Testen und Publishen von Extension.
+Weiters beinhaltet die Dokumentation auch eine vollständige Beschreibung
+aller möglichen Interaktionen mit dem Extension Manifest
+und eine vollständige Dokumentation der VS Code API Schnittstelle.
+Auch ein Repository mit einfachen Code-Beispielen wird angeboten.
+
 \subsection{IntelliJ IDEA}
+
+Die IntelliJ Dokumentation startet erst mit einer kurzen 
+Beschreibung der Grundlagen. Dabei werden vor allem im
+Abschnitt \emph{Base Platform} viele häufig genutzte Funktionalitäten
+für Plugins beschrieben. Die nächsten Abschnitte beschreiben
+meist ein System der IntelliJ Platform und wie ein Plugin mit diesem
+System interagieren kann (z.B. gibt es Abschitte für \emph{Project Model}
+oder \emph{PSI}). Leider gibt es immer wieder Abschnitte, die mit der 
+Bemerkung \enquote{Will be available soon} ausgegraut sind.
+Es gibt zwar eine Liste von möglichen Extension Points, allerdings
+finden sich in dieser keine Beschreibungen. Anstatt einer vollständigen
+Dokumentation wird auf den IntelliJ Platform Quellcode verwiesen.
+Allerdings lassen auch die Kommentare im Code sehr zu wünschen übrig.
+Auch für IntelliJ gibt es ein Repository mit Code-Beispielen, die sehr
+hilfreich sein können.
 
 \subsection{Vergleich}
 
+VS Code bietet eine vollständige, übersichtliche und gut beschriebene 
+Dokumentation für Plugin EntwicklerInnen. Die IntelliJ Dokumentation
+bietet einen guten Überblick über die Systeme der IntelliJ Platform,
+allerdings ist sie eher unübersichtlich und teilweise 
+(an kritischen Stellen) unvollständig.
+Code-Beispiele bieten beide Dokumentationen an.
 
 \section{Testbarkeit des Plugins}
 \label{sec:Vergleich_Testbarkeit}
 
 \subsection{Visual Studio Code}
 
+VS Code erlaubt das Testen der Plugins und ermöglicht
+dabei Zugriff auf die Schnittstellen der Plugin API.
+Integrationstests werden mithilfe einer VS Code Instanz ausgeführt.
+
 \subsection{IntelliJ IDEA}
 
+IntelliJ ermöglicht das Testen des Plugins, in dem
+von bestimmten Basis-Testklassen abgeleitet wird. Durch diese
+Basisklassen werden zusätzliche Hilfsmethoden für die Tests
+angeboten. Die Integrationstests werden in einer
+headless-Instanz von IntelliJ IDEA ausgeführt, die großteils
+einer echten Instanz von IntelliJ IDEA entspricht.
+
 \subsection{Vergleich}
+
+In IntelliJ müssen zwar einige Implementierungsdetails in den Testklassen
+beachtet werden, dafür bietet IntelliJ eine bessere Unterstützung
+durch Hilfsmethoden für Tests.
 
 
 \section{Möglichkeiten des Publishings}
@@ -153,9 +246,33 @@ Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 \subsection{Visual Studio Code}
 
+Das Hochladen und Verwalten von Plugins im Marketplace ist
+simpel und ausführlich Dokumentiert. Das Werkzeug \emph{vsce}
+bietet Möglichkeiten zum Verwalten von Extensions und 
+erlaub das automatisierten Publishing mittels CI/CD Pipelines.
+Auf der Plugin-Seite des Marketplace kann eine \emph{Markdown}-Datei
+angegeben werden, in der auch Bilder, Aufzählungen und ähnliches formattiert
+werden können. Weiters bietet der Marketplace eine Seite für Reviews
+und eine Q \& A Seite für jedes Plugin.
+
 \subsection{IntelliJ IDEA}
 
+Da bei IntelliJ zu Beginn eine Signatur erstellt werden muss, ist das
+erste (manuelle) Hochladen etwas aufwändiger. Allerdings
+gibt es auch hier die Möglichkeit zum automatischen Publishing.
+Die Plugin-Beschreibungen können in HTML formattiert werden. Es gibt
+zusätzliche Felder um Bildschirmaufnahmen, ein Vorschauvideo oder
+weitere Seiten in Markdown-Formattierung zur Marketplace-Seite
+hinzuzufügen. Weiters gibt es die Möglichkeit kurze Beschreibungskarten
+des Plugins erstellen zu lassen, die dann zum Beispiel auf 
+einer eigenen Webseite eingebunden werden können.
+
 \subsection{Vergleich}
+
+Beide IDEs bieten einen ausgezeichneten Marketplace an
+und ermöglichen das einfache Veröffentlichen eines Plugins.
+Zur Darstellung des Plugins im Marketplace gibt es bei JetBrains
+jedoch mehr Optionen.
 
 
 \section{Installationsprozess des Plugins}
@@ -163,6 +280,31 @@ Hardwarelimitierungen kann VS Code hier einen Vorteil bieten.
 
 \subsection{Visual Studio Code}
 
+Die Installation des Plugins bei NutzerInnen funktioniert
+über den Marketplace. Dieser ist in VS Code stark in den 
+Editor eingebunden und es kann sehr intuitiv nach 
+Extensions gesucht werden. Das Installieren einer gewünschten
+Extension funktioniert also über wenige Klicks.
+Alternativ kann das Plugin auch auf der Marketplace Webseite
+gesucht und von dort aus installiert werden.
+Möchte man den VS Code Marketplace nicht nutzen, gibt es auch
+die Möglichkeit die Extension als \emph{.vsix}-Datei
+zu Verpacken und diese manuell von der Festplatte aus zu installieren.
+
 \subsection{IntelliJ IDEA}
 
+In IntelliJ IDEA kann ein Plugin über den JetBrains Marketplace
+installiert werden. Der Marketplace ist dabei in den Einstellung
+der IDE eingebunden. Auch hier kann das gewünschte Plugin einfach
+gesucht und installiert werden.
+Besucht man die Marketplace Webseite, so gibt es bei dieser nur einen
+Download-Knopf, mit welchem das Plugin als \emph{.zip}-Datei heruntergeladen
+werden kann. Diese gezippten Plugins können natürlich auch
+unabhängig vom Marketplace erstellt und manuell
+von der Festplatte aus installiert werden.
+
 \subsection{Vergleich}
+
+Beide Plattformen bieten zur Installation die selben Möglichkeiten.
+Allerdings ist es in VS Code ein minimal leichter das Extension-Menü
+zu finden, als in IntelliJ.

@@ -1147,6 +1147,22 @@
       \verb https://www.jrebel.com/blog/best-java-ide
       \endverb
     \endentry
+    \entry{LSPHomepage}{online}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeltitlesource}{title}
+      \field{title}{Language Server Protocol}
+      \field{urlday}{29}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://microsoft.github.io/language-server-protocol/
+      \endverb
+      \verb{url}
+      \verb https://microsoft.github.io/language-server-protocol/
+      \endverb
+    \endentry
     \entry{VSCodeExtensionSamples}{online}{}
       \name{author}{1}{}{%
         {{hash=140864078aeca1c7c35b4beb33c53c34}{%
