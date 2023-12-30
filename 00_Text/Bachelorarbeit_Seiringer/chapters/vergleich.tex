@@ -134,6 +134,9 @@ und es kann extrem effizient mit dem Code interagiert werden.
 Einbindung eines Debuggers oder Compilers sollte zwar grundsätzliche
 möglich sein, allerdings gibt es hierzu (aktuell noch) keine Dokumentation.
 Zur Anzeige wird auf Java Swing \emph{Tool Windows} gesetzt.
+Weiters ist es möglich in IntelliJ Plugins eigene 
+\emph{Extension Points} zu deklarieren, die von weiteren Plugins
+wiederum erweitert werden können.
 
 \subsection{Vergleich}
 
@@ -144,6 +147,8 @@ dieses nicht verwendet. Natürlich kann es für Plugin EntwicklerInnen
 auch einen Unterschied machen, ob sie Benutzerschnittstellen
 lieber mit HTML + CSS + JavaScript (Webviews) oder
 mit Java Swing (Tool Windows) implementieren. 
+Ein großer Vorteil den IntelliJ IDEA in bezug auf Feature Umfang
+bietet, ist das Erweiterungssystem mittels Extension Points.
 
 
 \section{Intuitivität der API}
@@ -308,3 +313,35 @@ von der Festplatte aus installiert werden.
 Beide Plattformen bieten zur Installation die selben Möglichkeiten.
 Allerdings ist es in VS Code ein minimal leichter das Extension-Menü
 zu finden, als in IntelliJ.
+
+
+\section{Übersicht}
+
+Die Tabelle \ref{tab:Ueberblick_Kriterien} zeigt noch
+einmal eine Übersicht über die Bewertungskriterien,
+deren Vergleich in den vorherigen Abschnitten genauer
+ausgeführt wurde.
+
+\begin{table}[hb]
+    \caption{Überblick über die Bewertungskriterien.}
+    \label{tab:Ueberblick_Kriterien}
+    \centering
+    \setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+    \renewcommand{\arraystretch}{1.25} % vertical stretch factor (standard = 1.0)
+
+    \begin{tabular}{@{}llll@{}}
+        \toprule
+         & VS Code & IntelliJ Platform \\
+        \midrule
+        Popularität der Entwicklungsumgebung & + &  \\
+        Performance & + &  \\
+        Feature Umfang &  & + \\
+        Intuitivität der API & + &  \\
+        Dokumentation der API & + &  \\
+        Testbarkeit des Plugins &  & + \\
+        Möglichkeiten des Publishings &  & + \\
+        Installationsprozess des Plugins & + &  \\
+        \bottomrule
+    \end{tabular}
+    
+\end{table}

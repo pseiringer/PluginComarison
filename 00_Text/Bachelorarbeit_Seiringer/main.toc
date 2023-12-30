@@ -117,7 +117,8 @@
 \contentsline {subsection}{\numberline {7.8.1}Visual Studio Code}{43}{subsection.7.8.1}%
 \contentsline {subsection}{\numberline {7.8.2}IntelliJ IDEA}{44}{subsection.7.8.2}%
 \contentsline {subsection}{\numberline {7.8.3}Vergleich}{44}{subsection.7.8.3}%
+\contentsline {section}{\numberline {7.9}Übersicht}{44}{section.7.9}%
 \contentsline {chapter}{\numberline {8}Conclusion}{45}{chapter.8}%
-\contentsline {chapter}{Quellenverzeichnis}{46}{appendix*.27}%
-\contentsline {section}{Literatur}{46}{section*.28}%
-\contentsline {section}{Online-Quellen}{46}{section*.29}%
+\contentsline {chapter}{Quellenverzeichnis}{46}{appendix*.28}%
+\contentsline {section}{Literatur}{46}{section*.29}%
+\contentsline {section}{Online-Quellen}{46}{section*.30}%
