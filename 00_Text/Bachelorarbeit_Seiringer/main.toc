@@ -4,8 +4,8 @@
 \babel@toc {ngerman}{}\relax 
 \contentsline {chapter}{Erkl\"arung}{iv}{chapter*.1}%
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Kurzfassung}{viii}{chapter*.3}%
-\contentsline {chapter}{Abstract}{ix}{chapter*.4}%
+\contentsline {chapter}{Kurzfassung}{v}{chapter*.2}%
+\contentsline {chapter}{Abstract}{vi}{chapter*.3}%
 \babel@toc {english}{}\relax 
 \babel@toc {ngerman}{}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
@@ -78,13 +78,13 @@
 \contentsline {chapter}{\numberline {6}Bewertungskriterien}{37}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Popularität der Entwicklungsumgebung}{37}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Performance}{37}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Feature Umfang}{37}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Intuitivität der API}{38}{section.6.4}%
+\contentsline {section}{\numberline {6.3}Feature-Umfang}{37}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Einfachheit der Verwendung der API}{38}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Dokumentation der API}{38}{section.6.5}%
 \contentsline {section}{\numberline {6.6}Testbarkeit des Plugins}{38}{section.6.6}%
 \contentsline {section}{\numberline {6.7}Möglichkeiten des Publishings}{38}{section.6.7}%
 \contentsline {section}{\numberline {6.8}Installationsprozess des Plugins}{38}{section.6.8}%
-\contentsline {chapter}{\numberline {7}Vergleich der Kriterien}{39}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Vergleich anhand der Bewertungskriterien}{39}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Popularität der Entwicklungsumgebung}{39}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Visual Studio Code}{39}{subsection.7.1.1}%
 \contentsline {subsection}{\numberline {7.1.2}IntelliJ IDEA}{39}{subsection.7.1.2}%
@@ -93,32 +93,32 @@
 \contentsline {subsection}{\numberline {7.2.1}Visual Studio Code}{40}{subsection.7.2.1}%
 \contentsline {subsection}{\numberline {7.2.2}IntelliJ IDEA}{40}{subsection.7.2.2}%
 \contentsline {subsection}{\numberline {7.2.3}Vergleich}{40}{subsection.7.2.3}%
-\contentsline {section}{\numberline {7.3}Feature Umfang}{40}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Visual Studio Code}{40}{subsection.7.3.1}%
+\contentsline {section}{\numberline {7.3}Feature Umfang}{41}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Visual Studio Code}{41}{subsection.7.3.1}%
 \contentsline {subsection}{\numberline {7.3.2}IntelliJ IDEA}{41}{subsection.7.3.2}%
 \contentsline {subsection}{\numberline {7.3.3}Vergleich}{41}{subsection.7.3.3}%
-\contentsline {section}{\numberline {7.4}Intuitivität der API}{41}{section.7.4}%
+\contentsline {section}{\numberline {7.4}Einfachheit der Verwendung der API}{41}{section.7.4}%
 \contentsline {subsection}{\numberline {7.4.1}Visual Studio Code}{41}{subsection.7.4.1}%
 \contentsline {subsection}{\numberline {7.4.2}IntelliJ IDEA}{41}{subsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.4.3}Vergleich}{41}{subsection.7.4.3}%
+\contentsline {subsection}{\numberline {7.4.3}Vergleich}{42}{subsection.7.4.3}%
 \contentsline {section}{\numberline {7.5}Dokumentation der API}{42}{section.7.5}%
 \contentsline {subsection}{\numberline {7.5.1}Visual Studio Code}{42}{subsection.7.5.1}%
 \contentsline {subsection}{\numberline {7.5.2}IntelliJ IDEA}{42}{subsection.7.5.2}%
 \contentsline {subsection}{\numberline {7.5.3}Vergleich}{42}{subsection.7.5.3}%
-\contentsline {section}{\numberline {7.6}Testbarkeit des Plugins}{42}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Visual Studio Code}{42}{subsection.7.6.1}%
+\contentsline {section}{\numberline {7.6}Testbarkeit des Plugins}{43}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Visual Studio Code}{43}{subsection.7.6.1}%
 \contentsline {subsection}{\numberline {7.6.2}IntelliJ IDEA}{43}{subsection.7.6.2}%
 \contentsline {subsection}{\numberline {7.6.3}Vergleich}{43}{subsection.7.6.3}%
 \contentsline {section}{\numberline {7.7}Möglichkeiten des Publishings}{43}{section.7.7}%
 \contentsline {subsection}{\numberline {7.7.1}Visual Studio Code}{43}{subsection.7.7.1}%
 \contentsline {subsection}{\numberline {7.7.2}IntelliJ IDEA}{43}{subsection.7.7.2}%
 \contentsline {subsection}{\numberline {7.7.3}Vergleich}{43}{subsection.7.7.3}%
-\contentsline {section}{\numberline {7.8}Installationsprozess des Plugins}{43}{section.7.8}%
-\contentsline {subsection}{\numberline {7.8.1}Visual Studio Code}{43}{subsection.7.8.1}%
+\contentsline {section}{\numberline {7.8}Installationsprozess des Plugins}{44}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Visual Studio Code}{44}{subsection.7.8.1}%
 \contentsline {subsection}{\numberline {7.8.2}IntelliJ IDEA}{44}{subsection.7.8.2}%
 \contentsline {subsection}{\numberline {7.8.3}Vergleich}{44}{subsection.7.8.3}%
 \contentsline {section}{\numberline {7.9}Übersicht}{44}{section.7.9}%
-\contentsline {chapter}{\numberline {8}Conclusion}{45}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{45}{chapter.8}%
 \contentsline {chapter}{Quellenverzeichnis}{46}{appendix*.28}%
 \contentsline {section}{Literatur}{46}{section*.29}%
 \contentsline {section}{Online-Quellen}{46}{section*.30}%
