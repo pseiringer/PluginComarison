@@ -602,13 +602,6 @@ INPUT ./images/logo.pdf
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmss12.tfm
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmr12.tfm
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmss.fd
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmss.fd
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmss.fd
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ts1-lmss10.tfm
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
-INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmss17.tfm
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmss17.tfm
 INPUT ./front/kurzfassung.tex
@@ -641,10 +634,12 @@ OUTPUT chapters/grundlagen.aux
 INPUT ./chapters/grundlagen.tex
 INPUT ./chapters/grundlagen.tex
 INPUT chapters/grundlagen.tex
+INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
+INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT c:/Users/Philipp/AppData/Local/Programs/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd

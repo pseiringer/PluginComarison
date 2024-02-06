@@ -515,8 +515,8 @@ This work is published under the conditions of the
 			%no declaration page for proposals
 		}%			
 		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
+			% \@advisorpage%
+			% \@copyrightpage%
 			\@declarationpage%
 		}%
 }

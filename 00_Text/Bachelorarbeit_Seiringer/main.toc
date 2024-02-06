@@ -2,10 +2,10 @@
 \babel@toc {ngerman}{}\relax 
 \babel@toc {ngerman}{}\relax 
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Erkl\"arung}{iv}{chapter*.1}%
+\contentsline {chapter}{Erkl\"arung}{i}{chapter*.1}%
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Kurzfassung}{v}{chapter*.2}%
-\contentsline {chapter}{Abstract}{vi}{chapter*.3}%
+\contentsline {chapter}{Kurzfassung}{ii}{chapter*.2}%
+\contentsline {chapter}{Abstract}{iii}{chapter*.3}%
 \babel@toc {english}{}\relax 
 \babel@toc {ngerman}{}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
