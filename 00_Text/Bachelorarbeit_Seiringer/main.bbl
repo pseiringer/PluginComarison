@@ -167,28 +167,6 @@
       \field{year}{2022}
       \keyw{Programming languages (Electronic computers)}
     \endentry
-    \entry{klein2010jflex}{article}{}
-      \name{author}{1}{}{%
-        {{hash=199a8abce7ff51f1ce18d08d6910be68}{%
-           family={Klein},
-           familyi={K\bibinitperiod},
-           given={Gerwin},
-           giveni={G\bibinitperiod}}}%
-      }
-      \strng{namehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{fullhash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{bibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authorbibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authornamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authorfullhash}{199a8abce7ff51f1ce18d08d6910be68}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Available on-line at www.jflex.de. Accessed August}
-      \field{title}{Jflex users manual}
-      \field{year}{2010}
-    \endentry
     \entry{MaharryDanTR}{book}{}
       \name{author}{1}{}{%
         {{hash=a20ff6def9eccf8ef939b56a226345d6}{%
@@ -218,6 +196,7 @@
       \field{labeltitlesource}{title}
       \field{isbn}{9781430257257}
       \field{title}{TypeScript Revealed}
+      \field{year}{2013}
       \keyw{Computer Science ; Professional and Applied Computing ; Software Engineering/Programming and Operating Systems ; Web Development}
     \endentry
     \entry{mccracken2003backus}{incollection}{}
@@ -284,6 +263,9 @@
       }
       \list{language}{1}{%
         {eng}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
       }
       \strng{namehash}{88e882623a1e03f8b57eca6a56d4a658}
       \strng{fullhash}{88e882623a1e03f8b57eca6a56d4a658}
@@ -1201,6 +1183,36 @@
       \endverb
       \verb{url}
       \verb https://www.jrebel.com/blog/best-java-ide
+      \endverb
+    \endentry
+    \entry{KleinJFlexManual}{online}{}
+      \name{author}{1}{}{%
+        {{hash=199a8abce7ff51f1ce18d08d6910be68}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={Gerwin},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{fullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{bibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorbibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authornamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorfullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Jflex users manual}
+      \field{urlday}{31}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jflex.de/manual.html
+      \endverb
+      \verb{url}
+      \verb https://jflex.de/manual.html
       \endverb
     \endentry
     \entry{LSPHomepage}{online}{}
