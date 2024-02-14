@@ -18,7 +18,7 @@ der Plugins, vertraut zu machen.
 Um diese Aufgaben möglichst gut zu erfüllen, wurde das sogenannte
 \enquote{RecentChangesPlugin} entworfen. Es handelt sich 
 dabei um ein Plugin, welches Text- oder Codeänderungen 
-im Editor mitliest und sich merkt. Dadurch wird die spätere
+im Editor erfasst und speichert. Dadurch wird die spätere
 Wiederholung von gleichen oder ähnlichen Änderungen erleichtert.
 Als Änderung wird hierbei das einfache Abändern oder das Ersetzen eines
 Wortes durch ein anderes verstanden. 
@@ -30,7 +30,7 @@ werden, ist nicht Ziel des Prototyps.
 
 Zur besseren Demonstration der Funktionalität wurde folgendes 
 Beispiel konstruiert, welches in Abbildung \ref{fig:example_vscode_change-step}
-und in Abbildung Abbildung \ref{fig:example_vscode_reapply-step}
+und in Abbildung \ref{fig:example_vscode_reapply-step}
 zu sehen ist:
 
 Eine Person entwickelt gerade ein Programm und erstellt 
@@ -93,7 +93,7 @@ Für das Plugin wurden folgende Funktionen vorgesehen:
 
     \item[Anwenden von Änderungen durch Tastenkombination]
     Der Vorgang des An-\linebreak
-    wenden von Änderungen soll auch durch eine
+    wendens von Änderungen soll auch durch eine
     Tastenkombination auslösbar sein.
 
     \item[Vergessen von alten Änderungen]
@@ -105,21 +105,21 @@ Für das Plugin wurden folgende Funktionen vorgesehen:
     \item[Automatische Codevervollständigung]
     Anhand der kürzlichen Änderungen sollen auch Vorschläge
     in der Codevervollständigung angezeigt werden. 
-    Da eine Änderung ja immer aus einem entfernten Wort 
+    Da eine Änderung aus einem entfernten Wort 
     und einem ersetzenden Wort besteht, liegt es hier nahe,
     für die Codevervollständigung nur die ersetzenden Worte
-    vorzuschlagen. Die entfernten Worte werden also ignoriert.
+    vorzuschlagen. Die entfernten Wörter werden also ignoriert.
 
     \item[Anzeige der Änderungen]
     Damit die NutzerInnen einen Überblick über die kürzlichen Änderungen
     haben, sollen alle Änderungen, die sich im Zwischenspeicher befinden,
-    über eine View angezeigt werden können.
+    in einer View angezeigt werden.
 
     \item[Einstellungen]
     Es soll möglich sein, Einstellungen des Plugins festzulegen, welche
-    auch beim Schließen der Entwicklungsumgebunge persistent bleiben.
-
+    auch nach dem Schließen der Entwicklungsumgebung gespeichert bleiben.
     Es soll gespeichert werden:
+
     \begin{itemize}
         \item wie viele Änderungen gleichzeitig im 
             Zwischenspeicher gehalten werden und
@@ -128,7 +128,7 @@ Für das Plugin wurden folgende Funktionen vorgesehen:
     \end{itemize}
 
     \item[Tests]
-    Es soll eine kleine, demonstrative Menge von Unit- und Integrationstests für
+    Es sollen Unit- und Integrationstests für
     den Plugin Code geschrieben werden.
 
 \end{description}

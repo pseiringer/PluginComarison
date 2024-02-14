@@ -40,6 +40,9 @@
       \list{language}{1}{%
         {eng}%
       }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
       \strng{namehash}{cb6ba4ee3295a1d2a706a4c606f13032}
       \strng{fullhash}{cb6ba4ee3295a1d2a706a4c606f13032}
       \strng{bibnamehash}{cb6ba4ee3295a1d2a706a4c606f13032}
@@ -82,10 +85,13 @@
       \list{language}{1}{%
         {eng}%
       }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
       \strng{namehash}{4d2492409a24d4ed208ae6670cb91945}
       \strng{fullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
-      \strng{bibnamehash}{4d2492409a24d4ed208ae6670cb91945}
-      \strng{authorbibnamehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{bibnamehash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{authorbibnamehash}{5cb4a6d7baf30d11bae6682eca698b4f}
       \strng{authornamehash}{4d2492409a24d4ed208ae6670cb91945}
       \strng{authorfullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
       \field{sortinit}{G}
@@ -93,7 +99,6 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{0201633612}
-      \field{series}{Addison-Wesley professional computing series}
       \field{title}{Design Patterns : Elements of Reusable Object-Oriented Software}
       \field{year}{2005}
       \keyw{Object-oriented programming (Computer science)}
@@ -113,6 +118,9 @@
       }
       \list{language}{1}{%
         {eng}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
       }
       \strng{namehash}{753f1516a67318eb69a43215a1650316}
       \strng{fullhash}{753f1516a67318eb69a43215a1650316}
@@ -140,6 +148,9 @@
       }
       \list{language}{1}{%
         {eng}%
+      }
+      \list{publisher}{1}{%
+        {Apress}%
       }
       \strng{namehash}{5975b9a73c19e769b6c357bb29240336}
       \strng{fullhash}{5975b9a73c19e769b6c357bb29240336}
@@ -440,8 +451,8 @@
       }
       \strng{namehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
       \strng{fullhash}{0b981daa0336df0177bdf1eb6999e295}
-      \strng{bibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
-      \strng{authorbibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{bibnamehash}{0b981daa0336df0177bdf1eb6999e295}
+      \strng{authorbibnamehash}{0b981daa0336df0177bdf1eb6999e295}
       \strng{authornamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
       \strng{authorfullhash}{0b981daa0336df0177bdf1eb6999e295}
       \field{sortinit}{H}

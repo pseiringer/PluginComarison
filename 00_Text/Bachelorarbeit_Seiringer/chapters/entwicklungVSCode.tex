@@ -1,4 +1,4 @@
-\chapter{Entwicklung des Prototpys für Visual Studio Code}
+\chapter{Entwicklung des Prototyps für Visual Studio Code}
 \label{cha:EntwicklungVsCode}
 
 \section{Design}
@@ -41,12 +41,12 @@ Nachricht angezeigt. Durch die Konfiguration des Plugins, kann der
 Command auch über eine Tastenkombination aktiviert werden.
 
 Der \emph{RecentChangesTreeViewProvider} implementiert eine Schnittstelle,
-um VS Code ein TreeView-Objekt bereitzustellen. Ein solches TreeView
-wird hier genutzt um die aktuell gespeicherten Änderungen
+um VS Code ein TreeView-Objekt bereitzustellen. Ein solches TreeView-Objekt
+wird hier genutzt, um die aktuell gespeicherten Änderungen
 für die BenutzerInnen anzuzeigen.
-Die Daten für dieses TreeView
+Die Daten für dieses TreeView-Objekt
 erhält er vom \emph{RecentChangeStorage}. Damit die TreeView auf dem neuesten Stand
-gehalten wird, wird der \emph{RecentChangeStorage} mithilfe eines Observer-Patterns \cite{2005Dp:e}
+gehalten wird, wird der \emph{RecentChangeStorage} mithilfe eines Observer-Patterns~\cite{2005Dp:e}
 beobachtet und die TreeView bei Veränderungen aktualisiert.
 
 
@@ -318,7 +318,7 @@ Abschnitt \emph{"scripts"} die zusätzliche Zeile
 \end{JsCode}
 nötig ist. Weiters muss beachtet werden, dass auch der zuvor erstellte 
 \emph{personal access token} benötigt wird
-(wie beschrieben in Abschnitt \ref{sec:EntwicklungVsCode_Publishing}).
+(siehe Abschnitt \ref{sec:EntwicklungVsCode_Publishing}).
 Dieser muss im Workflow als Umgebungsvariable gesetzt werden und
 wird, im Falle von GitHub Actions, am besten als verschlüsseltes
 \emph{secret} gespeichert.
