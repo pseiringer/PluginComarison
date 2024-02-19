@@ -25,7 +25,7 @@ Löschen von veralteten Änderungen.
 Die Klasse \emph{RecentChangesSettings} bietet Zugriffsmethoden an,
 um die von VS Code angebotenen Einstellungen abzufragen. Über sie
 werden die Einstellungen für die \emph{QueueSize} (Anzahl von Veränderungen)
-und die \emph{DebounceTime} (Debounce Zeit für das Erkennen von Änderungen)
+und die \emph{DebounceTime} (Debouncezeit für das Erkennen von Änderungen)
 zugänglich gemacht.
 
 Der \emph{RecentChangesCompletionProvider} implementiert die VS-Code-Schnittstelle
@@ -103,7 +103,7 @@ das Auslesen und das Verändern der Anzahl von gespeicherten
 Änderungen, wird durch verschiedene Methoden bereitgestellt.
 Zusätzlich ist relevant, dass \emph{RecentChangeStorage} von der
 Schnittstelle \emph{EventTarget} ableitet. Durch solche Events
-kann ein Observer Pattern implementiert werden. Das 
+kann ein Observer-Pattern implementiert werden. Das 
 \emph{storageChanged}-Event wird dabei immer ausgelöst, 
 wenn sich der Inhalt der Warteschlange
 verändert. Initialisiert wird der \emph{RecentChangeStorage} zu Beginn der
@@ -154,7 +154,7 @@ welche in Abbildung \ref{fig:diagram_VSCodeDesign-Detail_Command} dargestellt is
 enthält eine einfache Methode,
 die bei Aktivierung des Commands aufgerufen wird. Sie prüft zuerst
 einfache Bedingungen, zum Beispiel, ob ein Editor aktiv ist.
-Danach selektiert sie Mithilfe der Methode \emph{getWordRangeAtPosition},
+Danach selektiert sie mithilfe der Methode \emph{getWordRangeAtPosition},
 welche von der VS Code API bereitgestellt wird, das zu ersetzende Wort.
 Für dieses Wort wird der \emph{RecentChangeStorage} nach einer passenden
 Änderung durchsucht. Wird diese gefunden, so werden die zu ersetzenden
@@ -267,7 +267,7 @@ geprüft werden, die eine Interaktion mit VS Code benötigen
 \label{sec:EntwicklungVsCode_Publishing}
 
 Das Veröffentlichen einer VS Code Extension funktioniert über das 
-Komandozeilenwerkzeug \emph{vsce}. Dieses kann mithilfe des Befehls
+Kommandozeilenwerkzeug \emph{vsce}. Dieses kann mithilfe des Befehls
 \begin{GenericCode}[numbers=none]
 npm install -g @vscode/vsce
 \end{GenericCode}
