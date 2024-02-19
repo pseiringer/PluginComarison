@@ -1,4 +1,4 @@
-\chapter{Vergleich der Kriterien}
+\chapter{Vergleich anhand der Bewertungskriterien}
 \label{cha:Vergleich}
 
 \section{Popularität der Entwicklungsumgebung}
@@ -6,39 +6,166 @@
 
 \subsection{Visual Studio Code}
 
+Laut der Stack Overflow Developer Survey von 2023 ist
+VS Code der große Spitzenreiter der IDEs. Es wurde von
+73,71\% der EntwicklerInnen angegeben,
+dass sie VS Code verwenden \cite{StackOverflowSurvey2023}.
+Auch der PYPL Index bestätigt die Beliebtheit von VS Code~\cite{PYPL}.
+Dieser Index misst die Anzahl von Suchanfragen in der Google Suchmaschine
+und reiht VS Code auf den zweiten Platz hinter Visual Studio.
+
+Die Anzahl von Extensions, die im Visual Studio Marketplace angeboten werden,
+beträgt aktuell über 54.000 \cite{VSCodeMarketplace}. Allerdings sind 
+darunter auch viele Extensions, die kaum verwendet werden und die nur
+wenige Downloads vorweisen können. Zählt man nur die 
+Extensions, die über eine Million Downloads erreicht haben,
+kommt man auf etwas über 350 Extensions.
+
 \subsection{IntelliJ IDEA}
+
+In der Stack Overflow Developer Survey gaben 2023
+26,42\% der EntwicklerInnen an, IntelliJ IDEA zu verwenden,
+womit es in der Umfrage den dritten Platz erreichte~\cite{StackOverflowSurvey2023}.
+PYPL stuft IntelliJ auf Platz sieben ihres Index ein \cite{PYPL}.
+Allerdings darf hierbei nicht vergessen werden, dass Plugins
+für die IntelliJ Platform auch in anderen JetBrains IDEs installiert
+werden können. Berechnet man aus den Daten der Stack Overflow Umfrage
+eine gemeinsame Beliebtheit der IntelliJ Platform IDEs, so findet man,
+dass 52,87\% der EntwicklerInnen eine solche Programmierumgebung nutzen \cite{StackOverflowSurvey}.
+Weiters muss beachtet werden, dass die Zielgruppe von IntelliJ IDEA
+vor allem Java EntwicklerInnen sind. Bei Umfragen mit Java-EntwicklerInnen 
+schneidet IntelliJ IDEA meist mit dem ersten Platz ab \cite{JRebelIDEs,JRebelDeveloperProductivityReport,BetterprojectsfasterPouplarityIndex}.
+
+Im JetBrains Marketplace werden für die gesamte IntelliJ Platform aktuell
+etwas über 7.800 Plugins zum Download angeboten. Zählt man nur die 
+Plugins mit mehr als einer Million Downloads, kommt man auf
+knapp über 100 Plugins.
 
 \subsection{Vergleich}
 
+Während es sich bei VS Code um einen allgemeinen Code-Editor handelt,
+der sehr vielseitig eingesetzt werden kann, bietet die IntelliJ-Plattform
+eher spezifische Werkzeuge, die in erster Linie auf die Entwicklung in
+einer einzelnen Programmiersprache ausgerichtet sind.
+Obwohl VS Code zwar insgesamt der häufiger genutzte Editor ist,
+sind die JetBrains IDEs für das Programmieren in einer 
+speziellen Sprache (zum Beispiel IntelliJ IDEA für Java) oft die
+beliebtere Wahl.
+    
 
-\section{Performance}
+\section{Ausführungszeit und Hardwareanforderungen}
 \label{sec:Vergleich_Performance}
 
 \subsection{Visual Studio Code}
 
+Mithilfe der Anwendung \emph{AppTimer} von PassMark wurde
+die durchschnittliche Startzeit von VS Code ermittelt \cite{PassMarkAppTimer}.
+AppTimer wurde so konfiguriert, dass VS Code automatisch gestartet
+und wieder geschlossen wird. Beim Start wurde von VS Code ein
+einfacher Projektordner geladen. Der AppTimer maß bei jedem Start
+die Zeit die VS Code brauchte, um in einen Zustand zu gelangen,
+in dem Nutzereingaben angenommen werden konnten.
+Diese Messung wurde in 100 Iterationen wiederholt.
+Daraus ergab sich eine durchschnittliche Startzeit von 0.294 Sekunden.
+
+Die Hardwareanforderungen sind gering. VS Code benötigt weniger
+als 500 MB Festplattenspeicher, 1 GB RAM und eine Prozessorgeschwindigkeit
+von 1.6 GHz, um lauffähig zu sein.
+
 \subsection{IntelliJ IDEA}
+
+Die Messungen mithilfe der AppTimer-Anwendung wurden auch
+für IntelliJ IDEA Ultimate in 100 Iterationen wiederholt.
+Hier war die durchschnittliche Startzeit bei 8.123 Sekunden.
+
+Für die Hardwareanforderungen gibt IntelliJ IDEA
+mindestens 3.5 GB Festplattenspeicher, 2 GB RAM und eine
+moderne CPU vor.
 
 \subsection{Vergleich}
 
+Da es sich bei VS Code nur um einen leichtgewichtigen Editor handelt,
+hat dieser auch einen klaren Vorteil bei der Performance 
+und den Hardwareanforderungen.
+IntelliJ IDEA ist eine vollständige IDE und hat daher auch längere
+Startzeiten und höhere Hardwareanforderungen.
+Auf modernen Geräten sollten beide Entwicklungsumgebungen
+problemlos ausführbar und verwendbar sein. Allerdings kann VS Code hier
+einen Vorteil bieten, wenn gleichzeitig andere, ressourcenintensive Programme
+auf dem Rechner laufen, oder Hardwarelimitierungen vorliegen.
 
-\section{Feature Umfang}
+
+\section{Feature-Umfang}
 \label{sec:Vergleich_FeatureUmfang}
 
 \subsection{Visual Studio Code}
 
+VS Code unterstützt viele grundlegende Features (wie zum Beispiel 
+Kommandos, Interaktionen mit dem Editor, Einstellungen oder persistente
+Datenspeicherung) sehr gut. Auch werden komplexe Spracherweiterungen
+durch den Einsatz des \emph{Language Server Protocol} möglich.
+Weiters bietet VS Code auch dezidierte Schnittstellen an, wenn Extensions
+den Debugger oder das Testsystem von VS Code erweitern möchten.
+Zur Anzeige bietet VS Code ein \emph{Tree View} und ein 
+\emph{Webview}, in welchem beliebige Inhalte dargestellt werden können.
+
 \subsection{IntelliJ IDEA}
+
+Auch die IntelliJ-Plattform bietet viele grundlegende Funktionalitäten
+für Plugins an (zum Beispiel Aktionen, Interaktion mit den geöffneten Dokumenten
+und Projekten oder Einstellungen). Die Besonderheit, die IntelliJ
+in Bezug auf Spracherweiterungen
+mitbringt, ist das \emph{Program Structure Interface (PSI)}. 
+Auf diese Weise können Sprachen gut in die IDEs integriert werden
+und es kann extrem effizient mit dem Code interagiert werden.
+Die Einbindung eines Debuggers oder Compilers sollte zwar grundsätzlich
+möglich sein, allerdings gibt es hierzu (noch) keine Dokumentation.
+Zur Anzeige wird auf Java Swing \emph{Tool Windows} gesetzt.
+Weiters ist es möglich, in IntelliJ Plugins eigene 
+\emph{Extension Points} zu deklarieren, die von weiteren Plugins
+wiederum erweitert werden können.
 
 \subsection{Vergleich}
 
+Beide APIs sind sich in den angebotenen Grundlagen sehr ähnlich.
+Der größte Unterschied liegt bei den Spracherweiterungen, da VS Code 
+vollständig auf das Language Server Protocol setzt, während IntelliJ
+dieses nicht verwendet. Für Plugin-EntwicklerInnen
+kann es einen Unterschied machen, ob sie Benutzerschnittstellen
+lieber mit Web-\linebreak 
+Technologien wie HTML, CSS und JavaScript (Webviews) oder
+mit Java Swing (Tool Windows) implementieren. 
+Ein großer Vorteil den IntelliJ IDEA in Bezug auf den Feature-Umfang
+bietet, ist das Erweiterungssystem mittels Extension Points.
 
-\section{Intuitivität der API}
+
+\section{Einfachheit der API-Verwendung}
 \label{sec:Vergleich_Intuitivität}
 
 \subsection{Visual Studio Code}
 
+Mit der VS Code Extension API wird ausschließlich
+über das \emph{Extension Manifest} und das Modul \emph{vscode} interagiert.
+Dieses Modul fasst alle Code-Schnittstellen zusammen und ist
+in übersichtliche Abschnitte (z.B. commands, window, workspace) unterteilt.
+
 \subsection{IntelliJ IDEA}
 
+In IntelliJ werden Deklarationen im \emph{Plugin Configuration File} gemacht.
+Die Schnittstellen, die vom Plugin implementiert werden müssen, und
+die Klassen, mit denen interagiert wird, hängen von den deklarierten
+\emph{Extension Points} ab. Es handelt sich dabei um unterschiedlichste
+Klassen aus dem Quellcode der IntelliJ Platform.
+
 \subsection{Vergleich}
+
+Die VS Code API ist sehr übersichtlich und intuitiv und kann auch
+schon nach kurzem Einlesen in die Dokumentation verwendet werden.
+IntelliJ Plugins müssen mit vielen verschiedenen Klassen interagieren,
+bei denen auf verschiedene Implementierungsdetails geachtet werden muss.
+Dadurch kann auch die Dokumentation auf den ersten Blick komplex
+wirken. Allerdings sind IntelliJ Plugins in ihren Möglichkeiten der
+Interaktion mit der API weniger stark eingeschränkt.
 
 
 \section{Dokumentation der API}
@@ -46,19 +173,66 @@
 
 \subsection{Visual Studio Code}
 
+Die Dokumentation für VS Code Extensions ist sehr übersichtlich.
+In den ersten Abschnitten werden Grundlagen und häufig 
+verwendete Features beschrieben.
+In weiteren Abschnitten gibt es Anleitungen für spezielle Features,
+Dokumentation für Spracherweiterungen und Beschreibungen
+für das Testen und Publishen von Extension.
+Weiters behandelt die Dokumentation auch eine vollständige Beschreibung
+aller möglichen Interaktionen mit dem Extension Manifest
+und eine vollständige Beschreibung der VS Code API Schnittstelle.
+Auch ein Repository mit einfachen Code-Beispielen ist in der Dokumentation verlinkt.
+
 \subsection{IntelliJ IDEA}
+
+Die IntelliJ-Dokumentation beschreibt in den ersten Abschnitten kurz
+die Grundlagen. Dabei werden vor allem im
+Abschnitt \emph{Base Platform} viele häufig genutzte Funktionalitäten
+für Plugins beschrieben. Die nächsten Abschnitte beschreiben
+meist ein System der IntelliJ-Plattform und wie ein Plugin mit diesem
+System interagieren kann. Zum Beispiel gibt es Abschnitte für \emph{Project Model}
+oder \emph{PSI}. Leider findet man immer wieder Abschnitte mit der 
+Bemerkung \enquote{Will be available soon}.
+Es gibt zwar eine Liste von möglichen Extension Points, allerdings
+finden sich in dieser keine Beschreibungen. Anstatt einer vollständigen
+Dokumentation wird auf den IntelliJ-Plattform-Quellcode verwiesen.
+Allerdings lassen auch die Kommentare im Code sehr zu wünschen übrig.
+Auch für IntelliJ gibt es ein Repository mit Code-Beispielen, die sehr
+hilfreich sein können.
 
 \subsection{Vergleich}
 
+VS Code bietet eine vollständige, übersichtliche und gut geschriebene 
+Dokumentation für Plugin-EntwicklerInnen. Die IntelliJ-Dokumentation
+bietet einen guten Überblick über die Systeme der IntelliJ-Plattform,
+allerdings ist sie eher unübersichtlich und teilweise 
+(an kritischen Stellen) unvollständig.
+Beide Dokumentationen bieten Code-Beispiele an.
 
-\section{Testbarkeit des Plugins}
+\section{Testbarkeit der Plugins}
 \label{sec:Vergleich_Testbarkeit}
 
 \subsection{Visual Studio Code}
 
+VS Code erlaubt das Testen der Plugins und ermöglicht
+dabei Zugriff auf die Schnittstellen der Plugin API.
+Integrationstests werden mithilfe einer VS-Code-Instanz ausgeführt.
+
 \subsection{IntelliJ IDEA}
 
+IntelliJ ermöglicht das Testen des Plugins, in dem
+von bestimmten Basis-Testklassen abgeleitet wird. Durch diese
+Basisklassen werden zusätzliche Hilfsmethoden für die Tests
+angeboten. Die Integrationstests werden in einer
+headless-Instanz von IntelliJ IDEA ausgeführt, die großteils
+einer echten Instanz von IntelliJ IDEA entspricht.
+
 \subsection{Vergleich}
+
+In IntelliJ müssen zwar einige Implementierungsdetails in den Testklassen
+beachtet werden, dafür bietet IntelliJ eine bessere Unterstützung
+durch Hilfsmethoden für Tests.
 
 
 \section{Möglichkeiten des Publishings}
@@ -66,16 +240,101 @@
 
 \subsection{Visual Studio Code}
 
+Das Hochladen und Verwalten von Plugins im Marketplace ist
+einfach und ausführlich dokumentiert. Das Werkzeug \emph{vsce}
+bietet Möglichkeiten zum Verwalten von Extensions und 
+erlaubt das automatisierte Publishing mittels CI/CD Pipelines.
+Auf der Plugin-Seite des Marketplace kann eine \emph{Markdown}-Datei
+angegeben werden, in der unter anderem auch Bilder oder Aufzählungen 
+eingebunden und dargestellt werden können. 
+Weiters bietet der Marketplace eine Seite für Reviews
+und eine Q\&A-Seite für jedes Plugin.
+
 \subsection{IntelliJ IDEA}
+
+Da bei IntelliJ zu Beginn eine Signatur erstellt werden muss, ist das
+erste (manuelle) Hochladen etwas aufwändiger. Allerdings
+gibt es auch hier die Möglichkeit zum automatischen Publishing.
+Die Plugin-Beschreibungen können in HTML formatiert werden. Es gibt
+zusätzliche Felder um Bildschirmaufnahmen, ein Vorschauvideo oder
+weitere Seiten in Markdown-Formatierung zur Marketplace-Seite
+hinzuzufügen. Weiters gibt es die Möglichkeit kurze Beschreibungskarten
+des Plugins erstellen zu lassen, die dann zum Beispiel auf 
+einer eigenen Webseite eingebunden werden können.
 
 \subsection{Vergleich}
 
+Beide IDEs bieten einen ausgezeichneten Marketplace an
+und ermöglichen das einfache Veröffentlichen eines Plugins.
+Zur Darstellung des Plugins im Marketplace gibt es bei JetBrains
+jedoch mehr Optionen.
 
-\section{Installationsprozess des Plugins}
+
+\section{Installationsprozess der Plugins}
 \label{sec:Vergleich_Installationsprozess}
 
 \subsection{Visual Studio Code}
 
+Die Installation des Plugins bei NutzerInnen funktioniert
+über den Marketplace. Dieser ist in VS Code stark in den 
+Editor eingebunden und es kann einfach nach 
+Extensions gesucht werden. Das Installieren einer gewünschten
+Extension funktioniert also über wenige Klicks.
+Alternativ kann das Plugin auch auf der Marketplace Webseite
+gesucht und von dort aus installiert werden.
+Möchte man den VS Code Marketplace nicht nutzen, gibt es auch
+die Möglichkeit, die Extension als \emph{.vsix}-Datei
+zu verpacken und diese manuell von der Festplatte aus zu installieren.
+
 \subsection{IntelliJ IDEA}
 
+In IntelliJ IDEA kann ein Plugin über den JetBrains Marketplace
+installiert werden. Der Marketplace ist dabei in den Einstellung
+der IDE eingebunden. Auch hier kann das gewünschte Plugin einfach
+gesucht und installiert werden.
+Besucht man die Marketplace Webseite, so gibt es bei dieser nur einen
+Download-Knopf, mit welchem das Plugin als \emph{.zip}-Datei heruntergeladen
+werden kann. Diese gezippten Plugins können auch
+unabhängig vom Marketplace erstellt und manuell
+von der Festplatte aus installiert werden.
+
 \subsection{Vergleich}
+
+Beide Plattformen bieten zur Installation die selben Möglichkeiten.
+Allerdings braucht man in VS Code einen Klick weniger, um eine
+Extension zu finden, da der Marketplace direkt über ein Menü
+und nicht nur über die Einstellungen erreichbar ist, wie in IntelliJ.
+
+
+\section{Übersicht}
+
+Die Tabelle \ref{tab:Ueberblick_Kriterien} zeigt 
+eine Übersicht über die Bewertungskriterien und den
+Vergleich der beiden Entwicklungsumgebungen. 
+Ein Plus steht hierbei für die Entwicklungsumgebung,
+die bei dem Kriterium mehr Vorteile bietet.
+
+\begin{table}[hb]
+    \caption{Bewertungsübersicht.}
+    \label{tab:Ueberblick_Kriterien}
+    \centering
+    \small % Reduce font size
+    \setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+    \renewcommand{\arraystretch}{1.25} % vertical stretch factor (standard = 1.0)
+
+    \begin{tabular}{@{}llll@{}}
+        \toprule
+         & VS Code & IntelliJ Platform \\
+        \midrule
+        Popularität der Entwicklungsumgebung & + &  \\
+        Ausführungszeit und Hardwareanforderungen & + &  \\
+        Feature-Umfang &  & + \\
+        Einfachheit der API-Verwendung & + &  \\
+        Dokumentation der API & + &  \\
+        Testbarkeit der Plugins &  & + \\
+        Möglichkeiten des Publishings &  & + \\
+        Installationsprozess der Plugins & + &  \\
+        \bottomrule
+    \end{tabular}
+    
+\end{table}

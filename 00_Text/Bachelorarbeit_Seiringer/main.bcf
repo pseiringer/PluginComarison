@@ -96,7 +96,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>99</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -104,7 +104,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>99</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -331,7 +331,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxbibnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>99</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxcitenames</bcf:key>
@@ -339,7 +339,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxsortnames</bcf:key>
-      <bcf:value>3</bcf:value>
+      <bcf:value>99</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>maxitems</bcf:key>
@@ -2439,6 +2439,7 @@
     <bcf:citekey order="33" intorder="1">VSCodeExtensionAPILanguageConfigurationGuide</bcf:citekey>
     <bcf:citekey order="34" intorder="1">VSCodeExtensionAPIProgrammaticLanguageFeatures</bcf:citekey>
     <bcf:citekey order="35" intorder="1">GunasingheNadeeshaan2022Lspa</bcf:citekey>
+    <bcf:citekey order="35" intorder="2">LSPHomepage</bcf:citekey>
     <bcf:citekey order="36" intorder="1">VSCodeExtensionAPISnippetGuide</bcf:citekey>
     <bcf:citekey order="37" intorder="1">VSCodeExtensionAPICommonCapabilities</bcf:citekey>
     <bcf:citekey order="38" intorder="1">VSCodeExtensionAPIQuickPick</bcf:citekey>
@@ -2467,7 +2468,7 @@
     <bcf:citekey order="57" intorder="2">GrammarKit</bcf:citekey>
     <bcf:citekey order="58" intorder="1">IntelliJPlatformSDKLanguageTutorialGrammar</bcf:citekey>
     <bcf:citekey order="59" intorder="1">JFlex</bcf:citekey>
-    <bcf:citekey order="59" intorder="2">klein2010jflex</bcf:citekey>
+    <bcf:citekey order="59" intorder="2">KleinJFlexManual</bcf:citekey>
     <bcf:citekey order="59" intorder="3">IntelliJPlatformSDKLanguageTutorialLexer</bcf:citekey>
     <bcf:citekey order="60" intorder="1">IntelliJPlatformSDKCustomLanguageSupport</bcf:citekey>
     <bcf:citekey order="60" intorder="2">IntelliJPlatformSDKLanguageTutorial</bcf:citekey>
@@ -2507,6 +2508,16 @@
     <bcf:citekey order="90" intorder="1">IntelliJPlatformSDKPluginSigning</bcf:citekey>
     <bcf:citekey order="91" intorder="1">IntelliJPlatformSDKPublishingAPlugin</bcf:citekey>
     <bcf:citekey order="92" intorder="1">IntelliJGitHubBuildWorkflow</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">StackOverflowSurvey2023</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">PYPL</bcf:citekey>
+    <bcf:citekey order="95" intorder="1">VSCodeMarketplace</bcf:citekey>
+    <bcf:citekey order="96" intorder="1">StackOverflowSurvey2023</bcf:citekey>
+    <bcf:citekey order="97" intorder="1">PYPL</bcf:citekey>
+    <bcf:citekey order="98" intorder="1">StackOverflowSurvey</bcf:citekey>
+    <bcf:citekey order="99" intorder="1">JRebelIDEs</bcf:citekey>
+    <bcf:citekey order="99" intorder="2">JRebelDeveloperProductivityReport</bcf:citekey>
+    <bcf:citekey order="99" intorder="3">BetterprojectsfasterPouplarityIndex</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">PassMarkAppTimer</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

@@ -2,139 +2,120 @@
 \babel@toc {ngerman}{}\relax 
 \babel@toc {ngerman}{}\relax 
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Erkl\"arung}{iv}{chapter*.1}%
 \babel@toc {ngerman}{}\relax 
-\contentsline {chapter}{Kurzfassung}{viii}{chapter*.3}%
-\contentsline {chapter}{Abstract}{ix}{chapter*.4}%
 \babel@toc {english}{}\relax 
 \babel@toc {ngerman}{}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Ziel}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Aufbau}{1}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Grundlagen der Plugin-Entwicklung}{2}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Entwicklungsumgebungen}{2}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Visual Studio Code}{2}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}IntelliJ IDEA}{2}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Programmiersprachen}{3}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}TypeScript}{3}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Java}{4}{subsection.2.2.2}%
+\contentsline {section}{\numberline {1.3}Aufbau}{2}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Grundlagen der Plugin-Entwicklung}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Entwicklungsumgebungen}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Visual Studio Code}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}IntelliJ IDEA}{3}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Programmiersprachen}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}TypeScript}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Java}{5}{subsection.2.2.2}%
 \babel@toc {english}{}\relax 
 \babel@toc {ngerman}{}\relax 
-\contentsline {section}{\numberline {2.3}Aufbau der Plugin API}{5}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Visual Studio Code}{5}{subsection.2.3.1}%
-\contentsline {subsubsection}{Extension Manifest}{5}{subsection.2.3.1}%
-\contentsline {subsubsection}{Visual Studio Code API}{6}{subsection.2.3.1}%
-\contentsline {subsubsection}{Ablauf}{6}{lstnumber.-1.5}%
-\contentsline {subsection}{\numberline {2.3.2}IntelliJ IDEA}{6}{subsection.2.3.2}%
-\contentsline {subsubsection}{Plugin Configuration File}{6}{subsection.2.3.2}%
-\contentsline {subsubsection}{IntelliJ Platform SDK}{7}{subsection.2.3.2}%
-\contentsline {subsubsection}{Ablauf}{7}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4}Funktionalität der Plugin API}{8}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Visual Studio Code}{8}{subsection.2.4.1}%
-\contentsline {subsubsection}{Commands und Menüs}{8}{subsection.2.4.1}%
-\contentsline {subsubsection}{Spracherweiterungen}{9}{lstnumber.-3.3}%
-\contentsline {subsubsection}{Benutzereingaben}{10}{lstnumber.-3.3}%
-\contentsline {subsubsection}{Ausgaben und Anzeigen}{11}{lstnumber.-3.3}%
-\contentsline {subsection}{\numberline {2.4.2}IntelliJ IDEA}{11}{subsection.2.4.2}%
-\contentsline {subsubsection}{Actions und Menüs}{11}{subsection.2.4.2}%
-\contentsline {subsubsection}{Services}{12}{lstnumber.-4.7}%
-\contentsline {subsubsection}{Listeners und Extension Points}{12}{lstnumber.-4.7}%
-\contentsline {subsubsection}{PSI und Spracherweiterungen}{13}{lstnumber.-4.7}%
-\contentsline {subsubsection}{User Interface Komponenten}{13}{lstnumber.-4.7}%
-\contentsline {subsection}{\numberline {2.4.3}IntelliJ Flora Plugins}{14}{subsection.2.4.3}%
-\contentsline {chapter}{\numberline {3}Anforderungen an den Prototyp}{17}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Aufbau}{17}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Beispiel}{17}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Funktionen}{18}{subsection.3.1.2}%
-\contentsline {chapter}{\numberline {4}Entwicklung des Prototpys für Visual Studio Code}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Design}{20}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Implementierung}{21}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Aufsetzen des Projektes}{21}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Entwicklung}{22}{subsection.4.2.2}%
-\contentsline {subsubsection}{Klasse RecentChangeStorage}{22}{subsection.4.2.2}%
-\contentsline {subsubsection}{Klasse SimpleChangeHandler}{22}{figure.caption.13}%
-\contentsline {subsubsection}{Klasse ApplyRecentChangeCommand}{23}{figure.caption.14}%
-\contentsline {subsubsection}{Klasse RecentChangesCompletionProvider}{24}{figure.caption.15}%
-\contentsline {subsubsection}{Klasse RecentChangeTreeViewProvider}{24}{figure.caption.16}%
-\contentsline {subsubsection}{Klasse RecentChangesSettings}{25}{figure.caption.17}%
-\contentsline {section}{\numberline {4.3}Tests}{25}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Publishing}{26}{section.4.4}%
-\contentsline {section}{\numberline {4.5}CI/CD}{26}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Entwicklung des Prototpys für IntelliJ}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Design}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Implementierung}{28}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Aufsetzen des Projektes}{28}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Entwicklung}{29}{subsection.5.2.2}%
-\contentsline {subsubsection}{RecentChangesService}{29}{subsection.5.2.2}%
-\contentsline {subsubsection}{SimpleChangeDocumentListener}{30}{figure.caption.21}%
-\contentsline {subsubsection}{ApplyRecentChange}{31}{figure.caption.22}%
-\contentsline {subsubsection}{RecentChangesCompletionContributor}{31}{figure.caption.23}%
-\contentsline {subsubsection}{RecentChangesToolWindowFactory}{32}{figure.caption.24}%
-\contentsline {subsubsection}{Einstellungen}{32}{figure.caption.25}%
-\contentsline {section}{\numberline {5.3}Tests}{33}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Publishing}{34}{section.5.4}%
-\contentsline {section}{\numberline {5.5}CI/CD}{35}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Bewertungskriterien}{36}{chapter.6}%
+\contentsline {section}{\numberline {2.3}Aufbau der Plugin API}{6}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Visual Studio Code}{6}{subsection.2.3.1}%
+\contentsline {subsubsection}{Extension Manifest}{6}{subsection.2.3.1}%
+\contentsline {subsubsection}{Visual Studio Code API}{7}{subsection.2.3.1}%
+\contentsline {subsubsection}{Ablauf}{7}{lstnumber.-1.5}%
+\contentsline {subsection}{\numberline {2.3.2}IntelliJ IDEA}{7}{subsection.2.3.2}%
+\contentsline {subsubsection}{Plugin Configuration File}{7}{subsection.2.3.2}%
+\contentsline {subsubsection}{IntelliJ Platform SDK}{8}{subsection.2.3.2}%
+\contentsline {subsubsection}{Ablauf}{8}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4}Funktionalität der Plugin API}{9}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Visual Studio Code}{9}{subsection.2.4.1}%
+\contentsline {subsubsection}{Commands und Menüs}{9}{subsection.2.4.1}%
+\contentsline {subsubsection}{Spracherweiterungen}{10}{lstnumber.-3.3}%
+\contentsline {subsubsection}{Benutzereingaben}{11}{lstnumber.-3.3}%
+\contentsline {subsubsection}{Ausgaben und Anzeigen}{12}{lstnumber.-3.3}%
+\contentsline {subsection}{\numberline {2.4.2}IntelliJ IDEA}{12}{subsection.2.4.2}%
+\contentsline {subsubsection}{Actions und Menüs}{12}{subsection.2.4.2}%
+\contentsline {subsubsection}{Services}{13}{lstnumber.-4.7}%
+\contentsline {subsubsection}{Listeners und Extension Points}{13}{lstnumber.-4.7}%
+\contentsline {subsubsection}{PSI und Spracherweiterungen}{14}{lstnumber.-4.7}%
+\contentsline {subsubsection}{User Interface Komponenten}{14}{lstnumber.-4.7}%
+\contentsline {subsection}{\numberline {2.4.3}IntelliJ Flora Plugins}{15}{subsection.2.4.3}%
+\contentsline {chapter}{\numberline {3}Anforderungen an den Prototyp}{18}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Aufbau}{18}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Beispiel}{18}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Funktionen}{19}{subsection.3.1.2}%
+\contentsline {chapter}{\numberline {4}Entwicklung des Prototyps für Visual Studio Code}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Design}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Implementierung}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Aufsetzen des Projektes}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Entwicklung}{23}{subsection.4.2.2}%
+\contentsline {subsubsection}{Klasse RecentChangeStorage}{23}{subsection.4.2.2}%
+\contentsline {subsubsection}{Klasse SimpleChangeHandler}{23}{figure.caption.13}%
+\contentsline {subsubsection}{Klasse ApplyRecentChangeCommand}{24}{figure.caption.14}%
+\contentsline {subsubsection}{Klasse RecentChangesCompletionProvider}{25}{figure.caption.15}%
+\contentsline {subsubsection}{Klasse RecentChangeTreeViewProvider}{25}{figure.caption.16}%
+\contentsline {subsubsection}{Klasse RecentChangesSettings}{26}{figure.caption.17}%
+\contentsline {section}{\numberline {4.3}Tests}{26}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Publishing}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}CI/CD}{27}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Entwicklung des Prototyps für IntelliJ}{28}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Design}{28}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Implementierung}{29}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Aufsetzen des Projektes}{29}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Entwicklung}{30}{subsection.5.2.2}%
+\contentsline {subsubsection}{RecentChangesService}{30}{subsection.5.2.2}%
+\contentsline {subsubsection}{SimpleChangeDocumentListener}{31}{figure.caption.21}%
+\contentsline {subsubsection}{ApplyRecentChange}{32}{figure.caption.22}%
+\contentsline {subsubsection}{RecentChangesCompletionContributor}{32}{figure.caption.23}%
+\contentsline {subsubsection}{RecentChangesToolWindowFactory}{33}{figure.caption.24}%
+\contentsline {subsubsection}{Einstellungen}{33}{figure.caption.25}%
+\contentsline {section}{\numberline {5.3}Tests}{34}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Publishing}{35}{section.5.4}%
+\contentsline {section}{\numberline {5.5}CI/CD}{36}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Bewertungskriterien}{37}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Popularität der Entwicklungsumgebung}{37}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Visual Studio Code}{37}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}IntelliJ IDEA}{37}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Performance}{37}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Visual Studio Code}{37}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}IntelliJ IDEA}{37}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Feature Umfang}{37}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Visual Studio Code}{37}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}IntelliJ IDEA}{37}{subsection.6.3.2}%
-\contentsline {section}{\numberline {6.4}Intuitivität der API}{37}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Visual Studio Code}{37}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}IntelliJ IDEA}{37}{subsection.6.4.2}%
-\contentsline {section}{\numberline {6.5}Dokumentation der API}{37}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Visual Studio Code}{37}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}IntelliJ IDEA}{37}{subsection.6.5.2}%
-\contentsline {section}{\numberline {6.6}Testbarkeit des Plugins}{37}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Visual Studio Code}{37}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}IntelliJ IDEA}{37}{subsection.6.6.2}%
-\contentsline {section}{\numberline {6.7}Möglichkeiten des Publishings}{37}{section.6.7}%
-\contentsline {subsection}{\numberline {6.7.1}Visual Studio Code}{37}{subsection.6.7.1}%
-\contentsline {subsection}{\numberline {6.7.2}IntelliJ IDEA}{37}{subsection.6.7.2}%
-\contentsline {section}{\numberline {6.8}Installationsprozess des Plugins}{37}{section.6.8}%
-\contentsline {subsection}{\numberline {6.8.1}Visual Studio Code}{37}{subsection.6.8.1}%
-\contentsline {subsection}{\numberline {6.8.2}IntelliJ IDEA}{37}{subsection.6.8.2}%
-\contentsline {chapter}{\numberline {7}Vergleich der Kriterien}{38}{chapter.7}%
+\contentsline {section}{\numberline {6.2}Ausführungszeit und Hardwareanforderungen}{37}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Feature-Umfang}{37}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Einfachheit der API-Verwendung}{38}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Dokumentation der API}{38}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Testbarkeit der Plugins}{38}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Möglichkeiten des Publishings}{38}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Installationsprozess der Plugins}{38}{section.6.8}%
+\contentsline {chapter}{\numberline {7}Vergleich anhand der Bewertungskriterien}{39}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Popularität der Entwicklungsumgebung}{39}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Visual Studio Code}{39}{subsection.7.1.1}%
 \contentsline {subsection}{\numberline {7.1.2}IntelliJ IDEA}{39}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Vergleich}{39}{subsection.7.1.3}%
-\contentsline {section}{\numberline {7.2}Performance}{39}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Visual Studio Code}{39}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}IntelliJ IDEA}{39}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Vergleich}{39}{subsection.7.2.3}%
-\contentsline {section}{\numberline {7.3}Feature Umfang}{39}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Visual Studio Code}{39}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}IntelliJ IDEA}{39}{subsection.7.3.2}%
-\contentsline {subsection}{\numberline {7.3.3}Vergleich}{39}{subsection.7.3.3}%
-\contentsline {section}{\numberline {7.4}Intuitivität der API}{39}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Visual Studio Code}{39}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}IntelliJ IDEA}{39}{subsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.4.3}Vergleich}{39}{subsection.7.4.3}%
-\contentsline {section}{\numberline {7.5}Dokumentation der API}{39}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Visual Studio Code}{39}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}IntelliJ IDEA}{39}{subsection.7.5.2}%
-\contentsline {subsection}{\numberline {7.5.3}Vergleich}{39}{subsection.7.5.3}%
-\contentsline {section}{\numberline {7.6}Testbarkeit des Plugins}{39}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Visual Studio Code}{39}{subsection.7.6.1}%
-\contentsline {subsection}{\numberline {7.6.2}IntelliJ IDEA}{39}{subsection.7.6.2}%
-\contentsline {subsection}{\numberline {7.6.3}Vergleich}{39}{subsection.7.6.3}%
-\contentsline {section}{\numberline {7.7}Möglichkeiten des Publishings}{39}{section.7.7}%
-\contentsline {subsection}{\numberline {7.7.1}Visual Studio Code}{39}{subsection.7.7.1}%
-\contentsline {subsection}{\numberline {7.7.2}IntelliJ IDEA}{39}{subsection.7.7.2}%
-\contentsline {subsection}{\numberline {7.7.3}Vergleich}{39}{subsection.7.7.3}%
-\contentsline {section}{\numberline {7.8}Installationsprozess des Plugins}{39}{section.7.8}%
-\contentsline {subsection}{\numberline {7.8.1}Visual Studio Code}{39}{subsection.7.8.1}%
-\contentsline {subsection}{\numberline {7.8.2}IntelliJ IDEA}{39}{subsection.7.8.2}%
-\contentsline {subsection}{\numberline {7.8.3}Vergleich}{39}{subsection.7.8.3}%
-\contentsline {chapter}{\numberline {8}Conclusion}{40}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Technische Informationen}{41}{appendix.A}%
-\contentsline {chapter}{Quellenverzeichnis}{42}{appendix*.27}%
-\contentsline {section}{Literatur}{42}{section*.28}%
-\contentsline {section}{Online-Quellen}{42}{section*.29}%
+\contentsline {subsection}{\numberline {7.1.3}Vergleich}{40}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Ausführungszeit und Hardwareanforderungen}{40}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Visual Studio Code}{40}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}IntelliJ IDEA}{40}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Vergleich}{40}{subsection.7.2.3}%
+\contentsline {section}{\numberline {7.3}Feature-Umfang}{41}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Visual Studio Code}{41}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}IntelliJ IDEA}{41}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Vergleich}{41}{subsection.7.3.3}%
+\contentsline {section}{\numberline {7.4}Einfachheit der API-Verwendung}{41}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}Visual Studio Code}{41}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}IntelliJ IDEA}{41}{subsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.4.3}Vergleich}{42}{subsection.7.4.3}%
+\contentsline {section}{\numberline {7.5}Dokumentation der API}{42}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Visual Studio Code}{42}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}IntelliJ IDEA}{42}{subsection.7.5.2}%
+\contentsline {subsection}{\numberline {7.5.3}Vergleich}{42}{subsection.7.5.3}%
+\contentsline {section}{\numberline {7.6}Testbarkeit der Plugins}{43}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Visual Studio Code}{43}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}IntelliJ IDEA}{43}{subsection.7.6.2}%
+\contentsline {subsection}{\numberline {7.6.3}Vergleich}{43}{subsection.7.6.3}%
+\contentsline {section}{\numberline {7.7}Möglichkeiten des Publishings}{43}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Visual Studio Code}{43}{subsection.7.7.1}%
+\contentsline {subsection}{\numberline {7.7.2}IntelliJ IDEA}{43}{subsection.7.7.2}%
+\contentsline {subsection}{\numberline {7.7.3}Vergleich}{43}{subsection.7.7.3}%
+\contentsline {section}{\numberline {7.8}Installationsprozess der Plugins}{44}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Visual Studio Code}{44}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}IntelliJ IDEA}{44}{subsection.7.8.2}%
+\contentsline {subsection}{\numberline {7.8.3}Vergleich}{44}{subsection.7.8.3}%
+\contentsline {section}{\numberline {7.9}Übersicht}{44}{section.7.9}%
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{45}{chapter.8}%
+\contentsline {chapter}{Quellenverzeichnis}{46}{appendix*.28}%
+\contentsline {section}{Literatur}{46}{section*.29}%
+\contentsline {section}{Online-Quellen}{46}{section*.30}%

@@ -6,40 +6,55 @@
 \label{sec:Motivation}
 
 SoftwareentwicklerInnen arbeiten täglich mit verschiedensten 
-Werkzeugen und Entwicklungsumgebungen, sogenannten IDEs 
-(=Integrated Development Environment). Diese Plattformen 
+Werkzeugen und integrierten Entwicklungsumgebungen 
+(engl. Integrated Development Environment, IDE). Entwicklungsumgebungen 
 bieten teils sehr unterschiedliche Funktionalitäten, die 
 die Softwareentwicklung erleichtern sollen. Dabei bieten 
 sie Unterstützung für verschiedenste Programmiersprachen 
 und Technologien und binden zahlreiche Werkzeuge für 
 spezifische Anwendungsfälle ein. Aufgrund des immer rascher
-werdenden Entstehens von neuen Technologien bieten mehr 
-und mehr IDEs Möglichkeiten zur Entwicklung von eigenen 
+werdenden Entstehens von neuen Technologien bieten
+IDEs Möglichkeiten zur Entwicklung von eigenen 
 Plugins, welche dann auch an andere EntwicklerInnen 
 bereitgestellt werden können. So können in kürzester 
 Zeit neue Technologien unterstützt werden und 
-EntwicklerInnen haben selbst die Macht darüber zu 
-entscheiden, welche Plugins sie nutzen möchten und 
-welche nicht.
+EntwicklerInnen haben selbst die Freiheit darüber zu 
+entscheiden, welche Plugins sie nutzen möchten.
 
 Vor der Entwicklung solcher Plugins ist es wichtig 
-zu entscheiden für welche IDE das Plugin erstellt 
+zu entscheiden, für welche IDE das Plugin erstellt 
 werden soll. Dabei spielen unter anderem Aspekte wie 
 die Einfachheit und Flexibilität in der Entwicklung, 
 der Umfang an angebotener Funktionalität und die Möglichkeit
 die Nutzerinteraktion und somit die User Experience 
-zu steuern eine Rolle. 
-Diese Bachelorarbeit versucht in diesen Bereichen 
-einen Überblick zu schaffen und vergleicht hierfür 
-die Plugin Entwicklung in zwei der momentan beliebtesten 
-IDEs, Visual Studio Code und IntelliJ IDEA. Durch den 
-Vergleich der beiden Produkte und dem Herausarbeiten 
-und Aufbereiten der Unterschiede wird es anderen 
-EntwicklerInnen erleichtert diese Entscheidung zu treffen.
-
+zu steuern eine Rolle. Aufgrund der hohen 
+Komplexität der IDEs und der damit einhergehenden 
+Komplexität der Plugin-Schnittstellen, kann es für EntwicklerInnen
+ohne Erfahrung in der Plugin-Entwicklung allerdings schwierig sein,
+diese Entscheidung zu treffen.
 
 \section{Ziel}
 \label{sec:Ziel}
 
+Diese Bachelorarbeit vergleicht die Plugin-Entwicklung 
+für Visual Studio Code und IntelliJ IDEA. 
+Durch den Vergleich der beiden Produkte 
+und das Herausarbeiten und Aufbereiten der Unterschiede 
+sowie der Gemeinsamkeiten, wird es anderen 
+EntwicklerInnen leichter möglich, eine Entscheidung
+bei der Wahl der Entwicklungsumgebung zu treffen.
+Durch das gewonnene Wissen soll auch der Einstieg
+in die Entwicklung für die jeweilige IDE erleichtert werden.
+
 \section{Aufbau}
 \label{sec:Aufbau}
+
+In Kapitel \ref{cha:Grundlagen} wird das grundlegende 
+Wissen erarbeitet, welches für die Entwicklung von Plugins 
+beziehungsweise Erweiterungen in VS Code und IntelliJ IDEA nötig ist.
+Um das erlangte Wissen praktisch anzuwenden, wird in
+den Kapiteln \ref{cha:Prototyp}, \ref{cha:EntwicklungVsCode} und \ref{cha:EntwicklungIntelliJ} 
+ein Prototyp auf beiden Plattformen erstellt.
+In den Kapiteln \ref{cha:Kriterien} und \ref{cha:Vergleich} wird ein Katalog 
+an Bewertungskriterien aufgebaut, auf deren Basis 
+das Arbeiten mit den Systemen dann verglichen wird.

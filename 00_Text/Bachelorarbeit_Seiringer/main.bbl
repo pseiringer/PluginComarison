@@ -20,71 +20,121 @@
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
     \entry{ArnoldKen1996TJpl}{book}{}
-      \name{author}{1}{}{%
+      \name{author}{3}{}{%
         {{hash=5d710b72d32b34d9666ff39756bff23b}{%
            family={Arnold},
            familyi={A\bibinitperiod},
            given={Ken},
            giveni={K\bibinitperiod}}}%
+        {{hash=2a798529b7edde2afc14297cab558b16}{%
+           family={Gosling},
+           familyi={G\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=07af06897ce3b138dd5c866419ab8b45}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
       }
       \list{language}{1}{%
         {eng}%
       }
-      \strng{namehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{fullhash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{bibnamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authorbibnamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authornamehash}{5d710b72d32b34d9666ff39756bff23b}
-      \strng{authorfullhash}{5d710b72d32b34d9666ff39756bff23b}
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{cb6ba4ee3295a1d2a706a4c606f13032}
+      \strng{fullhash}{cb6ba4ee3295a1d2a706a4c606f13032}
+      \strng{bibnamehash}{cb6ba4ee3295a1d2a706a4c606f13032}
+      \strng{authorbibnamehash}{cb6ba4ee3295a1d2a706a4c606f13032}
+      \strng{authornamehash}{cb6ba4ee3295a1d2a706a4c606f13032}
+      \strng{authorfullhash}{cb6ba4ee3295a1d2a706a4c606f13032}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{1. print..}
       \field{isbn}{0201634554}
       \field{series}{The Java series}
-      \field{title}{The Java programming language}
+      \field{title}{The Java Programming Language}
       \field{year}{1996}
       \keyw{Java (Computer program language)}
     \endentry
     \entry{2005Dp:e}{book}{}
+      \name{author}{4}{}{%
+        {{hash=abd927bf30d6566be0ac66a66e893fdd}{%
+           family={Gamma},
+           familyi={G\bibinitperiod},
+           given={Erich},
+           giveni={E\bibinitperiod}}}%
+        {{hash=233f891813bda0f3920985f97a4a7554}{%
+           family={Helm},
+           familyi={H\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fd79e5e249b219ff553fc2d811104d78}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Ralph},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e032589f0b9a38804483ab7cf5ccad7f}{%
+           family={Vlissides},
+           familyi={V\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
       \list{language}{1}{%
         {eng}%
       }
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{fullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{bibnamehash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{authorbibnamehash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \strng{authornamehash}{4d2492409a24d4ed208ae6670cb91945}
+      \strng{authorfullhash}{5cb4a6d7baf30d11bae6682eca698b4f}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{32. print..}
       \field{isbn}{0201633612}
-      \field{series}{Addison-Wesley professional computing series}
-      \field{title}{Design patterns : elements of reusable object-oriented software}
+      \field{title}{Design Patterns : Elements of Reusable Object-Oriented Software}
       \field{year}{2005}
       \keyw{Object-oriented programming (Computer science)}
     \endentry
     \entry{GunasingheNadeeshaan2022Lspa}{book}{}
-      \name{author}{1}{}{%
+      \name{author}{2}{}{%
         {{hash=8a7159b03e67e5c1ccae028ce1bf2c29}{%
            family={Gunasinghe},
            familyi={G\bibinitperiod},
            given={Nadeeshaan},
            giveni={N\bibinitperiod}}}%
+        {{hash=40988f7d937e3365c5c98d58ade2ec35}{%
+           family={Marcus},
+           familyi={M\bibinitperiod},
+           given={Nipuna},
+           giveni={N\bibinitperiod}}}%
       }
       \list{language}{1}{%
         {eng}%
       }
-      \strng{namehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
-      \strng{fullhash}{8a7159b03e67e5c1ccae028ce1bf2c29}
-      \strng{bibnamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
-      \strng{authorbibnamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
-      \strng{authornamehash}{8a7159b03e67e5c1ccae028ce1bf2c29}
-      \strng{authorfullhash}{8a7159b03e67e5c1ccae028ce1bf2c29}
+      \list{publisher}{1}{%
+        {Apress}%
+      }
+      \strng{namehash}{753f1516a67318eb69a43215a1650316}
+      \strng{fullhash}{753f1516a67318eb69a43215a1650316}
+      \strng{bibnamehash}{753f1516a67318eb69a43215a1650316}
+      \strng{authorbibnamehash}{753f1516a67318eb69a43215a1650316}
+      \strng{authornamehash}{753f1516a67318eb69a43215a1650316}
+      \strng{authorfullhash}{753f1516a67318eb69a43215a1650316}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Understand the important aspects of implementing a production-grade language server in support of language-smart tools such as code editors and other programming utilities. This book shows you how to create a single implementation of a language server that can be used by multiple tools, enabling you to do the job once in a way that can be shared and reused. This book covers the language server protocol used for communication between programming tools and your language server. The book also provides an in-depth understanding of the design, implementation, and user experience aspects which should be considered when implementing a language server. The book walks you through an example language server implementation to illustrate the basic concepts, then goes on to cover advanced aspects of language server use such as progress reporting, launchers, and extension points. User experience is an important aspect of language server implementation and different tooling vendors strive to provide their own unique user experiences. This book explains how the protocol features can be leveraged to address the unique developer experience provided by different tooling vendors. The book also shows how to enhance the smoothness of the editing experience by orchestrating multiple features together. What You Will Learn Implement a language server from scratch Understand language server protocol and its data models Leverage the protocol while preserving the unique user experience of different editors Extend the protocol to support more than its standard capabilities Run a language server on top of launchers such as standard I/O and TCP socket Seamlessly incorporate language semantics into your protocol features Who This Book Is For Developers focused on and passionate about implementing language development tools such as plug-ins and extensions for interactive development environments (IDEs) or other tools that rely upon parsing of language statements and commands, and developers who need an in-depth understanding of the language server protocol as well as how to use the language server protocol to develop extensible language services.}
       \field{isbn}{1-4842-7792-9}
-      \field{title}{Language server protocol and implementation : : supporting language-smart editing and programming tools}
+      \field{title}{Language Server Protocol and Implementation : supporting language-smart editing and programming tools}
       \field{year}{2022}
       \keyw{Computer programming}
     \endentry
@@ -99,6 +149,9 @@
       \list{language}{1}{%
         {eng}%
       }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
       \strng{namehash}{5975b9a73c19e769b6c357bb29240336}
       \strng{fullhash}{5975b9a73c19e769b6c357bb29240336}
       \strng{bibnamehash}{5975b9a73c19e769b6c357bb29240336}
@@ -109,33 +162,10 @@
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{1st ed. 2022..}
       \field{isbn}{1-4842-7446-6}
       \field{title}{Beginning IntelliJ IDEA : Integrated Development Environment for Java Programming}
       \field{year}{2022}
       \keyw{Programming languages (Electronic computers)}
-    \endentry
-    \entry{klein2010jflex}{article}{}
-      \name{author}{1}{}{%
-        {{hash=199a8abce7ff51f1ce18d08d6910be68}{%
-           family={Klein},
-           familyi={K\bibinitperiod},
-           given={Gerwin},
-           giveni={G\bibinitperiod}}}%
-      }
-      \strng{namehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{fullhash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{bibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authorbibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authornamehash}{199a8abce7ff51f1ce18d08d6910be68}
-      \strng{authorfullhash}{199a8abce7ff51f1ce18d08d6910be68}
-      \field{sortinit}{K}
-      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Available on-line at www. jflex. de. Accessed August}
-      \field{title}{Jflex users manual}
-      \field{year}{2010}
     \endentry
     \entry{MaharryDanTR}{book}{}
       \name{author}{1}{}{%
@@ -166,6 +196,7 @@
       \field{labeltitlesource}{title}
       \field{isbn}{9781430257257}
       \field{title}{TypeScript Revealed}
+      \field{year}{2013}
       \keyw{Computer Science ; Professional and Applied Computing ; Software Engineering/Programming and Operating Systems ; Web Development}
     \endentry
     \entry{mccracken2003backus}{incollection}{}
@@ -205,6 +236,9 @@
            given={Nathan},
            giveni={N\bibinitperiod}}}%
       }
+      \list{publisher}{1}{%
+        {Packt Publishing}%
+      }
       \strng{namehash}{8fd90245a12aee5b4dec89288c7eff34}
       \strng{fullhash}{8fd90245a12aee5b4dec89288c7eff34}
       \strng{bibnamehash}{8fd90245a12aee5b4dec89288c7eff34}
@@ -215,7 +249,9 @@
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{isbn}{9781800561601}
       \field{title}{Mastering TypeScript}
+      \field{year}{2021}
     \endentry
     \entry{SharanKishori2022BJ1f}{book}{}
       \name{author}{1}{}{%
@@ -228,6 +264,9 @@
       \list{language}{1}{%
         {eng}%
       }
+      \list{publisher}{1}{%
+        {Apress}%
+      }
       \strng{namehash}{88e882623a1e03f8b57eca6a56d4a658}
       \strng{fullhash}{88e882623a1e03f8b57eca6a56d4a658}
       \strng{bibnamehash}{88e882623a1e03f8b57eca6a56d4a658}
@@ -238,9 +277,8 @@
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{edition}{Third edition..}
       \field{isbn}{1-4842-7307-9}
-      \field{title}{Beginning Java 17 fundamentals : : object-oriented programming in Java 17}
+      \field{title}{Beginning Java 17 Fundamentals : Object-Oriented Programming in Java 17}
       \field{year}{2022}
       \keyw{Java (Computer program language)}
     \endentry
@@ -395,8 +433,8 @@
       }
       \strng{namehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
       \strng{fullhash}{0b981daa0336df0177bdf1eb6999e295}
-      \strng{bibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
-      \strng{authorbibnamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
+      \strng{bibnamehash}{0b981daa0336df0177bdf1eb6999e295}
+      \strng{authorbibnamehash}{0b981daa0336df0177bdf1eb6999e295}
       \strng{authornamehash}{9568a4173a2a340a8bdd607aeb8d3b7c}
       \strng{authorfullhash}{0b981daa0336df0177bdf1eb6999e295}
       \field{sortinit}{H}
@@ -452,8 +490,8 @@
       \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
       \field{labeltitlesource}{title}
       \field{title}{IntelliJ Marketplace}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
       \field{urlyear}{2023}
       \field{urldateera}{ce}
       \verb{urlraw}
@@ -1099,6 +1137,100 @@
       \verb https://jflex.de/
       \endverb
     \endentry
+    \entry{JRebelDeveloperProductivityReport}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Java Developer Productivity Report 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jrebel.com/success/java-developer-productivity-report-2023
+      \endverb
+      \verb{url}
+      \verb https://www.jrebel.com/success/java-developer-productivity-report-2023
+      \endverb
+    \endentry
+    \entry{BetterprojectsfasterPouplarityIndex}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Java Developer Productivity Report 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://betterprojectsfaster.com/guide/java-tech-popularity-index-2023-q4/ide/
+      \endverb
+      \verb{url}
+      \verb https://betterprojectsfaster.com/guide/java-tech-popularity-index-2023-q4/ide/
+      \endverb
+    \endentry
+    \entry{JRebelIDEs}{online}{}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{JRebel Most Popular Java IDEs in 2023}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.jrebel.com/blog/best-java-ide
+      \endverb
+      \verb{url}
+      \verb https://www.jrebel.com/blog/best-java-ide
+      \endverb
+    \endentry
+    \entry{KleinJFlexManual}{online}{}
+      \name{author}{1}{}{%
+        {{hash=199a8abce7ff51f1ce18d08d6910be68}{%
+           family={Klein},
+           familyi={K\bibinitperiod},
+           given={Gerwin},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{fullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{bibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorbibnamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authornamehash}{199a8abce7ff51f1ce18d08d6910be68}
+      \strng{authorfullhash}{199a8abce7ff51f1ce18d08d6910be68}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Jflex users manual}
+      \field{urlday}{31}
+      \field{urlmonth}{10}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://jflex.de/manual.html
+      \endverb
+      \verb{url}
+      \verb https://jflex.de/manual.html
+      \endverb
+    \endentry
+    \entry{LSPHomepage}{online}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeltitlesource}{title}
+      \field{title}{Language Server Protocol}
+      \field{urlday}{29}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://microsoft.github.io/language-server-protocol/
+      \endverb
+      \verb{url}
+      \verb https://microsoft.github.io/language-server-protocol/
+      \endverb
+    \endentry
     \entry{VSCodeExtensionSamples}{online}{}
       \name{author}{1}{}{%
         {{hash=140864078aeca1c7c35b4beb33c53c34}{%
@@ -1203,6 +1335,22 @@
       \endverb
       \verb{url}
       \verb https://vscode-docs.readthedocs.io/en/stable/extensions/our-approach/
+      \endverb
+    \endentry
+    \entry{PassMarkAppTimer}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{PassMark AppTimer}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
+      \field{urlyear}{2023}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.passmark.com/products/apptimer/
+      \endverb
+      \verb{url}
+      \verb https://www.passmark.com/products/apptimer/
       \endverb
     \endentry
     \entry{PYPL}{online}{}
@@ -1336,8 +1484,8 @@
       \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
       \field{labeltitlesource}{title}
       \field{title}{Visual Studio Code Marketplace}
-      \field{urlday}{6}
-      \field{urlmonth}{10}
+      \field{urlday}{28}
+      \field{urlmonth}{12}
       \field{urlyear}{2023}
       \field{urldateera}{ce}
       \verb{urlraw}

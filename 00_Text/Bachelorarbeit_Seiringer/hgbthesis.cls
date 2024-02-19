@@ -451,7 +451,7 @@ This work is published under the conditions of the
 
 \newcommand{\@declarationpageDe}{%
 	\begin{german}
-		\chapter{Erkl\"arung}
+		\chapter*{Erkl\"arung}
 		\noindent
 		%Standardfassung der FH-OOe ab 04.04.2012:
 		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
@@ -515,8 +515,8 @@ This work is published under the conditions of the
 			%no declaration page for proposals
 		}%			
 		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
+			% \@advisorpage%
+			% \@copyrightpage%
 			\@declarationpage%
 		}%
 }
